@@ -1,0 +1,63 @@
+name: Update NWS Alerts
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Fetch current NWS alerts
+        run: |
+          curl --fail --retry 4 --retry-delay 5 \
+            -A "TRGTornado Weather Site/1.0 (GitHub Pages)" \
+            -H "Accept: application/geo+json, application/json" \
+            "https://api.weather.gov/alerts/active" \
+            -o alerts-new.json
+
+      - name: Update alerts only when data changes
+        run: |
+          python - <<'PY'
+          import json
+          import os
+
+          with open("alerts-new.json", "r", encoding="utf-8") as f:
+              new_data = json.load(f)
+
+          if "features" not in new_data:
+              raise SystemExit("NWS response does not contain features")
+
+          old_data = None
+
+          if os.path.exists("alerts.json"):
+              try:
+                  with open("alerts.json", "r", encoding="utf-8") as f:
+                      old_data = json.load(f)
+              except Exception:
+                  pass
+
+          if old_data != new_data:
+              with open("alerts.json", "w", encoding="utf-8") as f:
+                  json.dump(new_data, f, indent=2)
+
+              print(f"Alert data changed — {len(new_data['features'])} active alerts.")
+          else:
+              print("No alert changes detected.")
+
+          os.remove("alerts-new.json")
+          PY
+
+      - name: Commit only if alerts changed
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Update active NWS alerts"
+          file_pattern: alerts.json
