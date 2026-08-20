@@ -1,0 +1,32 @@
+name: Update NWS Alerts
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+permissions:
+  contents: write
+jobs:
+  update-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch active NWS alerts
+        env:
+          UA: "TRGTornado-Weather-Site/37 (weather alerts)"
+        run: |
+          curl -fsSL -A "$UA" "https://api.weather.gov/alerts/active?limit=500" -o alerts.json.tmp
+          python - <<'PY'
+          import json, pathlib, datetime
+          p=pathlib.Path('alerts.json.tmp')
+          d=json.loads(p.read_text())
+          if not isinstance(d,dict) or not isinstance(d.get('features'),list): raise SystemExit('Invalid NWS alert payload')
+          pathlib.Path('alerts.json').write_text(json.dumps({'features':d['features'],'updated':datetime.datetime.now(datetime.timezone.utc).isoformat()},separators=(',',':')))
+          PY
+          rm -f alerts.json.tmp
+      - name: Commit updated alerts
+        run: |
+          git config user.name "TRG Tornado Alerts Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add alerts.json
+          git diff --cached --quiet || git commit -m "Update live NWS alerts"
+          git push

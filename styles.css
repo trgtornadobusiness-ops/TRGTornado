@@ -92,9 +92,9 @@ nav a.active{color:#fff;border-bottom:2px solid #ff3030;padding-bottom:5px}
 .zoom-toolbar div{display:flex;gap:5px}
 .zoom-toolbar button{background:#10131b;color:#fff;border:1px solid #ff303044;border-radius:5px;padding:5px 8px;font-size:9px;font-weight:900;cursor:pointer}
 .zoom-toolbar button:hover{border-color:#ff3030;background:#180b0b}
-.tropical-viewer{height:500px;overflow:hidden;background:#080a10;display:grid;place-items:center;cursor:zoom-in;touch-action:none;position:relative}
+.tropical-viewer{height:560px;overflow:hidden;background:#080a10;display:grid;place-items:center;cursor:zoom-in;touch-action:none;position:relative;padding:10px;box-sizing:border-box}
 .tropical-viewer.dragging{cursor:grabbing}
-.tropical-viewer img{width:100%;height:100%;object-fit:contain;transform-origin:0 0;user-select:none;-webkit-user-drag:none;will-change:transform;transition:transform .08s linear}
+.tropical-viewer img{width:auto;height:auto;max-width:92%;max-height:92%;object-fit:contain;transform-origin:center center;user-select:none;-webkit-user-drag:none;will-change:transform;transition:transform .08s linear}
 .tropical-viewer.dragging img{transition:none}
 @media(max-width:900px){.tropical-viewer{height:440px}}
 @media(max-width:560px){.tropical-viewer{height:360px}.zoom-toolbar span{max-width:190px}}

@@ -275,6 +275,14 @@ async function reverseGeocode(latitude, longitude) {
   return { latitude, longitude, name: "Your location", admin1: "" };
 }
 
+async function fetchStaticAlertsFallback(){
+  const urls=["./alerts.json?trg="+Date.now(), "https://api.github.com/repos/OWNER/REPO/contents/alerts.json"];
+  for(const url of urls.slice(0,1)){
+    try{const r=await fetch(url,{cache:"no-store"}); if(!r.ok) continue; const d=await r.json(); if(Array.isArray(d?.features)) return {features:d.features,meta:{staticFallback:true,checkedAt:new Date().toISOString()}};}catch{}
+  }
+  return null;
+}
+
 async function nwsAlerts(point) {
   // Alert architecture: NOAA's CurrentWarnings/WWA GIS is the primary browser-safe
   // source because it is designed for public web mapping. NWS /alerts/active is
@@ -364,7 +372,7 @@ async function nwsAlerts(point) {
   });
   // A technically successful HTTP request with zero parsed records is not proof
   // that the live feed is healthy. Require at least one valid source response.
-  if(!successful) throw new Error("All live NWS/NOAA alert sources failed");
+  if(!successful || returnedRows===0){ const fallback=await fetchStaticAlertsFallback(); if(fallback?.features?.length) return fallback; if(successful) return {features:[],meta:{successfulSources:successful,returnedRows,checkedAt:new Date().toISOString(),emptyLiveFeed:true}}; throw new Error("All live NWS/NOAA alert sources failed"); }
   return {features:[...merged.values()], meta:{successfulSources:successful, returnedRows, checkedAt:new Date().toISOString()}};
 }
 function hazardName(phenom, sig) {
@@ -900,7 +908,6 @@ function setupEvents() {
 async function boot() {
   setupEvents();
   setupTropical();
-  if (document.querySelector("#tropicalViewer")) setInterval(refreshTropical, TROPICAL_REFRESH_MS);
   setupVideo();
 
   // Every page gets the live alert ticker, but only pages that contain a
