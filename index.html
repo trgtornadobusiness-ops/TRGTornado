@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRG Tornado | Weather Center</title>
+<meta name="description" content="TRG Tornado Weather Center — forecasts, severe weather, tropical outlooks, alerts and live coverage.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><b>TRG</b><span>TORNADO</span></div>
+  <nav>
+    <a href="#forecast">Forecast</a><a href="#alerts">Alerts</a><a href="#severe">Severe</a>
+    <a href="#tropical">Tropical</a><a href="#maps">Maps</a><a href="#live" class="live">● LIVE</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">TRG TORNADO WEATHER CENTER</div>
+    <h1>WEATHER<br><em>EXPLAINED.</em></h1>
+    <p>Severe weather. Tropical systems. Forecasts. Live coverage. Built around the TRG Tornado brand.</p>
+    <div class="actions"><a class="btn hot" href="#forecast">CHECK FORECAST</a><a class="btn" href="#live">WATCH LIVE</a></div>
+  </div>
+  <div class="current-card">
+    <div class="live-dot"></div><span class="label">CURRENT CONDITIONS</span>
+    <div id="temp">--°</div><strong id="condition">Loading…</strong>
+    <div class="current-row"><span id="feels">Feels --°</span><span id="wind">Wind --</span><span id="humidity">RH --%</span></div>
+  </div>
+</section>
+
+<section class="searchbar">
+  <span>FORECAST LOCATION</span><input id="location" value="Oklahoma City, OK"><button id="go">UPDATE</button><small id="status">Loading weather…</small>
+</section>
+
+<section id="alerts" class="section">
+  <div class="section-title"><div><div class="eyebrow">OFFICIAL NWS DATA</div><h2>Active Alerts</h2></div><span class="tag warning">LIVE</span></div>
+  <div id="alertsBox" class="alerts"><div class="empty">Loading alerts…</div></div>
+</section>
+
+<section id="forecast" class="section">
+  <div class="section-title"><div><div class="eyebrow">LOCAL FORECAST</div><h2>5-Day Forecast</h2></div></div>
+  <div id="forecastGrid" class="forecast"></div>
+</section>
+
+<section id="severe" class="section">
+  <div class="section-title"><div><div class="eyebrow">THREAT CENTER</div><h2>Severe Weather</h2></div><span class="tag red">MONITORING</span></div>
+  <div class="two-col">
+    <article class="story red-panel">
+      <span class="label redtext">TRG ANALYSIS</span>
+      <h3>Tornadoes<br>Possible</h3>
+      <p>Use this area for your headline forecast and the latest severe-weather discussion. Replace the sample wording with your own forecast before publishing.</p>
+      <a class="arrow" href="#maps">OPEN THREAT MAPS →</a>
+    </article>
+    <article class="image-card">
+      <div class="image-head"><span>SPC DAY 1 CATEGORICAL OUTLOOK</span><span>NOAA / SPC</span></div>
+      <img src="https://www.spc.noaa.gov/products/outlook/day1otlk.gif" alt="SPC Day 1 categorical outlook" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <div class="image-fallback">SPC OUTLOOK<br><small>Map image unavailable — replace this URL with your preferred current outlook image.</small></div>
+    </article>
+  </div>
+</section>
+
+<section id="tropical" class="section">
+  <div class="section-title"><div><div class="eyebrow">ATLANTIC • EAST PACIFIC • CENTRAL PACIFIC</div><h2>Tropical Outlook</h2></div><span class="tag gold">TROPICS</span></div>
+  <div class="two-col tropical">
+    <article class="image-card tropical-card">
+      <div class="image-head"><span>NHC TROPICAL OUTLOOK</span><span>NOAA / NHC</span></div>
+      <img src="https://www.nhc.noaa.gov/xgtwo/two_atl_2d0.png" alt="Atlantic tropical outlook" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <div class="image-fallback">ATLANTIC TROPICAL OUTLOOK<br><small>Replace with your preferred current NHC graphic if needed.</small></div>
+    </article>
+    <article class="story tropical-story">
+      <span class="label goldtext">TRG TROPICAL DESK</span>
+      <h3>Potential Development</h3>
+      <p>Highlight tropical waves, areas of concern, expected conditions and your confidence here.</p>
+      <div class="stats"><div><b>0</b><span>Named Storms</span></div><div><b>0</b><span>Hurricanes</span></div><div><b>0</b><span>Major</span></div></div>
+    </article>
+  </div>
+</section>
+
+<section id="maps" class="section">
+  <div class="section-title"><div><div class="eyebrow">MAP ROOM</div><h2>Weather Maps</h2></div></div>
+  <div class="map-grid">
+    <article><b>RADAR</b><span>Interactive radar</span><div class="map-art radar"></div></article>
+    <article><b>SEVERE</b><span>SPC outlooks</span><div class="map-art severe"></div></article>
+    <article><b>TROPICAL</b><span>Storm tracks</span><div class="map-art trop"></div></article>
+    <article><b>SATELLITE</b><span>Satellite imagery</span><div class="map-art sat"></div></article>
+  </div>
+</section>
+
+<section id="live" class="section live-section">
+  <div>
+    <div class="eyebrow">TRG TORNADO LIVE</div><h2>LIVE WEATHER COVERAGE</h2>
+    <p>When you go live, this is the page your viewers can use as the central hub for your coverage.</p>
+    <a class="btn hot" href="#" onclick="return false">WATCH ON YOUTUBE</a>
+  </div>
+  <div class="video"><div>▶</div><span>YOUTUBE LIVE EMBED</span><small>Paste your YouTube channel/video ID in app.js</small></div>
+</section>
+</main>
+
+<footer><div class="brand"><b>TRG</b><span>TORNADO</span></div><p>Forecast information is for general informational use. For life-safety decisions, follow official NWS warnings.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>
