@@ -867,16 +867,16 @@ function loadSPCMaps() {
 
 const tropicalProducts = {
   atl:{title:"ATLANTIC 7-DAY OUTLOOK", images:[
-    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png",
-    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png"
+    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png",
+    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png"
   ], official:"https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
   epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", images:[
-    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png",
-    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png"
+    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png",
+    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png"
   ], official:"https://www.nhc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
   cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", images:[
-    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png",
-    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png"
+    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png",
+    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png"
   ], official:"https://www.nhc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
   wpac:{title:"JTWC WESTERN PACIFIC", images:[], frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", official:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
 };
@@ -889,9 +889,9 @@ function setupTropicalViewer(){const viewport=$("#tropicalViewer");if(!viewport)
 function setTropicalStatus(text){const el=$("#tropicalUpdated");if(el)el.textContent=text;}
 function showTropicalFallback(product,key){const image=$("#tropicalImage"),frame=$("#tropicalFrame"),fallback=image?.parentElement?.querySelector(".image-fallback");if(image)image.style.display="none";if(frame)frame.style.display="none";if(fallback){fallback.style.display="grid";const strong=fallback.querySelector("strong");if(strong)strong.textContent="OFFICIAL OUTLOOK AVAILABLE";const small=fallback.querySelector("small");if(small)small.textContent=key==="wpac"?"JTWC blocks embedded pages. Use the official source button below.":"The official graphic could not be embedded. Use the live NHC source below.";const link=fallback.querySelector("a");if(link){link.href=product.official;link.textContent=key==="wpac"?"OPEN JTWC →":"OPEN NHC →";}}setTropicalStatus("Official source link available");}
 function loadTropicalImage(product,key,index=0){const image=$("#tropicalImage"),frame=$("#tropicalFrame"),fallback=image?.parentElement?.querySelector(".image-fallback");if(!image)return;if(frame)frame.style.display="none";if(fallback)fallback.style.display="none";if(!product.images?.length){showTropicalFallback(product,key);return;}
-  image.style.display="block";image.style.opacity="0";image.alt=product.title;image.style.width="auto";image.style.height="auto";image.style.maxWidth="94%";image.style.maxHeight="94%";image.onload=()=>{image.style.opacity="1";resetTropicalZoom();setTropicalStatus(`Live NHC graphic loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);};image.onerror=()=>{const next=index+1;if(next<product.images.length){loadTropicalImage(product,key,next);}else{showTropicalFallback(product,key);}};image.src=`${product.images[index]}?trg=${Date.now()}_${index}`;
+  image.style.display="block";image.style.opacity="1";image.alt=product.title;image.style.width="auto";image.style.height="auto";image.style.maxWidth="94%";image.style.maxHeight="94%";image.onload=()=>{image.style.opacity="1";resetTropicalZoom();setTropicalStatus(`Live NHC graphic loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);};image.onerror=()=>{const next=index+1;if(next<product.images.length){loadTropicalImage(product,key,next);}else{showTropicalFallback(product,key);}};image.src=`${product.images[index]}?trg=${Date.now()}_${index}`;
 }
-function showTropical(key){const product=tropicalProducts[key]||tropicalProducts.atl;document.querySelectorAll(".tropical-tabs .tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));resetTropicalZoom();const frame=$("#tropicalFrame"),image=$("#tropicalImage");if(frame)frame.style.display="none";if(image){image.style.opacity="0";image.style.display="block";}$("#tropicalTitle")&&($("#tropicalTitle").textContent=product.title);$("#tropicalHeadline")&&($("#tropicalHeadline").textContent=product.head);$("#tropicalText")&&($("#tropicalText").textContent=product.text);$("#tropicalSource")&&($("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC");const arrow=document.querySelector(".tropical-story .arrow");if(arrow){arrow.href=product.official||product.frame;arrow.textContent=key==="wpac"?"OPEN JTWC →":"OPEN NHC →";}loadTropicalImage(product,key);}
+function showTropical(key){const product=tropicalProducts[key]||tropicalProducts.atl;document.querySelectorAll(".tropical-tabs .tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));resetTropicalZoom();const frame=$("#tropicalFrame"),image=$("#tropicalImage");if(frame)frame.style.display="none";if(image){image.style.opacity="1";image.style.display="block";}$("#tropicalTitle")&&($("#tropicalTitle").textContent=product.title);$("#tropicalHeadline")&&($("#tropicalHeadline").textContent=product.head);$("#tropicalText")&&($("#tropicalText").textContent=product.text);$("#tropicalSource")&&($("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC");const arrow=document.querySelector(".tropical-story .arrow");if(arrow){arrow.href=product.official||product.frame;arrow.textContent=key==="wpac"?"OPEN JTWC →":"OPEN NHC →";}loadTropicalImage(product,key);}
 function refreshTropical(){showTropical(document.querySelector(".tropical-tabs .tab.active")?.dataset.tropical||"atl");}
 function setupTropical(){if(!$("#tropicalViewer"))return;document.querySelectorAll(".tropical-tabs .tab").forEach(btn=>btn.addEventListener("click",()=>showTropical(btn.dataset.tropical)));setupTropicalViewer();showTropical("atl");setInterval(refreshTropical,TROPICAL_REFRESH_MS);}
 
