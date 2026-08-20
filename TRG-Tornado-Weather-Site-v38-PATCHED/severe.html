@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TRG Tornado | Severe Weather</title><meta name="description" content="SPC severe weather outlooks and TRG severe weather analysis."><link rel="preconnect" href="https://api.weather.gov"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin=""><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><a class="brand" href="index.html"><b>TRG</b><span>TORNADO</span></a><nav><a href="index.html" class="">Home</a><a href="forecast.html" class="">Forecast</a><a href="alerts.html" class="">Weather Alerts</a><a href="severe.html" class="active">Severe</a><a href="tropical.html" class="">Tropical</a><a href="maps.html" class="">Radar</a><a href="social.html" class="">SOCIAL</a><a href="live.html" class=" live">LIVE</a></nav></header><div id="alertTicker" class="alert-ticker" aria-label="Active weather alerts"><div class="ticker-label"><span class="ticker-dot"></span> LIVE ALERTS</div><div class="ticker-window"><div id="alertTickerTrack" class="ticker-track"><span class="ticker-item ticker-loading">Loading active NWS alerts…</span></div></div><a id="tickerAlerts" class="ticker-button" href="alerts.html">VIEW ALERTS →</a></div><main><section class="section" id="severe">
+<div class="section-title"><div><div class="eyebrow">THREAT CENTER</div><h2>Severe Weather</h2></div><span class="tag red">TRG MONITORING</span></div>
+<div class="two-col">
+<article class="story red-panel">
+<span class="label redtext">TRG ANALYSIS</span>
+<h3 id="severeHeadline">Tornadoes<br/>Possible</h3>
+<p id="severeText">Use this panel for your latest severe-weather forecast, confidence and timing. Update the headline when conditions warrant.</p>
+<div class="threat-meter"><span>THREAT LEVEL</span><b>MONITORING</b></div>
+<a class="arrow" href="#spc">VIEW SPC PRODUCTS →</a>
+</article>
+<article class="image-card" id="spc">
+<div class="image-head"><span>SPC DAY 1 CATEGORICAL OUTLOOK</span><span>NOAA / SPC</span></div>
+<div class="spc-map" id="spcCatMap"></div>
+<div class="spc-map-status" id="spcCatStatus">Loading official SPC outlook…</div>
+</article>
+</div>
+<div class="product-grid">
+<article class="product-card"><div class="product-head">TORNADO PROBABILITY + CIG</div><div class="spc-product-map" id="spcTornMap"></div><div class="spc-map-status" id="spcTornStatus">Loading…</div></article>
+<article class="product-card"><div class="product-head">WIND PROBABILITY + CIG</div><div class="spc-product-map" id="spcWindMap"></div><div class="spc-map-status" id="spcWindStatus">Loading…</div></article>
+<article class="product-card"><div class="product-head">HAIL PROBABILITY + CIG</div><div class="spc-product-map" id="spcHailMap"></div><div class="spc-map-status" id="spcHailStatus">Loading…</div></article>
+</div>
+</section></main><footer><div class="brand"><b>TRG</b><span>TORNADO</span></div><p>Forecast information is for general informational use. For life-safety decisions, follow official NWS warnings.</p><p>Weather data: NWS / NOAA, SPC and NHC. Radar: NOAA/NWS MRMS.</p><div class="footer-meta"><span>© 2026 TRGTornado. All rights reserved.</span><span class="site-version">Version 38</span></div></footer><script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script><script src="app.js"></script></body></html>
