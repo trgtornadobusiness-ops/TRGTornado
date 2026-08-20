@@ -251,58 +251,77 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function nwsAlerts(point) {
-  const fields = [
-    "prod_type","msg_type","phenom","url","expiration","onset","ends",
-    "issuance","wfo","event","cap_id","sig","idp_ingestdate"
-  ].join(',');
-  const nowIso = new Date().toISOString();
-  const makeUrl = layer => {
-    const where = layer === 0
-      ? "expiration IS NOT NULL"
-      : "expiration IS NOT NULL";
+  // NWS /alerts/active is the primary live alert source. NWS documents this
+  // endpoint specifically for currently active/ongoing alerts. We also query
+  // the official NOAA WWA GIS layer as a secondary source and merge results.
+  const apiUrl = point
+    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&status=actual&_trg=${Date.now()}`
+    : `https://api.weather.gov/alerts/active?status=actual&_trg=${Date.now()}`;
+
+  const gisUrl = (layer) => {
     const params = new URLSearchParams({
-      where, outFields: fields, returnGeometry:"false", f:"json",
-      orderByFields:"expiration ASC", resultRecordCount:"4000",
-      _trg: String(Date.now())
+      where: "expiration IS NOT NULL",
+      outFields: "prod_type,msg_type,phenom,url,expiration,onset,ends,issuance,wfo,event,cap_id,sig,idp_ingestdate",
+      returnGeometry: "false", f: "json", resultRecordCount: "4000",
+      orderByFields: "expiration ASC", _trg: String(Date.now())
     });
     return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?${params}`;
   };
-  const convert = (data, layer) => (Array.isArray(data?.features) ? data.features : []).map((f, i) => {
+
+  const normalizeNws = (features=[]) => features.map((item, i) => {
+    const p = item.properties || {};
+    return {
+      id: item.id || p.id || `nws-${i}-${p.sent || p.effective || ""}`,
+      properties: {
+        ...p,
+        event: p.event || "Weather Alert",
+        headline: p.headline || p.description || p.event || "Weather Alert",
+        areaDesc: p.areaDesc || "Active NWS area",
+        web: p.web || item.id || "https://www.weather.gov/alerts",
+        status: p.status || "Actual",
+        messageType: p.messageType || "Alert"
+      },
+      geometry: item.geometry || null
+    };
+  }).filter(isOngoingAlert);
+
+  const normalizeGis = (data, layer) => (Array.isArray(data?.features) ? data.features : []).map((f, i) => {
     const a = f.attributes || {};
     const event = String(a.prod_type || hazardName(a.phenom, a.sig) || a.event || "Weather Alert").trim();
     const effective = a.onset || a.issuance || null;
     const expires = a.expiration || a.ends || null;
-    const id = a.cap_id || `${layer}-${a.wfo || 'NWS'}-${a.phenom || ''}-${a.sig || ''}-${a.issuance || a.idp_ingestdate || i}`;
     return {
-      id,
+      id: a.cap_id || `${layer}-${a.wfo || "NWS"}-${a.phenom || ""}-${a.sig || ""}-${a.issuance || a.idp_ingestdate || i}`,
       properties: {
-        event, headline:event, areaDesc:"", effective, onset:a.onset || effective,
-        expires, ends:a.ends || expires, sent:a.issuance || effective,
-        severity:severityForPhenomena(a.phenom), urgency:"Immediate", certainty:"Observed",
-        web:a.url || "https://www.weather.gov/alerts", status:"Actual",
-        messageType:a.msg_type || "Alert", phenom:a.phenom, sig:a.sig, wfo:a.wfo,
-        ingest:a.idp_ingestdate || null
+        event, headline: event, areaDesc: "", effective, onset: a.onset || effective,
+        expires, ends: a.ends || expires, sent: a.issuance || effective,
+        severity: severityForPhenomena(a.phenom), urgency: "Immediate", certainty: "Observed",
+        web: a.url || "https://www.weather.gov/alerts", status: "Actual",
+        messageType: a.msg_type || "Alert", phenom: a.phenom, sig: a.sig, wfo: a.wfo,
+        ingest: a.idp_ingestdate || null
       }
     };
+  }).filter(isOngoingAlert);
+
+  const results = await Promise.allSettled([
+    fetchJson(apiUrl, {timeout:15000, headers:{Accept:"application/geo+json"}}),
+    fetchJson(gisUrl(0), {timeout:15000}),
+    fetchJson(gisUrl(1), {timeout:15000})
+  ]);
+
+  const merged = new Map();
+  let successful = 0;
+  results.forEach((result, index) => {
+    if (result.status !== "fulfilled") return;
+    successful++;
+    const items = index === 0
+      ? normalizeNws(result.value.features || [])
+      : normalizeGis(result.value, index - 1);
+    items.forEach(item => merged.set(String(item.id), item));
   });
 
-  try {
-    const [current, broad] = await Promise.all([
-      fetchJson(makeUrl(0), {timeout:15000}),
-      fetchJson(makeUrl(1), {timeout:15000})
-    ]);
-    const unique = new Map();
-    [...convert(current,0), ...convert(broad,1)]
-      .filter(isOngoingAlert)
-      .forEach(item => unique.set(String(item.id), item));
-    return {features:[...unique.values()]};
-  } catch (gisError) {
-    const url = point
-      ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&_trg=${Date.now()}`
-      : `https://api.weather.gov/alerts/active?_trg=${Date.now()}`;
-    const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json"}});
-    return {features:(data.features || []).filter(isOngoingAlert)};
-  }
+  if (!successful) throw new Error("All NWS alert sources failed");
+  return {features:[...merged.values()]};
 }
 function hazardName(phenom, sig) {
   const key = `${phenom || ""},${sig || ""}`;
@@ -664,7 +683,7 @@ function centerRadar(lat, lon) {
 
 const SPC = {
   base: "https://mapservices.weather.noaa.gov/vector/rest/services/outlooks/SPC_wx_outlks/FeatureServer",
-  layers: { categorical:1, tornado:3, hail:5, wind:7 },
+  layers: { categorical:1, tornado:3, tornadoCig:2, hail:5, wind:7 },
   maps: {}
 };
 
@@ -716,17 +735,18 @@ async function loadSpcLayer(key, mapId, statusId, label) {
 function loadSPCMaps() {
   loadSpcLayer("categorical", "spcCatMap", "spcCatStatus", "SPC categorical outlook");
   loadSpcLayer("tornado", "spcTornMap", "spcTornStatus", "tornado probability");
+  loadSpcLayer("tornadoCig", "spcTornCigMap", "spcTornCigStatus", "tornado conditional intensity (CIG)");
   loadSpcLayer("wind", "spcWindMap", "spcWindStatus", "wind probability");
   loadSpcLayer("hail", "spcHailMap", "spcHailStatus", "hail probability");
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC/Central Pacific Hurricane Center 7-day outlook for the central North Pacific."},
-  wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"JTWC Western Pacific tropical guidance."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", fallback:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Live NHC 7-day outlook for the Atlantic basin."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", fallback:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Live NHC 7-day outlook for the eastern North Pacific."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png", fallback:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Live NHC/CPHC 7-day outlook for the central North Pacific."},
+  wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"Live JTWC Western Pacific tropical guidance."}
 };
-const TROPICAL_REFRESH_MS = 10 * 60 * 1000;
+const TROPICAL_REFRESH_MS = 5 * 60 * 1000;
 
 const tropicalViewer = { scale:1, x:0, y:0, dragging:false, sx:0, sy:0, ox:0, oy:0 };
 
