@@ -276,85 +276,96 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function nwsAlerts(point) {
-  // NWS /alerts/active is the primary live alert source. NWS documents this
-  // endpoint specifically for currently active/ongoing alerts. We also query
-  // the official NOAA WWA GIS layer as a secondary source and merge results.
-  const apiParams = new URLSearchParams({limit:"5000"});
+  // Alert architecture: NOAA's CurrentWarnings/WWA GIS is the primary browser-safe
+  // source because it is designed for public web mapping. NWS /alerts/active is
+  // retained as a secondary source. We validate each response before considering
+  // it successful so an empty/broken response can NEVER be interpreted as ALL CLEAR.
+  const apiParams = new URLSearchParams({limit:"500"});
   if (point) apiParams.set("point", `${point.latitude},${point.longitude}`);
   const apiUrl = `https://api.weather.gov/alerts/active?${apiParams.toString()}`;
-  const apiBackupUrl = `https://api.weather.gov/alerts?status=actual&message_type=alert,update&limit=5000`;
 
-  const gisUrl = (layer, where="1=1") => {
+  const gisUrl = (layer) => {
     const params = new URLSearchParams({
-      where,
-      outFields: "*",
-      returnGeometry: "false", f: "json", resultRecordCount: "4000",
-      _trg: String(Date.now())
+      where:"1=1", outFields:"*", returnGeometry:"false", f:"json",
+      resultRecordCount:"2000", _trg:String(Date.now())
     });
     return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?${params}`;
   };
-  // The CurrentWarnings layer is authoritative for short-fuse tornado and
-  // severe-thunderstorm warnings. Query those products explicitly so a large
-  // national NWS response cannot hide/drop them. NOAA defines TO,W as Tornado
-  // Warning and SV,W as Severe Thunderstorm Warning.
-  const severeGisUrl = gisUrl(0, "(phenom='TO' OR phenom='SV') AND sig='W'");
 
   const normalizeNws = (features=[]) => features.map((item, i) => {
-    const p = item.properties || {};
-    return {
-      id: item.id || p.id || `nws-${i}-${p.sent || p.effective || ""}`,
-      properties: {
-        ...p,
-        event: p.event || "Weather Alert",
-        headline: p.headline || p.description || p.event || "Weather Alert",
-        areaDesc: p.areaDesc || "Active NWS area",
-        web: p.web || item.id || "https://www.weather.gov/alerts",
-        status: p.status || "Actual",
-        messageType: p.messageType || "Alert"
-      },
-      geometry: item.geometry || null
-    };
+    const p=item.properties||{};
+    return {id:item.id||p.id||`nws-${i}-${p.sent||p.effective||""}`,properties:{...p,
+      event:p.event||"Weather Alert", headline:p.headline||p.description||p.event||"Weather Alert",
+      areaDesc:p.areaDesc||"Active NWS area", web:p.web||item.id||"https://www.weather.gov/alerts",
+      status:p.status||"Actual", messageType:p.messageType||"Alert"},geometry:item.geometry||null};
   }).filter(isOngoingAlert);
 
-  const normalizeGis = (data, layer) => (Array.isArray(data?.features) ? data.features : []).map((f, i) => {
-    const a = f.attributes || {};
-    const event = String(a.prod_type || hazardName(a.phenom, a.sig) || a.event || "Weather Alert").trim();
-    const effective = a.onset || a.issuance || null;
-    const expires = a.expiration || a.ends || null;
-    return {
-      id: a.cap_id || `${layer}-${a.wfo || "NWS"}-${a.phenom || ""}-${a.sig || ""}-${a.issuance || a.idp_ingestdate || i}`,
-      properties: {
-        event, headline: a.headline || a.prod_type || event, areaDesc: a.areaDesc || a.county || a.zone || "Active NWS area", effective, onset: a.onset || effective,
-        expires, ends: a.ends || expires, sent: a.issuance || effective,
-        severity: severityForPhenomena(a.phenom), urgency: "Immediate", certainty: "Observed",
-        web: a.url || "https://www.weather.gov/alerts", status: "Actual",
-        messageType: a.msg_type || "Alert", phenom: a.phenom, sig: a.sig, wfo: a.wfo,
-        ingest: a.idp_ingestdate || null
-      }
-    };
-  }).filter(isOngoingAlert);
+  const arcDate = value => {
+    if (value === null || value === undefined || value === "") return null;
+    if (typeof value === "number") return new Date(value).toISOString();
+    const n = Number(value);
+    if (Number.isFinite(n) && n > 100000000000) return new Date(n).toISOString();
+    return String(value);
+  };
 
-  const results = await Promise.allSettled([
-    fetchJson(apiUrl, {timeout:15000, headers:{Accept:"application/geo+json"}}),
-    fetchJson(apiBackupUrl, {timeout:15000, headers:{Accept:"application/geo+json"}}),
-    fetchJson(severeGisUrl, {timeout:15000}),
-    fetchJson(gisUrl(0), {timeout:15000}),
-    fetchJson(gisUrl(1), {timeout:15000})
-  ]);
+  const normalizeGis = (data, layer) => {
+    const rows = Array.isArray(data?.features) ? data.features : [];
+    return rows.map((f,i)=>{
+      // ArcGIS f=json returns attributes; GeoJSON-style responses use properties.
+      const a=f?.attributes || f?.properties || {};
+      const phenom=String(a.phenom||a.PHENOM||"").toUpperCase();
+      const sig=String(a.sig||a.SIG||"").toUpperCase();
+      const rawEvent=String(a.prod_type||a.PROD_TYPE||a.event||a.EVENT||"").trim();
+      const event=rawEvent || hazardName(phenom,sig);
+      const effective=arcDate(a.onset||a.ONSET||a.issuance||a.ISSUANCE||a.issue||a.ISSUE);
+      const expires=arcDate(a.expiration||a.EXPIRATION||a.ends||a.ENDS||a.expire||a.EXPIRE);
+      const id=a.cap_id||a.CAP_ID||a.id||a.ID||`${layer}-${a.wfo||a.WFO||"NWS"}-${phenom}-${sig}-${a.issuance||a.ISSUANCE||a.idp_ingestdate||i}`;
+      return {id:String(id),properties:{
+        event:event||"Weather Alert", headline:a.headline||a.HEADLINE||rawEvent||event,
+        areaDesc:a.areaDesc||a.AREADESC||a.county||a.zone||a.ugc||a.UGC||"Active NWS area",
+        effective,onset:effective,expires,ends:expires,sent:effective,
+        severity:a.severity||severityForPhenomena(phenom), urgency:a.urgency||"Immediate", certainty:a.certainty||"Observed",
+        web:a.url||a.URL||"https://www.weather.gov/alerts", status:"Actual", messageType:a.msg_type||a.MSG_TYPE||"Alert",
+        phenom,sig,wfo:a.wfo||a.WFO,ingest:a.idp_ingestdate||a.IDP_INGESTDATE||null
+      },geometry:f?.geometry||null};
+    }).filter(isOngoingAlert);
+  };
 
-  const merged = new Map();
-  let successful = 0;
-  results.forEach((result, index) => {
-    if (result.status !== "fulfilled") return;
-    successful++;
-    const items = index === 0 || index === 1
-      ? normalizeNws(result.value.features || [])
-      : normalizeGis(result.value, index === 2 ? 0 : index - 2);
-    items.forEach(item => merged.set(String(item.id), item));
+  const requests = [
+    {kind:"nws", promise:fetchJson(apiUrl,{timeout:15000,headers:{Accept:"application/geo+json,application/json"}})},
+    {kind:"warnings", promise:fetchJson(gisUrl(0),{timeout:20000,headers:{Accept:"application/json"}})},
+    {kind:"watches", promise:fetchJson(gisUrl(1),{timeout:20000,headers:{Accept:"application/json"}})}
+  ];
+  const results=await Promise.allSettled(requests.map(x=>x.promise));
+  const merged=new Map(); let successful=0; let returnedRows=0;
+  results.forEach((r,index)=>{
+    if(r.status!=="fulfilled") return;
+    const value=r.value;
+    let items=[];
+    if(index===0){
+      if(!Array.isArray(value?.features)) return;
+      items=normalizeNws(value.features);
+    } else {
+      if(!Array.isArray(value?.features)) return;
+      items=normalizeGis(value,index-1);
+    }
+    successful++; returnedRows += items.length;
+    items.forEach(item=>{
+      const p=item.properties||{};
+      // Prefer a stable CAP/product identity where possible, but also prevent the
+      // same warning from appearing twice when NWS and NOAA IDs differ.
+      const event=String(p.event||"").toLowerCase().replace(/\s+/g," ");
+      const area=String(p.areaDesc||"").toLowerCase().slice(0,500);
+      const expires=String(p.expires||"");
+      const key=item.id || `${event}|${area}|${expires}`;
+      const old=merged.get(key);
+      if(!old || alertPriority(item)>alertPriority(old)) merged.set(key,item);
+    });
   });
-
-  if (!successful) throw new Error("All NWS alert sources failed");
-  return {features:[...merged.values()]};
+  // A technically successful HTTP request with zero parsed records is not proof
+  // that the live feed is healthy. Require at least one valid source response.
+  if(!successful) throw new Error("All live NWS/NOAA alert sources failed");
+  return {features:[...merged.values()], meta:{successfulSources:successful, returnedRows, checkedAt:new Date().toISOString()}};
 }
 function hazardName(phenom, sig) {
   const key = `${phenom || ""},${sig || ""}`;
@@ -831,116 +842,33 @@ async function loadSpcCigOverlay() {
 }
 
 function loadSPCMaps() {
-  loadSpcLayer("categorical", "spcCatMap", "spcCatStatus", "SPC categorical outlook").then(() => loadSpcCigOverlay());
+  loadSpcLayer("categorical", "spcCatMap", "spcCatStatus", "SPC categorical outlook");
   loadSpcLayer("tornado", "spcTornMap", "spcTornStatus", "tornado probability").then(() => loadSpcConditionalOverlay("spcTornMap", "tornadoCig", "_spcCigLayer"));
-  loadSpcLayer("tornadoCig", "spcTornCigMap", "spcTornCigStatus", "tornado conditional intensity (CIG)");
   loadSpcLayer("wind", "spcWindMap", "spcWindStatus", "wind probability").then(() => loadSpcConditionalOverlay("spcWindMap", "windCig", "_spcWindCigLayer"));
   loadSpcLayer("hail", "spcHailMap", "spcHailStatus", "hail probability").then(() => loadSpcConditionalOverlay("spcHailMap", "hailCig", "_spcHailCigLayer"));
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", frame:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=atlc&fdays=7", official:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=atlc&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", frame:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=epac&fdays=7", official:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", frame:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=cpac&fdays=7", official:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
-  wpac:{title:"JTWC WESTERN PACIFIC", frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", official:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png", official:"https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png", official:"https://www.nhc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png", official:"https://www.nhc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
+  wpac:{title:"JTWC WESTERN PACIFIC", image:null, frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", official:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
 };
-const TROPICAL_REFRESH_MS = 5 * 60 * 1000;
-
-const tropicalViewer = { scale:1, x:0, y:0, dragging:false, sx:0, sy:0, ox:0, oy:0 };
-
-function applyTropicalTransform() {
-  const image = $("#tropicalImage");
-  if (!image) return;
-  image.style.transform = `translate(${tropicalViewer.x}px, ${tropicalViewer.y}px) scale(${tropicalViewer.scale})`;
-}
-
-function resetTropicalZoom() {
-  tropicalViewer.scale = 1; tropicalViewer.x = 0; tropicalViewer.y = 0;
-  applyTropicalTransform();
-}
-
-function zoomTropical(delta, cx=null, cy=null) {
-  const viewport = $("#tropicalViewer");
-  const image = $("#tropicalImage");
-  if (!viewport || !image) return;
-  const old = tropicalViewer.scale;
-  const next = Math.max(1, Math.min(5, old * delta));
-  if (next === old) return;
-  if (cx != null && cy != null) {
-    const rect = viewport.getBoundingClientRect();
-    const px = cx - rect.left, py = cy - rect.top;
-    tropicalViewer.x = px - (px - tropicalViewer.x) * (next / old);
-    tropicalViewer.y = py - (py - tropicalViewer.y) * (next / old);
+const TROPICAL_REFRESH_MS=5*60*1000;
+const tropicalViewer={scale:1,x:0,y:0,dragging:false,sx:0,sy:0,ox:0,oy:0};
+function applyTropicalTransform(){const image=$("#tropicalImage");if(!image)return;image.style.transform=`translate(${tropicalViewer.x}px,${tropicalViewer.y}px) scale(${tropicalViewer.scale})`;}
+function resetTropicalZoom(){tropicalViewer.scale=1;tropicalViewer.x=0;tropicalViewer.y=0;applyTropicalTransform();}
+function zoomTropical(delta,cx=null,cy=null){const viewport=$("#tropicalViewer"),image=$("#tropicalImage");if(!viewport||!image)return;const old=tropicalViewer.scale,next=Math.max(1,Math.min(4,old*delta));if(next===old)return;if(cx!=null&&cy!=null){const r=viewport.getBoundingClientRect(),px=cx-r.left,py=cy-r.top;tropicalViewer.x=px-(px-tropicalViewer.x)*(next/old);tropicalViewer.y=py-(py-tropicalViewer.y)*(next/old);}tropicalViewer.scale=next;applyTropicalTransform();}
+function setupTropicalViewer(){const viewport=$("#tropicalViewer");if(!viewport)return;viewport.addEventListener("wheel",e=>{e.preventDefault();zoomTropical(e.deltaY<0?1.15:1/1.15,e.clientX,e.clientY);},{passive:false});viewport.addEventListener("pointerdown",e=>{if(tropicalViewer.scale<=1)return;tropicalViewer.dragging=true;tropicalViewer.sx=e.clientX;tropicalViewer.sy=e.clientY;tropicalViewer.ox=tropicalViewer.x;tropicalViewer.oy=tropicalViewer.y;viewport.setPointerCapture(e.pointerId);viewport.classList.add("dragging");});viewport.addEventListener("pointermove",e=>{if(!tropicalViewer.dragging)return;tropicalViewer.x=tropicalViewer.ox+e.clientX-tropicalViewer.sx;tropicalViewer.y=tropicalViewer.oy+e.clientY-tropicalViewer.sy;applyTropicalTransform();});const stop=()=>{tropicalViewer.dragging=false;viewport.classList.remove("dragging")};viewport.addEventListener("pointerup",stop);viewport.addEventListener("pointercancel",stop);$("#tropicalZoomIn")?.addEventListener("click",()=>zoomTropical(1.25));$("#tropicalZoomOut")?.addEventListener("click",()=>zoomTropical(1/1.25));$("#tropicalZoomReset")?.addEventListener("click",resetTropicalZoom);}
+function showTropical(key){const product=tropicalProducts[key]||tropicalProducts.atl;document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));const frame=$("#tropicalFrame"),image=$("#tropicalImage");resetTropicalZoom();
+  if(frame) frame.style.display="none";
+  if(image){image.style.display="block"; image.alt=product.title; image.style.objectFit="contain"; image.style.width="100%"; image.style.height="100%"; image.style.maxWidth="100%"; image.style.maxHeight="100%";
+    if(product.image){image.src=`${product.image}?trg=${Date.now()}`;image.onload=()=>{$("#tropicalUpdated")&&($("#tropicalUpdated").textContent=`Live NHC graphic loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`)};image.onerror=()=>{imageFallback(image,`Current NHC graphic unavailable — open the official NHC outlook below`)};}
+    else {image.style.display="none";if(frame){frame.src=`${product.frame}?trg=${Date.now()}`;frame.style.display="block";frame.onload=()=>{$("#tropicalUpdated")&&($("#tropicalUpdated").textContent=`Official JTWC page loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`)}}}
   }
-  tropicalViewer.scale = next;
-  applyTropicalTransform();
-}
-
-function setupTropicalViewer() {
-  const viewport = $("#tropicalViewer");
-  if (!viewport) return;
-  viewport.addEventListener("wheel", e => {
-    e.preventDefault();
-    zoomTropical(e.deltaY < 0 ? 1.15 : 1/1.15, e.clientX, e.clientY);
-  }, {passive:false});
-  viewport.addEventListener("pointerdown", e => {
-    if (tropicalViewer.scale <= 1) return;
-    tropicalViewer.dragging = true;
-    tropicalViewer.sx = e.clientX; tropicalViewer.sy = e.clientY;
-    tropicalViewer.ox = tropicalViewer.x; tropicalViewer.oy = tropicalViewer.y;
-    viewport.setPointerCapture(e.pointerId);
-    viewport.classList.add("dragging");
-  });
-  viewport.addEventListener("pointermove", e => {
-    if (!tropicalViewer.dragging) return;
-    tropicalViewer.x = tropicalViewer.ox + e.clientX - tropicalViewer.sx;
-    tropicalViewer.y = tropicalViewer.oy + e.clientY - tropicalViewer.sy;
-    applyTropicalTransform();
-  });
-  const stop = () => { tropicalViewer.dragging=false; viewport.classList.remove("dragging"); };
-  viewport.addEventListener("pointerup", stop);
-  viewport.addEventListener("pointercancel", stop);
-  $("#tropicalZoomIn")?.addEventListener("click", () => zoomTropical(1.25));
-  $("#tropicalZoomOut")?.addEventListener("click", () => zoomTropical(1/1.25));
-  $("#tropicalZoomReset")?.addEventListener("click", resetTropicalZoom);
-}
-
-function showTropical(key) {
-  const product=tropicalProducts[key]||tropicalProducts.atl;
-  document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));
-  const frame=$("#tropicalFrame"), image=$("#tropicalImage");
-  if(frame && product.frame){
-    frame.src=`${product.frame}${product.frame.includes("?")?"&":"?"}trg=${Date.now()}`;
-    frame.style.display="block";
-    if(image) image.style.display="none";
-    frame.onload = () => {
-      $("#tropicalUpdated") && ($("#tropicalUpdated").textContent=`Official ${key === "wpac" ? "JTWC" : "NHC"} page loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);
-    };
-    frame.onerror = () => {
-      frame.style.display="none";
-      if(image) imageFallback(image, `Official ${product.head} page could not be embedded — use the source link below`);
-    };
-  }
-  $("#tropicalTitle") && ($("#tropicalTitle").textContent=product.title);
-  $("#tropicalHeadline") && ($("#tropicalHeadline").textContent=product.head);
-  $("#tropicalText") && ($("#tropicalText").textContent=product.text);
-  $("#tropicalSource") && ($("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC");
-  const tropicalArrow = document.querySelector(".tropical-story .arrow");
-  if (tropicalArrow) { tropicalArrow.href = product.official || product.frame || "https://www.nhc.noaa.gov/"; tropicalArrow.textContent = key === "wpac" ? "OPEN JTWC →" : "OPEN NHC →"; }
-  $("#tropicalUpdated") && ($("#tropicalUpdated").textContent=`Live official product request • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);
-}
-function refreshTropical() {
-  const active=document.querySelector(".tab.active")?.dataset.tropical || "atl";
-  showTropical(active);
-}
-function setupTropical() {
-  if (!$("#tropicalViewer")) return;
-  document.querySelectorAll(".tab").forEach(btn => btn.addEventListener("click", () => showTropical(btn.dataset.tropical)));
-  setupTropicalViewer();
-  const image=$("#tropicalImage");
-  image?.addEventListener("error",()=>imageFallback(image,"Current NHC graphic unavailable — open the official NHC outlook below"));
-  showTropical("atl");
-}
+  $("#tropicalTitle")&&($("#tropicalTitle").textContent=product.title);$("#tropicalHeadline")&&($("#tropicalHeadline").textContent=product.head);$("#tropicalText")&&($("#tropicalText").textContent=product.text);$("#tropicalSource")&&($("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC");const arrow=document.querySelector(".tropical-story .arrow");if(arrow){arrow.href=product.official||product.frame;arrow.textContent=key==="wpac"?"OPEN JTWC →":"OPEN NHC →";}}
+function refreshTropical(){showTropical(document.querySelector(".tab.active")?.dataset.tropical||"atl");}
+function setupTropical(){if(!$("#tropicalViewer"))return;document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>showTropical(btn.dataset.tropical)));setupTropicalViewer();$("#tropicalImage")?.addEventListener("error",()=>imageFallback($("#tropicalImage"),"Current NHC graphic unavailable — open the official NHC outlook below"));showTropical("atl");setInterval(refreshTropical,TROPICAL_REFRESH_MS);}
 
 function setupVideo() {
   const frame = $("#youtubeFrame");
