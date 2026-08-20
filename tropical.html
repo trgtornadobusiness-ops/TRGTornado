@@ -9,9 +9,9 @@
 <div class="two-col tropical">
 <article class="image-card tropical-card">
 <div class="image-head"><span id="tropicalTitle">ATLANTIC 7-DAY OUTLOOK</span><span id="tropicalSource">NOAA / NHC</span></div>
-<div class="zoom-toolbar"><span>Scroll to zoom • drag to pan when zoomed</span><div><button type="button" id="tropicalZoomOut">−</button><button type="button" id="tropicalZoomReset">RESET</button><button type="button" id="tropicalZoomIn">+</button></div></div>
-<div class="tropical-viewer" id="tropicalViewer"><img alt="Official tropical weather outlook" id="tropicalImage"/></div>
-<div class="image-fallback"><div><strong>TROPICAL OUTLOOK</strong><br/><small>Official graphic could not be loaded.</small><br/><a href="https://www.nhc.noaa.gov/" rel="noopener" target="_blank">OPEN NHC →</a></div></div>
+<div class="zoom-toolbar"><span id="tropicalUpdated">Loading official source…</span><div><button type="button" id="tropicalZoomOut">−</button><button type="button" id="tropicalZoomReset">RESET</button><button type="button" id="tropicalZoomIn">+</button></div></div>
+<div class="tropical-viewer official-frame" id="tropicalViewer"><iframe id="tropicalFrame" title="Official tropical weather outlook" loading="eager" referrerpolicy="no-referrer"></iframe></div>
+<div class="image-fallback"><div><strong>OFFICIAL OUTLOOK</strong><br/><small>If the official source blocks embedding, use the source link.</small><br/><a href="https://www.nhc.noaa.gov/gtwo.php" rel="noopener" target="_blank">OPEN NHC →</a></div></div>
 </article>
 <article class="story tropical-story">
 <span class="label goldtext">TRG TROPICAL DESK</span>

@@ -133,25 +133,39 @@ function textToIcon(text="") {
 async function nwsForecast(point) {
   const points = await fetchJson(`https://api.weather.gov/points/${point.latitude},${point.longitude}`, {headers:{Accept:"application/geo+json"}});
   const props = points.properties || {};
-  if (!props.forecast || !props.forecastHourly) throw new Error("NWS does not provide a forecast for this point.");
-  const [forecast, hourly, observations] = await Promise.all([
-    fetchJson(props.forecast, {headers:{Accept:"application/geo+json"}}),
-    fetchJson(props.forecastHourly, {headers:{Accept:"application/geo+json"}}),
-    props.observationStations ? fetchJson(`${props.observationStations}?limit=1`, {headers:{Accept:"application/geo+json"}}).catch(() => null) : Promise.resolve(null)
+  const gridId = props.gridId, gridX = props.gridX, gridY = props.gridY;
+  if (!gridId || gridX == null || gridY == null) throw new Error("NWS could not find a forecast grid for this location.");
+  const base = `https://api.weather.gov/gridpoints/${encodeURIComponent(gridId)}/${gridX},${gridY}`;
+  const forecastUrl = `${base}/forecast`;
+  const hourlyUrl = `${base}/forecast/hourly`;
+  const obsStationsUrl = props.observationStations;
+
+  const [forecastResult, hourlyResult, stationsResult] = await Promise.allSettled([
+    fetchJson(forecastUrl, {headers:{Accept:"application/geo+json"}}),
+    fetchJson(hourlyUrl, {headers:{Accept:"application/geo+json"}}),
+    obsStationsUrl ? fetchJson(`${obsStationsUrl}?limit=1`, {headers:{Accept:"application/geo+json"}}) : Promise.resolve(null)
   ]);
+  if (forecastResult.status !== "fulfilled" && hourlyResult.status !== "fulfilled") {
+    throw new Error("NWS forecast services are temporarily unavailable.");
+  }
+  const forecast = forecastResult.status === "fulfilled" ? forecastResult.value : {features:[]};
+  const hourly = hourlyResult.status === "fulfilled" ? hourlyResult.value : {features:[]};
+
   let observation = null;
-  const stationUrl = observations?.features?.[0]?.id;
+  const stationUrl = stationsResult.status === "fulfilled" ? stationsResult.value?.features?.[0]?.id : null;
   if (stationUrl) observation = await fetchJson(`${stationUrl}/observations/latest`, {headers:{Accept:"application/geo+json"}}).catch(() => null);
 
   const op = observation?.properties || {};
   const hp = hourly.features?.map(f => f.properties || {}) || [];
   const firstHour = hp[0] || {};
+  const currentTemp = op.temperature?.value != null ? cToF(op.temperature.value) : (firstHour.temperature?.value ?? null);
+  const apparent = op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.temperature?.value ?? null);
   const current = {
-    temperature_2m: (op.temperature?.value != null ? cToF(op.temperature.value) : firstHour.temperature?.value != null ? firstHour.temperature.value : null),
-    apparent_temperature: (op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.apparentTemperature?.value ?? firstHour.temperature?.value ?? null)),
-    relative_humidity_2m: op.relativeHumidity?.value ?? firstHour.relativeHumidity?.value,
+    temperature_2m: currentTemp,
+    apparent_temperature: apparent,
+    relative_humidity_2m: op.relativeHumidity?.value ?? firstHour.relativeHumidity?.value ?? null,
     wind_speed_10m: kmhToMph(op.windSpeed?.value) ?? parseWindMph(firstHour.windSpeed),
-    wind_direction_10m: op.windDirection?.value ?? firstHour.windDirection?.value,
+    wind_direction_10m: op.windDirection?.value ?? firstHour.windDirection?.value ?? null,
     weather_code: 0,
     text: op.textDescription || firstHour.shortForecast || "Current conditions",
     surface_pressure: paToHpa(op.barometricPressure?.value),
@@ -167,23 +181,22 @@ async function nwsForecast(point) {
     groups.get(date).push(period);
   });
   const daily = {time:[], weather_code:[], temperature_2m_max:[], temperature_2m_min:[], precipitation_probability_max:[], wind_speed_10m_max:[], text:[]};
-  [...groups.entries()].slice(0,7).forEach(([date, ps], i) => {
+  [...groups.entries()].slice(0,7).forEach(([date, ps]) => {
     const day = ps.find(x => x.isDaytime) || ps[0];
-    const night = ps.find(x => !x.isDaytime) || ps[ps.length - 1];
     const temps = ps.map(x => Number(x.temperature)).filter(Number.isFinite);
     const pops = ps.map(x => Number(x.probabilityOfPrecipitation?.value)).filter(Number.isFinite);
     const winds = ps.map(x => parseWindMph(x.windSpeed)).filter(Number.isFinite);
     daily.time.push(date);
     daily.weather_code.push(0);
-    daily.temperature_2m_max.push(temps.length ? Math.max(...temps) : Number(day.temperature));
-    daily.temperature_2m_min.push(temps.length ? Math.min(...temps) : Number(day.temperature));
+    daily.temperature_2m_max.push(temps.length ? Math.max(...temps) : null);
+    daily.temperature_2m_min.push(temps.length ? Math.min(...temps) : null);
     daily.precipitation_probability_max.push(pops.length ? Math.max(...pops) : 0);
     daily.wind_speed_10m_max.push(winds.length ? Math.max(...winds) : 0);
-    daily.text.push(day.shortForecast || day.detailedForecast || "Forecast");
+    daily.text.push(day?.shortForecast || day?.detailedForecast || "Forecast");
   });
 
   const hourlyOut = {time:[], weather_code:[], temperature_2m:[], precipitation_probability:[], wind_speed_10m:[], text:[]};
-  hp.slice(0,24).forEach(h => {
+  hp.slice(0,48).forEach(h => {
     hourlyOut.time.push(h.startTime);
     hourlyOut.weather_code.push(0);
     hourlyOut.temperature_2m.push(Number.isFinite(Number(h.temperature?.value)) ? Number(h.temperature.value) : null);
@@ -191,8 +204,7 @@ async function nwsForecast(point) {
     hourlyOut.wind_speed_10m.push(parseWindMph(h.windSpeed) ?? 0);
     hourlyOut.text.push(h.shortForecast || "Forecast");
   });
-
-  return {current, daily, hourly:hourlyOut, office:props.cwa || "NWS", point};
+  return {current, daily, hourly:hourlyOut, office:props.cwa || gridId || "NWS", point, forecastAvailable:periods.length>0, hourlyAvailable:hp.length>0};
 }
 
 function windDir(degrees) {
@@ -255,12 +267,12 @@ async function nwsAlerts(point) {
   // endpoint specifically for currently active/ongoing alerts. We also query
   // the official NOAA WWA GIS layer as a secondary source and merge results.
   const apiUrl = point
-    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&status=actual&_trg=${Date.now()}`
-    : `https://api.weather.gov/alerts/active?status=actual&_trg=${Date.now()}`;
+    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&limit=500&_trg=${Date.now()}`
+    : `https://api.weather.gov/alerts/active?limit=500&_trg=${Date.now()}`;
 
   const gisUrl = (layer) => {
     const params = new URLSearchParams({
-      where: "expiration IS NOT NULL",
+      where: "1=1",
       outFields: "prod_type,msg_type,phenom,url,expiration,onset,ends,issuance,wfo,event,cap_id,sig,idp_ingestdate",
       returnGeometry: "false", f: "json", resultRecordCount: "4000",
       orderByFields: "expiration ASC", _trg: String(Date.now())
@@ -683,6 +695,7 @@ function centerRadar(lat, lon) {
 
 const SPC = {
   base: "https://mapservices.weather.noaa.gov/vector/rest/services/outlooks/SPC_wx_outlks/FeatureServer",
+  mapServer: "https://mapservices.weather.noaa.gov/vector/rest/services/outlooks/SPC_wx_outlks/MapServer",
   layers: { categorical:1, tornado:3, tornadoCig:2, hail:5, wind:7 },
   maps: {}
 };
@@ -702,32 +715,29 @@ function spcPopup(feature) {
 }
 
 async function loadSpcLayer(key, mapId, statusId, label) {
-  const mapEl = document.getElementById(mapId);
-  const status = document.getElementById(statusId);
+  const mapEl = document.getElementById(mapId), status = document.getElementById(statusId);
   if (!mapEl || !window.L) return;
   let map = SPC.maps[mapId];
   if (!map) {
-    map = L.map(mapEl, { zoomControl:false, attributionControl:false, dragging:true, scrollWheelZoom:true, doubleClickZoom:true, touchZoom:true }).setView([38,-96], 4);
-    L.tileLayer("https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", {
-      maxZoom: 8, attribution: "Map services and data available from U.S. Geological Survey, National Geospatial Program."
-    }).addTo(map);
-    SPC.maps[mapId] = map;
+    map = L.map(mapEl, {zoomControl:false, attributionControl:false, dragging:true, scrollWheelZoom:true, doubleClickZoom:true, touchZoom:true}).setView([38,-96],4);
+    L.tileLayer("https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", {maxZoom:8, attribution:"USGS"}).addTo(map);
+    SPC.maps[mapId]=map;
   }
-  status.textContent = `Loading ${label}…`;
+  status.textContent=`Loading live ${label}…`;
   try {
-    const url = `${SPC.base}/${SPC.layers[key]}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson&cacheBust=${Date.now()}`;
-    const data = await fetchJson(url);
-    if (!data.features?.length) throw new Error("No outlook polygons returned");
-    if (map._spcLayer) map.removeLayer(map._spcLayer);
-    map._spcLayer = L.geoJSON(data, {
-      style: spcStyle,
-      onEachFeature: (feature, layer) => layer.bindPopup(spcPopup(feature))
-    }).addTo(map);
-    const bounds = map._spcLayer.getBounds();
-    if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
-    status.innerHTML = `Live NOAA/SPC Day 1 data • refreshed ${new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})} • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
-  } catch (error) {
-    status.innerHTML = `${label} unavailable right now. <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open official SPC</a>`;
+    const b=map.getBounds(), size=map.getSize();
+    const bbox=[b.getWest(),b.getSouth(),b.getEast(),b.getNorth()].join(",");
+    const url=`${SPC.mapServer}/export?bbox=${encodeURIComponent(bbox)}&bboxSR=4326&imageSR=4326&size=${Math.max(640,Math.min(1400,size.x))},${Math.max(360,Math.min(900,size.y))}&format=png32&transparent=true&dpi=96&layers=show:${SPC.layers[key]}&f=image&cacheBust=${Date.now()}`;
+    const img=new Image(); img.crossOrigin="anonymous";
+    img.onload=()=>{
+      if(map._spcImage) map.removeLayer(map._spcImage);
+      map._spcImage=L.imageOverlay(url, [[b.getSouth(),b.getWest()],[b.getNorth(),b.getEast()]], {opacity:.82, interactive:false}).addTo(map);
+      status.innerHTML=`Live NOAA/SPC ${label} • refreshed ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})} • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
+    };
+    img.onerror=()=>{throw new Error("SPC image export failed")};
+    img.src=url;
+  } catch(error) {
+    status.innerHTML=`${label} unavailable right now. <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open official SPC</a>`;
     mapEl.classList.add("map-error");
   }
 }
@@ -741,10 +751,10 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", fallback:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Live NHC 7-day outlook for the Atlantic basin."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", fallback:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Live NHC 7-day outlook for the eastern North Pacific."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png", fallback:"https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/epac/latest/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Live NHC/CPHC 7-day outlook for the central North Pacific."},
-  wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"Live JTWC Western Pacific tropical guidance."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", frame:"https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=atl&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", frame:"https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", frame:"https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
+  wpac:{title:"JTWC WESTERN PACIFIC", frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
 };
 const TROPICAL_REFRESH_MS = 5 * 60 * 1000;
 
@@ -808,28 +818,16 @@ function setupTropicalViewer() {
 }
 
 function showTropical(key) {
-  const product = tropicalProducts[key] || tropicalProducts.atl;
-  document.querySelectorAll(".tab").forEach(btn => btn.classList.toggle("active", btn.dataset.tropical === key));
-  const image = $("#tropicalImage");
-  if (!image) return;
-  const fallback = image.parentElement.querySelector(".image-fallback");
-  image.dataset.fallback = product.fallback || "";
-  image.dataset.key = key;
-  image.onload = () => { image.style.display = "block"; if (fallback) fallback.style.display = "none"; resetTropicalZoom(); };
-  image.onerror = () => {
-    if (image.dataset.fallback && image.src !== image.dataset.fallback) {
-      image.src = `${image.dataset.fallback}${image.dataset.fallback.includes("?") ? "&" : "?"}trg=${Date.now()}`;
-      return;
-    }
-    imageFallback(image, product.head);
-  };
-  image.src = `${product.img}${product.img.includes("?") ? "&" : "?"}trg=${Date.now()}`;
-  image.style.display = "block";
-  if (fallback) fallback.style.display = "none";
-  $("#tropicalTitle").textContent = product.title;
-  $("#tropicalHeadline").textContent = product.head;
-  $("#tropicalText").textContent = product.text;
-  $("#tropicalSource").textContent = key === "wpac" ? "JTWC" : "NOAA / NHC";
+  const product=tropicalProducts[key]||tropicalProducts.atl;
+  document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));
+  const frame=$("#tropicalFrame");
+  if(!frame) return;
+  frame.src=`${product.frame}${product.frame.includes("?")?"&":"?"}trg=${Date.now()}`;
+  $("#tropicalTitle").textContent=product.title;
+  $("#tropicalHeadline").textContent=product.head;
+  $("#tropicalText").textContent=product.text;
+  $("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC";
+  $("#tropicalUpdated") && ($("#tropicalUpdated").textContent=`Auto-refreshing official source • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);
 }
 
 function refreshTropical() {
