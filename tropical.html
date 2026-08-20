@@ -21,4 +21,32 @@
 <a class="arrow" href="https://www.nhc.noaa.gov/" rel="noopener" target="_blank">OPEN NHC →</a>
 </article>
 </div>
-</section></main><footer><div class="brand"><b>TRG</b><span>TORNADO</span></div><p>Forecast information is for general informational use. For life-safety decisions, follow official NWS warnings.</p><p>Weather data: NWS / NOAA, SPC and NHC. Radar: NOAA/NWS MRMS.</p><div class="footer-meta"><span>© 2026 TRGTornado. All rights reserved.</span><span class="site-version">Version 42</span></div></footer><script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script><script src="app.js"></script></body></html>
+</section></main><footer><div class="brand"><b>TRG</b><span>TORNADO</span></div><p>Forecast information is for general informational use. For life-safety decisions, follow official NWS warnings.</p><p>Weather data: NWS / NOAA, SPC and NHC. Radar: NOAA/NWS MRMS.</p><div class="footer-meta"><span>© 2026 TRGTornado. All rights reserved.</span><span class="site-version">Version 43</span></div></footer><script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script><script src="app.js"></script>
+<script>
+(function(){
+  const products = {
+    atlantic: document.querySelector('[data-basin="atlantic"] img, #atlantic img, #atlantic-image'),
+    epac: document.querySelector('[data-basin="epac"] img, #epac img, #eastern-pacific img, #eastern-pacific-image'),
+    cpac: document.querySelector('[data-basin="cpac"] img, #cpac img, #central-pacific img, #central-pacific-image')
+  };
+  const local = {
+    atlantic: './tropical/atlantic.png',
+    epac: './tropical/eastern-pacific.png',
+    cpac: './tropical/central-pacific.png'
+  };
+  Object.entries(products).forEach(([key, el]) => {
+    if (!el) return;
+    if (el.tagName === 'IMG') {
+      el.removeAttribute('srcset');
+      el.src = local[key] + '?v=' + Date.now();
+      el.style.objectFit = 'contain';
+      el.style.width = '100%';
+      el.style.height = 'auto';
+      el.style.maxWidth = '100%';
+      el.style.maxHeight = 'none';
+    }
+  });
+})();
+</script>
+
+</body></html>
