@@ -14,17 +14,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Fetch current NWS alerts
         run: |
           curl --fail --retry 4 --retry-delay 5 \
             -A "TRGTornado Weather Site/1.0 (GitHub Pages)" \
             -H "Accept: application/geo+json, application/json" \
-            "https://api.weather.gov/alerts/active?status=actual&message_type=alert,update" \
+            "https://api.weather.gov/alerts/active" \
             -o alerts.json
 
-      - name: Validate alert feed
+      - name: Validate NWS response
         run: |
           python - <<'PY'
           import json
@@ -32,12 +32,10 @@ jobs:
           with open("alerts.json", "r", encoding="utf-8") as f:
               data = json.load(f)
 
-          if not isinstance(data, dict) or "features" not in data:
-              raise SystemExit(
-                  "NWS alert response is missing the features array"
-              )
+          if "features" not in data:
+              raise SystemExit("NWS response does not contain features")
 
-          print(f"Fetched {len(data['features'])} active alert features.")
+          print("NWS returned", len(data["features"]), "active alerts")
           PY
 
       - name: Commit updated alerts
