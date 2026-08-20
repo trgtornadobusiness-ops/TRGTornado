@@ -1,51 +1,21 @@
-# TRG Tornado Weather Site — v3
+# TRG Tornado Weather Site — v4
 
-A static GitHub Pages weather dashboard for TRG Tornado.
+Static GitHub Pages weather dashboard for TRG Tornado.
 
 ## Included
-- Location search and current conditions
-- 7-day forecast
-- Next 24 hours
-- Active NWS alerts for the selected point
-- SPC Day 1 categorical, tornado, wind and hail graphics
-- NHC Atlantic / Eastern Pacific / Central Pacific tropical outlooks
-- Interactive radar using Leaflet + RainViewer
-- National map-room shortcuts
-- YouTube Live embed slot
+- Open-Meteo current conditions, 7-day forecast and hourly forecast
+- NWS active alerts for the selected point
+- RainViewer past radar animation
+- SPC severe-weather product links and graphics when available
+- NHC Atlantic / East Pacific / Central Pacific outlooks when available
 - Responsive mobile layout
-- TRG Tornado branding
+- YouTube Live embed support
 
-## Publish on GitHub Pages
-Upload/replace these four files in the repository root:
-- `index.html`
-- `app.js`
-- `styles.css`
-- `README.md`
-
-Keep GitHub Pages set to:
-- Source: Deploy from a branch
-- Branch: `main`
-- Folder: `/ (root)`
+## GitHub Pages
+Upload/replace `index.html`, `app.js`, and `styles.css` in the repository root and commit to `main`. GitHub Pages should redeploy automatically.
 
 ## YouTube Live
-Open `app.js` and set:
-
-`youtubeVideoId: "YOUR_VIDEO_ID"`
-
-For a live stream, use the YouTube video/live broadcast ID.
-
-## Data sources
-- NWS API: official forecasts/alerts
-- NOAA/SPC: severe-weather outlook graphics
-- NOAA/NHC: tropical outlook graphics
-- Open-Meteo: location search and forecast data
-- RainViewer: radar tiles
-- OpenStreetMap: base map
-
-RainViewer's public API is intended for personal/educational/small community use and requires visible attribution. Review its current terms before relying on it for high-volume or commercial traffic.
+Open `app.js` and set `youtubeVideoId` to the ID from your YouTube URL.
 
 ## Important
-This dashboard is informational. For life-safety decisions, follow official NWS warnings and local emergency management guidance.
-
-## Customization
-TRG analysis headlines are intentionally editable in `index.html`.
+RainViewer's free Weather Maps API is intended for personal, educational and small-scale community use and requires visible attribution. The site includes RainViewer attribution in the map. Official NWS/NOAA/SPC/NHC sources are linked where applicable.
