@@ -66,3 +66,14 @@ Broadcast-style live NWS alert ticker with priority ordering, affected areas, ti
 - National alert center uses official NOAA/NWS WWA GIS layers first, with NWS active API retained for point-specific alerts.
 - Tropical graphics use the current NHC `two_*_7d0.png` products from the latest archive paths.
 - ZIP geocoding remains on the working dedicated ZIP lookup path.
+
+
+## v24 fixes
+- NOAA MRMS radar now uses MapServer exportImage overlays instead of WMS tiles.
+- SPC Day 1 queries are cache-busted so the latest probabilistic tornado outlook is requested.
+- NHC Atlantic/Eastern Pacific/Central Pacific graphics use current xgtwo 7-day filenames with fallbacks.
+- NOAA/NWS WWA alert layers are the primary alert source, with NWS active alerts as fallback.
+
+
+## v24 auto-update patch
+SPC Day 1 layers refresh every 5 minutes. NHC/JTWC tropical graphics refresh every 10 minutes with cache-busting. Alert queries are hardened against stale/cached responses and use official NOAA/NWS WWA layers first with NWS active-alert fallback.

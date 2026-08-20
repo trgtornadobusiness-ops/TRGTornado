@@ -147,8 +147,8 @@ async function nwsForecast(point) {
   const hp = hourly.features?.map(f => f.properties || {}) || [];
   const firstHour = hp[0] || {};
   const current = {
-    temperature_2m: (op.temperature?.value != null ? cToF(op.temperature.value) : firstHour.temperature?.value),
-    apparent_temperature: (op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.apparentTemperature?.value ?? firstHour.temperature?.value)),
+    temperature_2m: (op.temperature?.value != null ? cToF(op.temperature.value) : firstHour.temperature?.value != null ? firstHour.temperature.value : null),
+    apparent_temperature: (op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.apparentTemperature?.value ?? firstHour.temperature?.value ?? null)),
     relative_humidity_2m: op.relativeHumidity?.value ?? firstHour.relativeHumidity?.value,
     wind_speed_10m: kmhToMph(op.windSpeed?.value) ?? parseWindMph(firstHour.windSpeed),
     wind_direction_10m: op.windDirection?.value ?? firstHour.windDirection?.value,
@@ -251,42 +251,59 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function nwsAlerts(point) {
-  // NOAA/NWS GIS is the primary browser-friendly source for the national
-  // alert center. Layer 0 contains short-fuse current warnings; layer 1
-  // contains watches, warnings and advisories.
-  if (!point) {
-    const fields = ["prod_type","msg_type","phenom","url","expiration","onset","ends","issuance","wfo","event","cap_id","sig"].join(',');
-    const makeUrl = layer => `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?where=1%3D1&outFields=${encodeURIComponent(fields)}&returnGeometry=false&f=json`;
-    const [current, watches] = await Promise.all([fetchJson(makeUrl(0), {timeout:15000}), fetchJson(makeUrl(1), {timeout:15000})]);
-    const convert = (data, layer) => (data.features || []).map((f, i) => {
-      const a = f.attributes || {};
-      const event = a.prod_type || hazardName(a.phenom, a.sig) || a.event || "Weather Alert";
-      const effective = a.onset || a.issuance || null;
-      const expires = a.expiration || a.ends || null;
-      return {
-        id: a.cap_id || `${layer}-${a.wfo || 'NWS'}-${a.phenom || ''}-${a.sig || ''}-${a.issuance || i}`,
-        properties: {
-          event, headline: event, areaDesc: a.areaDesc || (a.wfo ? `NWS ${a.wfo}` : "Active NWS area"),
-          effective, onset: a.onset || effective, expires, ends: a.ends || expires,
-          sent: a.issuance || effective, severity: /Warning|Emergency/i.test(event) ? "Severe" : /Watch/i.test(event) ? "Moderate" : "Minor",
-          urgency: "Immediate", certainty: "Observed", web: a.url || "https://www.weather.gov/alerts",
-          status: "Actual", messageType: a.msg_type || "Alert", phenom: a.phenom, sig: a.sig, wfo: a.wfo
-        }
-      };
+  const fields = [
+    "prod_type","msg_type","phenom","url","expiration","onset","ends",
+    "issuance","wfo","event","cap_id","sig","idp_ingestdate"
+  ].join(',');
+  const nowIso = new Date().toISOString();
+  const makeUrl = layer => {
+    const where = layer === 0
+      ? "expiration IS NOT NULL"
+      : "expiration IS NOT NULL";
+    const params = new URLSearchParams({
+      where, outFields: fields, returnGeometry:"false", f:"json",
+      orderByFields:"expiration ASC", resultRecordCount:"4000",
+      _trg: String(Date.now())
     });
-    const all = [...convert(current, 0), ...convert(watches, 1)];
+    return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?${params}`;
+  };
+  const convert = (data, layer) => (Array.isArray(data?.features) ? data.features : []).map((f, i) => {
+    const a = f.attributes || {};
+    const event = String(a.prod_type || hazardName(a.phenom, a.sig) || a.event || "Weather Alert").trim();
+    const effective = a.onset || a.issuance || null;
+    const expires = a.expiration || a.ends || null;
+    const id = a.cap_id || `${layer}-${a.wfo || 'NWS'}-${a.phenom || ''}-${a.sig || ''}-${a.issuance || a.idp_ingestdate || i}`;
+    return {
+      id,
+      properties: {
+        event, headline:event, areaDesc:"", effective, onset:a.onset || effective,
+        expires, ends:a.ends || expires, sent:a.issuance || effective,
+        severity:severityForPhenomena(a.phenom), urgency:"Immediate", certainty:"Observed",
+        web:a.url || "https://www.weather.gov/alerts", status:"Actual",
+        messageType:a.msg_type || "Alert", phenom:a.phenom, sig:a.sig, wfo:a.wfo,
+        ingest:a.idp_ingestdate || null
+      }
+    };
+  });
+
+  try {
+    const [current, broad] = await Promise.all([
+      fetchJson(makeUrl(0), {timeout:15000}),
+      fetchJson(makeUrl(1), {timeout:15000})
+    ]);
     const unique = new Map();
-    all.filter(isOngoingAlert).forEach(item => unique.set(String(item.id), item));
+    [...convert(current,0), ...convert(broad,1)]
+      .filter(isOngoingAlert)
+      .forEach(item => unique.set(String(item.id), item));
     return {features:[...unique.values()]};
+  } catch (gisError) {
+    const url = point
+      ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&_trg=${Date.now()}`
+      : `https://api.weather.gov/alerts/active?_trg=${Date.now()}`;
+    const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json"}});
+    return {features:(data.features || []).filter(isOngoingAlert)};
   }
-
-  // Point-specific lookup remains on the official NWS API because it can
-  // return county-based alerts affecting an exact coordinate.
-  const url = `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}`;
-  const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json", "User-Agent":"TRG Tornado weather site contact: https://trgtornadobusiness-ops.github.io/TRGTornado/"}});
-  return {features:(data.features || []).filter(isOngoingAlert)};
 }
-
 function hazardName(phenom, sig) {
   const key = `${phenom || ""},${sig || ""}`;
   const names = {
@@ -403,7 +420,8 @@ function alertBadgeClass(event="") {
 }
 function alertAreaLabel(p) {
   const areas=(p.areaDesc||"").split(";").map(x=>x.trim()).filter(Boolean);
-  return areas.length?areas.slice(0,3).join(" • "):"ACTIVE AREA";
+  if (areas.length) return areas.slice(0,3).join(" • ");
+  return p.wfo ? `NWS ${p.wfo} AREA` : "ACTIVE NWS AREA";
 }
 function tickerSignature(items) {
   return items.map(x=>`${x.id}|${x.properties?.event}|${x.properties?.expires}`).join("||");
@@ -585,24 +603,55 @@ function initMap() {
 }
 
 const NOAA_RADAR_MAPSERVER = "https://mapservices.weather.noaa.gov/eventdriven/rest/services/radar/radar_base_reflectivity/MapServer";
+let radarExportTimer = null;
 
-async function loadRadar() {
+function radarExportUrl(bounds, width, height) {
+  const sw = bounds.getSouthWest(), ne = bounds.getNorthEast();
+  const project = (lat, lon) => {
+    const x = lon * 20037508.34 / 180;
+    const y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
+    return {x, y: y * 20037508.34 / 180};
+  };
+  const a = project(sw.lat, sw.lng), b = project(ne.lat, ne.lng);
+  const bbox = `${a.x},${a.y},${b.x},${b.y}`;
+  const params = new URLSearchParams({
+    bbox, bboxSR:"3857", imageSR:"3857", size:`${Math.max(600,Math.min(1600,width))},${Math.max(400,Math.min(1000,height))}`,
+    format:"png32", transparent:"true", layers:"show:3", f:"image", dpi:"96"
+  });
+  return `${NOAA_RADAR_MAPSERVER}/export?${params.toString()}`;
+}
+
+function updateRadarImage() {
+  if (!state.map) return;
+  const status=$("#radarStatus");
+  const bounds=state.map.getBounds();
+  const size=state.map.getSize();
+  const url=radarExportUrl(bounds, size.x*window.devicePixelRatio, size.y*window.devicePixelRatio);
+  const overlayBounds=bounds.pad(0.01);
+  const img=new Image();
+  img.onload=()=>{
+    if (state.radarImageOverlay) state.map.removeLayer(state.radarImageOverlay);
+    state.radarImageOverlay=L.imageOverlay(url, overlayBounds, {opacity:.82, interactive:false, crossOrigin:true, attribution:"NOAA/NWS MRMS"}).addTo(state.map);
+    state.radarLoaded=true;
+    if(status) status.textContent="Live NOAA MRMS radar • current composite • refreshes every 5 minutes";
+  };
+  img.onerror=()=>{ if(status) status.textContent="NOAA radar image could not be loaded. Try Refresh."; };
+  img.src=url;
+}
+
+function loadRadar() {
   const status=$("#radarStatus"); if (!status || !state.map) return;
   status.textContent="Loading live NOAA radar…";
-  try {
-    if (state.radarImageOverlay) state.map.removeLayer(state.radarImageOverlay);
-    const wmsUrl = NOAA_RADAR_MAPSERVER.replace(/\/MapServer\/?$/, "/WMSServer");
-    state.radarImageOverlay = L.tileLayer.wms(wmsUrl, {
-      layers: "3", format: "image/png", transparent: true, opacity: 0.82,
-      version: "1.3.0", attribution: "NOAA/NWS MRMS"
-    }).addTo(state.map);
-    state.radarLoaded=true;
-    status.textContent="Live NOAA MRMS radar • updates about every 5 minutes";
-    $("#radarPlay") && ($("#radarPlay").style.display="none");
-    $("#radarSlider") && ($("#radarSlider").closest(".radar-timeline").style.display="none");
-  } catch(error) {
-    status.textContent=`Radar unavailable: ${error.message}`;
+  updateRadarImage();
+  if (!state.radarMapMoveHandler) {
+    state.radarMapMoveHandler=()=>{
+      clearTimeout(radarExportTimer);
+      radarExportTimer=setTimeout(updateRadarImage,450);
+    };
+    state.map.on("moveend zoomend resize", state.radarMapMoveHandler);
   }
+  clearInterval(state.radarTimer);
+  state.radarTimer=setInterval(updateRadarImage,300000);
 }
 
 function toggleRadarPlayback() {}
@@ -647,7 +696,7 @@ async function loadSpcLayer(key, mapId, statusId, label) {
   }
   status.textContent = `Loading ${label}…`;
   try {
-    const url = `${SPC.base}/${SPC.layers[key]}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson`;
+    const url = `${SPC.base}/${SPC.layers[key]}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson&cacheBust=${Date.now()}`;
     const data = await fetchJson(url);
     if (!data.features?.length) throw new Error("No outlook polygons returned");
     if (map._spcLayer) map.removeLayer(map._spcLayer);
@@ -657,7 +706,7 @@ async function loadSpcLayer(key, mapId, statusId, label) {
     }).addTo(map);
     const bounds = map._spcLayer.getBounds();
     if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
-    status.innerHTML = `Live NOAA/SPC data • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
+    status.innerHTML = `Live NOAA/SPC Day 1 data • refreshed ${new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})} • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
   } catch (error) {
     status.innerHTML = `${label} unavailable right now. <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open official SPC</a>`;
     mapEl.classList.add("map-error");
@@ -672,11 +721,12 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_cpac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC/Central Pacific Hurricane Center 7-day outlook for the central North Pacific."},
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC/Central Pacific Hurricane Center 7-day outlook for the central North Pacific."},
   wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"JTWC Western Pacific tropical guidance."}
 };
+const TROPICAL_REFRESH_MS = 10 * 60 * 1000;
 
 const tropicalViewer = { scale:1, x:0, y:0, dragging:false, sx:0, sy:0, ox:0, oy:0 };
 
@@ -748,18 +798,25 @@ function showTropical(key) {
   image.onload = () => { image.style.display = "block"; if (fallback) fallback.style.display = "none"; resetTropicalZoom(); };
   image.onerror = () => {
     if (image.dataset.fallback && image.src !== image.dataset.fallback) {
-      image.src = image.dataset.fallback;
+      image.src = `${image.dataset.fallback}${image.dataset.fallback.includes("?") ? "&" : "?"}trg=${Date.now()}`;
       return;
     }
     imageFallback(image, product.head);
   };
-  image.src = `${product.img}?trg=${Date.now()}`;
+  image.src = `${product.img}${product.img.includes("?") ? "&" : "?"}trg=${Date.now()}`;
   image.style.display = "block";
   if (fallback) fallback.style.display = "none";
   $("#tropicalTitle").textContent = product.title;
   $("#tropicalHeadline").textContent = product.head;
   $("#tropicalText").textContent = product.text;
   $("#tropicalSource").textContent = key === "wpac" ? "JTWC" : "NOAA / NHC";
+}
+
+function refreshTropical() {
+  const image = $("#tropicalImage");
+  if (!image) return;
+  const key = image.dataset.key || "atl";
+  showTropical(key);
 }
 
 function setupTropical() {
@@ -799,6 +856,7 @@ function setupEvents() {
 async function boot() {
   setupEvents();
   setupTropical();
+  if (document.querySelector("#tropicalImage")) setInterval(refreshTropical, TROPICAL_REFRESH_MS);
   setupVideo();
 
   // Every page gets the live alert ticker, but only pages that contain a
@@ -808,7 +866,7 @@ async function boot() {
   setInterval(loadNationalAlerts, 60000);
 
   if ($("#radarMap")) initMap();
-  if ($("#spcCatMap")) loadSPCMaps();
+  if ($("#spcCatMap")) { loadSPCMaps(); setInterval(loadSPCMaps, 5 * 60 * 1000); }
 
   // Home + Forecast pages have the location controls/current conditions.
   if ($("#location")) {
