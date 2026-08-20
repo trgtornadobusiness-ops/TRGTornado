@@ -41,3 +41,10 @@ Active alerts now use the official NOAA/NWS Watch, Warning and Advisory ArcGIS s
 
 ## v16
 Broadcast-style live NWS alert ticker with priority ordering, affected areas, time remaining, NEW indicator, continuous scrolling, and one-minute refresh. Uses the official NWS Alerts API first with NOAA/NWS ArcGIS WWA fallback.
+
+
+## v18 fixes
+- ZIP-code forecast search support
+- Radar navigation renamed to Radar
+- NOAA MRMS radar switched to ArcGIS ImageServer export-image rendering
+- Current NWS warning layer 0 added so Severe Thunderstorm and Tornado Warnings are not omitted

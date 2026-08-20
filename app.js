@@ -15,7 +15,7 @@ const WEATHER_TEXT = {
 };
 
 const weatherIcon = (code) => code >= 95 ? "⛈️" : code >= 80 ? "🌦️" : code >= 61 ? "🌧️" : code >= 45 ? "☁️" : code <= 1 ? "☀️" : "🌤️";
-const state = { point:null, forecast:null, map:null, radarLayer:null, radarFrames:[], radarIndex:24, radarTimer:null, radarPlaying:true, radarLoaded:false };
+const state = { point:null, forecast:null, map:null, radarLayer:null, radarFrames:[], radarIndex:24, radarTimer:null, radarPlaying:true, radarLoaded:false, radarImageOverlay:null, radarMapMoveHandler:null };
 
 function setStatus(message, type="") {
   const el = $("#status");
@@ -80,6 +80,13 @@ async function geocode(query) {
     if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
       return {latitude, longitude, name:"Custom location", admin1:""};
     }
+  }
+  const zip = trimmed.match(/^\d{5}(?:-\d{4})?$/);
+  if (zip) {
+    // Census geocoder accepts a ZIP as a U.S. one-line address. Trying the
+    // explicit U.S. form first improves matching for ZIP-only searches.
+    try { return await censusGeocode(`${trimmed}, USA`); }
+    catch { return censusGeocode(trimmed); }
   }
   return censusGeocode(trimmed);
 }
@@ -226,32 +233,49 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function nwsAlerts(point) {
-  // National feed: use NOAA/NWS's public WWA GIS service first. It is
-  // specifically published for current watches, warnings and advisories and
-  // is a better browser-side fallback than relying on one API host.
-  if (!point) {
-    const base = "https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/1/query";
-    try {
-      const params = new URLSearchParams({
-        where:"1=1", outFields:"*", returnGeometry:"false",
-        orderByFields:"expiration ASC", resultRecordCount:"4000", f:"json"
-      });
-      const data = await fetchJson(`${base}?${params.toString()}`, {timeout:15000});
-      const features=(data.features||[]).map(f=>{
-        const a=f.attributes||{};
-        return {type:"Feature", id:a.cap_id || String(a.objectid||""), properties:{
-          event:a.prod_type||a.event||"Weather Alert", headline:a.event||a.prod_type||"Weather Alert",
-          areaDesc:a.areaDesc || (a.wfo ? `NWS ${a.wfo}` : "Active NWS area"),
-          web:a.url||"https://www.weather.gov/alerts", expires:a.expiration||a.ends||"",
-          effective:a.onset||a.issuance||"", sent:a.issuance||"", severity:a.severity||"Unknown",
-          urgency:a.urgency||"Unknown", certainty:a.certainty||"Unknown", status:"actual",
-          messageType:a.msg_type||"Alert"
-        }};
-      }).filter(isOngoingAlert);
-      if (features.length || data.features) return {features};
-    } catch (gisError) {
-      console.warn("NOAA WWA GIS alert feed failed; trying NWS API", gisError);
+  const gisBase = "https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer";
+  const makeQuery = async (layer, where) => {
+    const params = new URLSearchParams({
+      where, outFields:"prod_type,msg_type,phenom,url,expiration,onset,ends,issuance,wfo,event,cap_id,objectid",
+      returnGeometry:"false", orderByFields:"expiration ASC", resultRecordCount:"4000", f:"json"
+    });
+    if (point) {
+      params.set("geometry", `${point.longitude},${point.latitude}`);
+      params.set("geometryType", "esriGeometryPoint");
+      params.set("inSR", "4326");
+      params.set("spatialRel", "esriSpatialRelIntersects");
     }
+    const data = await fetchJson(`${gisBase}/${layer}/query?${params.toString()}`, {timeout:15000});
+    return (data.features || []).map(f => {
+      const a=f.attributes||{};
+      return {type:"Feature", id:a.cap_id || String(a.objectid||""), properties:{
+        event:a.prod_type || a.event || "Weather Alert",
+        headline:a.prod_type || a.event || "Weather Alert",
+        areaDesc:a.wfo ? `NWS ${a.wfo}` : "Active NWS area",
+        web:a.url || "https://www.weather.gov/alerts",
+        expires:a.expiration || a.ends || "", effective:a.onset || a.issuance || "",
+        sent:a.issuance || "", status:"actual", messageType:a.msg_type || "Alert",
+        severity: a.phenom === "TO" || a.phenom === "SV" ? "Severe" : "Unknown",
+        urgency: "Immediate", certainty: "Observed"
+      }};
+    });
+  };
+
+  // Layer 0 is explicitly the current warning layer. This is important: the
+  // previous build queried layer 1 only, which can omit current SV/TO warning
+  // polygons. Layer 1 supplies watches and other warning products.
+  try {
+    const [warnings, watches] = await Promise.all([
+      makeQuery(0, "1=1"),
+      makeQuery(1, "1=1")
+    ]);
+    const combined = [...warnings, ...watches];
+    const unique = new Map();
+    combined.forEach(x => unique.set(x.id || `${x.properties.event}|${x.properties.expires}|${x.properties.wfo}`, x));
+    const features = filterOngoingAlerts([...unique.values()]);
+    if (features.length || point) return {features};
+  } catch (gisError) {
+    console.warn("NOAA WWA GIS feed failed; trying NWS active-alert API", gisError);
   }
 
   const url = point
@@ -540,7 +564,7 @@ function initMap() {
   loadRadar();
 }
 
-const NOAA_RADAR_WMS = "https://mapservices.weather.noaa.gov/eventdriven/services/radar/radar_base_reflectivity_time/ImageServer/WMSServer";
+const NOAA_RADAR_IMAGE = "https://mapservices.weather.noaa.gov/eventdriven/rest/services/radar/radar_base_reflectivity_time/ImageServer";
 const RADAR_FRAME_COUNT = 48;
 const RADAR_STEP_MS = 5 * 60 * 1000;
 
@@ -553,64 +577,66 @@ function floorToFiveMinutes(date = new Date()) {
 
 function buildRadarFrames() {
   const latest = floorToFiveMinutes(new Date());
-  return Array.from({length: RADAR_FRAME_COUNT + 1}, (_, i) => {
-    const offset = RADAR_FRAME_COUNT - i;
-    return new Date(latest.getTime() - offset * RADAR_STEP_MS);
-  });
+  return Array.from({length: RADAR_FRAME_COUNT + 1}, (_, i) => new Date(latest.getTime() - (RADAR_FRAME_COUNT - i) * RADAR_STEP_MS));
 }
 
 function radarTimeLabel(date) {
   return new Intl.DateTimeFormat([], {hour:"numeric", minute:"2-digit"}).format(date);
 }
 
+function mercatorBounds(map) {
+  const b = map.getBounds();
+  const sw = L.CRS.EPSG3857.project(b.getSouthWest());
+  const ne = L.CRS.EPSG3857.project(b.getNorthEast());
+  return {xmin:sw.x, ymin:sw.y, xmax:ne.x, ymax:ne.y};
+}
+
+function radarImageUrl(frame) {
+  const b = mercatorBounds(state.map);
+  const size = state.map.getSize();
+  const params = new URLSearchParams({
+    bbox:`${b.xmin},${b.ymin},${b.xmax},${b.ymax}`, bboxSR:"3857", imageSR:"3857",
+    size:`${Math.min(1800, Math.max(700, size.x))},${Math.min(1100, Math.max(450, size.y))}`,
+    format:"png32", transparent:"true", f:"image", time:String(frame.getTime()),
+    interpolation:"RSP_BilinearInterpolation"
+  });
+  return `${NOAA_RADAR_IMAGE}/exportImage?${params.toString()}`;
+}
+
 function renderRadarFrame() {
-  if (!state.radarLayer || !state.radarFrames.length) return;
-  state.radarLayer.clearLayers();
+  if (!state.map || !state.radarFrames.length) return;
   const frame = state.radarFrames[state.radarIndex];
-  const time = frame.toISOString();
-
-  L.tileLayer.wms(NOAA_RADAR_WMS, {
-    layers: "0",
-    format: "image/png",
-    transparent: true,
-    version: "1.3.0",
-    time: frame.getTime(),
-    opacity: 0.88,
-    tileSize: 512,
-    updateWhenIdle: false,
-    keepBuffer: 2,
-    maxZoom: 12,
-    attribution:'Radar: <a href="https://www.weather.gov/" target="_blank" rel="noopener">NOAA/NWS</a> • MRMS'
-  }).addTo(state.radarLayer);
-
+  if (state.radarImageOverlay) state.map.removeLayer(state.radarImageOverlay);
+  const url = radarImageUrl(frame);
+  state.radarImageOverlay = L.imageOverlay(url, state.map.getBounds(), {opacity:.9, interactive:false, crossOrigin:true, attribution:'Radar: NOAA/NWS MRMS'}).addTo(state.map);
   const slider = $("#radarSlider");
-  if (slider) {
-    slider.max = String(state.radarFrames.length - 1);
-    slider.value = String(state.radarIndex);
-  }
-  $("#radarFrameTime").textContent = state.radarIndex === state.radarFrames.length - 1 ? "Latest" : radarTimeLabel(frame);
+  if (slider) { slider.max=String(state.radarFrames.length-1); slider.value=String(state.radarIndex); }
+  $("#radarFrameTime").textContent = state.radarIndex === state.radarFrames.length-1 ? "Latest" : radarTimeLabel(frame);
   $("#radarOldest").textContent = radarTimeLabel(state.radarFrames[0]);
+  state.radarImageOverlay.once("load", () => { $("#radarStatus")?.replaceChildren(document.createTextNode(`NOAA MRMS radar • ${state.radarFrames.length} frames • updated about every 5 minutes`)); });
+  state.radarImageOverlay.once("error", () => { $("#radarStatus") && ($("#radarStatus").textContent = "NOAA radar image could not be loaded — retrying…"); });
 }
 
 async function loadRadar() {
-  const status = $("#radarStatus");
-  status.textContent = "Loading high-resolution NOAA radar…";
+  const status=$("#radarStatus"); if (!status) return;
+  status.textContent="Loading current NOAA radar…";
   try {
-    if (!state.radarFrames.length) state.radarFrames = buildRadarFrames();
-    state.radarIndex = state.radarFrames.length - 1;
+    if (!state.radarFrames.length) state.radarFrames=buildRadarFrames();
+    state.radarIndex=state.radarFrames.length-1;
     renderRadarFrame();
-    state.radarLoaded = true;
+    state.radarLoaded=true;
     clearInterval(state.radarTimer);
-    state.radarTimer = setInterval(() => {
-      if (!state.radarPlaying) return;
-      state.radarIndex = (state.radarIndex + 1) % state.radarFrames.length;
-      renderRadarFrame();
-    }, 750);
-    status.innerHTML = `NOAA MRMS radar • ${state.radarFrames.length} frames • updates about every 5 minutes • <a href="https://radar.weather.gov/" target="_blank" rel="noopener">Official NWS Radar</a>`;
-    $("#radarPlay").textContent = "PAUSE";
-  } catch (error) {
-    status.textContent = `Radar unavailable: ${error.message}`;
-  }
+    state.radarTimer=setInterval(()=>{
+      if (state.radarPlaying) { state.radarIndex=(state.radarIndex+1)%state.radarFrames.length; renderRadarFrame(); }
+    }, 1400);
+    // Keep the image aligned after map resize/zoom without creating a new frame.
+    state.map?.off("moveend", state.radarMapMoveHandler);
+    state.radarMapMoveHandler=()=>renderRadarFrame();
+    state.map?.on("moveend", state.radarMapMoveHandler);
+    setTimeout(()=>state.map?.invalidateSize(),150);
+    status.textContent="NOAA MRMS radar • current frame loaded • animation ready";
+    $("#radarPlay").textContent="PAUSE";
+  } catch(error) { status.textContent=`Radar unavailable: ${error.message}`; }
 }
 
 function toggleRadarPlayback() {
