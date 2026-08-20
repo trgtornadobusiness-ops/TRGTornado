@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRG Tornado | Weather Center</title>
+<meta name="description" content="TRG Tornado Weather Center — forecasts, severe weather, tropical outlooks, radar, satellite and live coverage.">
+<link rel="preconnect" href="https://api.weather.gov">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><b>TRG</b><span>TORNADO</span></a>
+  <nav>
+    <a href="#forecast">Forecast</a><a href="#alerts">Weather Alerts</a><a href="#severe">Severe</a>
+    <a href="#tropical">Tropical</a><a href="#maps">Maps</a><a href="#live" class="live">● LIVE</a>
+  </nav>
+</header>
+
+<div id="alertTicker" class="alert-ticker" aria-label="Active weather alerts">
+  <div class="ticker-label"><span class="ticker-dot"></span> LIVE ALERTS</div>
+  <div class="ticker-window"><div id="alertTickerTrack" class="ticker-track"><span class="ticker-item ticker-loading">Loading active NWS alerts…</span></div></div>
+  <button id="tickerAlerts" class="ticker-button" type="button">VIEW ALERTS →</button>
+</div>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">TRG TORNADO WEATHER CENTER</div>
+    <h1>WEATHER<br><em>EXPLAINED.</em></h1>
+    <p>Severe weather. Tropical systems. Forecasts. Radar. Live coverage. One place for the latest weather information.</p>
+    <div class="actions"><a class="btn hot" href="#forecast">CHECK FORECAST</a><a class="btn" href="#live">WATCH LIVE</a></div>
+    <div class="hero-pills"><span>● LIVE DATA</span><span>NOAA / NWS</span><span>TRG ANALYSIS</span></div>
+  </div>
+  <div class="current-card">
+    <div class="live-dot"></div><span class="label">CURRENT CONDITIONS</span>
+    <div id="temp">--°</div><strong id="condition">Loading…</strong>
+    <div class="location-now" id="currentLocation">Loading location…</div>
+    <div class="current-row"><span id="feels">Feels --°</span><span id="wind">Wind --</span><span id="humidity">RH --%</span></div>
+    <div class="current-extra"><span id="pressure">Pressure --</span><span id="visibility">Visibility --</span></div>
+  </div>
+</section>
+
+<section class="searchbar">
+  <span>FORECAST LOCATION</span><input id="location" value="Oklahoma City, OK" autocomplete="off"><button id="go">UPDATE</button><button id="useLocation" class="secondary">USE MY LOCATION</button><small id="status">Loading weather…</small>
+</section>
+<p class="geo-note">Location search: U.S. Census Geocoder • U.S. locations only • no third-party autocomplete.</p>
+
+<section id="alerts" class="section">
+  <div class="section-title"><div><div class="eyebrow">OFFICIAL NWS DATA • PRIORITIZED</div><h2>Weather Alerts</h2></div><div class="alert-actions"><span class="tag warning" id="alertTag">CHECKING</span><span id="alertsUpdated" class="alerts-updated">Connecting to NWS…</span><button id="alertsRefresh" class="small-button" type="button">REFRESH</button></div></div>
+  <div class="alert-summary"><div><strong id="alertCount">--</strong><span>active nationwide</span></div><div><strong id="localAlertCount">--</strong><span>at selected location</span></div><div class="alert-summary-note">Sorted automatically from highest-impact alerts to lowest-impact advisories.</div></div>
+  <div class="alert-filters" role="tablist" aria-label="Weather alert filters">
+    <button class="alert-filter active" data-alert-filter="all" type="button">ALL</button>
+    <button class="alert-filter" data-alert-filter="warning" type="button">WARNINGS</button>
+    <button class="alert-filter" data-alert-filter="watch" type="button">WATCHES</button>
+    <button class="alert-filter" data-alert-filter="advisory" type="button">ADVISORIES</button>
+  </div>
+  <div id="alertsBox" class="alerts"><div class="empty">Loading active NWS alerts…</div></div>
+  <p class="source-note">Official National Weather Service alert data. TRG Tornado prioritizes the feed for display; it does not replace official warnings or local emergency guidance.</p>
+</section>
+
+<section id="forecast" class="section">
+  <div class="section-title"><div><div class="eyebrow">LOCAL FORECAST</div><h2>7-Day Forecast</h2></div><span class="tag">NOAA / NWS</span></div>
+  <div id="forecastGrid" class="forecast"></div>
+</section>
+
+<section class="section hourly-section">
+  <div class="section-title"><div><div class="eyebrow">NEXT 24 HOURS</div><h2>Hourly Weather</h2></div></div>
+  <div id="hourlyGrid" class="hourly"></div>
+</section>
+
+<section id="severe" class="section">
+  <div class="section-title"><div><div class="eyebrow">THREAT CENTER</div><h2>Severe Weather</h2></div><span class="tag red">TRG MONITORING</span></div>
+  <div class="two-col">
+    <article class="story red-panel">
+      <span class="label redtext">TRG ANALYSIS</span>
+      <h3 id="severeHeadline">Tornadoes<br>Possible</h3>
+      <p id="severeText">Use this panel for your latest severe-weather forecast, confidence and timing. Update the headline when conditions warrant.</p>
+      <div class="threat-meter"><span>THREAT LEVEL</span><b>MONITORING</b></div>
+      <a class="arrow" href="#spc">VIEW SPC PRODUCTS →</a>
+    </article>
+    <article class="image-card" id="spc">
+      <div class="image-head"><span>SPC DAY 1 CATEGORICAL OUTLOOK</span><span>NOAA / SPC</span></div>
+      <div id="spcCatMap" class="spc-map"></div>
+      <div class="spc-map-status" id="spcCatStatus">Loading official SPC outlook…</div>
+    </article>
+  </div>
+  <div class="product-grid">
+    <article class="product-card"><div class="product-head">TORNADO PROBABILITY</div><div id="spcTornMap" class="spc-product-map"></div><div class="spc-map-status" id="spcTornStatus">Loading…</div></article>
+    <article class="product-card"><div class="product-head">WIND PROBABILITY</div><div id="spcWindMap" class="spc-product-map"></div><div class="spc-map-status" id="spcWindStatus">Loading…</div></article>
+    <article class="product-card"><div class="product-head">HAIL PROBABILITY</div><div id="spcHailMap" class="spc-product-map"></div><div class="spc-map-status" id="spcHailStatus">Loading…</div></article>
+  </div>
+</section>
+
+<section id="tropical" class="section">
+  <div class="section-title"><div><div class="eyebrow">ATLANTIC • EAST PACIFIC • CENTRAL PACIFIC</div><h2>Tropical Center</h2></div><span class="tag gold">NHC</span></div>
+  <div class="tropical-tabs">
+    <button class="tab active" data-tropical="atl">ATLANTIC</button>
+    <button class="tab" data-tropical="epac">EAST PACIFIC</button>
+    <button class="tab" data-tropical="cpac">CENTRAL PACIFIC</button>
+  </div>
+  <div class="two-col tropical">
+    <article class="image-card tropical-card">
+      <div class="image-head"><span id="tropicalTitle">ATLANTIC 7-DAY OUTLOOK</span><span>NOAA / NHC</span></div>
+      <img id="tropicalImage" src="https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png" alt="NHC Atlantic Tropical Weather Outlook" onerror="imageFallback(this)">
+      <div class="image-fallback"><div><strong>NHC TROPICAL OUTLOOK</strong><br><small>Official NHC graphic could not be loaded.</small><br><a href="https://www.nhc.noaa.gov/" target="_blank" rel="noopener">OPEN NHC →</a></div></div>
+    </article>
+    <article class="story tropical-story">
+      <span class="label goldtext">TRG TROPICAL DESK</span>
+      <h3 id="tropicalHeadline">Tropical Outlook</h3>
+      <p id="tropicalText">Monitor the Atlantic, eastern Pacific and central Pacific for areas of potential development and active tropical cyclones.</p>
+      <div class="stats"><div><b>24/7</b><span>Monitoring</span></div><div><b>NHC</b><span>Official Source</span></div><div><b>TRG</b><span>Analysis</span></div></div>
+      <a class="arrow" href="https://www.nhc.noaa.gov/" target="_blank" rel="noopener">OPEN NHC →</a>
+    </article>
+  </div>
+</section>
+
+<section id="maps" class="section">
+  <div class="section-title"><div><div class="eyebrow">MAP ROOM</div><h2>Live Radar</h2></div><span class="tag">RADAR</span></div>
+  <div class="map-toolbar radar-toolbar">
+    <span id="radarStatus">Loading NOAA radar…</span>
+    <button id="radarPlay" type="button">PAUSE</button>
+    <button id="radarRefresh" type="button">REFRESH</button>
+    <button id="radarLocate" type="button">CENTER ON LOCATION</button>
+  </div>
+  <div class="radar-timeline">
+    <input id="radarSlider" type="range" min="0" max="24" value="24" step="1" aria-label="Radar animation time">
+    <div class="radar-time-labels"><span id="radarOldest">--</span><b id="radarFrameTime">Latest</b><span>NOW</span></div>
+  </div>
+  <div id="radarMap" class="radar-map"></div>
+  <div class="map-legend"><span><i class="l-green"></i> Light</span><span><i class="l-yellow"></i> Moderate</span><span><i class="l-red"></i> Heavy</span><span><i class="l-purple"></i> Extreme</span><small>Radar: NOAA/NWS MRMS • Base map: OpenStreetMap</small></div>
+</section>
+
+<section class="section map-products">
+  <div class="section-title">
+    <div><div class="eyebrow">MAP ROOM</div><h2>National Products</h2></div>
+    <span class="tag">NOAA / NWS</span>
+  </div>
+  <div class="map-grid clean-products">
+    <a href="#maps" class="map-tile clean-tile">
+      <div class="product-mark radar-mark">RADAR</div>
+      <div class="tile-copy"><b>National Radar</b><span>Interactive radar map with animation and location tracking.</span></div>
+      <strong class="tile-arrow">OPEN →</strong>
+    </a>
+    <a href="#spc" class="map-tile clean-tile">
+      <div class="product-mark severe-mark">SPC</div>
+      <div class="tile-copy"><b>Severe Weather</b><span>Day 1 categorical, tornado, wind and hail outlooks.</span></div>
+      <strong class="tile-arrow">OPEN →</strong>
+    </a>
+    <a href="#tropical" class="map-tile clean-tile">
+      <div class="product-mark tropical-mark">NHC</div>
+      <div class="tile-copy"><b>Tropical Center</b><span>Atlantic, eastern Pacific and central Pacific outlooks.</span></div>
+      <strong class="tile-arrow">OPEN →</strong>
+    </a>
+    <a href="https://www.star.nesdis.noaa.gov/GOES/" target="_blank" rel="noopener" class="map-tile clean-tile">
+      <div class="product-mark satellite-mark">GOES</div>
+      <div class="tile-copy"><b>Satellite</b><span>Official NOAA GOES imagery and animation viewer.</span></div>
+      <strong class="tile-arrow">VIEW →</strong>
+    </a>
+  </div>
+</section>
+
+<section id="live" class="section live-section">
+  <div>
+    <div class="eyebrow">TRG TORNADO LIVE</div><h2>LIVE WEATHER COVERAGE</h2>
+    <p>Your livestream can become the live hub for breaking weather coverage. Add your YouTube video or live stream ID in <code>app.js</code>.</p>
+    <a id="youtubeLink" class="btn hot" href="https://www.youtube.com/" target="_blank" rel="noopener">WATCH ON YOUTUBE</a>
+  </div>
+  <div class="video">
+    <iframe id="youtubeFrame" title="TRG Tornado YouTube Live" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <div id="videoPlaceholder"><div>▶</div><span>YOUTUBE LIVE</span><small>Add your YouTube video ID in app.js</small></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="brand"><b>TRG</b><span>TORNADO</span></div>
+  <p>Forecast information is for general informational use. For life-safety decisions, follow official NWS warnings.</p>
+  <p>Weather data: NWS / NOAA, Open-Meteo, SPC and NHC. Radar: NOAA/NWS MRMS.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>
