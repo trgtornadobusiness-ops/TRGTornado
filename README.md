@@ -9,3 +9,6 @@ Site version: 38
 
 ## Version 40 alert deployment note
 The NWS alert workflow now commits alerts.json only when alert data changes. This prevents a five-minute timestamp-only commit from constantly retriggering GitHub Pages deployments.
+
+
+Version 41 alert patch: the site now prioritizes the GitHub Actions-generated alerts.json snapshot, with live NWS/NOAA feeds retained as fallbacks.
