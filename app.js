@@ -213,15 +213,17 @@ function windDir(degrees) {
 }
 
 function renderCurrent(data, point) {
-  const c = data.current;
-  $("#temp").textContent = `${Math.round(c.temperature_2m)}°`;
-  $("#condition").textContent = c.text || "Current conditions";
-  $("#currentLocation").textContent = `${point.name}${point.admin1 ? `, ${point.admin1}` : ""}`;
-  $("#feels").textContent = `Feels ${Math.round(c.apparent_temperature)}°`;
-  $("#wind").textContent = `Wind ${Math.round(c.wind_speed_10m)} mph ${windDir(c.wind_direction_10m)}`;
-  $("#humidity").textContent = `RH ${Math.round(c.relative_humidity_2m)}%`;
-  $("#pressure").textContent = c.surface_pressure != null ? `Pressure ${Math.round(c.surface_pressure)} hPa` : "Pressure --";
-  $("#visibility").textContent = c.visibility != null ? `Visibility ${Math.max(0, Math.round(c.visibility))} mi` : "Visibility --";
+  const c = data?.current || {};
+  const set=(id,value)=>{const el=$(id); if(el) el.textContent=value;};
+  const temp=Number.isFinite(Number(c.temperature_2m)) ? `${Math.round(c.temperature_2m)}°` : "--°";
+  const feels=Number.isFinite(Number(c.apparent_temperature)) ? `Feels ${Math.round(c.apparent_temperature)}°` : "Feels --°";
+  const wind=Number.isFinite(Number(c.wind_speed_10m)) ? `Wind ${Math.round(c.wind_speed_10m)} mph ${windDir(c.wind_direction_10m)}` : "Wind --";
+  const humidity=Number.isFinite(Number(c.relative_humidity_2m)) ? `RH ${Math.round(c.relative_humidity_2m)}%` : "RH --%";
+  set("#temp",temp); set("#condition",c.text || "Current conditions");
+  set("#currentLocation",`${point?.name || "Selected location"}${point?.admin1 ? `, ${point.admin1}` : ""}`);
+  set("#feels",feels); set("#wind",wind); set("#humidity",humidity);
+  set("#pressure",c.surface_pressure != null ? `Pressure ${Math.round(c.surface_pressure)} hPa` : "Pressure --");
+  set("#visibility",c.visibility != null ? `Visibility ${Math.max(0, Math.round(c.visibility))} mi` : "Visibility --");
 }
 
 function renderForecast(data) {
@@ -240,11 +242,13 @@ function renderForecast(data) {
 }
 
 function renderHourly(data) {
+  const grid=$("#hourlyGrid");
+  if(!grid) return;
   const now = new Date();
   let start = data.hourly.time.findIndex(t => new Date(t) >= now);
   if (start < 0) start = 0;
   const end = Math.min(start + 24, data.hourly.time.length);
-  $("#hourlyGrid").innerHTML = data.hourly.time.slice(start, end).map((time, offset) => {
+  grid.innerHTML = data.hourly.time.slice(start, end).map((time, offset) => {
     const i = start + offset;
     return `<article class="hour-card">
       <b>${offset === 0 ? "NOW" : new Date(time).toLocaleTimeString(undefined,{hour:"numeric"})}</b>
@@ -267,13 +271,13 @@ async function nwsAlerts(point) {
   // endpoint specifically for currently active/ongoing alerts. We also query
   // the official NOAA WWA GIS layer as a secondary source and merge results.
   const apiUrl = point
-    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&limit=500&_trg=${Date.now()}`
-    : `https://api.weather.gov/alerts/active?limit=500&_trg=${Date.now()}`;
+    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&status=actual&message_type=alert,update&_trg=${Date.now()}`
+    : `https://api.weather.gov/alerts/active?status=actual&message_type=alert,update&_trg=${Date.now()}`;
 
   const gisUrl = (layer) => {
     const params = new URLSearchParams({
       where: "1=1",
-      outFields: "prod_type,msg_type,phenom,url,expiration,onset,ends,issuance,wfo,event,cap_id,sig,idp_ingestdate",
+      outFields: "*",
       returnGeometry: "false", f: "json", resultRecordCount: "4000",
       orderByFields: "expiration ASC", _trg: String(Date.now())
     });
@@ -305,7 +309,7 @@ async function nwsAlerts(point) {
     return {
       id: a.cap_id || `${layer}-${a.wfo || "NWS"}-${a.phenom || ""}-${a.sig || ""}-${a.issuance || a.idp_ingestdate || i}`,
       properties: {
-        event, headline: event, areaDesc: "", effective, onset: a.onset || effective,
+        event, headline: a.headline || a.prod_type || event, areaDesc: a.areaDesc || a.county || a.zone || "Active NWS area", effective, onset: a.onset || effective,
         expires, ends: a.ends || expires, sent: a.issuance || effective,
         severity: severityForPhenomena(a.phenom), urgency: "Immediate", certainty: "Observed",
         web: a.url || "https://www.weather.gov/alerts", status: "Actual",
@@ -355,7 +359,7 @@ function isOngoingAlert(item, now = Date.now()) {
   const p = item?.properties || {};
   const status = String(p.status || "").toLowerCase();
   const msgType = String(p.messageType || "").toLowerCase();
-  if (status && status !== "actual") return false;
+  if (status && !["actual","active"].includes(status)) return false;
   if (msgType && msgType === "cancel") return false;
   const effective = Date.parse(p.effective || p.onset || 0);
   const expires = Date.parse(p.expires || p.ends || 0);
@@ -462,7 +466,10 @@ function renderTicker() {
   const track=$("#alertTickerTrack"); if(!track) return;
   const top=sortAlerts(alertState.national).slice(0,12);
   if(!top.length){
-    track.innerHTML='<span class="ticker-item ticker-clear"><span class="ticker-badge">ALL CLEAR</span> No active NWS warnings or watches in the current feed.</span>';
+    const feedOffline = !alertState.lastSuccessMs;
+    track.innerHTML=feedOffline
+      ? '<span class="ticker-item ticker-error"><span class="ticker-badge">NWS ALERTS</span> Connecting to the live warning feed…</span>'
+      : '<span class="ticker-item ticker-clear"><span class="ticker-badge">ALL CLEAR</span> No active NWS warnings or watches in the current feed.</span>';
     track.style.removeProperty("--ticker-distance"); return;
   }
   const signature=tickerSignature(top);
@@ -597,6 +604,7 @@ async function loadLocation(point) {
 
 async function loadLocationFromSearch() {
   const button = $("#go");
+  if(!button) return;
   button.disabled = true;
   try {
     await loadLocation(await geocode($("#location").value));
@@ -751,9 +759,9 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", frame:"https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=atl&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", frame:"https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", frame:"https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/epac_7d0.png", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/cpac_7d0.png", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
   wpac:{title:"JTWC WESTERN PACIFIC", frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
 };
 const TROPICAL_REFRESH_MS = 5 * 60 * 1000;
@@ -820,27 +828,33 @@ function setupTropicalViewer() {
 function showTropical(key) {
   const product=tropicalProducts[key]||tropicalProducts.atl;
   document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));
-  const frame=$("#tropicalFrame");
-  if(!frame) return;
-  frame.src=`${product.frame}${product.frame.includes("?")?"&":"?"}trg=${Date.now()}`;
-  $("#tropicalTitle").textContent=product.title;
-  $("#tropicalHeadline").textContent=product.head;
-  $("#tropicalText").textContent=product.text;
-  $("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC";
-  $("#tropicalUpdated") && ($("#tropicalUpdated").textContent=`Auto-refreshing official source • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);
+  const frame=$("#tropicalFrame"), image=$("#tropicalImage");
+  if(image && product.image){
+    image.dataset.key=key;
+    image.src=`${product.image}${product.image.includes("?")?"&":"?"}trg=${Date.now()}`;
+    image.style.display="block";
+    if(frame) frame.style.display="none";
+  } else if(frame && product.frame){
+    frame.src=`${product.frame}${product.frame.includes("?")?"&":"?"}trg=${Date.now()}`;
+    frame.style.display="block";
+    if(image) image.style.display="none";
+  }
+  $("#tropicalTitle") && ($("#tropicalTitle").textContent=product.title);
+  $("#tropicalHeadline") && ($("#tropicalHeadline").textContent=product.head);
+  $("#tropicalText") && ($("#tropicalText").textContent=product.text);
+  $("#tropicalSource") && ($("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC");
+  $("#tropicalUpdated") && ($("#tropicalUpdated").textContent=`Live official product request • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);
 }
-
 function refreshTropical() {
-  const image = $("#tropicalImage");
-  if (!image) return;
-  const key = image.dataset.key || "atl";
-  showTropical(key);
+  const active=document.querySelector(".tab.active")?.dataset.tropical || "atl";
+  showTropical(active);
 }
-
 function setupTropical() {
-  if (!$("#tropicalImage")) return;
+  if (!$("#tropicalViewer")) return;
   document.querySelectorAll(".tab").forEach(btn => btn.addEventListener("click", () => showTropical(btn.dataset.tropical)));
   setupTropicalViewer();
+  const image=$("#tropicalImage");
+  image?.addEventListener("error",()=>imageFallback(image,"Current NHC graphic unavailable"));
   showTropical("atl");
 }
 
@@ -874,7 +888,7 @@ function setupEvents() {
 async function boot() {
   setupEvents();
   setupTropical();
-  if (document.querySelector("#tropicalImage")) setInterval(refreshTropical, TROPICAL_REFRESH_MS);
+  if (document.querySelector("#tropicalViewer")) setInterval(refreshTropical, TROPICAL_REFRESH_MS);
   setupVideo();
 
   // Every page gets the live alert ticker, but only pages that contain a
