@@ -56,7 +56,13 @@ Broadcast-style live NWS alert ticker with priority ordering, affected areas, ti
 - ZIP lookup attribution: Zippopotam.us / GeoNames data, available under the Open Database License.
 
 
-## v20 updates
+## v21 updates
 - Radar uses the official NOAA/NWS MRMS current reflectivity MapServer through Esri Leaflet instead of the previous time-enabled image overlay.
 - Weather Alerts use the official NWS /alerts/active feed and are separated into All, Warnings, Watches, Advisories, and Statements.
 - ZIP lookup uses postal-code geocoding with a browser-friendly fallback.
+
+## v21 reliability patch
+- NWS forecast parsing corrected for Fahrenheit-native NWS values.
+- National alert center uses official NOAA/NWS WWA GIS layers first, with NWS active API retained for point-specific alerts.
+- Tropical graphics use the current NHC `two_*_7d0.png` products from the latest archive paths.
+- ZIP geocoding remains on the working dedicated ZIP lookup path.

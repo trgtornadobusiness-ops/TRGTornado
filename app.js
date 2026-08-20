@@ -147,8 +147,8 @@ async function nwsForecast(point) {
   const hp = hourly.features?.map(f => f.properties || {}) || [];
   const firstHour = hp[0] || {};
   const current = {
-    temperature_2m: cToF(op.temperature?.value ?? firstHour.temperature?.value),
-    apparent_temperature: cToF(op.heatIndex?.value ?? op.windChill?.value ?? firstHour.apparentTemperature?.value ?? firstHour.temperature?.value),
+    temperature_2m: (op.temperature?.value != null ? cToF(op.temperature.value) : firstHour.temperature?.value),
+    apparent_temperature: (op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.apparentTemperature?.value ?? firstHour.temperature?.value)),
     relative_humidity_2m: op.relativeHumidity?.value ?? firstHour.relativeHumidity?.value,
     wind_speed_10m: kmhToMph(op.windSpeed?.value) ?? parseWindMph(firstHour.windSpeed),
     wind_direction_10m: op.windDirection?.value ?? firstHour.windDirection?.value,
@@ -175,8 +175,8 @@ async function nwsForecast(point) {
     const winds = ps.map(x => parseWindMph(x.windSpeed)).filter(Number.isFinite);
     daily.time.push(date);
     daily.weather_code.push(0);
-    daily.temperature_2m_max.push(Math.max(...temps));
-    daily.temperature_2m_min.push(Math.min(...temps));
+    daily.temperature_2m_max.push(temps.length ? Math.max(...temps) : Number(day.temperature));
+    daily.temperature_2m_min.push(temps.length ? Math.min(...temps) : Number(day.temperature));
     daily.precipitation_probability_max.push(pops.length ? Math.max(...pops) : 0);
     daily.wind_speed_10m_max.push(winds.length ? Math.max(...winds) : 0);
     daily.text.push(day.shortForecast || day.detailedForecast || "Forecast");
@@ -186,7 +186,7 @@ async function nwsForecast(point) {
   hp.slice(0,24).forEach(h => {
     hourlyOut.time.push(h.startTime);
     hourlyOut.weather_code.push(0);
-    hourlyOut.temperature_2m.push(cToF(h.temperature?.value));
+    hourlyOut.temperature_2m.push(Number.isFinite(Number(h.temperature?.value)) ? Number(h.temperature.value) : null);
     hourlyOut.precipitation_probability.push(h.probabilityOfPrecipitation?.value ?? 0);
     hourlyOut.wind_speed_10m.push(parseWindMph(h.windSpeed) ?? 0);
     hourlyOut.text.push(h.shortForecast || "Forecast");
@@ -219,7 +219,7 @@ function renderForecast(data) {
     const day = i === 0 ? "TODAY" : new Date(`${date}T12:00:00`).toLocaleDateString(undefined, {weekday:"short"});
     return `<article class="day-card">
       <b>${day}</b><div class="weather-icon">${textToIcon(data.daily.text?.[i] || "")}</div>
-      <div class="temps">${Math.round(data.daily.temperature_2m_max[i])}° <span>${Math.round(data.daily.temperature_2m_min[i])}°</span></div>
+      <div class="temps">${Number.isFinite(data.daily.temperature_2m_max[i]) ? Math.round(data.daily.temperature_2m_max[i]) : "--"}° <span>${Number.isFinite(data.daily.temperature_2m_min[i]) ? Math.round(data.daily.temperature_2m_min[i]) : "--"}°</span></div>
       <div class="rain">💧 ${data.daily.precipitation_probability_max[i] ?? 0}%</div>
       <div class="desc">${escapeHtml(data.daily.text?.[i] || "Forecast")}</div>
       <div class="wind-small">💨 ${Math.round(data.daily.wind_speed_10m_max[i])} mph</div>
@@ -237,7 +237,7 @@ function renderHourly(data) {
     return `<article class="hour-card">
       <b>${offset === 0 ? "NOW" : new Date(time).toLocaleTimeString(undefined,{hour:"numeric"})}</b>
       <div>${textToIcon(data.hourly.text?.[i] || "")}</div>
-      <strong>${Math.round(data.hourly.temperature_2m[i])}°</strong>
+      <strong>${data.hourly.temperature_2m[i] == null ? "--" : Math.round(data.hourly.temperature_2m[i])}°</strong>
       <span>💧 ${data.hourly.precipitation_probability[i] ?? 0}%</span>
       <small>💨 ${Math.round(data.hourly.wind_speed_10m[i])} mph</small>
     </article>`;
@@ -251,10 +251,39 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function nwsAlerts(point) {
-  const url = point
-    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}`
-    : "https://api.weather.gov/alerts/active";
-  const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json"}});
+  // NOAA/NWS GIS is the primary browser-friendly source for the national
+  // alert center. Layer 0 contains short-fuse current warnings; layer 1
+  // contains watches, warnings and advisories.
+  if (!point) {
+    const fields = ["prod_type","msg_type","phenom","url","expiration","onset","ends","issuance","wfo","event","cap_id","sig"].join(',');
+    const makeUrl = layer => `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?where=1%3D1&outFields=${encodeURIComponent(fields)}&returnGeometry=false&f=json`;
+    const [current, watches] = await Promise.all([fetchJson(makeUrl(0), {timeout:15000}), fetchJson(makeUrl(1), {timeout:15000})]);
+    const convert = (data, layer) => (data.features || []).map((f, i) => {
+      const a = f.attributes || {};
+      const event = a.prod_type || hazardName(a.phenom, a.sig) || a.event || "Weather Alert";
+      const effective = a.onset || a.issuance || null;
+      const expires = a.expiration || a.ends || null;
+      return {
+        id: a.cap_id || `${layer}-${a.wfo || 'NWS'}-${a.phenom || ''}-${a.sig || ''}-${a.issuance || i}`,
+        properties: {
+          event, headline: event, areaDesc: a.areaDesc || (a.wfo ? `NWS ${a.wfo}` : "Active NWS area"),
+          effective, onset: a.onset || effective, expires, ends: a.ends || expires,
+          sent: a.issuance || effective, severity: /Warning|Emergency/i.test(event) ? "Severe" : /Watch/i.test(event) ? "Moderate" : "Minor",
+          urgency: "Immediate", certainty: "Observed", web: a.url || "https://www.weather.gov/alerts",
+          status: "Actual", messageType: a.msg_type || "Alert", phenom: a.phenom, sig: a.sig, wfo: a.wfo
+        }
+      };
+    });
+    const all = [...convert(current, 0), ...convert(watches, 1)];
+    const unique = new Map();
+    all.filter(isOngoingAlert).forEach(item => unique.set(String(item.id), item));
+    return {features:[...unique.values()]};
+  }
+
+  // Point-specific lookup remains on the official NWS API because it can
+  // return county-based alerts affecting an exact coordinate.
+  const url = `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}`;
+  const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json", "User-Agent":"TRG Tornado weather site contact: https://trgtornadobusiness-ops.github.io/TRGTornado/"}});
   return {features:(data.features || []).filter(isOngoingAlert)};
 }
 
@@ -561,9 +590,12 @@ async function loadRadar() {
   const status=$("#radarStatus"); if (!status || !state.map) return;
   status.textContent="Loading live NOAA radar…";
   try {
-    if (!window.L?.esri?.dynamicMapLayer) throw new Error("NOAA map layer library failed to load.");
     if (state.radarImageOverlay) state.map.removeLayer(state.radarImageOverlay);
-    state.radarImageOverlay = L.esri.dynamicMapLayer({url:NOAA_RADAR_MAPSERVER, opacity:0.82, useCors:true}).addTo(state.map);
+    const wmsUrl = NOAA_RADAR_MAPSERVER.replace(/\/MapServer\/?$/, "/WMSServer");
+    state.radarImageOverlay = L.tileLayer.wms(wmsUrl, {
+      layers: "3", format: "image/png", transparent: true, opacity: 0.82,
+      version: "1.3.0", attribution: "NOAA/NWS MRMS"
+    }).addTo(state.map);
     state.radarLoaded=true;
     status.textContent="Live NOAA MRMS radar • updates about every 5 minutes";
     $("#radarPlay") && ($("#radarPlay").style.display="none");
@@ -640,9 +672,9 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC/Central Pacific Hurricane Center 7-day outlook for the central North Pacific."},
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_cpac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC/Central Pacific Hurricane Center 7-day outlook for the central North Pacific."},
   wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"JTWC Western Pacific tropical guidance."}
 };
 
@@ -721,7 +753,7 @@ function showTropical(key) {
     }
     imageFallback(image, product.head);
   };
-  image.src = `${product.img}?v=${Date.now()}`;
+  image.src = `${product.img}?trg=${Date.now()}`;
   image.style.display = "block";
   if (fallback) fallback.style.display = "none";
   $("#tropicalTitle").textContent = product.title;
