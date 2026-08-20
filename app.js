@@ -276,9 +276,9 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function fetchStaticAlertsFallback(){
-  const urls=["./alerts.json?trg="+Date.now(), "https://api.github.com/repos/OWNER/REPO/contents/alerts.json"];
+  const urls=["./alerts.json?trg="+Date.now()];
   for(const url of urls.slice(0,1)){
-    try{const r=await fetch(url,{cache:"no-store"}); if(!r.ok) continue; const d=await r.json(); if(Array.isArray(d?.features)) return {features:d.features,meta:{staticFallback:true,checkedAt:new Date().toISOString()}};}catch{}
+    try{const r=await fetch(url,{cache:"no-store"}); if(!r.ok) continue; const d=await r.json(); if(Array.isArray(d?.features) && d.updated) return {features:d.features,meta:{staticFallback:true,checkedAt:d.updated}};}catch{}
   }
   return null;
 }
@@ -295,7 +295,7 @@ async function nwsAlerts(point) {
   const gisUrl = (layer) => {
     const params = new URLSearchParams({
       where:"1=1", outFields:"*", returnGeometry:"false", f:"json",
-      resultRecordCount:"2000", _trg:String(Date.now())
+      resultRecordCount:"4000", orderByFields:"objectid ASC", _trg:String(Date.now())
     });
     return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?${params}`;
   };
@@ -323,7 +323,7 @@ async function nwsAlerts(point) {
       const a=f?.attributes || f?.properties || {};
       const phenom=String(a.phenom||a.PHENOM||"").toUpperCase();
       const sig=String(a.sig||a.SIG||"").toUpperCase();
-      const rawEvent=String(a.prod_type||a.PROD_TYPE||a.event||a.EVENT||"").trim();
+      const rawEvent=String(a.prod_type||a.PROD_TYPE||a.event||a.EVENT||a.hazard||a.HAZARD||"").trim();
       const event=rawEvent || hazardName(phenom,sig);
       const effective=arcDate(a.onset||a.ONSET||a.issuance||a.ISSUANCE||a.issue||a.ISSUE);
       const expires=arcDate(a.expiration||a.EXPIRATION||a.ends||a.ENDS||a.expire||a.EXPIRE);
@@ -339,10 +339,19 @@ async function nwsAlerts(point) {
     }).filter(isOngoingAlert);
   };
 
+  const gisMapUrl = (layer) => {
+    const params = new URLSearchParams({
+      where:"1=1", outFields:"*", returnGeometry:"false", f:"geojson",
+      resultRecordCount:"4000", orderByFields:"objectid ASC", _trg:String(Date.now())
+    });
+    return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/MapServer/${layer}/query?${params}`;
+  };
+
   const requests = [
-    {kind:"nws", promise:fetchJson(apiUrl,{timeout:15000,headers:{Accept:"application/geo+json,application/json"}})},
+    {kind:"nws", promise:fetchJson(apiUrl,{timeout:15000,headers:{Accept:"application/geo+json,application/json,text/plain,*/*"}})},
     {kind:"warnings", promise:fetchJson(gisUrl(0),{timeout:20000,headers:{Accept:"application/json"}})},
-    {kind:"watches", promise:fetchJson(gisUrl(1),{timeout:20000,headers:{Accept:"application/json"}})}
+    {kind:"watches", promise:fetchJson(gisUrl(1),{timeout:20000,headers:{Accept:"application/json"}})},
+    {kind:"warnings-map", promise:fetchJson(gisMapUrl(0),{timeout:20000,headers:{Accept:"application/geo+json,application/json"}})}
   ];
   const results=await Promise.allSettled(requests.map(x=>x.promise));
   const merged=new Map(); let successful=0; let returnedRows=0;
@@ -355,7 +364,7 @@ async function nwsAlerts(point) {
       items=normalizeNws(value.features);
     } else {
       if(!Array.isArray(value?.features)) return;
-      items=normalizeGis(value,index-1);
+      items=normalizeGis(value,index===3 ? 0 : index-1);
     }
     successful++; returnedRows += items.length;
     items.forEach(item=>{
@@ -397,8 +406,8 @@ function isOngoingAlert(item, now = Date.now()) {
   const msgType = String(p.messageType || "").toLowerCase();
   if (status && !["actual","active"].includes(status)) return false;
   if (msgType && msgType === "cancel") return false;
-  const effective = Date.parse(p.effective || p.onset || 0);
-  const expires = Date.parse(p.expires || p.ends || 0);
+  const effective = Date.parse(p.effective || p.onset || p.sent || 0);
+  const expires = Date.parse(p.expires || p.ends || "");
   if (Number.isFinite(effective) && effective > now) return false;
   if (Number.isFinite(expires) && expires <= now) return false;
   return true;
@@ -870,8 +879,8 @@ function zoomTropical(delta,cx=null,cy=null){const viewport=$("#tropicalViewer")
 function setupTropicalViewer(){const viewport=$("#tropicalViewer");if(!viewport)return;viewport.addEventListener("wheel",e=>{e.preventDefault();zoomTropical(e.deltaY<0?1.15:1/1.15,e.clientX,e.clientY);},{passive:false});viewport.addEventListener("pointerdown",e=>{if(tropicalViewer.scale<=1)return;tropicalViewer.dragging=true;tropicalViewer.sx=e.clientX;tropicalViewer.sy=e.clientY;tropicalViewer.ox=tropicalViewer.x;tropicalViewer.oy=tropicalViewer.y;viewport.setPointerCapture(e.pointerId);viewport.classList.add("dragging");});viewport.addEventListener("pointermove",e=>{if(!tropicalViewer.dragging)return;tropicalViewer.x=tropicalViewer.ox+e.clientX-tropicalViewer.sx;tropicalViewer.y=tropicalViewer.oy+e.clientY-tropicalViewer.sy;applyTropicalTransform();});const stop=()=>{tropicalViewer.dragging=false;viewport.classList.remove("dragging")};viewport.addEventListener("pointerup",stop);viewport.addEventListener("pointercancel",stop);$("#tropicalZoomIn")?.addEventListener("click",()=>zoomTropical(1.25));$("#tropicalZoomOut")?.addEventListener("click",()=>zoomTropical(1/1.25));$("#tropicalZoomReset")?.addEventListener("click",resetTropicalZoom);}
 function showTropical(key){const product=tropicalProducts[key]||tropicalProducts.atl;document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));const frame=$("#tropicalFrame"),image=$("#tropicalImage");resetTropicalZoom();
   if(frame) frame.style.display="none";
-  if(image){image.style.display="block"; image.alt=product.title; image.style.objectFit="contain"; image.style.width="100%"; image.style.height="100%"; image.style.maxWidth="100%"; image.style.maxHeight="100%";
-    if(product.image){image.src=`${product.image}?trg=${Date.now()}`;image.onload=()=>{$("#tropicalUpdated")&&($("#tropicalUpdated").textContent=`Live NHC graphic loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`)};image.onerror=()=>{imageFallback(image,`Current NHC graphic unavailable — open the official NHC outlook below`)};}
+  if(image){image.style.display="block"; image.alt=product.title; image.style.objectFit="contain"; image.style.width="auto"; image.style.height="auto"; image.style.maxWidth="92%"; image.style.maxHeight="92%";
+    if(product.image){image.src=`${product.image}?trg=${Date.now()}`;image.onload=()=>{resetTropicalZoom();$("#tropicalUpdated")&&($("#tropicalUpdated").textContent=`Live NHC graphic loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`)};image.onerror=()=>{imageFallback(image,`Current NHC graphic unavailable — open the official NHC outlook below`)};}
     else {image.style.display="none";if(frame){frame.src=`${product.frame}?trg=${Date.now()}`;frame.style.display="block";frame.onload=()=>{$("#tropicalUpdated")&&($("#tropicalUpdated").textContent=`Official JTWC page loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`)}}}
   }
   $("#tropicalTitle")&&($("#tropicalTitle").textContent=product.title);$("#tropicalHeadline")&&($("#tropicalHeadline").textContent=product.head);$("#tropicalText")&&($("#tropicalText").textContent=product.text);$("#tropicalSource")&&($("#tropicalSource").textContent=key==="wpac"?"JTWC":"NOAA / NHC");const arrow=document.querySelector(".tropical-story .arrow");if(arrow){arrow.href=product.official||product.frame;arrow.textContent=key==="wpac"?"OPEN JTWC →":"OPEN NHC →";}}

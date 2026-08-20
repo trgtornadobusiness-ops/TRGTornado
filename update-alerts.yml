@@ -12,15 +12,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Fetch active NWS alerts
         env:
-          UA: "TRGTornado-Weather-Site/37 (weather alerts)"
+          UA: "TRGTornado-Weather-Site/38 (https://github.com/)"
         run: |
-          curl -fsSL -A "$UA" "https://api.weather.gov/alerts/active?limit=500" -o alerts.json.tmp
+          curl --retry 4 --retry-delay 3 --connect-timeout 15 --max-time 60 -fsSL -A "$UA" -H "Accept: application/geo+json,application/json" "https://api.weather.gov/alerts/active?limit=500" -o alerts.json.tmp
           python - <<'PY'
           import json, pathlib, datetime
           p=pathlib.Path('alerts.json.tmp')
           d=json.loads(p.read_text())
           if not isinstance(d,dict) or not isinstance(d.get('features'),list): raise SystemExit('Invalid NWS alert payload')
           pathlib.Path('alerts.json').write_text(json.dumps({'features':d['features'],'updated':datetime.datetime.now(datetime.timezone.utc).isoformat()},separators=(',',':')))
+          print(f"Fetched {len(d['features'])} active alerts")
           PY
           rm -f alerts.json.tmp
       - name: Commit updated alerts

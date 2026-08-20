@@ -1,5 +1,7 @@
-# TRG Tornado Weather Site v37
+# TRG Tornado Weather Site v38
 
-Patch release: alerts now have a GitHub Actions server-side fallback that fetches the official NWS active-alert feed every 5 minutes with a proper User-Agent, avoiding browser-only request/CORS limitations. Tropical graphics are fitted inside the viewer without forced full-height scaling. Navigation places SOCIAL before LIVE, with LIVE last.
+Upload the website files to the repository root. The `.github/workflows/update-alerts.yml` file is required for automatic NWS alert updates. If your GitHub upload method does not show or upload hidden `.github` folders, create `.github/workflows` in GitHub and upload `update-alerts.yml` there. GitHub only discovers Actions workflow YAML files from `.github/workflows`.
 
-After uploading, enable GitHub Actions if prompted and run **Update NWS Alerts** once manually. The scheduled job then refreshes alerts every 5 minutes.
+After the first upload, open **Actions → Update NWS Alerts → Run workflow** once. The workflow then refreshes `alerts.json` every 5 minutes. GitHub documents that workflows are defined in `.github/workflows`.
+
+Site version: 38
