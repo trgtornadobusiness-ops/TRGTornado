@@ -487,7 +487,7 @@ function initMap() {
 }
 
 const NOAA_RADAR_WMS = "https://mapservices.weather.noaa.gov/eventdriven/services/radar/radar_base_reflectivity_time/ImageServer/WMSServer";
-const RADAR_FRAME_COUNT = 24;
+const RADAR_FRAME_COUNT = 48;
 const RADAR_STEP_MS = 5 * 60 * 1000;
 
 function floorToFiveMinutes(date = new Date()) {
@@ -529,7 +529,11 @@ function renderRadarFrame() {
     attribution:'Radar: <a href="https://www.weather.gov/" target="_blank" rel="noopener">NOAA/NWS</a> • MRMS'
   }).addTo(state.radarLayer);
 
-  $("#radarSlider").value = state.radarIndex;
+  const slider = $("#radarSlider");
+  if (slider) {
+    slider.max = String(state.radarFrames.length - 1);
+    slider.value = String(state.radarIndex);
+  }
   $("#radarFrameTime").textContent = state.radarIndex === state.radarFrames.length - 1 ? "Latest" : radarTimeLabel(frame);
   $("#radarOldest").textContent = radarTimeLabel(state.radarFrames[0]);
 }
@@ -775,4 +779,18 @@ async function boot() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", boot);
+function ensureLeaflet(){
+  if (window.L) return Promise.resolve();
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.head.appendChild(script);
+  });
+}
+
+window.addEventListener("DOMContentLoaded", async () => {
+  await ensureLeaflet();
+  boot();
+});

@@ -28,3 +28,8 @@ Upload the contents of this folder to the repository root, replacing the old `in
 - Tropical outlook graphics now support scroll-wheel zoom and drag-to-pan.
 - Added Atlantic, Eastern Pacific, Central Pacific, and JTWC Western Pacific tabs.
 - Tropical graphics use cache-busting timestamps so the latest official image is requested.
+
+
+## IMPORTANT — GitHub Pages upload
+
+Upload the files in this folder to the **root** of your GitHub repository. Do not upload the ZIP itself and do not leave them inside a `TRG-Tornado-Weather-Site-v13/` subfolder. The root of the repository should contain `index.html`, `app.js`, `styles.css`, and the page HTML files directly.
