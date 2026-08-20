@@ -226,12 +226,39 @@ async function reverseGeocode(latitude, longitude) {
 }
 
 async function nwsAlerts(point) {
-  if (!point?.latitude || !Number.isFinite(Number(point.longitude))) return {features: []};
-  const url = `https://api.weather.gov/alerts/active?point=${encodeURIComponent(`${point.latitude},${point.longitude}`)}&status=actual&_=${Date.now()}`;
-  return fetchJson(url, {
-    headers: {Accept:"application/geo+json"},
-    cache:"no-store"
-  });
+  // National feed: use NOAA/NWS's public WWA GIS service first. It is
+  // specifically published for current watches, warnings and advisories and
+  // is a better browser-side fallback than relying on one API host.
+  if (!point) {
+    const base = "https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/1/query";
+    try {
+      const params = new URLSearchParams({
+        where:"1=1", outFields:"*", returnGeometry:"false",
+        orderByFields:"expiration ASC", resultRecordCount:"4000", f:"json"
+      });
+      const data = await fetchJson(`${base}?${params.toString()}`, {timeout:15000});
+      const features=(data.features||[]).map(f=>{
+        const a=f.attributes||{};
+        return {type:"Feature", id:a.cap_id || String(a.objectid||""), properties:{
+          event:a.prod_type||a.event||"Weather Alert", headline:a.event||a.prod_type||"Weather Alert",
+          areaDesc:a.areaDesc || (a.wfo ? `NWS ${a.wfo}` : "Active NWS area"),
+          web:a.url||"https://www.weather.gov/alerts", expires:a.expiration||a.ends||"",
+          effective:a.onset||a.issuance||"", sent:a.issuance||"", severity:a.severity||"Unknown",
+          urgency:a.urgency||"Unknown", certainty:a.certainty||"Unknown", status:"actual",
+          messageType:a.msg_type||"Alert"
+        }};
+      }).filter(isOngoingAlert);
+      if (features.length || data.features) return {features};
+    } catch (gisError) {
+      console.warn("NOAA WWA GIS alert feed failed; trying NWS API", gisError);
+    }
+  }
+
+  const url = point
+    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}`
+    : "https://api.weather.gov/alerts/active?status=actual";
+  const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json"}});
+  return {features:(data.features || []).filter(isOngoingAlert)};
 }
 
 function isOngoingAlert(item, now = Date.now()) {
@@ -256,7 +283,8 @@ const alertState = {
   local: [],
   filter: "all",
   lastUpdated: null,
-  tickerTimer: null
+  tickerTimer: null,
+  tickerSignature: ""
 };
 
 const ALERT_EVENT_PRIORITY = [
@@ -312,25 +340,54 @@ function alertShortLabel(p) {
   return `${event} — ${area}`;
 }
 
+function alertRemaining(expires) {
+  const ms=Date.parse(expires||"")-Date.now();
+  if (!Number.isFinite(ms)) return "";
+  if (ms<=0) return "EXPIRED";
+  const minutes=Math.floor(ms/60000);
+  if (minutes<60) return `${Math.max(1,minutes)} MIN LEFT`;
+  return `${Math.floor(minutes/60)}H ${String(minutes%60).padStart(2,"0")}M LEFT`;
+}
+function alertBadgeClass(event="") {
+  const e=event.toLowerCase();
+  if(e.includes("tornado emergency")||e.includes("flash flood emergency")) return "emergency";
+  if(e.includes("tornado warning")) return "tornado";
+  if(e.includes("flash flood warning")) return "flash";
+  if(e.includes("severe thunderstorm warning")||e.includes("extreme wind warning")) return "severe";
+  if(e.includes("warning")) return "warning";
+  if(e.includes("watch")) return "watch";
+  return "advisory";
+}
+function alertAreaLabel(p) {
+  const areas=(p.areaDesc||"").split(";").map(x=>x.trim()).filter(Boolean);
+  return areas.length?areas.slice(0,3).join(" • "):"ACTIVE AREA";
+}
+function tickerSignature(items) {
+  return items.map(x=>`${x.id}|${x.properties?.event}|${x.properties?.expires}`).join("||");
+}
+
 function renderTicker() {
-  const track = $("#alertTickerTrack");
-  if (!track) return;
-  const top = sortAlerts(alertState.national).slice(0, 10);
-  if (!top.length) {
-    track.innerHTML = '<span class="ticker-item"><b>NO ACTIVE NWS ALERTS</b> — Conditions are currently clear across the active NWS feed.</span>';
-    return;
+  const track=$("#alertTickerTrack"); if(!track) return;
+  const top=sortAlerts(alertState.national).slice(0,12);
+  if(!top.length){
+    track.innerHTML='<span class="ticker-item ticker-clear"><span class="ticker-badge">ALL CLEAR</span> No active NWS warnings or watches in the current feed.</span>';
+    track.style.removeProperty("--ticker-distance"); return;
   }
-  const items = top.map(item => {
-    const p = item.properties || {};
-    const cls = alertType(p.event);
-    return `<button class="ticker-item ${cls}" type="button" data-alert-id="${escapeHtml(item.id || "")}"><span class="ticker-badge">${escapeHtml(p.event || "ALERT")}</span>${escapeHtml(alertShortLabel(p))}</button>`;
-  }).join("");
-  track.innerHTML = items + items;
-  track.querySelectorAll(".ticker-item[data-alert-id]").forEach(btn => btn.addEventListener("click", () => {
-    document.getElementById("alerts")?.scrollIntoView({behavior:"smooth", block:"start"});
+  const signature=tickerSignature(top);
+  const changed=signature!==alertState.tickerSignature;
+  alertState.tickerSignature=signature;
+  const build=(items)=>items.map((item,index)=>{
+    const p=item.properties||{}, type=alertBadgeClass(p.event), remaining=alertRemaining(p.expires);
+    const fresh=changed&&index===0?'<span class="ticker-new">NEW</span>':"";
+    return `<button class="ticker-item ${type}" type="button" data-alert-id="${escapeHtml(item.id||"")}">${fresh}<span class="ticker-badge">${escapeHtml(p.event||"WEATHER ALERT")}</span><span class="ticker-area">${escapeHtml(alertAreaLabel(p))}</span>${remaining?`<span class="ticker-time">${escapeHtml(remaining)}</span>`:""}</button>`;
+  }).join('<span class="ticker-separator">•</span>');
+  track.innerHTML=build(top)+'<span class="ticker-separator ticker-loop-gap">•</span>'+build(top);
+  requestAnimationFrame(()=>track.style.setProperty("--ticker-distance",`${Math.max(track.scrollWidth/2,900)}px`));
+  track.querySelectorAll(".ticker-item[data-alert-id]").forEach(btn=>btn.addEventListener("click",()=>{
+    const target=alertState.national.find(x=>String(x.id)===String(btn.dataset.alertId));
+    const url=target?.properties?.web;
+    if(url) window.open(url,"_blank","noopener"); else window.location.href="alerts.html";
   }));
-  const width = track.scrollWidth / 2;
-  track.style.setProperty("--ticker-distance", `${Math.max(width, 800)}px`);
 }
 
 function renderAlertCards() {
@@ -372,10 +429,7 @@ function renderAlerts(data) {
 async function loadNationalAlerts() {
   const started = Date.now();
   try {
-    const data = await fetchJson(`https://api.weather.gov/alerts/active?status=actual&_=${Date.now()}`, {
-      headers:{Accept:"application/geo+json"},
-      cache:"no-store"
-    });
+    const data = await nwsAlerts(null);
     renderAlerts(data);
     alertState.lastUpdated = new Date();
     alertState.lastSuccessMs = Date.now();
@@ -634,10 +688,10 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_epac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC 7-day outlook for the central North Pacific."},
-  wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"JTWC Western Pacific tropical guidance. If the formation graphic is unavailable, the official JTWC Western Pacific analysis is shown instead."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png", fallback:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC/Central Pacific Hurricane Center 7-day outlook for the central North Pacific."},
+  wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"JTWC Western Pacific tropical guidance."}
 };
 
 const tropicalViewer = { scale:1, x:0, y:0, dragging:false, sx:0, sy:0, ox:0, oy:0 };

@@ -33,3 +33,11 @@ Upload the contents of this folder to the repository root, replacing the old `in
 ## IMPORTANT — GitHub Pages upload
 
 Upload the files in this folder to the **root** of your GitHub repository. Do not upload the ZIP itself and do not leave them inside a `TRG-Tornado-Weather-Site-v13/` subfolder. The root of the repository should contain `index.html`, `app.js`, `styles.css`, and the page HTML files directly.
+
+
+## v15 source patch
+Active alerts now use the official NOAA/NWS Watch, Warning and Advisory ArcGIS service for browser compatibility on GitHub Pages. Tropical outlooks use the current NHC production archive host with an official NHC archive fallback and cache-busting.
+
+
+## v16
+Broadcast-style live NWS alert ticker with priority ordering, affected areas, time remaining, NEW indicator, continuous scrolling, and one-minute refresh. Uses the official NWS Alerts API first with NOAA/NWS ArcGIS WWA fallback.
