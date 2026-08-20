@@ -76,3 +76,26 @@ footer{border-top:1px solid #ff303044;padding:30px 5vw;margin-top:50px;display:f
 .alert-ticker{backdrop-filter:blur(8px)}
 .ticker-window{mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%)}
 @media(max-width:700px){.alerts-updated{display:none}.alert-summary-note{font-size:10px}}
+
+/* v11: true multi-page layout */
+nav a.active{color:#fff;border-bottom:2px solid #ff3030;padding-bottom:5px}
+.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-top:10px}
+.home-card{display:block;text-decoration:none;color:#fff;border:1px solid #ffffff14;background:#0a0c12;border-radius:12px;padding:24px;min-height:170px;transition:transform .15s,border-color .15s,background .15s}
+.home-card:hover{transform:translateY(-3px);border-color:#ff303055;background:#0e1017}
+.home-card h2{font-size:26px;margin:10px 0 8px;letter-spacing:-1px}.home-card p{color:#aeb4c4;line-height:1.5;font-size:12px;min-height:38px}.home-card>b{font-size:10px;color:#ff5c5c;letter-spacing:.7px}
+@media(max-width:900px){.home-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.home-grid{grid-template-columns:1fr}}
+
+/* v12: zoomable SPC + tropical graphics */
+.spc-map,.spc-product-map{cursor:grab}
+.spc-map:active,.spc-product-map:active{cursor:grabbing}
+.zoom-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid #ff303044;background:#080a10;color:#777f91;font-size:9px}
+.zoom-toolbar div{display:flex;gap:5px}
+.zoom-toolbar button{background:#10131b;color:#fff;border:1px solid #ff303044;border-radius:5px;padding:5px 8px;font-size:9px;font-weight:900;cursor:pointer}
+.zoom-toolbar button:hover{border-color:#ff3030;background:#180b0b}
+.tropical-viewer{height:500px;overflow:hidden;background:#080a10;display:grid;place-items:center;cursor:zoom-in;touch-action:none;position:relative}
+.tropical-viewer.dragging{cursor:grabbing}
+.tropical-viewer img{width:100%;height:100%;object-fit:contain;transform-origin:0 0;user-select:none;-webkit-user-drag:none;will-change:transform;transition:transform .08s linear}
+.tropical-viewer.dragging img{transition:none}
+@media(max-width:900px){.tropical-viewer{height:440px}}
+@media(max-width:560px){.tropical-viewer{height:360px}.zoom-toolbar span{max-width:190px}}

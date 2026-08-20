@@ -1,35 +1,30 @@
-# TRG Tornado Weather Site — v10
+# TRG Tornado Weather Site — v12
 
-Static GitHub Pages weather dashboard for TRG Tornado.
+Multi-page GitHub Pages weather dashboard for TRG Tornado.
 
-## Included
-- NWS current conditions, 7-day forecast and 24-hour hourly forecast for U.S. locations
-- U.S. Census Geocoder for city/state/ZIP location search
-- National NWS active alert ticker that scrolls across the site
-- Weather Alerts center with automatic impact/urgency/certainty prioritization and filters
-- Ongoing-alert filtering so expired, future and cancelled alerts are not displayed
-- Automatic NWS alert refresh every 60 seconds
-- Old alert data is cleared after 2 minutes without a successful NWS refresh
-- Local alert count for the selected location, refreshed with the national feed
-- NOAA/NWS MRMS radar animation
-- Live SPC severe-weather outlook layers
-- NHC Atlantic / East Pacific / Central Pacific outlooks
-- YouTube Live embed support
-- Responsive mobile layout
+## Pages
+- `index.html` — home hub
+- `forecast.html` — current conditions, 7-day and hourly forecast
+- `alerts.html` — live NWS active alerts, prioritized and filtered
+- `severe.html` — live SPC outlook maps
+- `tropical.html` — NHC Atlantic/East Pacific/Central Pacific outlooks
+- `maps.html` — NOAA MRMS radar and national products
+- `live.html` — YouTube live coverage
+
+## Live data
+- NWS API for forecasts and alerts
+- NOAA/NWS MRMS radar WMS for radar imagery
+- NOAA/SPC ArcGIS services for severe-weather outlooks
+- NHC official graphics for tropical outlooks
+
+The NWS API is open data and free to use. NOAA radar data is public government data. Third-party map libraries/services may have their own attribution/usage requirements.
 
 ## GitHub Pages
-Upload/replace `index.html`, `app.js`, `styles.css`, and `README.md` in the repository root and commit to `main`. GitHub Pages should redeploy automatically.
+Upload the contents of this folder to the repository root, replacing the old `index.html`, `app.js`, `styles.css`, and adding the new page files. Keep the site source set to `main` / root.
 
-## Commercial-use design
-This build avoids Open-Meteo and removes the OpenStreetMap Nominatim fallback. Forecasts and alerts use official U.S. government NWS/NOAA services, and U.S. location lookup uses the U.S. Census Geocoder. Government weather information is generally public domain, but TRG Tornado should retain source/attribution notices and comply with each service's current usage policies.
 
-The interactive base map uses U.S. Geological Survey National Map tiles. The site also uses Leaflet from its public CDN. Review the current terms of any third-party service before adding new providers or paid/commercial feeds.
-
-## Alerts
-The alert center requests the NWS active-alert feed, filters to alerts that are actually ongoing at the time of display, and sorts them by event impact plus NWS severity, urgency and certainty. It refreshes every 60 seconds. If the NWS feed cannot be refreshed for more than two minutes, previously displayed alerts are removed rather than left on the site as potentially stale information.
-
-## Radar
-The live radar uses NOAA/NWS MRMS time-enabled base-reflectivity WMS data.
-
-## YouTube Live
-Open `app.js` and set `youtubeVideoId` to the ID from your YouTube URL.
+## v12 updates
+- Scroll-wheel zoom and pan enabled on SPC severe-weather maps.
+- Tropical outlook graphics now support scroll-wheel zoom and drag-to-pan.
+- Added Atlantic, Eastern Pacific, Central Pacific, and JTWC Western Pacific tabs.
+- Tropical graphics use cache-busting timestamps so the latest official image is requested.

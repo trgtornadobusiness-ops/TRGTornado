@@ -34,9 +34,18 @@ function imageFallback(img, label="Graphic unavailable") {
 }
 
 async function fetchJson(url, options={}) {
-  const response = await fetch(url, { cache:"no-store", ...options });
-  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
-  return response.json();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), options.timeout || 20000);
+  try {
+    const response = await fetch(url, { cache:"no-store", ...options, signal: controller.signal });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    return response.json();
+  } catch (error) {
+    if (error?.name === "AbortError") throw new Error("Request timed out");
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function censusGeocode(query) {
@@ -363,7 +372,7 @@ function renderAlerts(data) {
 async function loadNationalAlerts() {
   const started = Date.now();
   try {
-    const data = await fetchJson(`https://api.weather.gov/alerts/active?status=actual&message_type=alert&_=${Date.now()}`, {
+    const data = await fetchJson(`https://api.weather.gov/alerts/active?status=actual&_=${Date.now()}`, {
       headers:{Accept:"application/geo+json"},
       cache:"no-store"
     });
@@ -511,7 +520,7 @@ function renderRadarFrame() {
     format: "image/png",
     transparent: true,
     version: "1.3.0",
-    time,
+    time: frame.getTime(),
     opacity: 0.88,
     tileSize: 512,
     updateWhenIdle: false,
@@ -538,7 +547,7 @@ async function loadRadar() {
       if (!state.radarPlaying) return;
       state.radarIndex = (state.radarIndex + 1) % state.radarFrames.length;
       renderRadarFrame();
-    }, 1000);
+    }, 750);
     status.innerHTML = `NOAA MRMS radar • ${state.radarFrames.length} frames • updates about every 5 minutes • <a href="https://radar.weather.gov/" target="_blank" rel="noopener">Official NWS Radar</a>`;
     $("#radarPlay").textContent = "PAUSE";
   } catch (error) {
@@ -588,7 +597,7 @@ async function loadSpcLayer(key, mapId, statusId, label) {
   if (!mapEl || !window.L) return;
   let map = SPC.maps[mapId];
   if (!map) {
-    map = L.map(mapEl, { zoomControl:false, attributionControl:false, dragging:true, scrollWheelZoom:false }).setView([38,-96], 4);
+    map = L.map(mapEl, { zoomControl:false, attributionControl:false, dragging:true, scrollWheelZoom:true, doubleClickZoom:true, touchZoom:true }).setView([38,-96], 4);
     L.tileLayer("https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", {
       maxZoom: 8, attribution: "Map services and data available from U.S. Geological Survey, National Geospatial Program."
     }).addTo(map);
@@ -621,26 +630,100 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Monitor the Atlantic basin for tropical waves, areas of development and active tropical cyclones."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_epac_7d0.png", head:"Eastern Pacific Outlook", text:"Monitor the eastern Pacific for tropical development and active systems."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png", head:"Central Pacific Outlook", text:"Monitor the central Pacific for tropical development and active systems."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Official NHC 7-day outlook for the Atlantic basin."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_epac_7d0.png", head:"Eastern Pacific Outlook", text:"Official NHC 7-day outlook for the eastern North Pacific."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png", head:"Central Pacific Outlook", text:"Official NHC 7-day outlook for the central North Pacific."},
+  wpac:{title:"JTWC WESTERN PACIFIC OUTLOOK", img:"https://www.metoc.navy.mil/jtwc/products/wp-prob7day.gif", fallback:"https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg", head:"Western Pacific Outlook", text:"JTWC Western Pacific tropical guidance. If the formation graphic is unavailable, the official JTWC Western Pacific analysis is shown instead."}
 };
 
+const tropicalViewer = { scale:1, x:0, y:0, dragging:false, sx:0, sy:0, ox:0, oy:0 };
+
+function applyTropicalTransform() {
+  const image = $("#tropicalImage");
+  if (!image) return;
+  image.style.transform = `translate(${tropicalViewer.x}px, ${tropicalViewer.y}px) scale(${tropicalViewer.scale})`;
+}
+
+function resetTropicalZoom() {
+  tropicalViewer.scale = 1; tropicalViewer.x = 0; tropicalViewer.y = 0;
+  applyTropicalTransform();
+}
+
+function zoomTropical(delta, cx=null, cy=null) {
+  const viewport = $("#tropicalViewer");
+  const image = $("#tropicalImage");
+  if (!viewport || !image) return;
+  const old = tropicalViewer.scale;
+  const next = Math.max(1, Math.min(5, old * delta));
+  if (next === old) return;
+  if (cx != null && cy != null) {
+    const rect = viewport.getBoundingClientRect();
+    const px = cx - rect.left, py = cy - rect.top;
+    tropicalViewer.x = px - (px - tropicalViewer.x) * (next / old);
+    tropicalViewer.y = py - (py - tropicalViewer.y) * (next / old);
+  }
+  tropicalViewer.scale = next;
+  applyTropicalTransform();
+}
+
+function setupTropicalViewer() {
+  const viewport = $("#tropicalViewer");
+  if (!viewport) return;
+  viewport.addEventListener("wheel", e => {
+    e.preventDefault();
+    zoomTropical(e.deltaY < 0 ? 1.15 : 1/1.15, e.clientX, e.clientY);
+  }, {passive:false});
+  viewport.addEventListener("pointerdown", e => {
+    if (tropicalViewer.scale <= 1) return;
+    tropicalViewer.dragging = true;
+    tropicalViewer.sx = e.clientX; tropicalViewer.sy = e.clientY;
+    tropicalViewer.ox = tropicalViewer.x; tropicalViewer.oy = tropicalViewer.y;
+    viewport.setPointerCapture(e.pointerId);
+    viewport.classList.add("dragging");
+  });
+  viewport.addEventListener("pointermove", e => {
+    if (!tropicalViewer.dragging) return;
+    tropicalViewer.x = tropicalViewer.ox + e.clientX - tropicalViewer.sx;
+    tropicalViewer.y = tropicalViewer.oy + e.clientY - tropicalViewer.sy;
+    applyTropicalTransform();
+  });
+  const stop = () => { tropicalViewer.dragging=false; viewport.classList.remove("dragging"); };
+  viewport.addEventListener("pointerup", stop);
+  viewport.addEventListener("pointercancel", stop);
+  $("#tropicalZoomIn")?.addEventListener("click", () => zoomTropical(1.25));
+  $("#tropicalZoomOut")?.addEventListener("click", () => zoomTropical(1/1.25));
+  $("#tropicalZoomReset")?.addEventListener("click", resetTropicalZoom);
+}
+
 function showTropical(key) {
-  const product = tropicalProducts[key];
+  const product = tropicalProducts[key] || tropicalProducts.atl;
   document.querySelectorAll(".tab").forEach(btn => btn.classList.toggle("active", btn.dataset.tropical === key));
   const image = $("#tropicalImage");
+  if (!image) return;
   const fallback = image.parentElement.querySelector(".image-fallback");
-  image.src = product.img;
+  image.dataset.fallback = product.fallback || "";
+  image.dataset.key = key;
+  image.onload = () => { image.style.display = "block"; if (fallback) fallback.style.display = "none"; resetTropicalZoom(); };
+  image.onerror = () => {
+    if (image.dataset.fallback && image.src !== image.dataset.fallback) {
+      image.src = image.dataset.fallback;
+      return;
+    }
+    imageFallback(image, product.head);
+  };
+  image.src = `${product.img}?v=${Date.now()}`;
   image.style.display = "block";
   if (fallback) fallback.style.display = "none";
   $("#tropicalTitle").textContent = product.title;
   $("#tropicalHeadline").textContent = product.head;
   $("#tropicalText").textContent = product.text;
+  $("#tropicalSource").textContent = key === "wpac" ? "JTWC" : "NOAA / NHC";
 }
 
 function setupTropical() {
+  if (!$("#tropicalImage")) return;
   document.querySelectorAll(".tab").forEach(btn => btn.addEventListener("click", () => showTropical(btn.dataset.tropical)));
+  setupTropicalViewer();
   showTropical("atl");
 }
 
@@ -655,15 +738,14 @@ function setupVideo() {
 }
 
 function setupEvents() {
-  $("#go").addEventListener("click", loadLocationFromSearch);
-  $("#location").addEventListener("keydown", e => { if (e.key === "Enter") loadLocationFromSearch(); });
-  $("#useLocation").addEventListener("click", useBrowserLocation);
-  $("#radarRefresh").addEventListener("click", loadRadar);
-  $("#radarPlay").addEventListener("click", toggleRadarPlayback);
-  $("#radarSlider").addEventListener("input", e => setRadarFrame(e.target.value));
-  $("#radarLocate").addEventListener("click", () => state.point && centerRadar(state.point.latitude, state.point.longitude));
+  $("#go")?.addEventListener("click", loadLocationFromSearch);
+  $("#location")?.addEventListener("keydown", e => { if (e.key === "Enter") loadLocationFromSearch(); });
+  $("#useLocation")?.addEventListener("click", useBrowserLocation);
+  $("#radarRefresh")?.addEventListener("click", loadRadar);
+  $("#radarPlay")?.addEventListener("click", toggleRadarPlayback);
+  $("#radarSlider")?.addEventListener("input", e => setRadarFrame(e.target.value));
+  $("#radarLocate")?.addEventListener("click", () => state.point && centerRadar(state.point.latitude, state.point.longitude));
   $("#alertsRefresh")?.addEventListener("click", loadNationalAlerts);
-  $("#tickerAlerts")?.addEventListener("click", () => document.getElementById("alerts")?.scrollIntoView({behavior:"smooth", block:"start"}));
   document.querySelectorAll(".alert-filter").forEach(btn => btn.addEventListener("click", () => {
     document.querySelectorAll(".alert-filter").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
@@ -676,12 +758,21 @@ async function boot() {
   setupEvents();
   setupTropical();
   setupVideo();
-  initMap();
-  loadSPCMaps();
+
+  // Every page gets the live alert ticker, but only pages that contain a
+  // specific product initialize that product. This keeps the multi-page site
+  // fast and prevents missing-element JavaScript errors.
   loadNationalAlerts();
   setInterval(loadNationalAlerts, 60000);
-  $("#location").value = CONFIG.defaultLocation;
-  await loadLocationFromSearch();
+
+  if ($("#radarMap")) initMap();
+  if ($("#spcCatMap")) loadSPCMaps();
+
+  // Home + Forecast pages have the location controls/current conditions.
+  if ($("#location")) {
+    $("#location").value = CONFIG.defaultLocation;
+    await loadLocationFromSearch();
+  }
 }
 
 window.addEventListener("DOMContentLoaded", boot);
