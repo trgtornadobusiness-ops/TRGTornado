@@ -131,35 +131,35 @@ function textToIcon(text="") {
 }
 
 async function nwsForecast(point) {
-  const points = await fetchJson(`https://api.weather.gov/points/${point.latitude},${point.longitude}`, {headers:{Accept:"application/geo+json"}});
-  const props = points.properties || {};
-  const gridId = props.gridId, gridX = props.gridX, gridY = props.gridY;
-  if (!gridId || gridX == null || gridY == null) throw new Error("NWS could not find a forecast grid for this location.");
-  const base = `https://api.weather.gov/gridpoints/${encodeURIComponent(gridId)}/${gridX},${gridY}`;
-  const forecastUrl = `${base}/forecast`;
-  const hourlyUrl = `${base}/forecast/hourly`;
-  const obsStationsUrl = props.observationStations;
+  const headers = {Accept:"application/geo+json"};
+  const points = await fetchJson(`https://api.weather.gov/points/${point.latitude},${point.longitude}`, {headers});
+  const props = points?.properties || {};
+  const forecastUrl = props.forecast;
+  const hourlyUrl = props.forecastHourly;
+  if (!forecastUrl && !hourlyUrl) throw new Error("NWS could not find a forecast for this location.");
 
+  const stationListUrl = props.observationStations;
   const [forecastResult, hourlyResult, stationsResult] = await Promise.allSettled([
-    fetchJson(forecastUrl, {headers:{Accept:"application/geo+json"}}),
-    fetchJson(hourlyUrl, {headers:{Accept:"application/geo+json"}}),
-    obsStationsUrl ? fetchJson(`${obsStationsUrl}?limit=1`, {headers:{Accept:"application/geo+json"}}) : Promise.resolve(null)
+    forecastUrl ? fetchJson(forecastUrl, {headers, timeout:20000}) : Promise.reject(new Error("No daily forecast URL")),
+    hourlyUrl ? fetchJson(hourlyUrl, {headers, timeout:20000}) : Promise.reject(new Error("No hourly forecast URL")),
+    stationListUrl ? fetchJson(`${stationListUrl}?limit=1`, {headers, timeout:12000}) : Promise.resolve(null)
   ]);
+
   if (forecastResult.status !== "fulfilled" && hourlyResult.status !== "fulfilled") {
     throw new Error("NWS forecast services are temporarily unavailable.");
   }
-  const forecast = forecastResult.status === "fulfilled" ? forecastResult.value : {features:[]};
-  const hourly = hourlyResult.status === "fulfilled" ? hourlyResult.value : {features:[]};
+  const forecast = forecastResult.status === "fulfilled" ? forecastResult.value : {properties:{periods:[]}};
+  const hourly = hourlyResult.status === "fulfilled" ? hourlyResult.value : {properties:{periods:[]}};
 
   let observation = null;
   const stationUrl = stationsResult.status === "fulfilled" ? stationsResult.value?.features?.[0]?.id : null;
-  if (stationUrl) observation = await fetchJson(`${stationUrl}/observations/latest`, {headers:{Accept:"application/geo+json"}}).catch(() => null);
+  if (stationUrl) observation = await fetchJson(`${stationUrl}/observations/latest`, {headers, timeout:12000}).catch(() => null);
 
   const op = observation?.properties || {};
-  const hp = hourly.features?.map(f => f.properties || {}) || [];
+  const hp = hourly?.properties?.periods || [];
   const firstHour = hp[0] || {};
-  const currentTemp = op.temperature?.value != null ? cToF(op.temperature.value) : (firstHour.temperature?.value ?? null);
-  const apparent = op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.temperature?.value ?? null);
+  const currentTemp = op.temperature?.value != null ? cToF(op.temperature.value) : (firstHour.temperature ?? null);
+  const apparent = op.heatIndex?.value != null ? cToF(op.heatIndex.value) : op.windChill?.value != null ? cToF(op.windChill.value) : (firstHour.temperature ?? null);
   const current = {
     temperature_2m: currentTemp,
     apparent_temperature: apparent,
@@ -172,7 +172,7 @@ async function nwsForecast(point) {
     visibility: mToMi(op.visibility?.value)
   };
 
-  const periods = forecast.features?.map(f => f.properties || {}) || [];
+  const periods = forecast?.properties?.periods || [];
   const groups = new Map();
   periods.forEach(period => {
     const date = (period.startTime || "").slice(0,10);
@@ -180,31 +180,33 @@ async function nwsForecast(point) {
     if (!groups.has(date)) groups.set(date, []);
     groups.get(date).push(period);
   });
-  const daily = {time:[], weather_code:[], temperature_2m_max:[], temperature_2m_min:[], precipitation_probability_max:[], wind_speed_10m_max:[], text:[]};
+  const daily = {time:[], temperature_2m_max:[], temperature_2m_min:[], precipitation_probability_max:[], wind_speed_10m_max:[], text:[]};
   [...groups.entries()].slice(0,7).forEach(([date, ps]) => {
     const day = ps.find(x => x.isDaytime) || ps[0];
-    const temps = ps.map(x => Number(x.temperature)).filter(Number.isFinite);
+    const daytime = ps.filter(x => x.isDaytime);
+    const nighttime = ps.filter(x => !x.isDaytime);
+    const maxTemps = daytime.map(x => Number(x.temperature)).filter(Number.isFinite);
+    const minTemps = nighttime.map(x => Number(x.temperature)).filter(Number.isFinite);
+    const allTemps = ps.map(x => Number(x.temperature)).filter(Number.isFinite);
     const pops = ps.map(x => Number(x.probabilityOfPrecipitation?.value)).filter(Number.isFinite);
     const winds = ps.map(x => parseWindMph(x.windSpeed)).filter(Number.isFinite);
     daily.time.push(date);
-    daily.weather_code.push(0);
-    daily.temperature_2m_max.push(temps.length ? Math.max(...temps) : null);
-    daily.temperature_2m_min.push(temps.length ? Math.min(...temps) : null);
+    daily.temperature_2m_max.push(maxTemps.length ? Math.max(...maxTemps) : allTemps.length ? Math.max(...allTemps) : null);
+    daily.temperature_2m_min.push(minTemps.length ? Math.min(...minTemps) : allTemps.length ? Math.min(...allTemps) : null);
     daily.precipitation_probability_max.push(pops.length ? Math.max(...pops) : 0);
     daily.wind_speed_10m_max.push(winds.length ? Math.max(...winds) : 0);
     daily.text.push(day?.shortForecast || day?.detailedForecast || "Forecast");
   });
 
-  const hourlyOut = {time:[], weather_code:[], temperature_2m:[], precipitation_probability:[], wind_speed_10m:[], text:[]};
+  const hourlyOut = {time:[], temperature_2m:[], precipitation_probability:[], wind_speed_10m:[], text:[]};
   hp.slice(0,48).forEach(h => {
     hourlyOut.time.push(h.startTime);
-    hourlyOut.weather_code.push(0);
-    hourlyOut.temperature_2m.push(Number.isFinite(Number(h.temperature?.value)) ? Number(h.temperature.value) : null);
+    hourlyOut.temperature_2m.push(Number.isFinite(Number(h.temperature)) ? Number(h.temperature) : null);
     hourlyOut.precipitation_probability.push(h.probabilityOfPrecipitation?.value ?? 0);
     hourlyOut.wind_speed_10m.push(parseWindMph(h.windSpeed) ?? 0);
     hourlyOut.text.push(h.shortForecast || "Forecast");
   });
-  return {current, daily, hourly:hourlyOut, office:props.cwa || gridId || "NWS", point, forecastAvailable:periods.length>0, hourlyAvailable:hp.length>0};
+  return {current, daily, hourly:hourlyOut, office:props.cwa || props.gridId || "NWS", point, forecastAvailable:periods.length>0, hourlyAvailable:hp.length>0};
 }
 
 function windDir(degrees) {
@@ -270,16 +272,16 @@ async function nwsAlerts(point) {
   // NWS /alerts/active is the primary live alert source. NWS documents this
   // endpoint specifically for currently active/ongoing alerts. We also query
   // the official NOAA WWA GIS layer as a secondary source and merge results.
-  const apiUrl = point
-    ? `https://api.weather.gov/alerts/active?point=${encodeURIComponent(point.latitude)},${encodeURIComponent(point.longitude)}&status=actual&message_type=alert,update&_trg=${Date.now()}`
-    : `https://api.weather.gov/alerts/active?status=actual&message_type=alert,update&_trg=${Date.now()}`;
+  const apiParams = new URLSearchParams({limit:"5000", _trg:String(Date.now())});
+  if (point) apiParams.set("point", `${point.latitude},${point.longitude}`);
+  const apiUrl = `https://api.weather.gov/alerts/active?${apiParams.toString()}`;
 
   const gisUrl = (layer) => {
     const params = new URLSearchParams({
       where: "1=1",
       outFields: "*",
       returnGeometry: "false", f: "json", resultRecordCount: "4000",
-      orderByFields: "expiration ASC", _trg: String(Date.now())
+      _trg: String(Date.now())
     });
     return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?${params}`;
   };
@@ -727,27 +729,50 @@ async function loadSpcLayer(key, mapId, statusId, label) {
   if (!mapEl || !window.L) return;
   let map = SPC.maps[mapId];
   if (!map) {
-    map = L.map(mapEl, {zoomControl:false, attributionControl:false, dragging:true, scrollWheelZoom:true, doubleClickZoom:true, touchZoom:true}).setView([38,-96],4);
+    map = L.map(mapEl, {zoomControl:true, attributionControl:true, dragging:true, scrollWheelZoom:true, doubleClickZoom:true, touchZoom:true}).setView([38,-96],4);
     L.tileLayer("https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", {maxZoom:8, attribution:"USGS"}).addTo(map);
     SPC.maps[mapId]=map;
   }
   status.textContent=`Loading live ${label}…`;
   try {
-    const b=map.getBounds(), size=map.getSize();
-    const bbox=[b.getWest(),b.getSouth(),b.getEast(),b.getNorth()].join(",");
-    const url=`${SPC.mapServer}/export?bbox=${encodeURIComponent(bbox)}&bboxSR=4326&imageSR=4326&size=${Math.max(640,Math.min(1400,size.x))},${Math.max(360,Math.min(900,size.y))}&format=png32&transparent=true&dpi=96&layers=show:${SPC.layers[key]}&f=image&cacheBust=${Date.now()}`;
-    const img=new Image(); img.crossOrigin="anonymous";
-    img.onload=()=>{
-      if(map._spcImage) map.removeLayer(map._spcImage);
-      map._spcImage=L.imageOverlay(url, [[b.getSouth(),b.getWest()],[b.getNorth(),b.getEast()]], {opacity:.82, interactive:false}).addTo(map);
-      status.innerHTML=`Live NOAA/SPC ${label} • refreshed ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})} • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
-    };
-    img.onerror=()=>{throw new Error("SPC image export failed")};
-    img.src=url;
+    const url = `${SPC.base}/${SPC.layers[key]}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson&_trg=${Date.now()}`;
+    const data = await fetchJson(url, {timeout:20000, headers:{Accept:"application/geo+json,application/json"}});
+    if (!data?.features?.length) throw new Error("No current SPC features returned");
+    if (map._spcLayer) map.removeLayer(map._spcLayer);
+    const layer = L.geoJSON(data, {
+      style: feature => {
+        const p=feature?.properties||{};
+        const fill=validColor(p.fill) ? p.fill : spcFallbackColor(p.dn, key, p.label || p.label2);
+        const stroke=validColor(p.stroke) ? p.stroke : "#333333";
+        return {color:stroke, weight:1, fillColor:fill, fillOpacity:0.82, opacity:1};
+      },
+      onEachFeature: (feature, lyr) => {
+        const p=feature?.properties||{};
+        const labelText=p.label||p.label2||p.dn||label;
+        const valid=p.valid||p.issue||"";
+        lyr.bindPopup(`<strong>${escapeHtml(labelText)}</strong>${valid?`<br><small>${escapeHtml(valid)}</small>`:""}`);
+      }
+    }).addTo(map);
+    map._spcLayer=layer;
+    const bounds=layer.getBounds();
+    if (bounds.isValid()) map.fitBounds(bounds.pad(0.04), {animate:false});
+    status.innerHTML=`Live NOAA/SPC ${escapeHtml(label)} • refreshed ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})} • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
+    mapEl.classList.remove("map-error");
   } catch(error) {
-    status.innerHTML=`${label} unavailable right now. <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open official SPC</a>`;
+    status.innerHTML=`${escapeHtml(label)} unavailable right now. <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open official SPC</a>`;
     mapEl.classList.add("map-error");
+    console.warn("SPC layer failed", key, error);
   }
+}
+function validColor(value){ return typeof value === "string" && /^#?[0-9a-f]{6}$/i.test(value.trim()); }
+function spcFallbackColor(dn,key,label=""){
+  if(key==="tornadoCig") {
+    const l=String(label||"").toUpperCase();
+    return l==="CIG1" ? "#f4f4f4" : l==="CIG2" ? "#d8d8d8" : l==="CIG3" ? "#bcbcbc" : "#e8e8e8";
+  }
+  const v=Number(dn);
+  if(key==="categorical") return ({2:"#c1e9c1",3:"#66a366",4:"#ffe066",5:"#ffa366",6:"#e06666",8:"#ee99ee"}[v]||"#d9d9d9");
+  return ({2:"#c1e9c1",5:"#ffa366",10:"#ffe066",15:"#e06666",25:"#ee99ee"}[v]||"#d9d9d9");
 }
 
 function loadSPCMaps() {
@@ -854,7 +879,7 @@ function setupTropical() {
   document.querySelectorAll(".tab").forEach(btn => btn.addEventListener("click", () => showTropical(btn.dataset.tropical)));
   setupTropicalViewer();
   const image=$("#tropicalImage");
-  image?.addEventListener("error",()=>imageFallback(image,"Current NHC graphic unavailable"));
+  image?.addEventListener("error",()=>imageFallback(image,"Current NHC graphic unavailable — open the official NHC outlook below"));
   showTropical("atl");
 }
 
