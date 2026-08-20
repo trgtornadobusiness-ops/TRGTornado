@@ -54,3 +54,9 @@ Broadcast-style live NWS alert ticker with priority ordering, affected areas, ti
 - ZIP-only forecast searches use Zippopotam.us for ZIP-to-centroid lookup, with Census Geocoder retained for city/state searches.
 - Weather alerts query the official NOAA/NWS CurrentWarnings layer and WatchesWarnings layer using GeoJSON and correct hazard fields, with NWS active alerts as fallback.
 - ZIP lookup attribution: Zippopotam.us / GeoNames data, available under the Open Database License.
+
+
+## v20 updates
+- Radar uses the official NOAA/NWS MRMS current reflectivity MapServer through Esri Leaflet instead of the previous time-enabled image overlay.
+- Weather Alerts use the official NWS /alerts/active feed and are separated into All, Warnings, Watches, Advisories, and Statements.
+- ZIP lookup uses postal-code geocoding with a browser-friendly fallback.
