@@ -48,3 +48,9 @@ Broadcast-style live NWS alert ticker with priority ordering, affected areas, ti
 - Radar navigation renamed to Radar
 - NOAA MRMS radar switched to ArcGIS ImageServer export-image rendering
 - Current NWS warning layer 0 added so Severe Thunderstorm and Tornado Warnings are not omitted
+
+
+## v19 fixes
+- ZIP-only forecast searches use Zippopotam.us for ZIP-to-centroid lookup, with Census Geocoder retained for city/state searches.
+- Weather alerts query the official NOAA/NWS CurrentWarnings layer and WatchesWarnings layer using GeoJSON and correct hazard fields, with NWS active alerts as fallback.
+- ZIP lookup attribution: Zippopotam.us / GeoNames data, available under the Open Database License.

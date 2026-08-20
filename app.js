@@ -71,6 +71,22 @@ function censusGeocode(query) {
   });
 }
 
+async function zipGeocode(zip) {
+  const clean = zip.match(/^\d{5}/)?.[0];
+  if (!clean) throw new Error("Enter a valid 5-digit ZIP code.");
+  const data = await fetchJson(`https://api.zippopotam.us/us/${clean}`, {timeout:12000});
+  const place = data?.places?.[0];
+  if (!place) throw new Error("That ZIP code could not be located.");
+  return {
+    latitude: Number(place.latitude),
+    longitude: Number(place.longitude),
+    name: place["place name"] || clean,
+    admin1: place["state abbreviation"] || place.state || "",
+    zip: clean,
+    label: `${place["place name"] || "ZIP"}, ${place["state abbreviation"] || ""} ${clean}`.trim()
+  };
+}
+
 async function geocode(query) {
   const trimmed = query.trim();
   if (!trimmed) throw new Error("Enter a city, state or ZIP code.");
@@ -82,12 +98,7 @@ async function geocode(query) {
     }
   }
   const zip = trimmed.match(/^\d{5}(?:-\d{4})?$/);
-  if (zip) {
-    // Census geocoder accepts a ZIP as a U.S. one-line address. Trying the
-    // explicit U.S. form first improves matching for ZIP-only searches.
-    try { return await censusGeocode(`${trimmed}, USA`); }
-    catch { return censusGeocode(trimmed); }
-  }
+  if (zip) return zipGeocode(zip[0]);
   return censusGeocode(trimmed);
 }
 
@@ -234,10 +245,13 @@ async function reverseGeocode(latitude, longitude) {
 
 async function nwsAlerts(point) {
   const gisBase = "https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer";
-  const makeQuery = async (layer, where) => {
+  const makeQuery = async (layer) => {
     const params = new URLSearchParams({
-      where, outFields:"prod_type,msg_type,phenom,url,expiration,onset,ends,issuance,wfo,event,cap_id,objectid",
-      returnGeometry:"false", orderByFields:"expiration ASC", resultRecordCount:"4000", f:"json"
+      where: "1=1",
+      outFields: "*",
+      returnGeometry: "false",
+      resultRecordCount: "4000",
+      f: "geojson"
     });
     if (point) {
       params.set("geometry", `${point.longitude},${point.latitude}`);
@@ -247,31 +261,39 @@ async function nwsAlerts(point) {
     }
     const data = await fetchJson(`${gisBase}/${layer}/query?${params.toString()}`, {timeout:15000});
     return (data.features || []).map(f => {
-      const a=f.attributes||{};
-      return {type:"Feature", id:a.cap_id || String(a.objectid||""), properties:{
-        event:a.prod_type || a.event || "Weather Alert",
-        headline:a.prod_type || a.event || "Weather Alert",
-        areaDesc:a.wfo ? `NWS ${a.wfo}` : "Active NWS area",
-        web:a.url || "https://www.weather.gov/alerts",
-        expires:a.expiration || a.ends || "", effective:a.onset || a.issuance || "",
-        sent:a.issuance || "", status:"actual", messageType:a.msg_type || "Alert",
-        severity: a.phenom === "TO" || a.phenom === "SV" ? "Severe" : "Unknown",
-        urgency: "Immediate", certainty: "Observed"
-      }};
+      const a = f.properties || {};
+      const event = a.prod_type || hazardName(a.phenom, a.sig) || "Weather Alert";
+      return {
+        type: "Feature",
+        id: a.cap_id || String(a.objectid || `${a.phenom}|${a.expiration}|${a.wfo}`),
+        properties: {
+          event,
+          headline: event,
+          areaDesc: a.wfo ? `NWS ${a.wfo}` : "Active NWS area",
+          web: a.url || "https://www.weather.gov/alerts",
+          expires: a.expiration || a.ends || "",
+          effective: a.onset || a.issuance || "",
+          sent: a.issuance || "",
+          status: "actual",
+          messageType: a.msg_type || "Alert",
+          severity: severityForPhenomena(a.phenom),
+          urgency: "Immediate",
+          certainty: "Observed",
+          phenomenon: a.phenom || "",
+          signal: a.sig || ""
+        }
+      };
     });
   };
 
-  // Layer 0 is explicitly the current warning layer. This is important: the
-  // previous build queried layer 1 only, which can omit current SV/TO warning
-  // polygons. Layer 1 supplies watches and other warning products.
   try {
-    const [warnings, watches] = await Promise.all([
-      makeQuery(0, "1=1"),
-      makeQuery(1, "1=1")
-    ]);
+    // Layer 0 = current warnings (including SV and TO). Layer 1 = watches and
+    // additional watch/warning/advisory products. Query both so SV warnings
+    // cannot disappear just because they are not represented in layer 1.
+    const [warnings, watches] = await Promise.all([makeQuery(0), makeQuery(1)]);
     const combined = [...warnings, ...watches];
     const unique = new Map();
-    combined.forEach(x => unique.set(x.id || `${x.properties.event}|${x.properties.expires}|${x.properties.wfo}`, x));
+    combined.forEach(x => unique.set(x.id, x));
     const features = filterOngoingAlerts([...unique.values()]);
     if (features.length || point) return {features};
   } catch (gisError) {
@@ -283,6 +305,22 @@ async function nwsAlerts(point) {
     : "https://api.weather.gov/alerts/active?status=actual";
   const data = await fetchJson(url, {timeout:15000, headers:{Accept:"application/geo+json"}});
   return {features:(data.features || []).filter(isOngoingAlert)};
+}
+
+function hazardName(phenom, sig) {
+  const key = `${phenom || ""},${sig || ""}`;
+  const names = {
+    "TO,W":"Tornado Warning", "SV,W":"Severe Thunderstorm Warning",
+    "FF,W":"Flash Flood Warning", "EW,W":"Extreme Wind Warning",
+    "TO,A":"Tornado Watch", "SV,A":"Severe Thunderstorm Watch",
+    "FF,A":"Flash Flood Watch", "HU,W":"Hurricane Warning", "HU,A":"Hurricane Watch",
+    "TR,W":"Tropical Storm Warning", "TR,A":"Tropical Storm Watch"
+  };
+  return names[key] || "Weather Alert";
+}
+
+function severityForPhenomena(phenom) {
+  return ["TO","SV","EW","HU"].includes(String(phenom || "")) ? "Severe" : "Moderate";
 }
 
 function isOngoingAlert(item, now = Date.now()) {
