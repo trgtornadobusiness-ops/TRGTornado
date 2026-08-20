@@ -284,15 +284,20 @@ async function nwsAlerts(point) {
   const apiUrl = `https://api.weather.gov/alerts/active?${apiParams.toString()}`;
   const apiBackupUrl = `https://api.weather.gov/alerts?status=actual&message_type=alert,update&limit=5000`;
 
-  const gisUrl = (layer) => {
+  const gisUrl = (layer, where="1=1") => {
     const params = new URLSearchParams({
-      where: "1=1",
+      where,
       outFields: "*",
       returnGeometry: "false", f: "json", resultRecordCount: "4000",
       _trg: String(Date.now())
     });
     return `https://mapservices.weather.noaa.gov/eventdriven/rest/services/WWA/watch_warn_adv/FeatureServer/${layer}/query?${params}`;
   };
+  // The CurrentWarnings layer is authoritative for short-fuse tornado and
+  // severe-thunderstorm warnings. Query those products explicitly so a large
+  // national NWS response cannot hide/drop them. NOAA defines TO,W as Tornado
+  // Warning and SV,W as Severe Thunderstorm Warning.
+  const severeGisUrl = gisUrl(0, "(phenom='TO' OR phenom='SV') AND sig='W'");
 
   const normalizeNws = (features=[]) => features.map((item, i) => {
     const p = item.properties || {};
@@ -332,6 +337,7 @@ async function nwsAlerts(point) {
   const results = await Promise.allSettled([
     fetchJson(apiUrl, {timeout:15000, headers:{Accept:"application/geo+json"}}),
     fetchJson(apiBackupUrl, {timeout:15000, headers:{Accept:"application/geo+json"}}),
+    fetchJson(severeGisUrl, {timeout:15000}),
     fetchJson(gisUrl(0), {timeout:15000}),
     fetchJson(gisUrl(1), {timeout:15000})
   ]);
@@ -343,7 +349,7 @@ async function nwsAlerts(point) {
     successful++;
     const items = index === 0 || index === 1
       ? normalizeNws(result.value.features || [])
-      : normalizeGis(result.value, index - 2);
+      : normalizeGis(result.value, index === 2 ? 0 : index - 2);
     items.forEach(item => merged.set(String(item.id), item));
   });
 
@@ -715,7 +721,7 @@ function centerRadar(lat, lon) {
 const SPC = {
   base: "https://mapservices.weather.noaa.gov/vector/rest/services/outlooks/SPC_wx_outlks/FeatureServer",
   mapServer: "https://mapservices.weather.noaa.gov/vector/rest/services/outlooks/SPC_wx_outlks/MapServer",
-  layers: { categorical:1, tornado:3, tornadoCig:2, hail:5, wind:7 },
+  layers: { categorical:1, tornado:3, tornadoCig:2, hailCig:4, hail:5, windCig:6, wind:7 },
   maps: {}
 };
 
@@ -787,52 +793,56 @@ function spcFallbackColor(dn,key,label=""){
 }
 
 
-async function loadSpcCigOverlay() {
-  const map = SPC.maps["spcCatMap"];
+async function loadSpcConditionalOverlay(mapId, layerKey, storageKey) {
+  const map = SPC.maps[mapId];
   if (!map) return;
   try {
-    const url = `${SPC.base}/${SPC.layers.tornadoCig}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson&_trg=${Date.now()}`;
+    const url = `${SPC.base}/${SPC.layers[layerKey]}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson&_trg=${Date.now()}`;
     const data = await fetchJson(url, {timeout:20000, headers:{Accept:"application/geo+json,application/json"}});
     if (!data?.features?.length) return;
-    if (map._spcCigLayer) map.removeLayer(map._spcCigLayer);
+    if (map[storageKey]) map.removeLayer(map[storageKey]);
     const layer = L.geoJSON(data, {
       style: feature => {
         const p = feature?.properties || {};
-        const cig = String(p.label || p.label2 || "").toUpperCase();
+        const cig = String(p.label || p.label2 || p.dn || "").toUpperCase();
         return {
           color: "#111111",
-          weight: cig === "CIG1" ? 2 : 2.5,
-          opacity: 0.95,
+          weight: cig === "CIG1" ? 2.2 : 2.7,
+          opacity: 0.98,
           fillColor: "#ffffff",
-          fillOpacity: 0.04,
+          fillOpacity: 0.03,
           dashArray: cig === "CIG1" ? "9 8" : cig === "CIG2" ? "4 7" : "2 5"
         };
       },
       onEachFeature: (feature, lyr) => {
         const p = feature?.properties || {};
-        const cig = String(p.label || p.label2 || "CIG").toUpperCase();
+        const cig = String(p.label || p.label2 || p.dn || "CIG").toUpperCase();
         lyr.bindTooltip(cig, {sticky:true});
       }
     }).addTo(map);
-    map._spcCigLayer = layer;
+    map[storageKey] = layer;
   } catch (error) {
-    console.warn("SPC CIG overlay failed", error);
+    console.warn(`SPC conditional overlay failed: ${layerKey}`, error);
   }
+}
+
+async function loadSpcCigOverlay() {
+  await loadSpcConditionalOverlay("spcCatMap", "tornadoCig", "_spcTornadoCigLayer");
 }
 
 function loadSPCMaps() {
   loadSpcLayer("categorical", "spcCatMap", "spcCatStatus", "SPC categorical outlook").then(() => loadSpcCigOverlay());
-  loadSpcLayer("tornado", "spcTornMap", "spcTornStatus", "tornado probability");
+  loadSpcLayer("tornado", "spcTornMap", "spcTornStatus", "tornado probability").then(() => loadSpcConditionalOverlay("spcTornMap", "tornadoCig", "_spcCigLayer"));
   loadSpcLayer("tornadoCig", "spcTornCigMap", "spcTornCigStatus", "tornado conditional intensity (CIG)");
-  loadSpcLayer("wind", "spcWindMap", "spcWindStatus", "wind probability");
-  loadSpcLayer("hail", "spcHailMap", "spcHailStatus", "hail probability");
+  loadSpcLayer("wind", "spcWindMap", "spcWindStatus", "wind probability").then(() => loadSpcConditionalOverlay("spcWindMap", "windCig", "_spcWindCigLayer"));
+  loadSpcLayer("hail", "spcHailMap", "spcHailStatus", "hail probability").then(() => loadSpcConditionalOverlay("spcHailMap", "hailCig", "_spcHailCigLayer"));
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/atlc_7d0.png", official:"https://www.nhc.noaa.gov/gtwo.php?basin=atl&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/epac_7d0.png", official:"https://www.nhc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", image:"https://www.nhc.noaa.gov/xgtwo/images/cpac_7d0.png", official:"https://www.nhc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
-  wpac:{title:"JTWC WESTERN PACIFIC", frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", frame:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=atlc&fdays=7", official:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=atlc&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", frame:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=epac&fdays=7", official:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", frame:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=cpac&fdays=7", official:"https://prod-east-nhc.woc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
+  wpac:{title:"JTWC WESTERN PACIFIC", frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", official:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
 };
 const TROPICAL_REFRESH_MS = 5 * 60 * 1000;
 
@@ -899,16 +909,17 @@ function showTropical(key) {
   const product=tropicalProducts[key]||tropicalProducts.atl;
   document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.tropical===key));
   const frame=$("#tropicalFrame"), image=$("#tropicalImage");
-  if(image && product.image){
-    image.dataset.key=key;
-    image.src=`${product.image}${product.image.includes("?")?"&":"?"}trg=${Date.now()}`;
-    image.style.display="block";
-    if(frame) frame.style.display="none";
-    image.onerror = () => imageFallback(image, `Current ${product.head} image unavailable — open the official NHC outlook below`);
-  } else if(frame && product.frame){
+  if(frame && product.frame){
     frame.src=`${product.frame}${product.frame.includes("?")?"&":"?"}trg=${Date.now()}`;
     frame.style.display="block";
     if(image) image.style.display="none";
+    frame.onload = () => {
+      $("#tropicalUpdated") && ($("#tropicalUpdated").textContent=`Official ${key === "wpac" ? "JTWC" : "NHC"} page loaded • ${new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}`);
+    };
+    frame.onerror = () => {
+      frame.style.display="none";
+      if(image) imageFallback(image, `Official ${product.head} page could not be embedded — use the source link below`);
+    };
   }
   $("#tropicalTitle") && ($("#tropicalTitle").textContent=product.title);
   $("#tropicalHeadline") && ($("#tropicalHeadline").textContent=product.head);
