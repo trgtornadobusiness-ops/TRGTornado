@@ -15,7 +15,7 @@ const WEATHER_TEXT = {
 };
 
 const weatherIcon = (code) => code >= 95 ? "⛈️" : code >= 80 ? "🌦️" : code >= 61 ? "🌧️" : code >= 45 ? "☁️" : code <= 1 ? "☀️" : "🌤️";
-const state = { point:null, forecast:null, map:null, radarLayer:null, radarFrames:[], radarIndex:0, radarTimer:null };
+const state = { point:null, forecast:null, map:null, radarLayer:null, radarFrames:[], radarIndex:24, radarTimer:null, radarPlaying:true, radarLoaded:false };
 
 function setStatus(message, type="") {
   const el = $("#status");
@@ -39,42 +39,126 @@ async function fetchJson(url, options={}) {
   return response.json();
 }
 
+function censusGeocode(query) {
+  return new Promise((resolve, reject) => {
+    const callback = `__trgCensus_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const script = document.createElement("script");
+    const cleanup = () => { delete window[callback]; script.remove(); };
+    const timer = setTimeout(() => { cleanup(); reject(new Error("Location search timed out.")); }, 12000);
+    window[callback] = (data) => {
+      clearTimeout(timer); cleanup();
+      const match = data?.result?.addressMatches?.[0];
+      if (!match?.coordinates) return reject(new Error("Could not find that U.S. location."));
+      const c = match.addressComponents || {};
+      resolve({
+        latitude: Number(match.coordinates.y), longitude: Number(match.coordinates.x),
+        name: c.city || c.place || query, admin1: c.stateAbbreviation || c.state || "",
+        zip: c.zip || "", label: match.matchedAddress || query
+      });
+    };
+    script.onerror = () => { clearTimeout(timer); cleanup(); reject(new Error("The Census location service could not be reached.")); };
+    script.src = `https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=${encodeURIComponent(query)}&benchmark=Public_AR_Current&format=jsonp&callback=${callback}`;
+    document.head.appendChild(script);
+  });
+}
+
 async function geocode(query) {
   const trimmed = query.trim();
   if (!trimmed) throw new Error("Enter a city, state or ZIP code.");
-  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(trimmed)}&count=1&language=en&format=json`;
-  const data = await fetchJson(url);
-  if (!data.results?.length) throw new Error(`Could not find “${trimmed}”.`);
-  return data.results[0];
+  const coords = trimmed.match(/^(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)$/);
+  if (coords) {
+    const latitude = Number(coords[1]), longitude = Number(coords[2]);
+    if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
+      return {latitude, longitude, name:"Custom location", admin1:""};
+    }
+  }
+  return censusGeocode(trimmed);
 }
 
-async function reverseGeocode(latitude, longitude) {
-  const url = `https://geocoding-api.open-meteo.com/v1/search?latitude=${latitude}&longitude=${longitude}&count=1&language=en&format=json`;
-  try {
-    const data = await fetchJson(url);
-    return data.results?.[0] || null;
-  } catch { return null; }
+function cToF(c) { return c == null ? null : (c * 9 / 5) + 32; }
+function kmhToMph(v) { return v == null ? null : v * 0.621371; }
+function mToMi(v) { return v == null ? null : v / 1609.344; }
+function paToHpa(v) { return v == null ? null : v / 100; }
+function parseWindMph(value) {
+  const n = parseFloat(String(value || "").replace(/[^0-9.\-]/g, ""));
+  return Number.isFinite(n) ? n : null;
 }
 
-async function openMeteo(point) {
-  const params = new URLSearchParams({
-    latitude: point.latitude,
-    longitude: point.longitude,
-    current: "temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,wind_direction_10m,weather_code,surface_pressure,visibility",
-    hourly: "temperature_2m,apparent_temperature,precipitation_probability,weather_code,wind_speed_10m,wind_direction_10m",
-    daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset",
-    temperature_unit: "fahrenheit",
-    wind_speed_unit: "mph",
-    timezone: "auto",
-    forecast_days: "7"
+function textToIcon(text="") {
+  const t = text.toLowerCase();
+  if (t.includes("thunder") || t.includes("storm")) return "⛈️";
+  if (t.includes("snow") || t.includes("sleet") || t.includes("ice")) return "🌨️";
+  if (t.includes("rain") || t.includes("shower")) return "🌧️";
+  if (t.includes("fog") || t.includes("haze")) return "🌫️";
+  if (t.includes("cloud") || t.includes("overcast")) return "☁️";
+  if (t.includes("partly") || t.includes("mostly sunny") || t.includes("mostly clear")) return "🌤️";
+  if (t.includes("sunny") || t.includes("clear")) return "☀️";
+  return "🌤️";
+}
+
+async function nwsForecast(point) {
+  const points = await fetchJson(`https://api.weather.gov/points/${point.latitude},${point.longitude}`, {headers:{Accept:"application/geo+json"}});
+  const props = points.properties || {};
+  if (!props.forecast || !props.forecastHourly) throw new Error("NWS does not provide a forecast for this point.");
+  const [forecast, hourly, observations] = await Promise.all([
+    fetchJson(props.forecast, {headers:{Accept:"application/geo+json"}}),
+    fetchJson(props.forecastHourly, {headers:{Accept:"application/geo+json"}}),
+    props.observationStations ? fetchJson(`${props.observationStations}?limit=1`, {headers:{Accept:"application/geo+json"}}).catch(() => null) : Promise.resolve(null)
+  ]);
+  let observation = null;
+  const stationUrl = observations?.features?.[0]?.id;
+  if (stationUrl) observation = await fetchJson(`${stationUrl}/observations/latest`, {headers:{Accept:"application/geo+json"}}).catch(() => null);
+
+  const op = observation?.properties || {};
+  const hp = hourly.features?.map(f => f.properties || {}) || [];
+  const firstHour = hp[0] || {};
+  const current = {
+    temperature_2m: cToF(op.temperature?.value ?? firstHour.temperature?.value),
+    apparent_temperature: cToF(op.heatIndex?.value ?? op.windChill?.value ?? firstHour.apparentTemperature?.value ?? firstHour.temperature?.value),
+    relative_humidity_2m: op.relativeHumidity?.value ?? firstHour.relativeHumidity?.value,
+    wind_speed_10m: kmhToMph(op.windSpeed?.value) ?? parseWindMph(firstHour.windSpeed),
+    wind_direction_10m: op.windDirection?.value ?? firstHour.windDirection?.value,
+    weather_code: 0,
+    text: op.textDescription || firstHour.shortForecast || "Current conditions",
+    surface_pressure: paToHpa(op.barometricPressure?.value),
+    visibility: mToMi(op.visibility?.value)
+  };
+
+  const periods = forecast.features?.map(f => f.properties || {}) || [];
+  const groups = new Map();
+  periods.forEach(period => {
+    const date = (period.startTime || "").slice(0,10);
+    if (!date) return;
+    if (!groups.has(date)) groups.set(date, []);
+    groups.get(date).push(period);
   });
-  return fetchJson(`https://api.open-meteo.com/v1/forecast?${params}`);
-}
-
-async function nwsAlerts(point) {
-  return fetchJson(`https://api.weather.gov/alerts/active?point=${point.latitude},${point.longitude}`, {
-    headers: { Accept:"application/geo+json" }
+  const daily = {time:[], weather_code:[], temperature_2m_max:[], temperature_2m_min:[], precipitation_probability_max:[], wind_speed_10m_max:[], text:[]};
+  [...groups.entries()].slice(0,7).forEach(([date, ps], i) => {
+    const day = ps.find(x => x.isDaytime) || ps[0];
+    const night = ps.find(x => !x.isDaytime) || ps[ps.length - 1];
+    const temps = ps.map(x => Number(x.temperature)).filter(Number.isFinite);
+    const pops = ps.map(x => Number(x.probabilityOfPrecipitation?.value)).filter(Number.isFinite);
+    const winds = ps.map(x => parseWindMph(x.windSpeed)).filter(Number.isFinite);
+    daily.time.push(date);
+    daily.weather_code.push(0);
+    daily.temperature_2m_max.push(Math.max(...temps));
+    daily.temperature_2m_min.push(Math.min(...temps));
+    daily.precipitation_probability_max.push(pops.length ? Math.max(...pops) : 0);
+    daily.wind_speed_10m_max.push(winds.length ? Math.max(...winds) : 0);
+    daily.text.push(day.shortForecast || day.detailedForecast || "Forecast");
   });
+
+  const hourlyOut = {time:[], weather_code:[], temperature_2m:[], precipitation_probability:[], wind_speed_10m:[], text:[]};
+  hp.slice(0,24).forEach(h => {
+    hourlyOut.time.push(h.startTime);
+    hourlyOut.weather_code.push(0);
+    hourlyOut.temperature_2m.push(cToF(h.temperature?.value));
+    hourlyOut.precipitation_probability.push(h.probabilityOfPrecipitation?.value ?? 0);
+    hourlyOut.wind_speed_10m.push(parseWindMph(h.windSpeed) ?? 0);
+    hourlyOut.text.push(h.shortForecast || "Forecast");
+  });
+
+  return {current, daily, hourly:hourlyOut, office:props.cwa || "NWS", point};
 }
 
 function windDir(degrees) {
@@ -85,13 +169,13 @@ function windDir(degrees) {
 function renderCurrent(data, point) {
   const c = data.current;
   $("#temp").textContent = `${Math.round(c.temperature_2m)}°`;
-  $("#condition").textContent = WEATHER_TEXT[c.weather_code] || "Current conditions";
+  $("#condition").textContent = c.text || "Current conditions";
   $("#currentLocation").textContent = `${point.name}${point.admin1 ? `, ${point.admin1}` : ""}`;
   $("#feels").textContent = `Feels ${Math.round(c.apparent_temperature)}°`;
   $("#wind").textContent = `Wind ${Math.round(c.wind_speed_10m)} mph ${windDir(c.wind_direction_10m)}`;
   $("#humidity").textContent = `RH ${Math.round(c.relative_humidity_2m)}%`;
-  $("#pressure").textContent = `Pressure ${Math.round(c.surface_pressure)} hPa`;
-  $("#visibility").textContent = `Visibility ${Math.max(0, Math.round((c.visibility || 0) / 1609.344))} mi`;
+  $("#pressure").textContent = c.surface_pressure != null ? `Pressure ${Math.round(c.surface_pressure)} hPa` : "Pressure --";
+  $("#visibility").textContent = c.visibility != null ? `Visibility ${Math.max(0, Math.round(c.visibility))} mi` : "Visibility --";
 }
 
 function renderForecast(data) {
@@ -100,10 +184,10 @@ function renderForecast(data) {
   grid.innerHTML = data.daily.time.map((date, i) => {
     const day = i === 0 ? "TODAY" : new Date(`${date}T12:00:00`).toLocaleDateString(undefined, {weekday:"short"});
     return `<article class="day-card">
-      <b>${day}</b><div class="weather-icon">${weatherIcon(data.daily.weather_code[i])}</div>
+      <b>${day}</b><div class="weather-icon">${textToIcon(data.daily.text?.[i] || "")}</div>
       <div class="temps">${Math.round(data.daily.temperature_2m_max[i])}° <span>${Math.round(data.daily.temperature_2m_min[i])}°</span></div>
       <div class="rain">💧 ${data.daily.precipitation_probability_max[i] ?? 0}%</div>
-      <div class="desc">${WEATHER_TEXT[data.daily.weather_code[i]] || "Forecast"}</div>
+      <div class="desc">${escapeHtml(data.daily.text?.[i] || "Forecast")}</div>
       <div class="wind-small">💨 ${Math.round(data.daily.wind_speed_10m_max[i])} mph</div>
     </article>`;
   }).join("");
@@ -118,12 +202,202 @@ function renderHourly(data) {
     const i = start + offset;
     return `<article class="hour-card">
       <b>${offset === 0 ? "NOW" : new Date(time).toLocaleTimeString(undefined,{hour:"numeric"})}</b>
-      <div>${weatherIcon(data.hourly.weather_code[i])}</div>
+      <div>${textToIcon(data.hourly.text?.[i] || "")}</div>
       <strong>${Math.round(data.hourly.temperature_2m[i])}°</strong>
       <span>💧 ${data.hourly.precipitation_probability[i] ?? 0}%</span>
       <small>💨 ${Math.round(data.hourly.wind_speed_10m[i])} mph</small>
     </article>`;
   }).join("");
+}
+
+async function reverseGeocode(latitude, longitude) {
+  // Keep browser-location use simple and privacy-friendly. We do not send the
+  // user's precise location to a third-party geocoder just to label the point.
+  return { latitude, longitude, name: "Your location", admin1: "" };
+}
+
+async function nwsAlerts(point) {
+  if (!point?.latitude || !Number.isFinite(Number(point.longitude))) return {features: []};
+  const url = `https://api.weather.gov/alerts/active?point=${encodeURIComponent(`${point.latitude},${point.longitude}`)}&status=actual&_=${Date.now()}`;
+  return fetchJson(url, {
+    headers: {Accept:"application/geo+json"},
+    cache:"no-store"
+  });
+}
+
+function isOngoingAlert(item, now = Date.now()) {
+  const p = item?.properties || {};
+  const status = String(p.status || "").toLowerCase();
+  const msgType = String(p.messageType || "").toLowerCase();
+  if (status && status !== "actual") return false;
+  if (msgType && msgType === "cancel") return false;
+  const effective = Date.parse(p.effective || p.onset || 0);
+  const expires = Date.parse(p.expires || p.ends || 0);
+  if (Number.isFinite(effective) && effective > now) return false;
+  if (Number.isFinite(expires) && expires <= now) return false;
+  return true;
+}
+
+function filterOngoingAlerts(features) {
+  return (features || []).filter(item => isOngoingAlert(item));
+}
+
+const alertState = {
+  national: [],
+  local: [],
+  filter: "all",
+  lastUpdated: null,
+  tickerTimer: null
+};
+
+const ALERT_EVENT_PRIORITY = [
+  ["tornado emergency", 140], ["tornado warning", 130], ["hurricane warning", 125],
+  ["storm surge warning", 125], ["flash flood warning", 120], ["flash flood emergency", 135],
+  ["severe thunderstorm warning", 115], ["extreme wind warning", 115], ["ice storm warning", 108],
+  ["blizzard warning", 108], ["winter storm warning", 105], ["dust storm warning", 100],
+  ["flood warning", 98], ["high wind warning", 95], ["red flag warning", 92],
+  ["tornado watch", 78], ["hurricane watch", 76], ["storm surge watch", 76],
+  ["severe thunderstorm watch", 74], ["flood watch", 70], ["winter storm watch", 68],
+  ["special weather statement", 35]
+];
+
+function escapeHtml(value="") {
+  return String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+}
+
+function eventScore(event="") {
+  const e = event.toLowerCase();
+  const match = ALERT_EVENT_PRIORITY.find(([name]) => e.includes(name));
+  return match ? match[1] : 50;
+}
+
+function alertPriority(item) {
+  const p = item.properties || {};
+  const severity = {Extreme: 45, Severe: 35, Moderate: 25, Minor: 15, Unknown: 5}[p.severity] ?? 5;
+  const urgency = {Immediate: 30, Expected: 20, Future: 10, Unknown: 0}[p.urgency] ?? 0;
+  const certainty = {Observed: 15, Likely: 12, Possible: 6, Unlikely: 2, Unknown: 0}[p.certainty] ?? 0;
+  return eventScore(p.event) + severity + urgency + certainty;
+}
+
+function alertType(event="") {
+  const e = event.toLowerCase();
+  if (e.includes("warning") || e.includes("emergency")) return "warning";
+  if (e.includes("watch")) return "watch";
+  return "advisory";
+}
+
+function sortAlerts(features) {
+  return [...(features || [])].sort((a,b) => {
+    const scoreDiff = alertPriority(b) - alertPriority(a);
+    if (scoreDiff) return scoreDiff;
+    const ae = new Date(a.properties?.expires || 0).getTime();
+    const be = new Date(b.properties?.expires || 0).getTime();
+    return ae - be;
+  });
+}
+
+function alertShortLabel(p) {
+  const event = p.event || "Weather Alert";
+  const areas = (p.areaDesc || "").split(";").map(x => x.trim()).filter(Boolean);
+  const area = areas.length ? areas.slice(0,2).join(" • ") : "Active area";
+  return `${event} — ${area}`;
+}
+
+function renderTicker() {
+  const track = $("#alertTickerTrack");
+  if (!track) return;
+  const top = sortAlerts(alertState.national).slice(0, 10);
+  if (!top.length) {
+    track.innerHTML = '<span class="ticker-item"><b>NO ACTIVE NWS ALERTS</b> — Conditions are currently clear across the active NWS feed.</span>';
+    return;
+  }
+  const items = top.map(item => {
+    const p = item.properties || {};
+    const cls = alertType(p.event);
+    return `<button class="ticker-item ${cls}" type="button" data-alert-id="${escapeHtml(item.id || "")}"><span class="ticker-badge">${escapeHtml(p.event || "ALERT")}</span>${escapeHtml(alertShortLabel(p))}</button>`;
+  }).join("");
+  track.innerHTML = items + items;
+  track.querySelectorAll(".ticker-item[data-alert-id]").forEach(btn => btn.addEventListener("click", () => {
+    document.getElementById("alerts")?.scrollIntoView({behavior:"smooth", block:"start"});
+  }));
+  const width = track.scrollWidth / 2;
+  track.style.setProperty("--ticker-distance", `${Math.max(width, 800)}px`);
+}
+
+function renderAlertCards() {
+  const box = $("#alertsBox");
+  if (!box) return;
+  const filtered = sortAlerts(alertState.national).filter(item => alertState.filter === "all" || alertType(item.properties?.event) === alertState.filter);
+  const top = filtered.slice(0, 40);
+  if (!top.length) {
+    box.innerHTML = `<div class="empty"><strong>No ${alertState.filter === "all" ? "active" : alertState.filter} alerts found.</strong><br><small>The NWS active feed currently has nothing matching this filter.</small></div>`;
+    return;
+  }
+  box.innerHTML = top.map((item, index) => {
+    const p = item.properties || {};
+    const expires = p.expires ? new Date(p.expires).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}) : "Unknown";
+    const issued = p.sent || p.effective || p.onset;
+    const issuedText = issued ? new Date(issued).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}) : "Unknown";
+    const href = /^https:\/\//i.test(p.web || "") ? p.web : "https://www.weather.gov/alerts";
+    const cls = alertClass(p.event);
+    const type = alertType(p.event);
+    const severity = p.severity || "Unknown";
+    const urgency = p.urgency || "Unknown";
+    return `<a class="alert ${cls}" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">\n      <div class="alert-rank">${index + 1}</div><div class="alert-icon">${type === "warning" ? "!" : type === "watch" ? "W" : "i"}</div>\n      <div class="alert-body"><div class="alert-title-row"><strong>${escapeHtml(p.event || "Weather Alert")}</strong><span class="alert-priority">${escapeHtml(severity)} • ${escapeHtml(urgency)}</span></div>\n      <span>${escapeHtml(p.headline || alertShortLabel(p))}</span>\n      <small>${escapeHtml((p.areaDesc || "Active NWS area").split(";").slice(0,3).join(" • "))} · Issued ${escapeHtml(issuedText)} · Expires ${escapeHtml(expires)}</small></div>\n    </a>`;
+  }).join("");
+}
+
+function renderAlerts(data) {
+  const features = filterOngoingAlerts(data.features || []);
+  alertState.national = sortAlerts(features);
+  const tag = $("#alertTag");
+  if (tag) {
+    tag.textContent = features.length ? `${features.length} ACTIVE` : "ALL CLEAR";
+    tag.className = `tag ${features.length ? "red" : "green"}`;
+  }
+  $("#alertCount") && ($("#alertCount").textContent = features.length);
+  renderTicker();
+  renderAlertCards();
+}
+
+async function loadNationalAlerts() {
+  const started = Date.now();
+  try {
+    const data = await fetchJson(`https://api.weather.gov/alerts/active?status=actual&message_type=alert&_=${Date.now()}`, {
+      headers:{Accept:"application/geo+json"},
+      cache:"no-store"
+    });
+    renderAlerts(data);
+    alertState.lastUpdated = new Date();
+    alertState.lastSuccessMs = Date.now();
+    const note = $("#alertTicker");
+    if (note) note.title = `NWS data refreshed ${alertState.lastUpdated.toLocaleTimeString([], {hour:"numeric", minute:"2-digit", second:"2-digit"})}`;
+    const updated = $("#alertsUpdated");
+    if (updated) updated.textContent = `Updated ${alertState.lastUpdated.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})} • live NWS feed`;
+    if (state.point) await loadAlerts(state.point);
+  } catch (error) {
+    const staleFor = alertState.lastSuccessMs ? Date.now() - alertState.lastSuccessMs : Infinity;
+    // Never let old warnings sit on the public page indefinitely. After 2
+    // minutes without a successful refresh, clear the old feed entirely.
+    if (staleFor > 120000) {
+      alertState.national = [];
+      renderTicker();
+      const box = $("#alertsBox");
+      if (box) box.innerHTML = `<div class="empty"><strong>NWS alert feed temporarily unavailable.</strong><br><small>No stale alerts are being displayed. The site will keep retrying automatically.</small></div>`;
+      const tag = $("#alertTag");
+      if (tag) { tag.textContent = "FEED OFFLINE"; tag.className = "tag warning"; }
+      $("#alertCount") && ($("#alertCount").textContent = "0");
+      $("#localAlertCount") && ($("#localAlertCount").textContent = "--");
+    }
+    const track = $("#alertTickerTrack");
+    if (track) track.innerHTML = `<span class="ticker-item ticker-error">NWS alert refresh failed — retrying automatically.</span>`;
+    const updated = $("#alertsUpdated");
+    if (updated) updated.textContent = "NWS feed temporarily unavailable • retrying";
+    console.warn("NWS alert refresh failed", error);
+  } finally {
+    const ms = Date.now() - started;
+    document.body.dataset.alertRefreshMs = String(ms);
+  }
 }
 
 function alertClass(event="") {
@@ -135,42 +409,23 @@ function alertClass(event="") {
   return "info";
 }
 
-function renderAlerts(data) {
-  const box = $("#alertsBox");
-  const features = data.features || [];
-  const tag = $("#alertTag");
-  tag.textContent = features.length ? `${features.length} ACTIVE` : "ALL CLEAR";
-  tag.className = `tag ${features.length ? "red" : "green"}`;
-  if (!features.length) {
-    box.innerHTML = `<div class="empty"><strong>No active NWS alerts</strong><br><small>This point currently has no active watches, warnings or advisories returned by the NWS API.</small></div>`;
-    return;
-  }
-  box.innerHTML = features.slice(0, 15).map(item => {
-    const p = item.properties || {};
-    const expires = p.expires ? new Date(p.expires).toLocaleString() : "";
-    const href = p.web || item.id || "https://www.weather.gov/alerts";
-    return `<a class="alert ${alertClass(p.event)}" href="${href}" target="_blank" rel="noopener">
-      <div class="alert-icon">!</div><div><strong>${p.event || "Weather Alert"}</strong>
-      <span>${p.headline || (p.description || "Active NWS alert").slice(0,220)}</span>
-      ${expires ? `<small>Expires ${expires}</small>` : ""}</div>
-    </a>`;
-  }).join("");
-}
-
 async function loadAlerts(point) {
   try {
-    renderAlerts(await nwsAlerts(point));
-  } catch (error) {
-    $("#alertTag").textContent = "UNAVAILABLE";
-    $("#alertTag").className = "tag warning";
-    $("#alertsBox").innerHTML = `<div class="empty"><strong>NWS alerts could not be loaded.</strong><br><small>${error.message}. Forecast data can still work normally.</small></div>`;
+    const data = await nwsAlerts(point);
+    alertState.local = filterOngoingAlerts(data.features || []);
+    const local = $("#localAlertCount");
+    if (local) local.textContent = alertState.local.length;
+    // National alert ranking remains the primary alert center. Local alerts are still shown as a count.
+  } catch {
+    const local = $("#localAlertCount");
+    if (local) local.textContent = "--";
   }
 }
 
 async function loadLocation(point) {
-  setStatus("Loading forecast…");
+  setStatus("Loading NWS forecast…");
   try {
-    const data = await openMeteo(point);
+    const data = await nwsForecast(point);
     state.point = point;
     state.forecast = data;
     renderCurrent(data, point);
@@ -213,56 +468,162 @@ function initMap() {
     mapEl?.classList.add("map-error");
     return;
   }
-  state.map = L.map(mapEl, {zoomControl:true}).setView([35.4676,-97.5164], CONFIG.radarZoom);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom:18,
-    attribution:'© OpenStreetMap contributors'
+  state.map = L.map(mapEl, {zoomControl:true, preferCanvas:true}).setView([35.4676,-97.5164], CONFIG.radarZoom);
+  L.tileLayer("https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom:16,
+    attribution:'Map services and data available from U.S. Geological Survey, National Geospatial Program.'
   }).addTo(state.map);
   state.radarLayer = L.layerGroup().addTo(state.map);
   loadRadar();
 }
 
-async function loadRadar() {
-  const status = $("#radarStatus");
-  status.textContent = "Loading radar…";
-  try {
-    const data = await fetchJson("https://api.rainviewer.com/public/weather-maps.json");
-    const frames = data.radar?.past || [];
-    if (!data.host || !frames.length) throw new Error("No radar frames returned");
-    state.radarFrames = frames;
-    state.radarHost = data.host;
-    state.radarIndex = frames.length - 1;
-    renderRadarFrame();
-    clearInterval(state.radarTimer);
-    state.radarTimer = setInterval(() => {
-      state.radarIndex = (state.radarIndex + 1) % state.radarFrames.length;
-      renderRadarFrame();
-    }, 1200);
-    status.innerHTML = `Radar animation • ${frames.length} past frames • <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>`;
-  } catch (error) {
-    status.textContent = `Radar unavailable: ${error.message}`;
-  }
+const NOAA_RADAR_WMS = "https://mapservices.weather.noaa.gov/eventdriven/services/radar/radar_base_reflectivity_time/ImageServer/WMSServer";
+const RADAR_FRAME_COUNT = 24;
+const RADAR_STEP_MS = 5 * 60 * 1000;
+
+function floorToFiveMinutes(date = new Date()) {
+  const d = new Date(date);
+  d.setSeconds(0, 0);
+  d.setMinutes(Math.floor(d.getMinutes() / 5) * 5);
+  return d;
+}
+
+function buildRadarFrames() {
+  const latest = floorToFiveMinutes(new Date());
+  return Array.from({length: RADAR_FRAME_COUNT + 1}, (_, i) => {
+    const offset = RADAR_FRAME_COUNT - i;
+    return new Date(latest.getTime() - offset * RADAR_STEP_MS);
+  });
+}
+
+function radarTimeLabel(date) {
+  return new Intl.DateTimeFormat([], {hour:"numeric", minute:"2-digit"}).format(date);
 }
 
 function renderRadarFrame() {
   if (!state.radarLayer || !state.radarFrames.length) return;
   state.radarLayer.clearLayers();
   const frame = state.radarFrames[state.radarIndex];
-  const tileUrl = `${state.radarHost}${frame.path}/512/{z}/{x}/{y}/2/1_1.png`;
-  L.tileLayer(tileUrl, {
-    tileSize:512, zoomOffset:-1, opacity:0.78, maxNativeZoom:7, maxZoom:12,
-    attribution:'Weather data by <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>'
+  const time = frame.toISOString();
+
+  L.tileLayer.wms(NOAA_RADAR_WMS, {
+    layers: "0",
+    format: "image/png",
+    transparent: true,
+    version: "1.3.0",
+    time,
+    opacity: 0.88,
+    tileSize: 512,
+    updateWhenIdle: false,
+    keepBuffer: 2,
+    maxZoom: 12,
+    attribution:'Radar: <a href="https://www.weather.gov/" target="_blank" rel="noopener">NOAA/NWS</a> • MRMS'
   }).addTo(state.radarLayer);
+
+  $("#radarSlider").value = state.radarIndex;
+  $("#radarFrameTime").textContent = state.radarIndex === state.radarFrames.length - 1 ? "Latest" : radarTimeLabel(frame);
+  $("#radarOldest").textContent = radarTimeLabel(state.radarFrames[0]);
+}
+
+async function loadRadar() {
+  const status = $("#radarStatus");
+  status.textContent = "Loading high-resolution NOAA radar…";
+  try {
+    if (!state.radarFrames.length) state.radarFrames = buildRadarFrames();
+    state.radarIndex = state.radarFrames.length - 1;
+    renderRadarFrame();
+    state.radarLoaded = true;
+    clearInterval(state.radarTimer);
+    state.radarTimer = setInterval(() => {
+      if (!state.radarPlaying) return;
+      state.radarIndex = (state.radarIndex + 1) % state.radarFrames.length;
+      renderRadarFrame();
+    }, 1000);
+    status.innerHTML = `NOAA MRMS radar • ${state.radarFrames.length} frames • updates about every 5 minutes • <a href="https://radar.weather.gov/" target="_blank" rel="noopener">Official NWS Radar</a>`;
+    $("#radarPlay").textContent = "PAUSE";
+  } catch (error) {
+    status.textContent = `Radar unavailable: ${error.message}`;
+  }
+}
+
+function toggleRadarPlayback() {
+  state.radarPlaying = !state.radarPlaying;
+  $("#radarPlay").textContent = state.radarPlaying ? "PAUSE" : "PLAY";
+}
+
+function setRadarFrame(index) {
+  const max = state.radarFrames.length - 1;
+  state.radarIndex = Math.max(0, Math.min(Number(index), max));
+  renderRadarFrame();
 }
 
 function centerRadar(lat, lon) {
   if (state.map) state.map.setView([lat, lon], CONFIG.radarZoom);
 }
 
+
+const SPC = {
+  base: "https://mapservices.weather.noaa.gov/vector/rest/services/outlooks/SPC_wx_outlks/FeatureServer",
+  layers: { categorical:1, tornado:3, hail:5, wind:7 },
+  maps: {}
+};
+
+function spcStyle(feature) {
+  const p = feature?.properties || {};
+  const fill = p.fill || p.FILL || "#6ba66b";
+  const stroke = p.stroke || p.STROKE || "#1b5e20";
+  return { color: stroke, weight: 1.5, fillColor: fill, fillOpacity: 0.72 };
+}
+
+function spcPopup(feature) {
+  const p = feature?.properties || {};
+  const label = p.label || p.label2 || p.dn || "Outlook area";
+  const valid = p.valid || "";
+  return `<strong>${label}</strong>${valid ? `<br><small>${valid}</small>` : ""}`;
+}
+
+async function loadSpcLayer(key, mapId, statusId, label) {
+  const mapEl = document.getElementById(mapId);
+  const status = document.getElementById(statusId);
+  if (!mapEl || !window.L) return;
+  let map = SPC.maps[mapId];
+  if (!map) {
+    map = L.map(mapEl, { zoomControl:false, attributionControl:false, dragging:true, scrollWheelZoom:false }).setView([38,-96], 4);
+    L.tileLayer("https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", {
+      maxZoom: 8, attribution: "Map services and data available from U.S. Geological Survey, National Geospatial Program."
+    }).addTo(map);
+    SPC.maps[mapId] = map;
+  }
+  status.textContent = `Loading ${label}…`;
+  try {
+    const url = `${SPC.base}/${SPC.layers[key]}/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson`;
+    const data = await fetchJson(url);
+    if (!data.features?.length) throw new Error("No outlook polygons returned");
+    if (map._spcLayer) map.removeLayer(map._spcLayer);
+    map._spcLayer = L.geoJSON(data, {
+      style: spcStyle,
+      onEachFeature: (feature, layer) => layer.bindPopup(spcPopup(feature))
+    }).addTo(map);
+    const bounds = map._spcLayer.getBounds();
+    if (bounds.isValid()) map.fitBounds(bounds.pad(0.08));
+    status.innerHTML = `Live NOAA/SPC data • <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open SPC</a>`;
+  } catch (error) {
+    status.innerHTML = `${label} unavailable right now. <a href="https://www.spc.noaa.gov/products/outlook/" target="_blank" rel="noopener">Open official SPC</a>`;
+    mapEl.classList.add("map-error");
+  }
+}
+
+function loadSPCMaps() {
+  loadSpcLayer("categorical", "spcCatMap", "spcCatStatus", "SPC categorical outlook");
+  loadSpcLayer("tornado", "spcTornMap", "spcTornStatus", "tornado probability");
+  loadSpcLayer("wind", "spcWindMap", "spcWindStatus", "wind probability");
+  loadSpcLayer("hail", "spcHailMap", "spcHailStatus", "hail probability");
+}
+
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Monitor the Atlantic basin for tropical waves, areas of development and active tropical cyclones."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/xgtwo/two_epac_7d0.png", head:"Eastern Pacific Outlook", text:"Monitor the eastern Pacific for tropical development and active systems."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/xgtwo/two_cpac_7d0.png", head:"Central Pacific Outlook", text:"Monitor the central Pacific for tropical development and active systems."}
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png", head:"Atlantic Tropical Outlook", text:"Monitor the Atlantic basin for tropical waves, areas of development and active tropical cyclones."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_epac_7d0.png", head:"Eastern Pacific Outlook", text:"Monitor the eastern Pacific for tropical development and active systems."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", img:"https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png", head:"Central Pacific Outlook", text:"Monitor the central Pacific for tropical development and active systems."}
 };
 
 function showTropical(key) {
@@ -298,7 +659,17 @@ function setupEvents() {
   $("#location").addEventListener("keydown", e => { if (e.key === "Enter") loadLocationFromSearch(); });
   $("#useLocation").addEventListener("click", useBrowserLocation);
   $("#radarRefresh").addEventListener("click", loadRadar);
+  $("#radarPlay").addEventListener("click", toggleRadarPlayback);
+  $("#radarSlider").addEventListener("input", e => setRadarFrame(e.target.value));
   $("#radarLocate").addEventListener("click", () => state.point && centerRadar(state.point.latitude, state.point.longitude));
+  $("#alertsRefresh")?.addEventListener("click", loadNationalAlerts);
+  $("#tickerAlerts")?.addEventListener("click", () => document.getElementById("alerts")?.scrollIntoView({behavior:"smooth", block:"start"}));
+  document.querySelectorAll(".alert-filter").forEach(btn => btn.addEventListener("click", () => {
+    document.querySelectorAll(".alert-filter").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    alertState.filter = btn.dataset.alertFilter || "all";
+    renderAlertCards();
+  }));
 }
 
 async function boot() {
@@ -306,6 +677,9 @@ async function boot() {
   setupTropical();
   setupVideo();
   initMap();
+  loadSPCMaps();
+  loadNationalAlerts();
+  setInterval(loadNationalAlerts, 60000);
   $("#location").value = CONFIG.defaultLocation;
   await loadLocationFromSearch();
 }
