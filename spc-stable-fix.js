@@ -1,8 +1,13 @@
 /* TRGTornado SPC stable renderer
-   Uses NOAA/SPC MapServer export images inside Leaflet.
-   The map remains fully interactive (pan/zoom) while the official SPC
-   outlook polygons are rendered by NOAA's own map service. */
+   Runs after app.js but before DOMContentLoaded/boot. The original app.js
+   renderer is explicitly disabled on severe.html so it cannot repaint or
+   destroy the stable maps after they appear. */
 (() => {
+  // app.js declares loadSPCMaps as a global function. Replacing the global
+  // before DOMContentLoaded means boot() and its five-minute interval both use
+  // this no-op instead of the old vector renderer.
+  window.loadSPCMaps = () => {};
+
   const MAPS = [
     ["spcCatMap", "spcCatStatus", "SPC Categorical Outlook", "1"],
     ["spcTornMap", "spcTornStatus", "Tornado Probability + CIG", "2,3"],
@@ -42,6 +47,8 @@
     if (old) { try { old.remove(); } catch {} }
     el.innerHTML = "";
     el.classList.remove("map-error");
+    el.style.height = mapId === "spcCatMap" ? "430px" : "300px";
+    el.style.minHeight = el.style.height;
     el.style.background = "#10141c";
 
     const map = L.map(el, {
@@ -123,7 +130,7 @@
   document.head.appendChild(style);
 
   window.addEventListener("DOMContentLoaded", () => {
-    setTimeout(installAll, 1200);
+    setTimeout(installAll, 300);
     setInterval(installAll, 295000);
   });
 })();
