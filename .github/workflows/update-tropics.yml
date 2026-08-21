@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  NHC_UA: "TRGTornado Weather Site/1.0"
+
 jobs:
   update-tropics:
     runs-on: ubuntu-latest
@@ -29,7 +32,7 @@ jobs:
               echo "Trying: $url"
               if curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
                 --connect-timeout 15 --max-time 60 \
-                -A "TRGTornado Weather Site/1.0" "$url" -o "$output.tmp"; then
+                -A "$NHC_UA" "$url" -o "$output.tmp"; then
                 if file "$output.tmp" | grep -q "PNG image"; then
                   mv "$output.tmp" "$output"
                   echo "Successfully saved: $output"
@@ -42,14 +45,15 @@ jobs:
             return 1
           }
 
+          # NHC current 7-day graphical outlooks.
           download_png tropical/atlantic.png \
             "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png"
 
           download_png tropical/eastern-pacific.png \
             "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png"
 
-          # Central Pacific is published inside NHC's EPAC archive directory.
-          # The old /cpac/latest/ path returns 404.
+          # CPAC's current graphic is stored in the EPAC archive directory.
+          # Do not fail the whole update if NHC is not publishing a CPAC image.
           if ! download_png tropical/central-pacific.png \
             "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png"; then
             echo "Central Pacific graphic is unavailable right now; keeping any existing file."
