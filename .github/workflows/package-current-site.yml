@@ -1,0 +1,20 @@
+name: Package current site
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  actions: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create site ZIP
+        run: zip -qr TRGTornado-current-version.zip . -x '.git/*' '.github/workflows/package-current-site.yml'
+      - name: Upload ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TRGTornado-current-version
+          path: TRGTornado-current-version.zip
+          retention-days: 7
