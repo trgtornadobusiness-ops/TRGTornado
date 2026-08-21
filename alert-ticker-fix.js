@@ -1,7 +1,7 @@
 /* TRG LIVE ALERT TICKER V77 — one renderer, no generic Flood Warnings. */
 (()=>{
 const track=document.getElementById('alertTickerTrack');if(!track)return;
-const css=document.createElement('style');css.textContent='.alert-ticker{position:relative;z-index:950}.ticker-track{display:flex;align-items:center;gap:10px;width:max-content;white-space:nowrap;will-change:transform}.ticker-item{cursor:pointer}.ticker-loading,.ticker-clear{cursor:default}';document.head.appendChild(css);
+const css=document.createElement('style');css.textContent='.alert-ticker{position:relative;z-index:950}.ticker-track{display:flex;align-items:center;gap:10px;width:max-content;white-space:nowrap;will-change:transform}.ticker-item{cursor:pointer}.ticker-loading,.ticker-clear{cursor:default}@keyframes trgTicker77{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--ticker-distance,900px)))}}';document.head.appendChild(css);
 const allowed=e=>['Tornado Warning','Tornado Emergency','Severe Thunderstorm Warning','Extreme Wind Warning','Flash Flood Warning','Flash Flood Emergency','Special Weather Statement','Severe Weather Statement','Tornado Watch','Severe Thunderstorm Watch'].includes(String(e||''));
 const kind=e=>{const x=String(e||'').toLowerCase();if(x.includes('tornado'))return'tornado';if(x.includes('severe thunderstorm')||x.includes('extreme wind'))return'severe';if(x.includes('flash flood'))return'flash';if(x.includes('watch'))return'watch';return'statement'};
 const color={tornado:'#ef4444',severe:'#f97316',flash:'#22c55e',watch:'#ffd52e',statement:'#a78bfa'},label={tornado:'TORNADO',severe:'SEVERE',flash:'FLASH FLOOD',watch:'WATCH',statement:'STATEMENT'},rank={tornado:1000,severe:900,flash:800,watch:700,statement:600};
