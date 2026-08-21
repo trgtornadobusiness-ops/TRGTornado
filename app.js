@@ -866,18 +866,9 @@ function loadSPCMaps() {
 }
 
 const tropicalProducts = {
-  atl:{title:"ATLANTIC 7-DAY OUTLOOK", images:[
-    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png",
-    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png"
-  ], official:"https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
-  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", images:[
-    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png",
-    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png"
-  ], official:"https://www.nhc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
-  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", images:[
-    "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png",
-    "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png"
-  ], official:"https://www.nhc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
+  atl:{title:"ATLANTIC 7-DAY OUTLOOK", images:["./tropical/atlantic.png"], official:"https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7", head:"Atlantic Tropical Outlook", text:"Current NHC Atlantic 7-day graphical outlook."},
+  epac:{title:"EASTERN PACIFIC 7-DAY OUTLOOK", images:["./tropical/eastern-pacific.png"], official:"https://www.nhc.noaa.gov/gtwo.php?basin=epac&fdays=7", head:"Eastern Pacific Outlook", text:"Current NHC Eastern Pacific 7-day graphical outlook."},
+  cpac:{title:"CENTRAL PACIFIC 7-DAY OUTLOOK", images:["./tropical/central-pacific.png"], official:"https://www.nhc.noaa.gov/gtwo.php?basin=cpac&fdays=7", head:"Central Pacific Outlook", text:"Current NHC Central Pacific 7-day graphical outlook."},
   wpac:{title:"JTWC WESTERN PACIFIC", images:[], frame:"https://www.metoc.navy.mil/jtwc/jtwc.html", official:"https://www.metoc.navy.mil/jtwc/jtwc.html", head:"JTWC Western Pacific", text:"Current official JTWC tropical products and Western Pacific warnings."}
 };
 const TROPICAL_REFRESH_MS=5*60*1000;

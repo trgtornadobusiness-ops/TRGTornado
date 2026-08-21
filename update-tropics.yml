@@ -1,0 +1,65 @@
+name: Update Tropical Outlooks
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-tropics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Download current NHC tropical outlooks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p tropical
+
+          download_png() {
+            local out="$1"
+            shift
+
+            for url in "$@"; do
+              echo "Trying: $url"
+
+              if curl -L --fail --silent --show-error \
+                --retry 4 --retry-delay 3 \
+                -A "TRGTornado Weather Site/1.0" \
+                "$url" -o /tmp/out.png; then
+
+                if file /tmp/out.png | grep -q "PNG image"; then
+                  mv /tmp/out.png "$out"
+                  echo "Saved $out"
+                  return 0
+                fi
+              fi
+            done
+
+            echo "ERROR: No valid PNG source succeeded for $out"
+            return 1
+          }
+
+          download_png tropical/atlantic.png \
+            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" \
+            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png"
+
+          download_png tropical/eastern-pacific.png \
+            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" \
+            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png"
+
+          download_png tropical/central-pacific.png \
+            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" \
+            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png"
+
+      - name: Commit only changed outlooks
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Update tropical outlook graphics"
+          file_pattern: tropical/*.png
