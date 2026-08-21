@@ -17,33 +17,41 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Download official NHC archive stills
+      - name: Download newest NHC archive stills
         shell: bash
         run: |
           set -u
           mkdir -p tropical
-          download() {
-            local url="$1" out="$2"
-            echo "Trying $url"
-            if curl -L --fail --silent --show-error --retry 5 --retry-delay 2 -A "TRGTornado Weather Site/1.0" -H "Cache-Control: no-cache" "$url" -o "$out.tmp"; then
-              if file "$out.tmp" | grep -q "PNG image" && [ "$(stat -c%s "$out.tmp")" -gt 10000 ]; then
-                mv "$out.tmp" "$out"
-                echo "Valid PNG saved: $out"
-                return 0
-              fi
+          get_image() {
+            local basin="$1" filename="$2" output="$3"
+            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=${basin}&current_issuance=latest&fdays=7"
+            local html url
+            echo "Reading NHC archive: $page"
+            html="$(curl -L --fail --silent --show-error --retry 5 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$page" || true)"
+            [ -n "$html" ] || { echo "NHC archive unavailable"; return 1; }
+            url="$(printf '%s' "$html" | python3 -c '
+import sys
+from html.parser import HTMLParser
+from urllib.parse import urljoin
+needle=sys.argv[1]; base="https://www.nhc.noaa.gov/archive/xgtwo/"
+class P(HTMLParser):
+    def __init__(self): super().__init__(); self.found=[]
+    def handle_starttag(self, tag, attrs):
+        for k,v in attrs:
+            if k in ("href","src") and v and needle in v: self.found.append(urljoin(base,v))
+p=P(); p.feed(sys.stdin.read()); print(p.found[0] if p.found else "")
+' "$filename")"
+            if [ -z "$url" ]; then echo "Could not locate $filename"; return 1; fi
+            echo "Downloading $url"
+            if curl -L --fail --silent --show-error --retry 5 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$url" -o "$output.tmp" && file "$output.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "$output.tmp")" -gt 10000 ]; then
+              mv "$output.tmp" "$output"; echo "Saved $output"; return 0
             fi
-            rm -f "$out.tmp"
-            echo "Unavailable: $url"
-            return 1
+            rm -f "$output.tmp"; return 1
           }
-
-          # NHC's maintained /archive/xgtwo/.../latest/ product directories.
-          # These are the official still graphics used by the Graphical Tropical Weather Outlook.
-          download "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png" tropical/atlantic.png || true
-          download "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png" tropical/eastern-pacific.png || true
-          download "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png" tropical/central-pacific.png || true
-
-          echo "Official NHC archive download pass complete."
+          get_image atl xgtwo_atl_7d0.png tropical/atlantic.png || true
+          get_image epac xgtwo_pac_7d0.png tropical/eastern-pacific.png || true
+          get_image cpac xgtwo_cpac_7d0.png tropical/central-pacific.png || true
+          echo "NHC archive update pass complete."
 
       - name: Validate available graphics
         shell: bash
@@ -51,14 +59,12 @@ jobs:
           set -u
           for image in tropical/*.png; do
             [ -s "$image" ] || continue
-            if file "$image" | grep -q 'PNG image'; then
-              echo "Valid PNG: $image"
-            fi
+            file "$image" | grep -q 'PNG image' && echo "Valid PNG: $image"
           done
           exit 0
 
       - name: Commit graphics if changed
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Auto-update official NHC tropical stills"
+          commit_message: "Auto-update current NHC tropical graphics"
           file_pattern: tropical/*.png
