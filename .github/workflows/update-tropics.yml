@@ -23,42 +23,100 @@ jobs:
           mkdir -p tropical
 
           download_png() {
-            local out="$1"
+            local output="$1"
             shift
 
             for url in "$@"; do
               echo "Trying: $url"
 
-              if curl -L --fail --silent --show-error \
-                --retry 4 --retry-delay 3 \
+              if curl \
+                --location \
+                --fail \
+                --silent \
+                --show-error \
+                --retry 5 \
+                --retry-delay 3 \
+                --connect-timeout 15 \
+                --max-time 60 \
                 -A "TRGTornado Weather Site/1.0" \
-                "$url" -o /tmp/out.png; then
+                "$url" \
+                -o "$output.tmp"; then
 
-                if file /tmp/out.png | grep -q "PNG image"; then
-                  mv /tmp/out.png "$out"
-                  echo "Saved $out"
+                if file "$output.tmp" | grep -q "PNG image"; then
+                  mv "$output.tmp" "$output"
+                  echo "Successfully saved: $output"
                   return 0
                 fi
               fi
+
+              rm -f "$output.tmp"
             done
 
-            echo "ERROR: No valid PNG source succeeded for $out"
+            echo "ERROR: Could not download a valid PNG for $output"
             return 1
           }
 
-          download_png tropical/atlantic.png \
-            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" \
-            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png"
+          # Atlantic 7-Day
+          download_png \
+            tropical/atlantic.png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png"
 
-          download_png tropical/eastern-pacific.png \
-            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" \
-            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png"
+          # Eastern Pacific 7-Day
+          download_png \
+            tropical/eastern-pacific.png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png"
 
-          download_png tropical/central-pacific.png \
-            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" \
-            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png"
+          # Central Pacific 7-Day
+          #
+          # The Central Pacific product can occasionally be unavailable
+          # depending on issuance status. Do not delete the previous image
+          # if NHC does not currently publish a new one.
+          if ! download_png \
+            tropical/central-pacific.png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png"; then
 
-      - name: Commit only changed outlooks
+            echo "Central Pacific image unavailable."
+            echo "Keeping the previous Central Pacific image."
+
+            rm -f tropical/central-pacific.png.tmp
+
+            if [ ! -f tropical/central-pacific.png ]; then
+              echo "No previous Central Pacific image exists."
+              exit 1
+            fi
+          fi
+
+      - name: Validate tropical graphics
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for image in \
+            tropical/atlantic.png \
+            tropical/eastern-pacific.png \
+            tropical/central-pacific.png
+          do
+            if [ ! -f "$image" ]; then
+              echo "Missing: $image"
+              exit 1
+            fi
+
+            if [ "$(file -b "$image" | grep -c 'PNG image')" -eq 0 ]; then
+              echo "Invalid PNG: $image"
+              exit 1
+            fi
+
+            size=$(stat -c%s "$image")
+
+            if [ "$size" -lt 1000 ]; then
+              echo "Image is suspiciously small: $image ($size bytes)"
+              exit 1
+            fi
+
+            echo "Validated $image ($size bytes)"
+          done
+
+      - name: Commit only changed tropical graphics
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Update tropical outlook graphics"
