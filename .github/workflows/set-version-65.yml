@@ -1,37 +1,26 @@
-name: Set Website Version 73
-
+name: Set Website Version 74
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   set-version:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Set every page footer to Version 73
+      - name: Set every page footer to Version 74
         shell: bash
         run: |
           set -euo pipefail
-          changed=0
           for file in *.html; do
             [ -f "$file" ] || continue
-            if grep -q 'class="site-version">Version ' "$file"; then
-              sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 73/g' "$file"
-              changed=1
-            fi
+            sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 74/g' "$file"
           done
-          echo "Version 73 update pass complete. changed=$changed"
-
-      - name: Commit Version 73 updates
-        if: success()
+      - name: Commit Version 74 updates
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Set all website footers to Version 73"
+          commit_message: "Set all website footers to Version 74"
           file_pattern: '*.html'
