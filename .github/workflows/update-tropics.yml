@@ -16,11 +16,23 @@ jobs:
       - name: Download current NHC graphics
         shell: bash
         run: |
-          set -e
+          set +e
           mkdir -p assets/nhc
-          curl -fL --retry 3 --retry-delay 2 'https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_7d0.png' -o assets/nhc/atl-7day.png
-          curl -fL --retry 3 --retry-delay 2 'https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/two_epac_7d0.png' -o assets/nhc/epac-7day.png
-          curl -fL --retry 3 --retry-delay 2 'https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/two_cpac_7d0.png' -o assets/nhc/cpac-7day.png
+          stamp=$(date +%s)
+          for item in "atl atl" "epac epac" "cpac cpac"; do
+            set -- $item
+            basin=$1
+            file=$2
+            url="https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/${basin}/latest/two_${file}_7d0.png?cache=${stamp}"
+            echo "Updating ${basin}: ${url}"
+            curl -fL --retry 4 --retry-delay 2 -H 'Cache-Control: no-cache' "$url" -o "assets/nhc/${basin}-7day.png.tmp"
+            if [ $? -eq 0 ] && [ -s "assets/nhc/${basin}-7day.png.tmp" ]; then
+              mv "assets/nhc/${basin}-7day.png.tmp" "assets/nhc/${basin}-7day.png"
+            else
+              rm -f "assets/nhc/${basin}-7day.png.tmp"
+              echo "${basin} download failed; keeping last known-good image."
+            fi
+          done
       - name: Commit updated graphics
         shell: bash
         run: |
