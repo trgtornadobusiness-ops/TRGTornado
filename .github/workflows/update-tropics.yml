@@ -16,21 +16,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download tropical outlook images
+      - name: Download Atlantic outlook
         run: |
           mkdir -p tropical
-
           curl -L --fail --silent --show-error \
-            "https://www.nhc.noaa.gov/xgtwo/atl_2d0.png" \
+            "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/two_atl_2d0.png" \
             -o tropical/atlantic.png
 
+      - name: Download Eastern Pacific outlook
+        run: |
           curl -L --fail --silent --show-error \
-            "https://www.nhc.noaa.gov/xgtwo/epac_2d0.png" \
+            "https://www.nhc.noaa.gov/archive/xgtwo/pac/latest/two_pac_2d0.png" \
             -o tropical/eastern-pacific.png
 
+      - name: Download Central Pacific outlook
+        run: |
           curl -L --fail --silent --show-error \
-            "https://www.nhc.noaa.gov/xgtwo/cpac_2d0.png" \
+            "https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/two_cpac_2d0.png" \
             -o tropical/central-pacific.png
+        continue-on-error: true
 
       - name: Check for changes
         id: changes
