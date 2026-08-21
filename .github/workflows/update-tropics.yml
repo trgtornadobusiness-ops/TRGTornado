@@ -22,32 +22,46 @@ jobs:
         run: |
           set -u
           mkdir -p tropical
-          changed=0
           download() {
-            url="$1"; out="$2"
+            local url="$1" out="$2"
             echo "Trying $url"
-            if curl -L --fail --silent --show-error --retry 3 -A "TRGTornado/1.0" -H "Cache-Control: no-cache" "$url" -o "$out.tmp"; then
+            if curl -L --fail --silent --show-error --retry 5 --retry-delay 2 -A "TRGTornado Weather Site/1.0" -H "Cache-Control: no-cache" "$url" -o "$out.tmp"; then
               if file "$out.tmp" | grep -q "PNG image" && [ "$(stat -c%s "$out.tmp")" -gt 10000 ]; then
-                if [ ! -f "$out" ] || ! cmp -s "$out.tmp" "$out"; then changed=1; fi
-                mv "$out.tmp" "$out"; echo "Valid PNG saved: $out"; return 0
+                mv "$out.tmp" "$out"
+                echo "Valid PNG saved: $out"
+                return 0
               fi
+              echo "Response was not a valid PNG."
+            else
+              echo "HTTP download failed."
             fi
-            rm -f "$out.tmp"; return 1
+            rm -f "$out.tmp"
+            return 1
           }
-          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" tropical/atlantic.png || echo "Atlantic download unavailable; preserving existing file."
-          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" tropical/eastern-pacific.png || echo "EPAC download unavailable; preserving existing file."
-          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" tropical/central-pacific.png || echo "CPAC unavailable; preserving existing file."
-          echo "Downloader finished; unavailable products never fail the job."
 
-      - name: Validate existing graphics
+          # NHC current still products. Each product is independent so one unavailable basin cannot fail the workflow.
+          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" tropical/atlantic.png || true
+          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" tropical/eastern-pacific.png || true
+          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" tropical/central-pacific.png || true
+
+          echo "NHC download pass complete."
+
+      - name: Validate graphics without failing the update
         shell: bash
         run: |
           set -u
+          found=0
           for image in tropical/*.png; do
-            [ -s "$image" ] || { echo "Skipping empty $image"; rm -f "$image"; continue; }
-            file "$image" | grep -q 'PNG image' || { echo "Skipping invalid $image"; rm -f "$image"; }
+            [ -s "$image" ] || continue
+            if file "$image" | grep -q 'PNG image'; then
+              echo "Valid: $image"
+              found=1
+            fi
           done
-          echo "Validation complete."
+          if [ "$found" -eq 0 ]; then
+            echo "No valid new/current PNG was downloaded; preserving repository contents."
+          fi
+          exit 0
 
       - name: Commit graphics if changed
         uses: stefanzweifel/git-auto-commit-action@v7
