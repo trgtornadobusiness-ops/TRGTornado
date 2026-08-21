@@ -2,7 +2,7 @@ name: Update Tropical Outlooks
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -42,7 +42,6 @@ jobs:
             return 1
           }
 
-          # NHC's current Atlantic and Eastern Pacific graphical outlooks.
           download_png tropical/atlantic.png \
             "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png"
 
