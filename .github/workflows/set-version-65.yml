@@ -1,0 +1,37 @@
+name: Set Website Version 65
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  set-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set every page footer to Version 65
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed=0
+          for file in *.html; do
+            [ -f "$file" ] || continue
+            if grep -q 'class="site-version">Version ' "$file"; then
+              sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 65/g' "$file"
+              changed=1
+            fi
+          done
+          echo "Version 65 update pass complete. changed=$changed"
+
+      - name: Commit Version 65 updates
+        if: success()
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Set all website footers to Version 65"
+          file_pattern: '*.html'
