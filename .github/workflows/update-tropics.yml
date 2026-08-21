@@ -1,6 +1,8 @@
 name: Update NHC Tropical Graphics
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '*/10 * * * *'
   workflow_dispatch:
@@ -10,22 +12,20 @@ permissions:
 
 jobs:
   update:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download current NHC graphics
+      - name: Download current NHC graphical outlooks
         shell: bash
         run: |
           set +e
           mkdir -p assets/nhc
           stamp=$(date +%s)
-          for item in "atl atl" "epac epac" "cpac cpac"; do
-            set -- $item
-            basin=$1
-            file=$2
-            url="https://prod-east-nhc.woc.noaa.gov/archive/xgtwo/${basin}/latest/two_${file}_7d0.png?cache=${stamp}"
+          for basin in atl epac cpac; do
+            url="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/latest/xgtwo_${basin}_7d0.png?cache=${stamp}"
             echo "Updating ${basin}: ${url}"
-            curl -fL --retry 4 --retry-delay 2 -H 'Cache-Control: no-cache' "$url" -o "assets/nhc/${basin}-7day.png.tmp"
+            curl -fL --retry 5 --retry-delay 2 --connect-timeout 15 --max-time 60 -H 'Cache-Control: no-cache' "$url" -o "assets/nhc/${basin}-7day.png.tmp"
             if [ $? -eq 0 ] && [ -s "assets/nhc/${basin}-7day.png.tmp" ]; then
               mv "assets/nhc/${basin}-7day.png.tmp" "assets/nhc/${basin}-7day.png"
             else
