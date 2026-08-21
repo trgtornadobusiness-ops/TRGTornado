@@ -22,32 +22,32 @@ jobs:
         run: |
           set -u
           mkdir -p tropical
+
           get_image() {
             local basin="$1" filename="$2" output="$3"
-            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=${basin}&current_issuance=latest&fdays=7"
-            local html url
-            echo "Reading NHC archive: $page"
-            html="$(curl -L --fail --silent --show-error --retry 5 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$page" || true)"
-            [ -n "$html" ] || { echo "NHC archive unavailable"; return 1; }
-            url="$(printf '%s' "$html" | python3 -c '
-import sys
-from html.parser import HTMLParser
-from urllib.parse import urljoin
-needle=sys.argv[1]; base="https://www.nhc.noaa.gov/archive/xgtwo/"
-class P(HTMLParser):
-    def __init__(self): super().__init__(); self.found=[]
-    def handle_starttag(self, tag, attrs):
-        for k,v in attrs:
-            if k in ("href","src") and v and needle in v: self.found.append(urljoin(base,v))
-p=P(); p.feed(sys.stdin.read()); print(p.found[0] if p.found else "")
-' "$filename")"
-            if [ -z "$url" ]; then echo "Could not locate $filename"; return 1; fi
-            echo "Downloading $url"
-            if curl -L --fail --silent --show-error --retry 5 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$url" -o "$output.tmp" && file "$output.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "$output.tmp")" -gt 10000 ]; then
-              mv "$output.tmp" "$output"; echo "Saved $output"; return 0
-            fi
-            rm -f "$output.tmp"; return 1
+            local urls=(
+              "https://www.nhc.noaa.gov/archive/xgtwo/${basin}/latest/${filename}"
+              "https://www.nhc.noaa.gov/xgtwo/images/${filename}"
+            )
+            local url
+            for url in "${urls[@]}"; do
+              echo "Trying current NHC product: $url"
+              if curl -L --fail --silent --show-error --retry 5 --retry-delay 2 \
+                -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' \
+                "$url" -o "$output.tmp"; then
+                if file "$output.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "$output.tmp")" -gt 10000 ]; then
+                  mv "$output.tmp" "$output"
+                  echo "Saved current PNG: $output"
+                  return 0
+                fi
+              fi
+              rm -f "$output.tmp"
+            done
+            echo "No current PNG source succeeded for $filename"
+            return 1
           }
+
+          # NHC's current archive uses these exact 7-day still products.
           get_image atl xgtwo_atl_7d0.png tropical/atlantic.png || true
           get_image epac xgtwo_pac_7d0.png tropical/eastern-pacific.png || true
           get_image cpac xgtwo_cpac_7d0.png tropical/central-pacific.png || true
@@ -57,10 +57,15 @@ p=P(); p.feed(sys.stdin.read()); print(p.found[0] if p.found else "")
         shell: bash
         run: |
           set -u
+          found=0
           for image in tropical/*.png; do
             [ -s "$image" ] || continue
-            file "$image" | grep -q 'PNG image' && echo "Valid PNG: $image"
+            if file "$image" | grep -q 'PNG image'; then
+              echo "Valid PNG: $image"
+              found=1
+            fi
           done
+          echo "Graphics found: $found"
           exit 0
 
       - name: Commit graphics if changed
