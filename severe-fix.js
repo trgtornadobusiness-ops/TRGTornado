@@ -1,26 +1,38 @@
-/* Severe-page-only recovery: replace broken SPC map widgets with direct official SPC graphics. */
+/* TRGTornado Severe Map Fix
+   Keep the original interactive SPC Leaflet renderer. The actual baseline issue
+   is that the SPC map containers have no height in styles.css and the original
+   renderer uses a problematic USGS tile base. This repair only fixes the
+   containers/base tiles after app.js creates the maps.
+*/
 (() => {
-  const products = [
-    {id:"spcCatMap", status:"spcCatStatus", src:"https://www.spc.noaa.gov/products/outlook/day1otlk.png", label:"Official SPC Day 1 categorical outlook"},
-    {id:"spcTornMap", status:"spcTornStatus", src:"https://www.spc.noaa.gov/products/outlook/day1probotlk_torn.png", fallback:"https://www.spc.noaa.gov/products/outlook/day1probotlk.png", label:"Official SPC Day 1 tornado probability outlook"},
-    {id:"spcWindMap", status:"spcWindStatus", src:"https://www.spc.noaa.gov/products/outlook/day1probotlk_wind.png", fallback:"https://www.spc.noaa.gov/products/outlook/day1probotlk.png", label:"Official SPC Day 1 wind probability outlook"},
-    {id:"spcHailMap", status:"spcHailStatus", src:"https://www.spc.noaa.gov/products/outlook/day1probotlk_hail.png", fallback:"https://www.spc.noaa.gov/products/outlook/day1probotlk.png", label:"Official SPC Day 1 hail probability outlook"}
-  ];
-  products.forEach(p => {
-    const box=document.getElementById(p.id), status=document.getElementById(p.status);
-    if(!box) return;
-    box.innerHTML="";
-    const img=document.createElement("img");
-    img.alt=p.label; img.loading="eager"; img.decoding="async";
-    img.style.cssText="display:block;width:100%;height:auto;max-height:560px;object-fit:contain;background:#0b0d10;border-radius:8px;";
-    let triedFallback=false;
-    img.onload=()=>{if(status)status.textContent="LIVE • Official SPC graphic";};
-    img.onerror=()=>{
-      if(!triedFallback && p.fallback){triedFallback=true;img.src=p.fallback+"?v="+Date.now();return;}
-      if(status)status.textContent="SPC graphic unavailable right now • open spc.noaa.gov for the current product";
-      img.style.display="none";
-    };
-    img.src=p.src+"?v="+Date.now();
-    box.appendChild(img);
+  const IDS = ["spcCatMap", "spcTornMap", "spcWindMap", "spcHailMap"];
+  function repair() {
+    IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.height = id === "spcCatMap" ? "430px" : "300px";
+      el.style.minHeight = el.style.height;
+      el.style.background = "#0b0e15";
+    });
+    if (!window.L || !window.SPC?.maps) return;
+    IDS.forEach(id => {
+      const map = window.SPC.maps[id];
+      if (!map) return;
+      map.eachLayer(layer => {
+        if (layer?._url?.includes("basemap.nationalmap.gov")) map.removeLayer(layer);
+      });
+      if (!map._trgBase) {
+        map._trgBase = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 8,
+          attribution: "© OpenStreetMap contributors"
+        }).addTo(map);
+        map._trgBase.bringToBack();
+      }
+      map.invalidateSize(false);
+    });
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(repair, 1000);
+    setTimeout(repair, 2500);
   });
 })();
