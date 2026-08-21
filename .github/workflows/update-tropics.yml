@@ -19,79 +19,73 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Find current NHC graphics from official product pages
+      - name: Download newest timestamped NHC outlooks
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p tropical
 
-          download_from_product_page() {
-            local page="$1"
-            local filename="$2"
-            local output="$3"
+          get_latest_issuance() {
+            local basin="$1"
+            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive_list.php?basin=${basin}&_=$(date +%s)"
+            echo "Checking archive list: $page" >&2
+            curl -L --fail --silent --show-error --retry 5 --retry-delay 2 \
+              --connect-timeout 15 --max-time 90 -A "$NHC_UA" "$page" |
+              grep -oE '20[0-9]{10}' | head -n1
+          }
 
-            echo "Reading official NHC page: $page"
-            local html
-            html="$(curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
-              --connect-timeout 15 --max-time 90 -A "$NHC_UA" "$page")"
-
-            local path
-            path="$(printf '%s' "$html" | grep -oE '[^"'"' ]*'"$filename"'[^"'"' ]*' | head -n1 || true)"
-
-            if [ -z "$path" ]; then
-              echo "Could not find $filename on $page"
-              return 1
-            fi
-
-            if [[ "$path" == http* ]]; then
-              url="$path"
-            elif [[ "$path" == /* ]]; then
-              url="https://www.nhc.noaa.gov$path"
-            else
-              url="https://www.nhc.noaa.gov/$path"
-            fi
-
-            echo "Current product URL: $url"
-
-            curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
+          download_png() {
+            local url="$1"
+            local output="$2"
+            echo "Downloading: $url"
+            curl -L --fail --silent --show-error --retry 5 --retry-delay 2 \
               --connect-timeout 15 --max-time 90 -A "$NHC_UA" \
               "$url" -o "$output.tmp"
 
             if ! file "$output.tmp" | grep -q "PNG image"; then
-              echo "Downloaded response is not a PNG: $url"
+              echo "ERROR: response was not a PNG: $url"
               rm -f "$output.tmp"
               return 1
             fi
 
-            if [ "$(stat -c%s "$output.tmp")" -lt 1000 ]; then
-              echo "Downloaded PNG is suspiciously small: $url"
+            if [ "$(stat -c%s "$output.tmp")" -lt 10000 ]; then
+              echo "ERROR: PNG is suspiciously small: $url"
               rm -f "$output.tmp"
               return 1
             fi
 
             mv "$output.tmp" "$output"
-            echo "Saved current outlook: $output"
+            echo "Saved: $output"
           }
 
-          # The official product pages point to the current timestamped
-          # graphical products. This avoids stale /latest/ archive listings.
-          download_from_product_page \
-            "https://www.nhc.noaa.gov/gtwo.php?basin=atl" \
-            "xgtwo_atl_7d0.png" \
+          # Atlantic graphics live under the Atlantic archive.
+          atl="$(get_latest_issuance atl)"
+          if [[ ! "$atl" =~ ^20[0-9]{10}$ ]]; then
+            echo "Could not determine latest Atlantic issuance"
+            exit 1
+          fi
+          echo "Latest Atlantic issuance: $atl"
+          download_png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/atl/${atl}/xgtwo_atl_7d0.png" \
             "tropical/atlantic.png"
 
-          download_from_product_page \
-            "https://www.nhc.noaa.gov/gtwo.php?basin=epac" \
-            "xgtwo_pac_7d0.png" \
+          # Eastern and Central Pacific graphics share the EPAC archive.
+          epac="$(get_latest_issuance epac)"
+          if [[ ! "$epac" =~ ^20[0-9]{10}$ ]]; then
+            echo "Could not determine latest Pacific issuance"
+            exit 1
+          fi
+          echo "Latest Pacific issuance: $epac"
+
+          download_png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/epac/${epac}/xgtwo_pac_7d0.png" \
             "tropical/eastern-pacific.png"
 
-          # CPAC is not always published as a separate graphical product.
-          # Keep the last valid local copy rather than failing the whole job.
-          if ! download_from_product_page \
-            "https://www.nhc.noaa.gov/gtwo.php?basin=cpac" \
-            "xgtwo_cpac_7d0.png" \
+          # CPAC uses the same timestamped EPAC archive directory.
+          if ! download_png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/epac/${epac}/xgtwo_cpac_7d0.png" \
             "tropical/central-pacific.png"; then
-            echo "No current CPAC graphic found; keeping existing CPAC image."
+            echo "CPAC graphic was not available for this issuance. Keeping the previous valid CPAC image."
             rm -f tropical/central-pacific.png.tmp
           fi
 
@@ -99,18 +93,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
           for image in tropical/atlantic.png tropical/eastern-pacific.png; do
-            test -f "$image" || { echo "Missing required image: $image"; exit 1; }
-            file "$image"
-            file "$image" | grep -q "PNG image" || { echo "Invalid PNG: $image"; exit 1; }
+            test -f "$image"
+            file "$image" | grep -q "PNG image"
           done
-
           if [ -f tropical/central-pacific.png ]; then
-            file tropical/central-pacific.png
-          else
-            echo "No Central Pacific graphic is currently available."
+            file tropical/central-pacific.png | grep -q "PNG image"
           fi
+          echo "Tropical graphics validated successfully."
 
       - name: Commit updated tropical graphics
         uses: stefanzweifel/git-auto-commit-action@v7
