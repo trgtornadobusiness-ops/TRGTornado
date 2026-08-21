@@ -1,0 +1,89 @@
+/* TRG Alert Center v3: alerts.html only. Uses the official NWS active feed, then strictly filters the products shown on the Alert Center. */
+(() => {
+  const box = document.getElementById('alertsBox');
+  if (!box) return;
+
+  const EVENTS = new Set([
+    'Tornado Warning','Tornado Emergency','Severe Thunderstorm Warning','Extreme Wind Warning',
+    'Flash Flood Warning','Flash Flood Emergency','Tornado Watch','Severe Thunderstorm Watch',
+    'Special Weather Statement','Severe Weather Statement'
+  ]);
+  const state = {items:[], filter:'all', page:1, perPage:20};
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const type = e => {
+    const x=String(e||'').toLowerCase();
+    if (x.includes('tornado emergency') || x.includes('tornado warning')) return 'tornado';
+    if (x.includes('severe thunderstorm warning') || x.includes('extreme wind warning')) return 'severe';
+    if (x.includes('flash flood warning') || x.includes('flash flood emergency')) return 'flash';
+    if (x.includes('watch')) return 'watch';
+    if (x.includes('statement')) return 'statement';
+    return 'advisory';
+  };
+  const rank = {tornado:1000,severe:900,flash:800,watch:700,statement:600,advisory:500};
+  const ongoing = p => {
+    const status=String(p?.status||'Actual').toLowerCase();
+    const msg=String(p?.messageType||'Alert').toLowerCase();
+    const exp=Date.parse(p?.expires||p?.ends||'');
+    const eff=Date.parse(p?.effective||p?.onset||p?.sent||'');
+    return (status==='actual'||status==='active') && msg!=='cancel' && (!Number.isFinite(eff)||eff<=Date.now()) && (!Number.isFinite(exp)||exp>Date.now());
+  };
+  const target = f => EVENTS.has(String(f?.properties?.event||'').trim()) && ongoing(f.properties);
+  const sorted = a => [...a].sort((x,y) => rank[type(y.properties?.event)]-rank[type(x.properties?.event)] || Date.parse(x.properties?.expires||'')-Date.parse(y.properties?.expires||''));
+
+  function render(){
+    let list=state.items.filter(target);
+    if(state.filter!=='all') list=list.filter(x=>type(x.properties?.event)===state.filter);
+    list=sorted(list);
+    const pages=Math.max(1,Math.ceil(list.length/state.perPage));
+    state.page=Math.min(state.page,pages);
+    const start=(state.page-1)*state.perPage;
+    const visible=list.slice(start,start+state.perPage);
+    box.innerHTML=visible.length ? visible.map((x,i)=>{
+      const p=x.properties||{}, k=type(p.event), considerable=k==='severe' && /considerable/i.test(`${p.headline||''} ${p.description||''}`);
+      const color=k==='tornado'?'#ef4444':k==='severe'?'#f97316':k==='flash'?'#22c55e':k==='watch'?'#ffd52e':k==='statement'?'#a78bfa':'#60a5fa';
+      const href=/^https:\/\//i.test(p.web||'')?p.web:'https://www.weather.gov/alerts';
+      const issued=p.sent||p.effective||p.onset, expires=p.expires||p.ends;
+      const area=String(p.areaDesc||'Active NWS area').split(';').slice(0,3).join(' • ');
+      const issuedText=issued?new Date(issued).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Unknown';
+      const expiresText=expires?new Date(expires).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Unknown';
+      return `<a class="alert ${k} ${considerable?'alert-considerable':''}" style="border-color:${color}!important;box-shadow:0 0 0 1px ${color}22 inset" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><div class="alert-rank">${start+i+1}</div><div class="alert-icon" style="background:${color}">${k==='watch'?'W':k==='statement'?'S':k==='advisory'?'A':'!'}</div><div class="alert-body"><div class="alert-title-row"><strong>${esc(p.event||'Weather Alert')}</strong><span class="alert-priority">${esc(p.severity||'Unknown')} • ${esc(p.urgency||'Unknown')}</span></div><span>${esc(p.headline||p.event||'')}</span><small>${esc(area)} · Issued ${esc(issuedText)} · Expires ${esc(expiresText)}</small></div></a>`;
+    }).join('') : `<div class="empty"><strong>No ${state.filter==='all'?'target':state.filter} alerts found.</strong><br><small>Flood Warnings and other non-target products are intentionally excluded.</small></div>`;
+
+    let pager=document.getElementById('trgAlertPager');
+    if(!pager){pager=document.createElement('div');pager.id='trgAlertPager';pager.className='trg-alert-pager';box.after(pager);}
+    pager.innerHTML=pages>1?`<button type="button" id="trgPrev" ${state.page===1?'disabled':''}>← PREVIOUS</button><span>PAGE ${state.page} OF ${pages} • ${list.length} ALERTS</span><button type="button" id="trgNext" ${state.page===pages?'disabled':''}>NEXT →</button>`:`<span>${list.length} ACTIVE TARGET ALERT${list.length===1?'':'S'} • FLOOD WARNINGS EXCLUDED</span>`;
+    document.getElementById('trgPrev')?.addEventListener('click',()=>{state.page--;render()});
+    document.getElementById('trgNext')?.addEventListener('click',()=>{state.page++;render()});
+
+    const severe=state.items.filter(x=>target(x)&&type(x.properties?.event)==='severe').length;
+    const total=state.items.filter(target).length;
+    const tornado=state.items.filter(x=>target(x)&&type(x.properties?.event)==='tornado').length;
+    const flash=state.items.filter(x=>target(x)&&type(x.properties?.event)==='flash').length;
+    const count=document.getElementById('alertCount'); if(count) count.textContent=severe;
+    const local=document.getElementById('localAlertCount'); if(local) local.textContent=total;
+    const updated=document.getElementById('alertsUpdated'); if(updated) updated.textContent=`Updated ${new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})} • direct NWS active feed`;
+    const tag=document.getElementById('alertTag'); if(tag){tag.textContent=`${total} ACTIVE`;tag.className='tag red';}
+    const note=document.querySelector('.alert-summary-note'); if(note) note.textContent=`${severe} severe thunderstorm warnings • ${tornado} tornado warnings • ${flash} flash flood warnings • flood warnings excluded.`;
+  }
+
+  async function refresh(){
+    try{
+      const r=await fetch(`https://api.weather.gov/alerts/active?limit=5000&_trg=${Date.now()}`,{cache:'no-store',headers:{Accept:'application/geo+json,application/json'}});
+      if(!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+      const data=await r.json();
+      const map=new Map();
+      (data.features||[]).forEach(f=>{if(target(f)) map.set(String(f.id||`${f.properties.event}|${f.properties.areaDesc}|${f.properties.expires}`),f)});
+      state.items=[...map.values()]; state.page=1; render();
+    }catch(e){
+      console.warn('TRG Alert Center direct NWS feed failed',e);
+      const updated=document.getElementById('alertsUpdated'); if(updated) updated.textContent='NWS active feed unavailable • retrying';
+    }
+  }
+
+  document.querySelectorAll('.alert-filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.alert-filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');state.filter=btn.dataset.alertFilter||'all';state.page=1;render()}));
+  // Keep app.js from reintroducing excluded Flood Warnings after its own refresh.
+  const observer=new MutationObserver(()=>{if(!box.dataset.trgRendering){box.dataset.trgRendering='1';setTimeout(()=>{delete box.dataset.trgRendering;render()},0)}});
+  observer.observe(box,{childList:true,subtree:true});
+  refresh();
+  setInterval(refresh,60000);
+})();
