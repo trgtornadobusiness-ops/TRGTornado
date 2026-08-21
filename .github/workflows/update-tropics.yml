@@ -10,87 +10,47 @@ on:
 permissions:
   contents: write
 
-env:
-  NHC_UA: "TRGTornado Weather Site/1.0"
-
 jobs:
   update-tropics:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Download current NHC still images
+      - name: Download current NHC stills
         shell: bash
         run: |
-          set -euo pipefail
+          set -u
           mkdir -p tropical
-
-          download_current() {
-            local basin="$1" filename="$2" output="$3"
-            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=${basin}&current_issuance=latest&fdays=7&v=$(date +%s)"
-            local html image_url
-            echo "Reading official NHC archive page: $page"
-            html="$(curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$page")"
-
-            image_url="$(printf '%s' "$html" | grep -oE 'href="[^"]*'"$filename"'[^"]*"' | sed -E 's/^href="//;s/"$//' | head -1 || true)"
-            if [ -z "$image_url" ]; then
-              image_url="$(printf '%s' "$html" | grep -oE 'src="[^"]*'"$filename"'[^"]*"' | sed -E 's/^src="//;s/"$//' | head -1 || true)"
+          changed=0
+          download() {
+            url="$1"; out="$2"
+            echo "Trying $url"
+            if curl -L --fail --silent --show-error --retry 3 -A "TRGTornado/1.0" -H "Cache-Control: no-cache" "$url" -o "$out.tmp"; then
+              if file "$out.tmp" | grep -q "PNG image" && [ "$(stat -c%s "$out.tmp")" -gt 10000 ]; then
+                if [ ! -f "$out" ] || ! cmp -s "$out.tmp" "$out"; then changed=1; fi
+                mv "$out.tmp" "$out"; echo "Valid PNG saved: $out"; return 0
+              fi
             fi
-            if [ -z "$image_url" ]; then
-              echo "Could not find $filename on the official NHC archive page"
-              return 1
-            fi
-
-            case "$image_url" in
-              http://*|https://*) ;;
-              /*) image_url="https://www.nhc.noaa.gov${image_url}" ;;
-              *) image_url="https://www.nhc.noaa.gov/${image_url}" ;;
-            esac
-
-            echo "Downloading current product: $image_url"
-            if ! curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$image_url" -o "$output.tmp"; then
-              rm -f "$output.tmp"
-              return 1
-            fi
-            if ! file "$output.tmp" | grep -q 'PNG image'; then
-              rm -f "$output.tmp"
-              return 1
-            fi
-            if [ "$(stat -c%s "$output.tmp")" -lt 10000 ]; then
-              rm -f "$output.tmp"
-              return 1
-            fi
-            mv "$output.tmp" "$output"
-            echo "Saved: $output"
+            rm -f "$out.tmp"; return 1
           }
+          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" tropical/atlantic.png || echo "Atlantic download unavailable; preserving existing file."
+          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" tropical/eastern-pacific.png || echo "EPAC download unavailable; preserving existing file."
+          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" tropical/central-pacific.png || echo "CPAC unavailable; preserving existing file."
+          echo "Downloader finished; unavailable products never fail the job."
 
-          # Current official NHC products. Do not use /latest/ image URLs.
-          download_current atl xgtwo_atl_7d0.png tropical/atlantic.png
-          download_current epac xgtwo_pac_7d0.png tropical/eastern-pacific.png
-
-          # CPAC does not always have a separate 7-day PNG. Never fail the job for it.
-          if ! download_current epac xgtwo_cpac_7d0.png tropical/central-pacific.png; then
-            echo "CPAC 7-day PNG is not currently published; leaving any existing file untouched."
-            rm -f tropical/central-pacific.png.tmp
-          fi
-
-      - name: Validate graphics
+      - name: Validate existing graphics
         shell: bash
         run: |
-          set -euo pipefail
-          for image in tropical/atlantic.png tropical/eastern-pacific.png; do
-            test -s "$image"
-            file "$image" | grep -q 'PNG image'
+          set -u
+          for image in tropical/*.png; do
+            [ -s "$image" ] || { echo "Skipping empty $image"; rm -f "$image"; continue; }
+            file "$image" | grep -q 'PNG image' || { echo "Skipping invalid $image"; rm -f "$image"; }
           done
-          if [ -f tropical/central-pacific.png ]; then
-            file tropical/central-pacific.png | grep -q 'PNG image'
-          fi
+          echo "Validation complete."
 
-      - name: Commit current graphics
+      - name: Commit graphics if changed
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Auto-update current NHC tropical stills"
+          commit_message: "Auto-update tropical outlook graphics"
           file_pattern: tropical/*.png
-
-# v54.1: intentionally no hard dependency on a CPAC PNG because NHC may not publish one.
