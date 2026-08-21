@@ -21,20 +21,16 @@ jobs:
           mkdir -p tropical
 
           curl -L --fail --silent --show-error \
-            "https://www.nhc.noaa.gov/xgtwo/two_atl_2d0.png" \
+            "https://www.nhc.noaa.gov/xgtwo/atl_2d0.png" \
             -o tropical/atlantic.png
 
           curl -L --fail --silent --show-error \
-            "https://www.nhc.noaa.gov/xgtwo/two_epac_2d0.png" \
+            "https://www.nhc.noaa.gov/xgtwo/epac_2d0.png" \
             -o tropical/eastern-pacific.png
 
-          if curl -L --fail --silent --show-error \
-            "https://www.nhc.noaa.gov/xgtwo/two_cpac_2d0.png" \
-            -o tropical/central-pacific.png; then
-            echo "Central Pacific outlook updated."
-          else
-            echo "Central Pacific outlook unavailable; keeping previous image."
-          fi
+          curl -L --fail --silent --show-error \
+            "https://www.nhc.noaa.gov/xgtwo/cpac_2d0.png" \
+            -o tropical/central-pacific.png
 
       - name: Check for changes
         id: changes
@@ -50,7 +46,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git add tropical/
           git commit -m "Update tropical outlooks"
           git push
