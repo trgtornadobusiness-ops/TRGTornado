@@ -1,4 +1,4 @@
-/* Complete active NWS alert center: all targeted alerts, correct priority, accurate counts. */
+/* Complete active NWS alert center: targeted alerts, correct priority, accurate counts, and Statements/Advisories tabs. */
 (() => {
   const box = document.getElementById("alertsBox");
   if (!box) return;
@@ -14,19 +14,20 @@
   };
   const eventKind = event => {
     const e = String(event || "").toLowerCase().trim();
-    if (e.includes("tornado emergency")) return "tornado";
-    if (e === "tornado warning") return "tornado";
+    if (e.includes("tornado emergency") || e === "tornado warning") return "tornado";
     if (e === "severe thunderstorm warning" || e === "extreme wind warning") return "severe";
     if (e === "flash flood warning" || e === "flash flood emergency") return "flash";
     if (e === "tornado watch" || e === "severe thunderstorm watch") return "watch";
+    if (e.includes("advisory")) return "advisory";
+    if (e.includes("statement")) return "statement";
     return "other";
   };
-  const priority = {tornado:1000,severe:900,flash:800,watch:700,other:-1};
+  const priority = {tornado:1000,severe:900,flash:800,watch:700,advisory:600,statement:500,other:-1};
   const isTarget = p => eventKind(p?.event) !== "other";
-  const sort = a => [...a].sort((x,y) => priority[eventKind(y.properties?.event)] - priority[eventKind(x.properties?.event)] || String(x.properties?.event||"").localeCompare(String(y.properties?.event||"")) || Date.parse(x.properties?.expires || 0) - Date.parse(y.properties?.expires || 0));
+  const sort = a => [...a].sort((x,y) => priority[eventKind(y.properties?.event)] - priority[eventKind(x.properties?.event)] || Date.parse(x.properties?.sent || x.properties?.effective || 0) - Date.parse(y.properties?.sent || y.properties?.effective || 0));
   const isSevereWarning = p => ["tornado","severe"].includes(eventKind(p?.event));
   const isSevereTstorm = p => eventKind(p?.event) === "severe";
-  const isTornado = p => eventKind(p?.event) === "tornado";
+  const isTornado = p => eventKind(p?.event) === "tornado';
 
   function pager() {
     let el = document.getElementById("trgAlertPager");
@@ -34,19 +35,28 @@
     return el;
   }
   function render() {
-    const filtered = sort(state.all.filter(x => state.filter === "all" || (state.filter === "warning" ? ["tornado","severe","flash"].includes(eventKind(x.properties?.event)) : eventKind(x.properties?.event) === "watch")));
+    const filtered = sort(state.all.filter(x => {
+      const kind = eventKind(x.properties?.event);
+      if (state.filter === "all") return true;
+      if (state.filter === "warning") return ["tornado","severe","flash"].includes(kind);
+      if (state.filter === "watch") return kind === "watch";
+      if (state.filter === "statement") return kind === "statement";
+      if (state.filter === "advisory") return kind === "advisory";
+      return false;
+    }));
     const pages = Math.max(1, Math.ceil(filtered.length / state.perPage));
     state.page = Math.min(state.page, pages);
     const start = (state.page - 1) * state.perPage;
     const visible = filtered.slice(start, start + state.perPage);
     box.innerHTML = visible.length ? visible.map((item, i) => {
       const p = item.properties || {}, event = p.event || "Weather Alert", kind = eventKind(event);
-      const cls = kind === "tornado" ? "tornado" : kind === "severe" ? "severe" : kind === "flash" ? "alert-flash-flood" : "watch";
+      const cls = kind === "tornado" ? "tornado" : kind === "severe" ? "severe" : kind === "flash" ? "alert-flash-flood" : kind === "watch" ? "watch" : kind === "advisory" ? "alert-advisory" : "alert-statement";
       const issued = p.sent || p.effective || p.onset, expires = p.expires || p.ends;
       const areas = String(p.areaDesc || "Active NWS area").split(";").map(x => x.trim()).filter(Boolean).slice(0,3).join(" • ");
       const href = /^https:\/\//i.test(p.web || "") ? p.web : "https://www.weather.gov/alerts";
       const considerable = kind === "severe" && /considerable/i.test(`${p.headline || ""} ${p.description || ""}`);
-      return `<a class="alert ${cls} ${considerable ? "alert-considerable" : ""}" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><div class="alert-rank">${start+i+1}</div><div class="alert-icon">${kind === "watch" ? "W" : "!"}</div><div class="alert-body"><div class="alert-title-row"><strong>${esc(event)}</strong><span class="alert-priority">${esc(p.severity || "Unknown")} • ${esc(p.urgency || "Unknown")}</span></div><span>${esc(p.headline || event)}</span><small>${esc(areas)}${issued ? ` · Issued ${esc(new Date(issued).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}))}` : ""}${expires ? ` · Expires ${esc(new Date(expires).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}))}` : ""}</small></div></a>`;
+      const icon = kind === "watch" ? "W" : kind === "advisory" ? "A" : kind === "statement" ? "S" : "!";
+      return `<a class="alert ${cls} ${considerable ? "alert-considerable" : ""}" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><div class="alert-rank">${start+i+1}</div><div class="alert-icon">${icon}</div><div class="alert-body"><div class="alert-title-row"><strong>${esc(event)}</strong><span class="alert-priority">${esc(p.severity || "Unknown")} • ${esc(p.urgency || "Unknown")}</span></div><span>${esc(p.headline || event)}</span><small>${esc(areas)}${issued ? ` · Issued ${esc(new Date(issued).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}))}` : ""}${expires ? ` · Expires ${esc(new Date(expires).toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"}))}` : ""}</small></div></a>`;
     }).join("") : `<div class="empty"><strong>No active alerts found.</strong><br><small>The NWS active feed currently has nothing matching this filter.</small></div>`;
     const p = pager();
     p.innerHTML = pages > 1 ? `<button type="button" data-page="prev" ${state.page===1?"disabled":""}>← PREVIOUS</button><span>PAGE ${state.page} OF ${pages} • ${filtered.length} ALERTS</span><button type="button" data-page="next" ${state.page===pages?"disabled":""}>NEXT →</button>` : `<span>${filtered.length} ACTIVE ALERT${filtered.length===1?"":"S"} • ALL ALERTS SHOWN</span>`;
