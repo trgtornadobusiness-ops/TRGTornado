@@ -20,37 +20,37 @@ jobs:
       - name: Download newest NHC archive stills
         shell: bash
         run: |
-          set -u
+          set -euo pipefail
           mkdir -p tropical
 
           get_image() {
-            local basin="$1" filename="$2" output="$3"
-            local urls=(
-              "https://www.nhc.noaa.gov/archive/xgtwo/${basin}/latest/${filename}"
-              "https://www.nhc.noaa.gov/xgtwo/images/${filename}"
-            )
-            local url
-            for url in "${urls[@]}"; do
-              echo "Trying current NHC product: $url"
-              if curl -L --fail --silent --show-error --retry 5 --retry-delay 2 \
-                -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' \
-                "$url" -o "$output.tmp"; then
-                if file "$output.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "$output.tmp")" -gt 10000 ]; then
-                  mv "$output.tmp" "$output"
-                  echo "Saved current PNG: $output"
-                  return 0
-                fi
-              fi
+            local basin="$1" product="$2" output="$3"
+            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=${basin}&current_issuance=latest&fdays=7"
+            echo "Reading latest NHC ${basin} archive: ${page}"
+            local html path url
+            html="$(curl -L --fail --silent --show-error --retry 5 --retry-delay 2 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$page")"
+            path="$(printf '%s' "$html" | grep -oE '[A-Za-z0-9_./-]*'"${product}"'[A-Za-z0-9_./-]*' | head -n 1 || true)"
+            if [ -z "$path" ]; then
+              echo "Could not find ${product} in latest NHC archive page for ${basin}"
+              return 1
+            fi
+            if [[ "$path" =~ ^https?:// ]]; then url="$path"; else url="https://www.nhc.noaa.gov/${path#/}"; fi
+            echo "Downloading current NHC image: $url"
+            curl -L --fail --silent --show-error --retry 5 --retry-delay 2 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$url" -o "$output.tmp"
+            if ! file "$output.tmp" | grep -q 'PNG image' || [ "$(stat -c%s "$output.tmp")" -le 10000 ]; then
+              echo "Downloaded file is not a valid current PNG: $output.tmp"
               rm -f "$output.tmp"
-            done
-            echo "No current PNG source succeeded for $filename"
-            return 1
+              return 1
+            fi
+            mv "$output.tmp" "$output"
+            echo "Saved current NHC graphic: $output"
           }
 
-          # NHC's current archive uses these exact 7-day still products.
-          get_image atl xgtwo_atl_7d0.png tropical/atlantic.png || true
-          get_image epac xgtwo_pac_7d0.png tropical/eastern-pacific.png || true
-          get_image cpac xgtwo_cpac_7d0.png tropical/central-pacific.png || true
+          # The archive page is used to discover the newest issuance instead of
+          # assuming the /latest/ directory keeps a stable image filename.
+          get_image atl two_atl_7d0.png tropical/atlantic.png || true
+          get_image epac two_epac_7d0.png tropical/eastern-pacific.png || true
+          get_image cpac two_cpac_7d0.png tropical/central-pacific.png || true
           echo "NHC archive update pass complete."
 
       - name: Validate available graphics
