@@ -16,14 +16,11 @@
     try {
       const data = await window.nwsAlerts(null);
       const features = Array.isArray(data?.features) ? data.features : [];
-      // A successful empty response is accepted only when there really are no
-      // active products. Network/HTTP failures never erase a valid prior set.
       window.alertState.national = features.filter(item => {
         const p=item?.properties||{};
         const eff=Date.parse(p.effective||p.onset||p.sent||"");
         const exp=Date.parse(p.expires||p.ends||"");
-        return String(p.messageType||"Alert").toLowerCase() !== "cancel" &&
-          (!Number.isFinite(eff)||eff<=Date.now()) && (!Number.isFinite(exp)||exp>Date.now());
+        return String(p.messageType||"Alert").toLowerCase() !== "cancel" && (!Number.isFinite(eff)||eff<=Date.now()) && (!Number.isFinite(exp)||exp>Date.now());
       });
       window.alertState.lastUpdated = new Date();
       window.alertState.lastSuccessMs = Date.now();
@@ -32,22 +29,15 @@
       const u=document.getElementById("alertsUpdated");
       if(u)u.textContent=`Updated ${window.alertState.lastUpdated.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})} • live NWS feed`;
     } catch (e) {
-      const existing=activeItems();
-      window.alertState.national=existing;
+      window.alertState.national=activeItems();
       if (typeof window.renderTicker === "function") window.renderTicker();
       const u=document.getElementById("alertsUpdated");
-      if(u)u.textContent=existing.length?"NWS refresh delayed • showing confirmed active alerts":"NWS alert feed temporarily unavailable • retrying";
+      if(u)u.textContent=window.alertState.national.length?"NWS refresh delayed • showing confirmed active alerts":"NWS alert feed temporarily unavailable • retrying";
       console.warn("TRGTornado ticker refresh preserved previous alerts",e);
     }
   }
 
-  window.addEventListener("DOMContentLoaded", () => {
-    // boot() in app.js is registered on the same DOMContentLoaded event. This
-    // handler runs after app.js's handler because this script is loaded later.
-    // Cancel the site's original repeating alert timer and replace it with a
-    // stable timer; the first load from app.js may still occur, but failures
-    // can no longer blank a confirmed alert set because renderTicker is rebuilt.
-    setTimeout(stableRefresh, 250);
-    setInterval(stableRefresh, 60000);
-  });
+  // app.js boot() uses this global before its own 60-second interval is made.
+  window.loadNationalAlerts = stableRefresh;
+  window.addEventListener("DOMContentLoaded", () => setTimeout(stableRefresh, 250));
 })();
