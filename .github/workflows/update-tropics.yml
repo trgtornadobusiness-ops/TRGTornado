@@ -19,68 +19,79 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Find newest NHC outlook and download graphics
+      - name: Find current NHC graphics from official product pages
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p tropical
 
-          latest_archive() {
-            local basin="$1"
-            local index="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/"
-            curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
-              --connect-timeout 15 --max-time 60 -A "$NHC_UA" "$index" \
-              | grep -oE 'href="[0-9]{12}/"' \
-              | sed -E 's/href="([0-9]{12})\/"/\1/' \
-              | sort -nr | head -n1
-          }
+          download_from_product_page() {
+            local page="$1"
+            local filename="$2"
+            local output="$3"
 
-          download_png() {
-            local output="$1"
-            local url="$2"
-            echo "Downloading: $url"
+            echo "Reading official NHC page: $page"
+            local html
+            html="$(curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
+              --connect-timeout 15 --max-time 90 -A "$NHC_UA" "$page")"
+
+            local path
+            path="$(printf '%s' "$html" | grep -oE '[^"'"' ]*'"$filename"'[^"'"' ]*' | head -n1 || true)"
+
+            if [ -z "$path" ]; then
+              echo "Could not find $filename on $page"
+              return 1
+            fi
+
+            if [[ "$path" == http* ]]; then
+              url="$path"
+            elif [[ "$path" == /* ]]; then
+              url="https://www.nhc.noaa.gov$path"
+            else
+              url="https://www.nhc.noaa.gov/$path"
+            fi
+
+            echo "Current product URL: $url"
+
             curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
-              --connect-timeout 15 --max-time 90 -A "$NHC_UA" "$url" -o "$output.tmp"
+              --connect-timeout 15 --max-time 90 -A "$NHC_UA" \
+              "$url" -o "$output.tmp"
+
             if ! file "$output.tmp" | grep -q "PNG image"; then
               echo "Downloaded response is not a PNG: $url"
               rm -f "$output.tmp"
               return 1
             fi
+
             if [ "$(stat -c%s "$output.tmp")" -lt 1000 ]; then
               echo "Downloaded PNG is suspiciously small: $url"
               rm -f "$output.tmp"
               return 1
             fi
+
             mv "$output.tmp" "$output"
-            echo "Saved: $output"
+            echo "Saved current outlook: $output"
           }
 
-          # Do not trust the /latest/ directory. It can lag behind the actual
-          # NHC archive. Find the newest timestamped outlook directory instead.
-          ATL_DIR="$(latest_archive atl)"
-          EPAC_DIR="$(latest_archive epac)"
+          # The official product pages point to the current timestamped
+          # graphical products. This avoids stale /latest/ archive listings.
+          download_from_product_page \
+            "https://www.nhc.noaa.gov/gtwo.php?basin=atl" \
+            "xgtwo_atl_7d0.png" \
+            "tropical/atlantic.png"
 
-          if [ -z "$ATL_DIR" ] || [ -z "$EPAC_DIR" ]; then
-            echo "Could not determine the newest NHC outlook directory."
-            exit 1
-          fi
+          download_from_product_page \
+            "https://www.nhc.noaa.gov/gtwo.php?basin=epac" \
+            "xgtwo_pac_7d0.png" \
+            "tropical/eastern-pacific.png"
 
-          echo "Newest Atlantic outlook: $ATL_DIR"
-          echo "Newest Pacific outlook: $EPAC_DIR"
-
-          ATL_BASE="https://www.nhc.noaa.gov/archive/xgtwo/atl/${ATL_DIR}"
-          EPAC_BASE="https://www.nhc.noaa.gov/archive/xgtwo/epac/${EPAC_DIR}"
-
-          download_png tropical/atlantic.png \
-            "${ATL_BASE}/xgtwo_atl_7d0.png"
-
-          download_png tropical/eastern-pacific.png \
-            "${EPAC_BASE}/xgtwo_pac_7d0.png"
-
-          # CPAC is published alongside EPAC in the same archive.
-          if ! download_png tropical/central-pacific.png \
-            "${EPAC_BASE}/xgtwo_cpac_7d0.png"; then
-            echo "CPAC graphic unavailable in the newest EPAC archive; keeping existing CPAC file."
+          # CPAC is not always published as a separate graphical product.
+          # Keep the last valid local copy rather than failing the whole job.
+          if ! download_from_product_page \
+            "https://www.nhc.noaa.gov/gtwo.php?basin=cpac" \
+            "xgtwo_cpac_7d0.png" \
+            "tropical/central-pacific.png"; then
+            echo "No current CPAC graphic found; keeping existing CPAC image."
             rm -f tropical/central-pacific.png.tmp
           fi
 
