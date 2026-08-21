@@ -33,15 +33,21 @@ jobs:
             echo "Reading official NHC archive page: $page"
             html="$(curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$page")"
 
-            image_url="$(printf '%s' "$html" | grep -oE 'https?://[^\" ]*'"$filename"'[^\" ]*|/archive/xgtwo/[^\" ]*'"$filename"'[^\" ]*' | head -1 || true)"
+            # Prefer the newest timestamped product link containing the exact PNG filename.
+            image_url="$(printf '%s' "$html" | grep -oE 'href="[^"]*'"$filename"'[^"]*"' | sed -E 's/^href="//;s/"$//' | head -1 || true)"
             if [ -z "$image_url" ]; then
-              image_url="$(printf '%s' "$html" | grep -oE '[^\" ]*'"$filename"'[^\" ]*' | head -1 || true)"
+              image_url="$(printf '%s' "$html" | grep -oE 'src="[^"]*'"$filename"'[^"]*"' | sed -E 's/^src="//;s/"$//' | head -1 || true)"
             fi
             if [ -z "$image_url" ]; then
               echo "Could not find $filename on the official NHC archive page"
               return 1
             fi
-            [[ "$image_url" == http* ]] || image_url="https://www.nhc.noaa.gov${image_url}"
+            case "$image_url" in
+              http://*|https://*) ;;
+              /*) image_url="https://www.nhc.noaa.gov${image_url}" ;;
+              *) image_url="https://www.nhc.noaa.gov/${image_url}" ;;
+            esac
+
             echo "Downloading current product: $image_url"
             curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$image_url" -o "$output.tmp"
             file "$output.tmp" | grep -q 'PNG image'
@@ -50,14 +56,11 @@ jobs:
             echo "Saved: $output"
           }
 
-          # These two are required for a successful update.
           download_current atl xgtwo_atl_7d0.png tropical/atlantic.png
           download_current epac xgtwo_pac_7d0.png tropical/eastern-pacific.png
 
-          # CPAC is not always a separate NHC graphical product. It is optional.
-          # Never fail the whole updater just because CPAC is absent.
           if ! download_current epac xgtwo_cpac_7d0.png tropical/central-pacific.png; then
-            echo "CPAC graphic is unavailable from the current NHC archive; leaving the existing CPAC file untouched."
+            echo "CPAC graphic unavailable; preserving existing CPAC file."
             rm -f tropical/central-pacific.png.tmp
           fi
 
