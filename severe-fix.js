@@ -14,9 +14,9 @@
       el.style.minHeight = el.style.height;
       el.style.background = "#0b0e15";
     });
-    if (!window.L || !window.SPC?.maps) return;
+    if (!window.L || typeof SPC === "undefined" || !SPC.maps) return;
     IDS.forEach(id => {
-      const map = window.SPC.maps[id];
+      const map = SPC.maps[id];
       if (!map) return;
       map.eachLayer(layer => {
         if (layer?._url?.includes("basemap.nationalmap.gov")) map.removeLayer(layer);
