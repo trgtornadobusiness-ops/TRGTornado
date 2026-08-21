@@ -20,143 +20,61 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
           mkdir -p tropical
 
-          python3 <<'PY'
-          import re
-          import urllib.request
-          from pathlib import Path
+          download_png() {
+            local output="$1"
+            shift
+            for url in "$@"; do
+              echo "Trying: $url"
+              if curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
+                --connect-timeout 15 --max-time 60 \
+                -A "TRGTornado Weather Site/1.0" "$url" -o "$output.tmp"; then
+                if file "$output.tmp" | grep -q "PNG image"; then
+                  mv "$output.tmp" "$output"
+                  echo "Successfully saved: $output"
+                  return 0
+                fi
+              fi
+              rm -f "$output.tmp"
+            done
+            echo "ERROR: Could not download a valid PNG for $output"
+            return 1
+          }
 
-          UA = "TRGTornado Weather Site/1.0"
-          headers = {"User-Agent": UA}
+          # NHC's current Atlantic and Eastern Pacific graphical outlooks.
+          download_png tropical/atlantic.png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png"
 
-          def get(url):
-              req = urllib.request.Request(url, headers=headers)
-              with urllib.request.urlopen(req, timeout=60) as r:
-                  return r.read()
+          download_png tropical/eastern-pacific.png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png"
 
-          def save(url, path):
-              print(f"Downloading: {url}")
-              data = get(url)
+          # Central Pacific is published inside NHC's EPAC archive directory.
+          # The old /cpac/latest/ path returns 404.
+          if ! download_png tropical/central-pacific.png \
+            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png"; then
+            echo "Central Pacific graphic is unavailable right now; keeping any existing file."
+            rm -f tropical/central-pacific.png.tmp
+          fi
 
-              if not data.startswith(b"\x89PNG"):
-                  raise RuntimeError(f"Downloaded file is not a PNG: {url}")
-
-              Path(path).write_bytes(data)
-
-              if Path(path).stat().st_size < 1000:
-                  raise RuntimeError(f"Image is suspiciously small: {path}")
-
-              print(f"Saved: {path} ({Path(path).stat().st_size} bytes)")
-
-          # Atlantic and Eastern Pacific have stable current NHC image URLs.
-          save(
-              "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png",
-              "tropical/atlantic.png"
-          )
-
-          save(
-              "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png",
-              "tropical/eastern-pacific.png"
-          )
-
-          # Central Pacific:
-          # Discover the CURRENT 7-day image from NHC's own graphical
-          # outlook page instead of guessing the image filename/path.
-          page_url = "https://www.nhc.noaa.gov/gtwo.php?basin=cpac"
-          html = get(page_url).decode("utf-8", errors="replace")
-
-          # Find links to PNG products.
-          links = re.findall(
-              r'''(?:href|src)\s*=\s*["']([^"']+\.png(?:\?[^"']*)?)["']''',
-              html,
-              flags=re.I
-          )
-
-          candidates = []
-
-          for link in links:
-              low = link.lower()
-
-              if "7d" not in low:
-                  continue
-
-              if "cpac" not in low and "cpac" not in page_url:
-                  continue
-
-              if link.startswith("/"):
-                  link = "https://www.nhc.noaa.gov" + link
-              elif link.startswith("http"):
-                  pass
-              else:
-                  link = "https://www.nhc.noaa.gov/" + link.lstrip("/")
-
-              candidates.append(link)
-
-          # Remove duplicates while preserving order.
-          candidates = list(dict.fromkeys(candidates))
-
-          print("Central Pacific candidates found:")
-          for c in candidates:
-              print("  " + c)
-
-          if not candidates:
-              print("No current Central Pacific 7-day PNG was found.")
-              print("The NHC page may currently have no separately published image.")
-
-              # Do NOT fail the entire workflow.
-              # Atlantic and Eastern Pacific are still valid.
-              raise SystemExit(0)
-
-          saved = False
-
-          for candidate in candidates:
-              try:
-                  save(candidate, "tropical/central-pacific.png")
-                  saved = True
-                  break
-              except Exception as e:
-                  print(f"Failed: {candidate}")
-                  print(e)
-
-          if not saved:
-              print("Could not download a Central Pacific image.")
-              print("Keeping any previous Central Pacific image if one exists.")
-
-          PY
-
-      - name: Validate available tropical graphics
+      - name: Validate tropical graphics
         shell: bash
         run: |
           set -euo pipefail
 
-          for image in \
-            tropical/atlantic.png \
-            tropical/eastern-pacific.png
-          do
-            if [ ! -f "$image" ]; then
-              echo "Missing required image: $image"
-              exit 1
-            fi
-
+          for image in tropical/atlantic.png tropical/eastern-pacific.png; do
+            test -f "$image" || { echo "Missing required image: $image"; exit 1; }
             file "$image"
-
-            if ! file "$image" | grep -q "PNG image"; then
-              echo "Invalid PNG: $image"
-              exit 1
-            fi
+            file "$image" | grep -q "PNG image" || { echo "Invalid PNG: $image"; exit 1; }
           done
 
           if [ -f tropical/central-pacific.png ]; then
-            echo "Central Pacific image exists."
             file tropical/central-pacific.png
           else
-            echo "Central Pacific image not currently available."
-            echo "Atlantic and Eastern Pacific are still valid."
+            echo "No Central Pacific graphic is currently available."
           fi
 
-      - name: Commit only changed tropical graphics
+      - name: Commit updated tropical graphics
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Update tropical outlook graphics"
