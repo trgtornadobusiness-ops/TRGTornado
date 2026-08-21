@@ -1,4 +1,4 @@
-/* TRG alert ticker V69: authoritative target-only ticker, no generic Flood Warnings, clickable to Radar. */
+/* TRG alert ticker V69.1: authoritative target-only ticker, correct colors, no generic Flood Warnings, clickable to Radar. */
 (()=>{
   const track=document.getElementById('alertTickerTrack'); if(!track)return;
   const EVENTS=new Set(['Tornado Warning','Tornado Emergency','Severe Thunderstorm Warning','Extreme Wind Warning','Flash Flood Warning','Flash Flood Emergency','Tornado Watch','Severe Thunderstorm Watch','Special Weather Statement','Severe Weather Statement']);
@@ -21,7 +21,7 @@
   }
   async function refresh(){try{const r=await fetch(`https://api.weather.gov/alerts/active?limit=5000&_trg_ticker_v69=${Date.now()}`,{cache:'no-store',headers:{Accept:'application/geo+json,application/json'}});if(!r.ok)throw new Error(`${r.status}`);const d=await r.json();render(Array.isArray(d.features)?d.features:[])}catch(e){console.warn('TRG ticker refresh failed',e)}}
   track.addEventListener('click',e=>{const b=e.target.closest?.('[data-alert-id]');if(!b)return;const id=b.dataset.alertId;if(id){e.preventDefault();e.stopPropagation();location.href='maps.html?alert='+encodeURIComponent(id)}});
-  const observer=new MutationObserver(()=>{if(drawing)return;const hasFlood=[...track.querySelectorAll('.ticker-item')].some(el=>/FLOOD WARNING/i.test(el.textContent||'')&&!/FLASH FLOOD/i.test(el.textContent||''));if(hasFlood)render(latest)});observer.observe(track,{childList:true,subtree:true});
+  const observer=new MutationObserver(()=>{if(drawing)return;const nodes=[...track.querySelectorAll('.ticker-item')];const hasFlood=nodes.some(el=>/FLOOD WARNING/i.test(el.textContent||'')&&!/FLASH FLOOD/i.test(el.textContent||''));const hasUnstyled=nodes.some(el=>el.dataset.alertId&&!el.style.borderColor);if(hasFlood||hasUnstyled)render(latest)});observer.observe(track,{childList:true,subtree:true});
   window.renderTicker=()=>render(latest);
   refresh();setInterval(refresh,60000);
 })();
