@@ -17,65 +17,58 @@ env:
 jobs:
   update-tropics:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Download current NHC tropical graphics
+      - name: Find newest NHC tropical outlook graphics
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p tropical
 
-          download_png() {
-            local output="$1"
-            shift
-            for url in "$@"; do
-              echo "Trying: $url"
-              if curl --location --fail --silent --show-error --retry 5 --retry-delay 3 \
-                --connect-timeout 15 --max-time 90 -A "$NHC_UA" "$url" -o "$output.tmp"; then
-                if file "$output.tmp" | grep -q "PNG image" && [ "$(stat -c%s "$output.tmp")" -ge 10000 ]; then
+          find_latest() {
+            local basin="$1" file="$2" output="$3"
+            local base="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/"
+            local html now candidate
+            html="$(curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" "$base" || true)"
+            mapfile -t dirs < <(printf '%s' "$html" | grep -oE 'href="[0-9]{10,12}/"' | grep -oE '[0-9]{10,12}' | sort -nr | head -30)
+            for d in "${dirs[@]}"; do
+              candidate="${base}${d}/${file}"
+              echo "Trying $candidate"
+              if curl --location --fail --silent --show-error --retry 3 -A "$NHC_UA" "$candidate" -o "$output.tmp"; then
+                if file "$output.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "$output.tmp")" -ge 10000 ]; then
                   mv "$output.tmp" "$output"
-                  echo "Successfully saved: $output"
+                  echo "Saved newest $d -> $output"
                   return 0
                 fi
               fi
               rm -f "$output.tmp"
             done
-            echo "WARNING: Could not download a valid PNG for $output"
+            echo "No valid current product found for $output"
             return 1
           }
 
-          # NHC's current /latest/ products are the same graphics served by
-          # its public graphical outlook pages. Use these stable product URLs.
-          download_png tropical/atlantic.png \
-            "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png"
+          # Use the newest timestamped archive directory rather than NHC /latest/.
+          find_latest atl xgtwo_atl_7d0.png tropical/atlantic.png
+          find_latest epac xgtwo_pac_7d0.png tropical/eastern-pacific.png
 
-          download_png tropical/eastern-pacific.png \
-            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png"
-
-          # CPAC is optional: NHC does not always publish a separate CPAC PNG.
-          # Never allow that to prevent Atlantic/EPAC from being committed.
-          if ! download_png tropical/central-pacific.png \
-            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png" \
-            "https://www.nhc.noaa.gov/archive/xgtwo/cpac/latest/xgtwo_cpac_7d0.png"; then
-            echo "No current CPAC PNG available; keeping any existing CPAC file."
-            rm -f tropical/central-pacific.png.tmp
+          # CPAC is not always published separately; keep the last valid file if absent.
+          if ! find_latest epac xgtwo_cpac_7d0.png tropical/central-pacific.png; then
+            echo "No current CPAC graphic found; preserving existing CPAC file."
           fi
 
-      - name: Validate available tropical graphics
+      - name: Validate tropical graphics
         shell: bash
         run: |
           set -euo pipefail
           for image in tropical/atlantic.png tropical/eastern-pacific.png; do
-            test -f "$image"
-            file "$image" | grep -q "PNG image"
+            test -s "$image"
+            file "$image" | grep -q 'PNG image'
           done
           if [ -f tropical/central-pacific.png ]; then
-            file tropical/central-pacific.png | grep -q "PNG image"
+            file tropical/central-pacific.png | grep -q 'PNG image'
           fi
-          echo "Tropical graphics validated successfully."
 
       - name: Commit updated tropical graphics
         uses: stefanzweifel/git-auto-commit-action@v7
