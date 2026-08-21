@@ -19,44 +19,68 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Download current NHC tropical outlooks
+      - name: Find newest NHC outlook and download graphics
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p tropical
 
-          download_png() {
-            local output="$1"
-            shift
-            for url in "$@"; do
-              echo "Trying: $url"
-              if curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
-                --connect-timeout 15 --max-time 60 \
-                -A "$NHC_UA" "$url" -o "$output.tmp"; then
-                if file "$output.tmp" | grep -q "PNG image"; then
-                  mv "$output.tmp" "$output"
-                  echo "Successfully saved: $output"
-                  return 0
-                fi
-              fi
-              rm -f "$output.tmp"
-            done
-            echo "ERROR: Could not download a valid PNG for $output"
-            return 1
+          latest_archive() {
+            local basin="$1"
+            local index="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/"
+            curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
+              --connect-timeout 15 --max-time 60 -A "$NHC_UA" "$index" \
+              | grep -oE 'href="[0-9]{12}/"' \
+              | sed -E 's/href="([0-9]{12})\/"/\1/' \
+              | sort -nr | head -n1
           }
 
-          # NHC current 7-day graphical outlooks.
+          download_png() {
+            local output="$1"
+            local url="$2"
+            echo "Downloading: $url"
+            curl -L --fail --silent --show-error --retry 5 --retry-delay 3 \
+              --connect-timeout 15 --max-time 90 -A "$NHC_UA" "$url" -o "$output.tmp"
+            if ! file "$output.tmp" | grep -q "PNG image"; then
+              echo "Downloaded response is not a PNG: $url"
+              rm -f "$output.tmp"
+              return 1
+            fi
+            if [ "$(stat -c%s "$output.tmp")" -lt 1000 ]; then
+              echo "Downloaded PNG is suspiciously small: $url"
+              rm -f "$output.tmp"
+              return 1
+            fi
+            mv "$output.tmp" "$output"
+            echo "Saved: $output"
+          }
+
+          # Do not trust the /latest/ directory. It can lag behind the actual
+          # NHC archive. Find the newest timestamped outlook directory instead.
+          ATL_DIR="$(latest_archive atl)"
+          EPAC_DIR="$(latest_archive epac)"
+
+          if [ -z "$ATL_DIR" ] || [ -z "$EPAC_DIR" ]; then
+            echo "Could not determine the newest NHC outlook directory."
+            exit 1
+          fi
+
+          echo "Newest Atlantic outlook: $ATL_DIR"
+          echo "Newest Pacific outlook: $EPAC_DIR"
+
+          ATL_BASE="https://www.nhc.noaa.gov/archive/xgtwo/atl/${ATL_DIR}"
+          EPAC_BASE="https://www.nhc.noaa.gov/archive/xgtwo/epac/${EPAC_DIR}"
+
           download_png tropical/atlantic.png \
-            "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png"
+            "${ATL_BASE}/xgtwo_atl_7d0.png"
 
           download_png tropical/eastern-pacific.png \
-            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png"
+            "${EPAC_BASE}/xgtwo_pac_7d0.png"
 
-          # CPAC's current graphic is stored in the EPAC archive directory.
-          # Do not fail the whole update if NHC is not publishing a CPAC image.
+          # CPAC is published alongside EPAC in the same archive.
           if ! download_png tropical/central-pacific.png \
-            "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png"; then
-            echo "Central Pacific graphic is unavailable right now; keeping any existing file."
+            "${EPAC_BASE}/xgtwo_cpac_7d0.png"; then
+            echo "CPAC graphic unavailable in the newest EPAC archive; keeping existing CPAC file."
             rm -f tropical/central-pacific.png.tmp
           fi
 
