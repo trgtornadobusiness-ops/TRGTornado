@@ -14,54 +14,52 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
-      - name: Prepare tropical folder
-        run: mkdir -p tropical
-
-      - name: Download Atlantic outlook
+      - name: Download current NHC tropical outlooks
+        shell: bash
         run: |
-          curl -L --fail --silent --show-error \
-            -A "Mozilla/5.0" \
-            "https://www.nhc.noaa.gov/xgtwo/resize/xgtwo_atl_7d0_w1366.png" \
-            -o /tmp/atlantic.png
+          set -euo pipefail
+          mkdir -p tropical
 
-          if file /tmp/atlantic.png | grep -q "PNG image"; then
-            mv /tmp/atlantic.png tropical/atlantic.png
-            echo "Atlantic outlook updated."
-          else
-            echo "Atlantic download was not a PNG. Keeping previous image."
-          fi
+          download_png() {
+            local out="$1"
+            shift
 
-      - name: Download Eastern Pacific outlook
-        run: |
-          curl -L --fail --silent --show-error \
-            -A "Mozilla/5.0" \
-            "https://www.nhc.noaa.gov/xgtwo/resize/xgtwo_pac_7d0_w1366.png" \
-            -o /tmp/eastern-pacific.png
+            for url in "$@"; do
+              echo "Trying: $url"
 
-          if file /tmp/eastern-pacific.png | grep -q "PNG image"; then
-            mv /tmp/eastern-pacific.png tropical/eastern-pacific.png
-            echo "Eastern Pacific outlook updated."
-          else
-            echo "Eastern Pacific download was not a PNG. Keeping previous image."
-          fi
+              if curl -L --fail --silent --show-error \
+                --retry 4 --retry-delay 3 \
+                -A "TRGTornado Weather Site/1.0" \
+                "$url" -o /tmp/out.png; then
 
-      - name: Check for changes
-        id: changes
-        run: |
-          if git diff --quiet -- tropical/; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
+                if file /tmp/out.png | grep -q "PNG image"; then
+                  mv /tmp/out.png "$out"
+                  echo "Saved $out"
+                  return 0
+                fi
+              fi
+            done
 
-      - name: Commit updated tropical outlooks
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            echo "ERROR: No valid PNG source succeeded for $out"
+            return 1
+          }
 
-          git add tropical/
-          git commit -m "Update tropical outlooks"
-          git push
+          download_png tropical/atlantic.png \
+            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" \
+            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png"
+
+          download_png tropical/eastern-pacific.png \
+            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" \
+            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png"
+
+          download_png tropical/central-pacific.png \
+            "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" \
+            "https://prod-east-nhc.woc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png"
+
+      - name: Commit only changed outlooks
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Update tropical outlook graphics"
+          file_pattern: tropical/*.png
