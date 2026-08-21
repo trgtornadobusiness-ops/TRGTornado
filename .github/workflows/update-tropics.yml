@@ -17,55 +17,47 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Download newest NHC archive stills
+      - name: Download latest NHC stills
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p tropical
 
-          get_image() {
-            local basin="$1" product="$2" output="$3"
-            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=${basin}&current_issuance=latest&fdays=7"
-            echo "Reading latest NHC ${basin} archive: ${page}"
-            local html path url
-            html="$(curl -L --fail --silent --show-error --retry 5 --retry-delay 2 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$page")"
-            path="$(printf '%s' "$html" | grep -oE '[A-Za-z0-9_./-]*'"${product}"'[A-Za-z0-9_./-]*' | head -n 1 || true)"
-            if [ -z "$path" ]; then
-              echo "Could not find ${product} in latest NHC archive page for ${basin}"
-              return 1
+          download_nhc() {
+            local basin="$1" output="$2"
+            local base="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/latest"
+            local image="two_${basin}_7d0.png"
+            local url="${base}/${image}"
+            echo "Downloading NHC ${basin}: ${url}"
+            if curl -L --fail --silent --show-error --retry 5 --retry-delay 2 --connect-timeout 15 --max-time 60 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "${url}?_=$(date +%s)" -o "${output}.tmp"; then
+              if file "${output}.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "${output}.tmp")" -gt 10000 ]; then
+                mv "${output}.tmp" "${output}"
+                echo "Saved fresh NHC graphic: ${output}"
+                return 0
+              fi
             fi
-            if [[ "$path" =~ ^https?:// ]]; then url="$path"; else url="https://www.nhc.noaa.gov/${path#/}"; fi
-            echo "Downloading current NHC image: $url"
-            curl -L --fail --silent --show-error --retry 5 --retry-delay 2 -A 'TRGTornado Weather Site/1.0' -H 'Cache-Control: no-cache' "$url" -o "$output.tmp"
-            if ! file "$output.tmp" | grep -q 'PNG image' || [ "$(stat -c%s "$output.tmp")" -le 10000 ]; then
-              echo "Downloaded file is not a valid current PNG: $output.tmp"
-              rm -f "$output.tmp"
-              return 1
-            fi
-            mv "$output.tmp" "$output"
-            echo "Saved current NHC graphic: $output"
+            rm -f "${output}.tmp"
+            echo "NHC ${basin} download failed; preserving previous good image if one exists."
+            return 1
           }
 
-          # The archive page is used to discover the newest issuance instead of
-          # assuming the /latest/ directory keeps a stable image filename.
-          get_image atl two_atl_7d0.png tropical/atlantic.png || true
-          get_image epac two_epac_7d0.png tropical/eastern-pacific.png || true
-          get_image cpac two_cpac_7d0.png tropical/central-pacific.png || true
-          echo "NHC archive update pass complete."
+          # Only this workflow and the tropical assets are touched. The rest of
+          # the website is completely independent of this update process.
+          download_nhc atl tropical/atlantic.png || true
+          download_nhc epac tropical/eastern-pacific.png || true
+          download_nhc cpac tropical/central-pacific.png || true
 
-      - name: Validate available graphics
+      - name: Validate tropical graphics
         shell: bash
         run: |
           set -u
-          found=0
-          for image in tropical/*.png; do
-            [ -s "$image" ] || continue
-            if file "$image" | grep -q 'PNG image'; then
+          for image in tropical/atlantic.png tropical/eastern-pacific.png tropical/central-pacific.png; do
+            if [ -s "$image" ] && file "$image" | grep -q 'PNG image'; then
               echo "Valid PNG: $image"
-              found=1
+            else
+              echo "No new valid PNG for $image (an existing good file may be absent)."
             fi
           done
-          echo "Graphics found: $found"
           exit 0
 
       - name: Commit graphics if changed
