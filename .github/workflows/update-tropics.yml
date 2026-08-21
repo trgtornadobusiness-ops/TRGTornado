@@ -33,9 +33,9 @@ jobs:
             echo "Reading official NHC archive page: $page"
             html="$(curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$page")"
 
-            image_url="$(printf '%s' "$html" | grep -oE 'https?://[^\"'"'"' ]+'"$filename"'[^\"'"'"' ]*|/archive/xgtwo/[^\"'"'"' ]+'"$filename"'[^\"'"'"' ]*' | head -1 || true)"
+            image_url="$(printf '%s' "$html" | grep -oE 'https?://[^\" ]*'"$filename"'[^\" ]*|/archive/xgtwo/[^\" ]*'"$filename"'[^\" ]*' | head -1 || true)"
             if [ -z "$image_url" ]; then
-              image_url="$(printf '%s' "$html" | grep -oE '[^\"'"'"' ]+'"$filename"'[^\"'"'"' ]*' | head -1 || true)"
+              image_url="$(printf '%s' "$html" | grep -oE '[^\" ]*'"$filename"'[^\" ]*' | head -1 || true)"
             fi
             if [ -z "$image_url" ]; then
               echo "Could not find $filename on the official NHC archive page"
@@ -47,13 +47,18 @@ jobs:
             file "$output.tmp" | grep -q 'PNG image'
             test "$(stat -c%s "$output.tmp")" -ge 10000
             mv "$output.tmp" "$output"
+            echo "Saved: $output"
           }
 
+          # These two are required for a successful update.
           download_current atl xgtwo_atl_7d0.png tropical/atlantic.png
           download_current epac xgtwo_pac_7d0.png tropical/eastern-pacific.png
 
+          # CPAC is not always a separate NHC graphical product. It is optional.
+          # Never fail the whole updater just because CPAC is absent.
           if ! download_current epac xgtwo_cpac_7d0.png tropical/central-pacific.png; then
-            echo "No current CPAC still was published; keeping the previous valid CPAC graphic."
+            echo "CPAC graphic is unavailable from the current NHC archive; leaving the existing CPAC file untouched."
+            rm -f tropical/central-pacific.png.tmp
           fi
 
       - name: Validate graphics
@@ -64,7 +69,9 @@ jobs:
             test -s "$image"
             file "$image" | grep -q 'PNG image'
           done
-          if [ -f tropical/central-pacific.png ]; then file tropical/central-pacific.png | grep -q 'PNG image'; fi
+          if [ -f tropical/central-pacific.png ]; then
+            file tropical/central-pacific.png | grep -q 'PNG image'
+          fi
 
       - name: Commit current graphics
         uses: stefanzweifel/git-auto-commit-action@v7
