@@ -1,4 +1,4 @@
-name: Set Website Version 65
+name: Set Website Version 70
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set every page footer to Version 65
+      - name: Set every page footer to Version 70
         shell: bash
         run: |
           set -euo pipefail
@@ -23,15 +23,15 @@ jobs:
           for file in *.html; do
             [ -f "$file" ] || continue
             if grep -q 'class="site-version">Version ' "$file"; then
-              sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 65/g' "$file"
+              sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 70/g' "$file"
               changed=1
             fi
           done
-          echo "Version 65 update pass complete. changed=$changed"
+          echo "Version 70 update pass complete. changed=$changed"
 
-      - name: Commit Version 65 updates
+      - name: Commit Version 70 updates
         if: success()
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Set all website footers to Version 65"
+          commit_message: "Set all website footers to Version 70"
           file_pattern: '*.html'
