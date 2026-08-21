@@ -1,4 +1,4 @@
-name: Set Website Version 76
+name: Set Website Version 77
 on:
   push:
     branches: [main]
@@ -7,20 +7,21 @@ permissions:
   contents: write
 jobs:
   set-version:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Set every page footer to Version 76
+      - name: Set every page footer to Version 77
         shell: bash
         run: |
           set -euo pipefail
           for file in *.html; do
             [ -f "$file" ] || continue
-            sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 76/g' "$file"
+            sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 77/g' "$file"
           done
-      - name: Commit Version 76 updates
+      - name: Commit Version 77 updates
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Set all website footers to Version 76"
+          commit_message: "Set all website footers to Version 77"
           file_pattern: '*.html'
