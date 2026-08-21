@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Download current NHC stills
+      - name: Download official NHC archive stills
         shell: bash
         run: |
           set -u
@@ -31,40 +31,34 @@ jobs:
                 echo "Valid PNG saved: $out"
                 return 0
               fi
-              echo "Response was not a valid PNG."
-            else
-              echo "HTTP download failed."
             fi
             rm -f "$out.tmp"
+            echo "Unavailable: $url"
             return 1
           }
 
-          # NHC current still products. Each product is independent so one unavailable basin cannot fail the workflow.
-          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_atl_7d0.png" tropical/atlantic.png || true
-          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_pac_7d0.png" tropical/eastern-pacific.png || true
-          download "https://www.nhc.noaa.gov/xgtwo/images/xgtwo_cpac_7d0.png" tropical/central-pacific.png || true
+          # NHC's maintained /archive/xgtwo/.../latest/ product directories.
+          # These are the official still graphics used by the Graphical Tropical Weather Outlook.
+          download "https://www.nhc.noaa.gov/archive/xgtwo/atl/latest/xgtwo_atl_7d0.png" tropical/atlantic.png || true
+          download "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_pac_7d0.png" tropical/eastern-pacific.png || true
+          download "https://www.nhc.noaa.gov/archive/xgtwo/epac/latest/xgtwo_cpac_7d0.png" tropical/central-pacific.png || true
 
-          echo "NHC download pass complete."
+          echo "Official NHC archive download pass complete."
 
-      - name: Validate graphics without failing the update
+      - name: Validate available graphics
         shell: bash
         run: |
           set -u
-          found=0
           for image in tropical/*.png; do
             [ -s "$image" ] || continue
             if file "$image" | grep -q 'PNG image'; then
-              echo "Valid: $image"
-              found=1
+              echo "Valid PNG: $image"
             fi
           done
-          if [ "$found" -eq 0 ]; then
-            echo "No valid new/current PNG was downloaded; preserving repository contents."
-          fi
           exit 0
 
       - name: Commit graphics if changed
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Auto-update tropical outlook graphics"
+          commit_message: "Auto-update official NHC tropical stills"
           file_pattern: tropical/*.png
