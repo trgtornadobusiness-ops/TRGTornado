@@ -1,0 +1,9 @@
+/* TRG map control positioning fix: keep Leaflet controls inside the map viewport while the page scrolls. */
+.leaflet-container .leaflet-control-container{position:absolute!important;inset:0!important;pointer-events:none!important}
+.leaflet-container .leaflet-top,.leaflet-container .leaflet-bottom{position:absolute!important;z-index:1000!important;pointer-events:none!important}
+.leaflet-container .leaflet-top.leaflet-left{top:10px!important;left:10px!important}
+.leaflet-container .leaflet-top.leaflet-right{top:10px!important;right:10px!important}
+.leaflet-container .leaflet-bottom.leaflet-left{bottom:10px!important;left:10px!important}
+.leaflet-container .leaflet-bottom.leaflet-right{bottom:10px!important;right:10px!important}
+.leaflet-container .leaflet-control{pointer-events:auto!important}
+.leaflet-container .leaflet-control-zoom{position:relative!important;top:0!important;left:0!important;margin:0!important}
