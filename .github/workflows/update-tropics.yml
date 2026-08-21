@@ -5,8 +5,7 @@ on:
     - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
 
 permissions:
   contents: write
@@ -21,44 +20,43 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Find newest NHC tropical outlook graphics
+      - name: Download current NHC still images
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p tropical
 
-          find_latest() {
-            local basin="$1" file="$2" output="$3"
-            local base="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/"
-            local html now candidate
-            html="$(curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" "$base" || true)"
-            mapfile -t dirs < <(printf '%s' "$html" | grep -oE 'href="[0-9]{10,12}/"' | grep -oE '[0-9]{10,12}' | sort -nr | head -30)
-            for d in "${dirs[@]}"; do
-              candidate="${base}${d}/${file}"
-              echo "Trying $candidate"
-              if curl --location --fail --silent --show-error --retry 3 -A "$NHC_UA" "$candidate" -o "$output.tmp"; then
-                if file "$output.tmp" | grep -q 'PNG image' && [ "$(stat -c%s "$output.tmp")" -ge 10000 ]; then
-                  mv "$output.tmp" "$output"
-                  echo "Saved newest $d -> $output"
-                  return 0
-                fi
-              fi
-              rm -f "$output.tmp"
-            done
-            echo "No valid current product found for $output"
-            return 1
+          download_current() {
+            local basin="$1" filename="$2" output="$3"
+            local page="https://www.nhc.noaa.gov/archive/xgtwo/gtwo_archive.php?basin=${basin}&current_issuance=latest&fdays=7&v=$(date +%s)"
+            local html image_url
+            echo "Reading official NHC archive page: $page"
+            html="$(curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$page")"
+
+            image_url="$(printf '%s' "$html" | grep -oE 'https?://[^\"'"'"' ]+'"$filename"'[^\"'"'"' ]*|/archive/xgtwo/[^\"'"'"' ]+'"$filename"'[^\"'"'"' ]*' | head -1 || true)"
+            if [ -z "$image_url" ]; then
+              image_url="$(printf '%s' "$html" | grep -oE '[^\"'"'"' ]+'"$filename"'[^\"'"'"' ]*' | head -1 || true)"
+            fi
+            if [ -z "$image_url" ]; then
+              echo "Could not find $filename on the official NHC archive page"
+              return 1
+            fi
+            [[ "$image_url" == http* ]] || image_url="https://www.nhc.noaa.gov${image_url}"
+            echo "Downloading current product: $image_url"
+            curl --location --fail --silent --show-error --retry 5 -A "$NHC_UA" -H 'Cache-Control: no-cache' "$image_url" -o "$output.tmp"
+            file "$output.tmp" | grep -q 'PNG image'
+            test "$(stat -c%s "$output.tmp")" -ge 10000
+            mv "$output.tmp" "$output"
           }
 
-          # Use the newest timestamped archive directory rather than NHC /latest/.
-          find_latest atl xgtwo_atl_7d0.png tropical/atlantic.png
-          find_latest epac xgtwo_pac_7d0.png tropical/eastern-pacific.png
+          download_current atl xgtwo_atl_7d0.png tropical/atlantic.png
+          download_current epac xgtwo_pac_7d0.png tropical/eastern-pacific.png
 
-          # CPAC is not always published separately; keep the last valid file if absent.
-          if ! find_latest epac xgtwo_cpac_7d0.png tropical/central-pacific.png; then
-            echo "No current CPAC graphic found; preserving existing CPAC file."
+          if ! download_current epac xgtwo_cpac_7d0.png tropical/central-pacific.png; then
+            echo "No current CPAC still was published; keeping the previous valid CPAC graphic."
           fi
 
-      - name: Validate tropical graphics
+      - name: Validate graphics
         shell: bash
         run: |
           set -euo pipefail
@@ -66,12 +64,10 @@ jobs:
             test -s "$image"
             file "$image" | grep -q 'PNG image'
           done
-          if [ -f tropical/central-pacific.png ]; then
-            file tropical/central-pacific.png | grep -q 'PNG image'
-          fi
+          if [ -f tropical/central-pacific.png ]; then file tropical/central-pacific.png | grep -q 'PNG image'; fi
 
-      - name: Commit updated tropical graphics
+      - name: Commit current graphics
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Auto-update tropical outlook graphics"
+          commit_message: "Auto-update current NHC tropical stills"
           file_pattern: tropical/*.png
