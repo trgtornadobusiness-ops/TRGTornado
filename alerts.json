@@ -10,13 +10,124 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-34472",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b54541f81c7033986e226f53f6a69bdcaa7e3f03.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.71,
+              34.48
+            ],
+            [
+              -76.77,
+              34.63
+            ],
+            [
+              -76.47,
+              34.77
+            ],
+            [
+              -76.36,
+              34.53
+            ],
+            [
+              -76.71,
+              34.48
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b54541f81c7033986e226f53f6a69bdcaa7e3f03.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.b54541f81c7033986e226f53f6a69bdcaa7e3f03.001.1",
+        "areaDesc": "East Carteret",
+        "geocode": {
+          "SAME": [
+            "037031"
+          ],
+          "UGC": [
+            "NCZ196"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NCZ196"
+        ],
+        "references": [],
+        "sent": "2026-08-22T10:39:00-04:00",
+        "effective": "2026-08-22T10:39:00-04:00",
+        "onset": "2026-08-22T10:39:00-04:00",
+        "expires": "2026-08-22T11:30:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Newport/Morehead City NC",
+        "headline": "Special Weather Statement issued August 22 at 10:39AM EDT by NWS Newport/Morehead City NC",
+        "description": "At 1038 AM EDT, Doppler radar was tracking a strong thunderstorm\ncapable of producing a waterspout 8 miles southwest of Cape Lookout\nLighthouse, or 10 miles southwest of Harkers Island, moving\nnortheast at 15 mph.\n\nHAZARD...Waterspouts and wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous waters. Gusty winds could knock down tree limbs\nand blow around unsecured objects.\n\nLocations impacted include...\nHarkers Island, Marshallberg, Cape Lookout Lighthouse, and\nGloucester.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSMHX"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KMHX 221439"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT SOUTH CENTRAL CARTERET COUNTY THROUGH 1130 AM EDT"
+          ],
+          "eventMotionDescription": [
+            "2026-08-22T14:38:00-00:00...storm...243DEG...13KT...34.56,-76.66"
+          ],
+          "maxWindGust": [
+            "40 MPH"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "waterspoutDetection": [
+            "POSSIBLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-10183",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-34472",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-10183",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-34472",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-10183",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +141,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-08-22T13:37:16+00:00",
-        "effective": "2026-08-22T13:37:16+00:00",
+        "sent": "2026-08-22T14:37:16+00:00",
+        "effective": "2026-08-22T14:37:16+00:00",
         "onset": null,
-        "expires": "2026-08-22T13:47:16+00:00",
+        "expires": "2026-08-22T14:47:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +165,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 221337"
+            "NZUS91 KWBC 221437"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +183,1746 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e54fc82a4afea7e48c6df4f2be8f22d0ab3f9127.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -77.01,
+              34.35
+            ],
+            [
+              -77.06,
+              34.59
+            ],
+            [
+              -76.38,
+              34.81
+            ],
+            [
+              -76.28,
+              34.39
+            ],
+            [
+              -77.01,
+              34.35
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e54fc82a4afea7e48c6df4f2be8f22d0ab3f9127.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e54fc82a4afea7e48c6df4f2be8f22d0ab3f9127.001.1",
+        "areaDesc": "S of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM; S of Cape Lookout NC to Surf City NC out to 20 NM",
+        "geocode": {
+          "SAME": [
+            "075156",
+            "075158"
+          ],
+          "UGC": [
+            "AMZ156",
+            "AMZ158"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AMZ156",
+          "https://api.weather.gov/zones/forecast/AMZ158"
+        ],
+        "references": [],
+        "sent": "2026-08-22T10:36:00-04:00",
+        "effective": "2026-08-22T10:36:00-04:00",
+        "onset": "2026-08-22T10:36:00-04:00",
+        "expires": "2026-08-22T12:00:00-04:00",
+        "ends": "2026-08-22T12:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Special Marine Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Newport/Morehead City NC",
+        "headline": "Special Marine Warning issued August 22 at 10:36AM EDT until August 22 at 12:00PM EDT by NWS Newport/Morehead City NC",
+        "description": "SMWMHX\n\nThe National Weather Service in Newport has issued a\n\n* Special Marine Warning for...\nS of Cape Lookout NC to Surf City NC out to 20 NM...\nS of Ocracoke Inlet NC to Cape Lookout NC out to 20 NM...\n\n* Until noon EDT.\n\n* At 1034 AM EDT, a cluster of severe thunderstorms capable of\nproducing waterspouts extends from near Ar345, or 13 nm southeast\nof Bogue Inlet to 10 miles southwest of Cape Lookout, moving east\nat 10 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas. Small craft could be damaged in briefly\nhigher winds and suddenly higher waves.\n\n* Locations impacted include...\nNorthwest Places, Beaufort Inlet, Ar320, R-8 Buoy, Cape Lookout\nBight, Ar345, Beaufort, The Knuckle Buoy, Big Ten Fathom, Ar315,\nHarkers Island, Ar285, Ar340, Ar330, and Cape Lookout.",
+        "instruction": "Move to safe harbor until hazardous weather passes.\n\nThunderstorms can produce sudden waterspouts. Waterspouts can easily\noverturn boats and create locally hazardous seas. Seek safe harbor\nimmediately.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SMWMHX"
+          ],
+          "WMOidentifier": [
+            "WHUS52 KMHX 221436"
+          ],
+          "eventMotionDescription": [
+            "2026-08-22T14:34:00-00:00...storm...251DEG...12KT...34.48,-76.94"
+          ],
+          "waterspoutDetection": [
+            "POSSIBLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KMHX.MA.W.0328.260822T1436Z-260822T1600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T12:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SMW"
+          ],
+          "NationalWeatherService": [
+            "MAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c8df7c2e6445c719a4d7e39262a61718eadb231e.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.48,
+              39.96
+            ],
+            [
+              -82.46,
+              39.96
+            ],
+            [
+              -82.47,
+              39.94
+            ],
+            [
+              -82.51,
+              39.92
+            ],
+            [
+              -82.52,
+              39.93
+            ],
+            [
+              -82.51,
+              39.94
+            ],
+            [
+              -82.48,
+              39.96
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c8df7c2e6445c719a4d7e39262a61718eadb231e.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.c8df7c2e6445c719a4d7e39262a61718eadb231e.001.1",
+        "areaDesc": "Fairfield, OH; Licking, OH",
+        "geocode": {
+          "SAME": [
+            "039045",
+            "039089"
+          ],
+          "UGC": [
+            "OHC045",
+            "OHC089"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/OHC045",
+          "https://api.weather.gov/zones/county/OHC089"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.901531b3f2032bb399b203cf20caac238e02b25c.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.901531b3f2032bb399b203cf20caac238e02b25c.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T01:28:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5264850241861ea4df115fd23a119d0220bdd4b3.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.5264850241861ea4df115fd23a119d0220bdd4b3.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T05:57:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7d602e7c93187f603f2439eae6aa8faab4d7a358.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.7d602e7c93187f603f2439eae6aa8faab4d7a358.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T07:44:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:26:00-04:00",
+        "effective": "2026-08-22T10:26:00-04:00",
+        "onset": "2026-08-22T10:26:00-04:00",
+        "expires": "2026-08-22T20:00:00-04:00",
+        "ends": "2026-08-22T20:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Wilmington OH",
+        "headline": "Flood Warning issued August 22 at 10:26AM EDT until August 22 at 8:00PM EDT by NWS Wilmington OH",
+        "description": "...The Flood Warning continues for the following rivers...\n\nSouth Fork Licking River Near I 70 near Buckeye Lake.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...South Fork Licking River near I 70 near Buckeye Lake.\n\n* WHEN...Until this evening.\n\n* IMPACTS...At 880.5 feet, Water extends onto the 129A exit ramp from\neastbound Interstate 70 to Route 79 near Buckeye Lake. Widespread\nflooding occurs through Buckeye Lake Estates.\n\n* ADDITIONAL DETAILS...\n- At 9:45 AM EDT Saturday the stage was 880.5 feet.\n- Forecast...The river will oscillate above flood stage with a\nmaximum value of 880.5 feet late this morning. It will fall below\nflood stage this afternoon.\n- Flood stage is 880.0 feet.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov/iln.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSILN"
+          ],
+          "WMOidentifier": [
+            "WGUS81 KILN 221426"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING REMAINS IN EFFECT UNTIL THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KILN.FL.W.0056.000000T0000Z-260823T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T20:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.514d7f773b15c1d2b3f0bf904221fb43b0154472.001.1,2026-08-21T21:46:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.a39c2d290ed33391d5082373053546a0bedcf40d.001.1,2026-08-21T09:25:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.11725aecb9c91ddd9b03621a0b74bf290917384e.001.1,2026-08-21T05:54:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b7d9c14359436426598c3f81eb2a6a10f483fbaf.001.1,2026-08-20T21:03:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.95d82982b9c5729a52d8bdeff7b5a6a125fe560b.001.1,2026-08-20T18:30:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.8e709063275be34503cc3a36e6408369814a62c4.001.1,2026-08-20T17:23:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c085cc8a0dbfe62ff36ecc4f8af10b3e8c3a54fa.001.1,2026-08-20T12:03:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.61fc89fc93214195c18ae0eabc4c6f6b33c08e09.001.1,2026-08-20T10:16:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f8d3e689a0919927b23b7501d5dc54f3bab2635f.001.1,2026-08-20T06:51:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c8ffbed9922e7028ad4035c1e4de6f52e9151574.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.49,
+              39.96
+            ],
+            [
+              -82.5,
+              39.98
+            ],
+            [
+              -82.47,
+              40
+            ],
+            [
+              -82.45,
+              40.01
+            ],
+            [
+              -82.46,
+              39.96
+            ],
+            [
+              -82.49,
+              39.96
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c8ffbed9922e7028ad4035c1e4de6f52e9151574.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.c8ffbed9922e7028ad4035c1e4de6f52e9151574.001.1",
+        "areaDesc": "Licking, OH",
+        "geocode": {
+          "SAME": [
+            "039089"
+          ],
+          "UGC": [
+            "OHC089"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/OHC089"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9686eb82278aa2767f5de6187ddda8a58f64eb85.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.9686eb82278aa2767f5de6187ddda8a58f64eb85.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-21T23:04:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1e6f12775e77f7cc09fe378cd3dc4c914e658d49.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1e6f12775e77f7cc09fe378cd3dc4c914e658d49.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T07:39:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:25:00-04:00",
+        "effective": "2026-08-22T10:25:00-04:00",
+        "onset": "2026-08-22T10:25:00-04:00",
+        "expires": "2026-08-22T17:15:00-04:00",
+        "ends": "2026-08-22T17:01:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Wilmington OH",
+        "headline": "Flood Warning issued August 22 at 10:25AM EDT until August 22 at 5:01PM EDT by NWS Wilmington OH",
+        "description": "...The Flood Warning is extended for the following rivers...\n\nSouth Fork Licking River near Hebron.\n\n* WHAT...Minor flooding is occurring.\n\n* WHERE...South Fork Licking River near Hebron.\n\n* WHEN...Until this afternoon.\n\n* IMPACTS...At 11.0 feet, Minor flooding along Ridgely Tract Road\noccurs.\n\n* ADDITIONAL DETAILS...\n- At 9:15 AM EDT Saturday the stage was 11.1 feet.\n- Forecast...The river is expected to fall below flood stage late\nthis morning and continue falling, remaining below flood stage.\n- Flood stage is 11.0 feet.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov/iln.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSILN"
+          ],
+          "WMOidentifier": [
+            "WGUS81 KILN 221425"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KILN.FL.W.0055.000000T0000Z-260822T2101Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T17:01:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.3bed510269b183446c7e83d809ef446a97b53455.001.1,2026-08-21T11:35:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2d55ba2140a11055898d75f8c49385e41b470a9c.001.1,2026-08-21T06:51:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2a4158af8061cdcee390eb53412b8f2f36cc6958.001.1,2026-08-20T23:43:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2a5b3807de5182a58304b6a81cc994814bd3fade.001.1,2026-08-20T22:55:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9fef37eba3befd2a8742a706890ca95a13360124.001.1,2026-08-20T17:41:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.e9a92a50eb0aadccd53a88f207894cadd0820bd2.001.1,2026-08-20T14:02:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.cccd548eb62d441d814fc1f31aa3a513f86081f2.001.1,2026-08-20T11:56:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.5dfb3e3073c77b30c59dbc8ef8502003005dd0d8.001.1,2026-08-20T10:46:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.71f637fd9ce0abf093ff2489a0d3e6fded839319.001.1,2026-08-20T06:06:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5d1007451779cf7f4648a3802737d31551aa5981.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5d1007451779cf7f4648a3802737d31551aa5981.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.5d1007451779cf7f4648a3802737d31551aa5981.001.1",
+        "areaDesc": "Northern Outer Banks",
+        "geocode": {
+          "SAME": [
+            "037055"
+          ],
+          "UGC": [
+            "NCZ203"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NCZ203"
+        ],
+        "references": [],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T10:15:00-04:00",
+        "expires": "2026-08-22T12:00:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Newport/Morehead City NC",
+        "headline": "Special Weather Statement issued August 22 at 10:15AM EDT by NWS Newport/Morehead City NC",
+        "description": "Rip currents have been observed over the last hour north of Oregon\nInlet, as low tide has occurred during the last hour. An elevated\nrisk of rip currents can be expected through noon, before the\nthreat of rip currents lessens this afternoon. If caught in a rip\ncurrent, relax and do not swim against it. Swim parallel to the\nshoreline to escape the pull of the rip current. If you cannot\nescape, float or tread water, and yell and wave for help. Always\nswim on a lifeguarded beach, and if in doubt, stay out of the\nwater.",
+        "instruction": null,
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSMHX"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KMHX 221415"
+          ],
+          "NWSheadline": [
+            "ELEVATED RIP CURRENT RISK THORUGH NOON NORTH OF OREGON INLET"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.003.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.003.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.003.1",
+        "areaDesc": "Point Betsie to Sleeping Bear Point MI; Manistee to Point Betsie MI",
+        "geocode": {
+          "SAME": [
+            "092345",
+            "092346"
+          ],
+          "UGC": [
+            "LMZ345",
+            "LMZ346"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LMZ345",
+          "https://api.weather.gov/zones/forecast/LMZ346"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.003.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.003.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:49:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T22:00:00-04:00",
+        "expires": "2026-08-22T18:15:00-04:00",
+        "ends": "2026-08-24T00:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Gaylord MI",
+        "headline": "Small Craft Advisory issued August 22 at 10:15AM EDT until August 24 at 12:00AM EDT by NWS Gaylord MI",
+        "description": "* WHAT...Highest gusts up to 25 kts from the north and highest\nwaves around 6 feet expected.\n\n* WHERE...Point Betsie to Sleeping Bear Point MI and Manistee to\nPoint Betsie MI.\n\n* WHEN...From 10 PM this evening to midnight EDT Sunday night.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWAPX"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KAPX 221415"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 10 PM THIS EVENING TO MIDNIGHT EDT SUNDAY NIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KAPX.SC.Y.0071.260823T0200Z-260824T0400Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-24T00:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.005.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.005.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.005.1",
+        "areaDesc": "5NM East of Mackinac Bridge to Presque Isle Light MI including Bois Blanc Island; Presque Isle Light to Sturgeon Pt MI Including Thunder Bay National Marine Sanctuary",
+        "geocode": {
+          "SAME": [
+            "093347",
+            "093348"
+          ],
+          "UGC": [
+            "LHZ347",
+            "LHZ348"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LHZ347",
+          "https://api.weather.gov/zones/forecast/LHZ348"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.005.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.005.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:49:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T17:00:00-04:00",
+        "expires": "2026-08-22T18:15:00-04:00",
+        "ends": "2026-08-24T21:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Gaylord MI",
+        "headline": "Small Craft Advisory issued August 22 at 10:15AM EDT until August 24 at 9:00PM EDT by NWS Gaylord MI",
+        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 8 feet expected.\n\n* WHERE...5NM East of Mackinac Bridge to Presque Isle Light MI\nincluding Bois Blanc Island and Presque Isle Light to Sturgeon\nPt MI Including Thunder Bay National Marine Sanctuary.\n\n* WHEN...From 5 PM this afternoon to 9 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWAPX"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KAPX 221415"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 5 PM THIS AFTERNOON TO 9 PM EDT MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KAPX.SC.Y.0071.260822T2100Z-260825T0100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-24T21:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.006.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.006.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.006.1",
+        "areaDesc": "Sturgeon Pt to Alabaster MI",
+        "geocode": {
+          "SAME": [
+            "093349"
+          ],
+          "UGC": [
+            "LHZ349"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LHZ349"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.006.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.006.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:49:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T23:00:00-04:00",
+        "expires": "2026-08-22T18:15:00-04:00",
+        "ends": "2026-08-24T17:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Gaylord MI",
+        "headline": "Small Craft Advisory issued August 22 at 10:15AM EDT until August 24 at 5:00PM EDT by NWS Gaylord MI",
+        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 5 feet expected.\n\n* WHERE...Sturgeon Pt to Alabaster MI.\n\n* WHEN...From 11 PM this evening to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWAPX"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KAPX 221415"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 11 PM THIS EVENING TO 5 PM EDT MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KAPX.SC.Y.0071.260823T0300Z-260824T2100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-24T17:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.001.1",
+        "areaDesc": "Whitefish Bay (U.S. Portion)/Whitefish Point to Point Iroquois MI; St. Marys River Point Iroquois to E. Potagannissing Bay",
+        "geocode": {
+          "SAME": [
+            "091321",
+            "091322"
+          ],
+          "UGC": [
+            "LSZ321",
+            "LSZ322"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LSZ321",
+          "https://api.weather.gov/zones/forecast/LSZ322"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:49:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T17:00:00-04:00",
+        "expires": "2026-08-22T18:15:00-04:00",
+        "ends": "2026-08-24T17:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Gaylord MI",
+        "headline": "Small Craft Advisory issued August 22 at 10:15AM EDT until August 24 at 5:00PM EDT by NWS Gaylord MI",
+        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 7 feet expected.\n\n* WHERE...Whitefish Bay (U. S. Portion)/Whitefish Point to Point\nIroquois MI and St. Marys River Point Iroquois to E.\nPotagannissing Bay.\n\n* WHEN...From 5 PM this afternoon to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWAPX"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KAPX 221415"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 5 PM THIS AFTERNOON TO 5 PM EDT MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KAPX.SC.Y.0071.260822T2100Z-260824T2100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-24T17:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.004.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.004.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.004.1",
+        "areaDesc": "St Ignace to False Detour Channel",
+        "geocode": {
+          "SAME": [
+            "093346"
+          ],
+          "UGC": [
+            "LHZ346"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LHZ346"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.004.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.004.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:49:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T17:00:00-04:00",
+        "expires": "2026-08-22T18:15:00-04:00",
+        "ends": "2026-08-24T20:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Gaylord MI",
+        "headline": "Small Craft Advisory issued August 22 at 10:15AM EDT until August 24 at 8:00PM EDT by NWS Gaylord MI",
+        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 4 feet expected.\n\n* WHERE...St Ignace to False Detour Channel.\n\n* WHEN...From 5 PM this afternoon to 8 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWAPX"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KAPX 221415"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 5 PM THIS AFTERNOON TO 8 PM EDT MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KAPX.SC.Y.0071.260822T2100Z-260825T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-24T20:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.2c35eca79266cd81f28b6102ad812a014e804a02.002.1",
+        "areaDesc": "Straits of Mackinac within 5 nm of Mackinac Bridge including Mackinac Island; Grand Traverse Bay south of a line Grand Traverse Light to Norwood MI; Seul Choix Point to 5NM West of Mackinac Bridge; Norwood MI to 5NM West of Mackinac Bridge including Little Traverse Bay; Sleeping Bear Point to Grand Traverse Light MI",
+        "geocode": {
+          "SAME": [
+            "093345",
+            "092323",
+            "092341",
+            "092342",
+            "092344"
+          ],
+          "UGC": [
+            "LHZ345",
+            "LMZ323",
+            "LMZ341",
+            "LMZ342",
+            "LMZ344"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LHZ345",
+          "https://api.weather.gov/zones/forecast/LMZ323",
+          "https://api.weather.gov/zones/forecast/LMZ341",
+          "https://api.weather.gov/zones/forecast/LMZ342",
+          "https://api.weather.gov/zones/forecast/LMZ344"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:49:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T10:15:00-04:00",
+        "effective": "2026-08-22T10:15:00-04:00",
+        "onset": "2026-08-22T17:00:00-04:00",
+        "expires": "2026-08-22T18:15:00-04:00",
+        "ends": "2026-08-24T17:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Gaylord MI",
+        "headline": "Small Craft Advisory issued August 22 at 10:15AM EDT until August 24 at 5:00PM EDT by NWS Gaylord MI",
+        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 6 feet expected.\n\n* WHERE...In Lake Huron, Straits of Mackinac within 5 nm of\nMackinac Bridge including Mackinac Island. In Lake Michigan,\nGrand Traverse Bay south of a line Grand Traverse Light to\nNorwood MI, Seul Choix Point to 5NM West of Mackinac Bridge,\nNorwood MI to 5NM West of Mackinac Bridge including Little\nTraverse Bay and Sleeping Bear Point to Grand Traverse Light\nMI.\n\n* WHEN...From 5 PM this afternoon to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWAPX"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KAPX 221415"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 5 PM THIS AFTERNOON TO 5 PM EDT MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KAPX.SC.Y.0071.260822T2100Z-260824T2100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-24T17:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a7a680cded7a5bd44f54e9e81f10e3154e2349f.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -84.73,
+              42.42
+            ],
+            [
+              -84.73,
+              42.55
+            ],
+            [
+              -84.14,
+              42.57
+            ],
+            [
+              -84.14,
+              42.51
+            ],
+            [
+              -84.14,
+              42.42
+            ],
+            [
+              -84.13,
+              42.42
+            ],
+            [
+              -84.13,
+              42.22
+            ],
+            [
+              -84.71,
+              42.21
+            ],
+            [
+              -84.72,
+              42.23
+            ],
+            [
+              -84.72,
+              42.25
+            ],
+            [
+              -84.72,
+              42.42
+            ],
+            [
+              -84.73,
+              42.42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a7a680cded7a5bd44f54e9e81f10e3154e2349f.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a7a680cded7a5bd44f54e9e81f10e3154e2349f.001.1",
+        "areaDesc": "Eaton, MI; Ingham, MI; Jackson, MI",
+        "geocode": {
+          "SAME": [
+            "026045",
+            "026065",
+            "026075"
+          ],
+          "UGC": [
+            "MIC045",
+            "MIC065",
+            "MIC075"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MIC045",
+          "https://api.weather.gov/zones/county/MIC065",
+          "https://api.weather.gov/zones/county/MIC075"
+        ],
+        "references": [],
+        "sent": "2026-08-22T10:10:00-04:00",
+        "effective": "2026-08-22T10:10:00-04:00",
+        "onset": "2026-08-22T10:10:00-04:00",
+        "expires": "2026-08-22T13:15:00-04:00",
+        "ends": "2026-08-22T13:15:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Grand Rapids MI",
+        "headline": "Flood Advisory issued August 22 at 10:10AM EDT until August 22 at 1:15PM EDT by NWS Grand Rapids MI",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southeastern Eaton County in south central Michigan...\nSouthern Ingham County in south central Michigan...\nNorthern Jackson County in south central Michigan...\n\n* WHEN...Until 115 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 1010 AM EDT, Doppler radar and automated rain gauges indicated\nheavy rain. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2.5 inches of rain\nhave fallen.\n- Some locations that will experience flooding include...\nJackson, Eaton Rapids, Leslie, Stockbridge, Grass Lake, Leoni,\nSpring Arbor, Sandstone, Aurelius, Onondaga, Bunker Hill,\nSpringport, Parma, Dansville, Eden, Rives Junction, Pleasant\nLake, Tompkins and Jackson County Airport.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGRR"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KGRR 221410"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 115 PM EDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KGRR.FA.Y.0025.260822T1410Z-260822T1715Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T13:15:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.53ba5a0dfca3f629a955ef461bfe8bc720f21ee9.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.53ba5a0dfca3f629a955ef461bfe8bc720f21ee9.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.53ba5a0dfca3f629a955ef461bfe8bc720f21ee9.001.1",
+        "areaDesc": "Mason; Oceana; Muskegon; Ottawa; Allegan; Van Buren",
+        "geocode": {
+          "SAME": [
+            "026105",
+            "026127",
+            "026121",
+            "026139",
+            "026005",
+            "026159"
+          ],
+          "UGC": [
+            "MIZ037",
+            "MIZ043",
+            "MIZ050",
+            "MIZ056",
+            "MIZ064",
+            "MIZ071"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/MIZ037",
+          "https://api.weather.gov/zones/forecast/MIZ043",
+          "https://api.weather.gov/zones/forecast/MIZ050",
+          "https://api.weather.gov/zones/forecast/MIZ056",
+          "https://api.weather.gov/zones/forecast/MIZ064",
+          "https://api.weather.gov/zones/forecast/MIZ071"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d271ee244680414a9ab1a4ea78d00a106cd99311.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.d271ee244680414a9ab1a4ea78d00a106cd99311.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T02:59:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T09:56:00-04:00",
+        "effective": "2026-08-22T09:56:00-04:00",
+        "onset": "2026-08-22T09:56:00-04:00",
+        "expires": "2026-08-22T18:00:00-04:00",
+        "ends": "2026-08-23T23:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Beach Hazards Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Grand Rapids MI",
+        "headline": "Beach Hazards Statement issued August 22 at 9:56AM EDT until August 23 at 11:00PM EDT by NWS Grand Rapids MI",
+        "description": "* WHAT...High wave action, strong currents, and dangerous\nswimming conditions expected. Piers may be heavily swamped by\nwaves.\n\n* WHERE...Mason, Oceana, Muskegon, Ottawa, Allegan and Van Buren\ncounties.\n\n* WHEN...Through Sunday evening.\n\n* IMPACTS...Strong currents can pull swimmers into deeper water\nand high waves can sweep people off piers.",
+        "instruction": "Remain out of the water to avoid hazardous swimming conditions\nand do not venture out on piers. Please check with your local\nauthorities on potential beach closures.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CFWGRR"
+          ],
+          "WMOidentifier": [
+            "WHUS43 KGRR 221356"
+          ],
+          "NWSheadline": [
+            "BEACH HAZARDS STATEMENT REMAINS IN EFFECT THROUGH SUNDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KGRR.BH.S.0019.000000T0000Z-260824T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-23T23:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.d5eb40082666cb731d33554e80a3927e3e11bd78.002.1,2026-08-21T19:50:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.d5eb40082666cb731d33554e80a3927e3e11bd78.001.2,2026-08-21T19:50:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.77f566776fd66304d48f9defdd811bc9eeb35cdd.002.1,2026-08-21T14:20:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.77f566776fd66304d48f9defdd811bc9eeb35cdd.001.1,2026-08-21T14:20:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "BHS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e8968bc13e30b93bdf20e2d52b6d7a37005c5ff6.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e8968bc13e30b93bdf20e2d52b6d7a37005c5ff6.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e8968bc13e30b93bdf20e2d52b6d7a37005c5ff6.001.1",
+        "areaDesc": "Fairbanks Metro Area",
+        "geocode": {
+          "SAME": [
+            "002090"
+          ],
+          "UGC": [
+            "AKZ844"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AKZ844"
+        ],
+        "references": [],
+        "sent": "2026-08-22T05:55:00-08:00",
+        "effective": "2026-08-22T05:55:00-08:00",
+        "onset": "2026-08-22T05:55:00-08:00",
+        "expires": "2026-08-22T09:00:00-08:00",
+        "ends": "2026-08-22T09:00:00-08:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Fog Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Fairbanks AK",
+        "headline": "Dense Fog Advisory issued August 22 at 5:55AM AKDT until August 22 at 9:00AM AKDT by NWS Fairbanks AK",
+        "description": "* WHAT...Visibility to 1/4 mile in dense fog.\n\n* WHERE...Fairbanks Metro Area.\n\n* WHEN...Until 9 AM AKDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.\n\n* ADDITIONAL DETAILS...Patchy dense fog has settled in over parts of\nFairbanks, especially near Fox and in the hills north of Fairbanks.\nIt is expected to stay over the area through about 9 AM then\ngradually lift thereafter.",
+        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWAFG"
+          ],
+          "WMOidentifier": [
+            "WWAK73 PAFG 221355"
+          ],
+          "NWSheadline": [
+            "DENSE FOG ADVISORY IN EFFECT UNTIL 9 AM AKDT THIS MORNING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.PAFG.FG.Y.0003.260822T1355Z-260822T1700Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T09:00:00-08:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FGY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0bc3c7d47595d4cf0a8772cb926a605db072037e.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0bc3c7d47595d4cf0a8772cb926a605db072037e.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0bc3c7d47595d4cf0a8772cb926a605db072037e.001.1",
+        "areaDesc": "St Joseph to South Haven MI; South Haven to Holland MI; Holland to Grand Haven MI; Grand Haven to Whitehall MI; Whitehall to Pentwater MI; Pentwater to Manistee MI",
+        "geocode": {
+          "SAME": [
+            "092844",
+            "092845",
+            "092846",
+            "092847",
+            "092848",
+            "092849"
+          ],
+          "UGC": [
+            "LMZ844",
+            "LMZ845",
+            "LMZ846",
+            "LMZ847",
+            "LMZ848",
+            "LMZ849"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LMZ844",
+          "https://api.weather.gov/zones/forecast/LMZ845",
+          "https://api.weather.gov/zones/forecast/LMZ846",
+          "https://api.weather.gov/zones/forecast/LMZ847",
+          "https://api.weather.gov/zones/forecast/LMZ848",
+          "https://api.weather.gov/zones/forecast/LMZ849"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d605b6fd718a11cf294b4292df96f13ee07dfe3e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.d605b6fd718a11cf294b4292df96f13ee07dfe3e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T03:00:00-04:00"
+          }
+        ],
+        "sent": "2026-08-22T09:55:00-04:00",
+        "effective": "2026-08-22T09:55:00-04:00",
+        "onset": "2026-08-22T09:55:00-04:00",
+        "expires": "2026-08-22T18:00:00-04:00",
+        "ends": "2026-08-23T23:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Grand Rapids MI",
+        "headline": "Small Craft Advisory issued August 22 at 9:55AM EDT until August 23 at 11:00PM EDT by NWS Grand Rapids MI",
+        "description": "* WHAT...North winds 15 to 25 knots with gusts up to 30 knots\nand waves 3 to 6 feet.\n\n* WHERE...St Joseph to Manistee.\n\n* WHEN...Until 11 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWGRR"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KGRR 221355"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 11 PM EDT SUNDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KGRR.SC.Y.0060.000000T0000Z-260824T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-23T23:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b5d66db7ec01c637edc5bc8c81d2cdf8460a1504.002.1,2026-08-21T19:51:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b5d66db7ec01c637edc5bc8c81d2cdf8460a1504.001.2,2026-08-21T19:51:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1cc468b59cc43af9a7367714619126ee606cf834.002.1,2026-08-21T14:20:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1cc468b59cc43af9a7367714619126ee606cf834.001.2,2026-08-21T14:20:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0b2e73d544853a3d9d818b0991c9a2baea2a0380.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -84.13,
+              42.42
+            ],
+            [
+              -84.14,
+              42.59
+            ],
+            [
+              -84.15,
+              42.71
+            ],
+            [
+              -84.16,
+              42.78
+            ],
+            [
+              -83.69,
+              42.78
+            ],
+            [
+              -83.68,
+              42.69
+            ],
+            [
+              -83.68,
+              42.58
+            ],
+            [
+              -83.82,
+              42.43
+            ],
+            [
+              -83.94,
+              42.42
+            ],
+            [
+              -84.13,
+              42.42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0b2e73d544853a3d9d818b0991c9a2baea2a0380.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0b2e73d544853a3d9d818b0991c9a2baea2a0380.001.1",
+        "areaDesc": "Livingston, MI",
+        "geocode": {
+          "SAME": [
+            "026093"
+          ],
+          "UGC": [
+            "MIC093"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MIC093"
+        ],
+        "references": [],
+        "sent": "2026-08-22T09:55:00-04:00",
+        "effective": "2026-08-22T09:55:00-04:00",
+        "onset": "2026-08-22T09:55:00-04:00",
+        "expires": "2026-08-22T13:00:00-04:00",
+        "ends": "2026-08-22T13:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Detroit/Pontiac MI",
+        "headline": "Flood Advisory issued August 22 at 9:55AM EDT until August 22 at 1:00PM EDT by NWS Detroit/Pontiac MI",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Livingston County in southeastern Michigan...\n\n* WHEN...Until 100 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 954 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Overflowing poor drainage areas will cause minor\nflooding in the advisory area. Between 1/2 inch and 2 inches of\nrain have fallen.\n- Additional rainfall amounts between a half inch to 2 inches are\nexpected over the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nHartland, Howell, Brighton, Fowlerville, Pinckney, Hamburg,\nCohoctah, Oak Grove, Gregory, Plainfield, Unadilla, Chilson,\nDeerfield Township, Lakeland, Hell, Pinckney State Recreation\nArea, Parkers Corners, Conway Township and Tyrone Township.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSDTX"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KDTX 221355"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 1 PM EDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KDTX.FA.Y.0015.260822T1355Z-260822T1700Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T13:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/2691743514436102",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/2691743514436102",
+        "@type": "wx:Alert",
+        "id": "2691743514436102",
+        "areaDesc": "Alameda, CA,Santa Clara, CA",
+        "geocode": {
+          "SAME": [
+            "006001",
+            "006085"
+          ]
+        },
+        "affectedZones": [],
+        "references": [],
+        "sent": "2026-08-22T06:53:50-07:00",
+        "effective": "2026-08-22T06:53:50-07:00",
+        "onset": null,
+        "expires": "2026-08-22T08:53:50-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Rescue",
+        "severity": "Extreme",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Child Abduction Emergency",
+        "sender": "200230_California_Highway_Patrol_CA_California_Highway_Patrol",
+        "senderName": "200230,California Highway Patrol,CA California Highway Patrol",
+        "headline": "AMBER Alert",
+        "description": "AN AMBER ALERT IS BEING ISSUED BY THE CALIFORNIA HIGHWAY PATROL ON BEHALF OF THE NEWARK POLICE DEPARTMENT.\n\nON AUGUST 21, 2026, AT 23 35 PM, DELEYAH MENDOZA WAS TAKEN FROM NEWARK, CALIFORNIA.  DELEYAH MENDOZA IS A 6 YEAR OLD HISPANIC FEMALE, 4 FEET TALL, WEIGHING 50 POUNDS, WITH BLACK HAIR AND BROWN EYES.  DELEYAH MENDOZA IS BELIEVED TO BE WEARING WHITE/PINK STRIPED PAJAMAS, PINK FLIP FLOPS, AND POSSIBLY CARRYING A CHEETAH PRINT BACKPACK.\n\nTHE SUSPECT, DONOVAN BLAIR, IS A 24 YEAR OLD HISPANIC MALE, STANDING 5 FEET 10 INCHES TALL, WEIGHING 190 POUNDS WITH BROWN HAIR AND BROWN EYES.   DONOVAN BLAIRS CLOTHING DESCRIPTION IS UNKNOWN.  \n\nTHE SUSPECT WAS LAST SEEN DRIVING A 2009-2011 GRAY HONDA INSIGHT, WITH A TEMPORARY PAPER PLATE NUMBER 93742245.\n\nIF SEEN CALL 9 1 1",
+        "instruction": null,
+        "response": null,
+        "note": null,
+        "parameters": {
+          "BLOCKCHANNEL": [
+            "CAPEXCH",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "CIV"
+          ],
+          "timezone": [
+            "PST"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": null,
+        "eventCode": {
+          "SAME": [
+            "CAE"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.79d348e4f62977eefc16fb5b7b466c3a2fe3c964.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.79d348e4f62977eefc16fb5b7b466c3a2fe3c964.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.79d348e4f62977eefc16fb5b7b466c3a2fe3c964.002.1",
+        "areaDesc": "West Slopes of the Central Cascades Generally above 1500 Feet",
+        "geocode": {
+          "SAME": [
+            "053015",
+            "053033",
+            "053041",
+            "053053",
+            "053059",
+            "053061",
+            "053067"
+          ],
+          "UGC": [
+            "WAZ659"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/fire/WAZ659"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T03:43:00-07:00"
+          }
+        ],
+        "sent": "2026-08-22T06:49:00-07:00",
+        "effective": "2026-08-22T06:49:00-07:00",
+        "onset": "2026-08-22T06:49:00-07:00",
+        "expires": "2026-08-22T16:00:00-07:00",
+        "ends": "2026-08-22T17:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Red Flag Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Seattle WA",
+        "headline": "Red Flag Warning issued August 22 at 6:49AM PDT until August 22 at 5:00PM PDT by NWS Seattle WA",
+        "description": "* AFFECTED AREA...Fire Weather Zone 659 West Slopes of the\nCentral Cascades Generally above 1500 Feet.\n\n* LIGHTNING...Scattered thunderstorm coverage is possible across\nthe Central Cascades.\n\n* OUTFLOW WINDS...Any storms that develop will be capable of\ngusty and erratic outflow winds between 20 and 30 miles per\nhour. Outflow winds can occur ahead of and behind storms and\ncause erratic wind directions.\n\n* IMPACTS...Scattered lightning in dry fuels can cause multiple\nfire starts. Thunderstorms can also bring sudden sharp wind\nshifts on existing fires, causing rapid changes in a fire's\nrate of spread and direction of spread. Thunderstorm outflow\nwinds can be a threat for several hours following the start of\na new lightning-caused fire. If a fire were to begin, air\nquality may diminish in the surrounding area.",
+        "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either imminent or occurring now. Any fires that develop will\nlikely spread quickly. Outdoor burning is not recommended.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "RFWSEW"
+          ],
+          "WMOidentifier": [
+            "WWUS86 KSEW 221349"
+          ],
+          "NWSheadline": [
+            "RED FLAG WARNING NOW IN EFFECT UNTIL 5 PM PDT THIS AFTERNOON FOR LIGHTNING AND GUSTY OUTFLOW WINDS FOR FIRE WEATHER ZONE 659"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXT.KSEW.FW.W.0007.260822T1349Z-260823T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T17:00:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FWW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.79d348e4f62977eefc16fb5b7b466c3a2fe3c964.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.79d348e4f62977eefc16fb5b7b466c3a2fe3c964.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.79d348e4f62977eefc16fb5b7b466c3a2fe3c964.001.1",
+        "areaDesc": "West Slopes of the North Cascades Generally above 1500 Feet",
+        "geocode": {
+          "SAME": [
+            "053007",
+            "053033",
+            "053057",
+            "053061",
+            "053073"
+          ],
+          "UGC": [
+            "WAZ658"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/fire/WAZ658"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.003.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.003.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-22T03:43:00-07:00"
+          }
+        ],
+        "sent": "2026-08-22T06:49:00-07:00",
+        "effective": "2026-08-22T06:49:00-07:00",
+        "onset": "2026-08-22T06:49:00-07:00",
+        "expires": "2026-08-22T16:00:00-07:00",
+        "ends": "2026-08-22T20:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Red Flag Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Seattle WA",
+        "headline": "Red Flag Warning issued August 22 at 6:49AM PDT until August 22 at 8:00PM PDT by NWS Seattle WA",
+        "description": "* AFFECTED AREA...Fire Weather Zone 658 West Slopes of the North\nCascades Generally above 1500 Feet.\n\n* LIGHTNING...Scattered thunderstorm coverage is possible across\nthe North Cascades.\n\n* OUTFLOW WINDS...Any storms that develop will be capable of\ngusty and erratic outflow winds between 20 and 30 miles per\nhour. Outflow winds can occur ahead of and behind storms and\ncause erratic wind directions.\n\n* IMPACTS...Scattered lightning in dry fuels can cause multiple\nfire starts. Thunderstorms can also bring sudden sharp wind\nshifts on existing fires, causing rapid changes in a fire's\nrate of spread and direction of spread. Thunderstorm outflow\nwinds can be a threat for several hours following the start of\na new lightning-caused fire. If a fire were to begin, air\nquality may diminish in the surrounding area.",
+        "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either imminent or occurring now. Any fires that develop will\nlikely spread quickly. Outdoor burning is not recommended.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "RFWSEW"
+          ],
+          "WMOidentifier": [
+            "WWUS86 KSEW 221349"
+          ],
+          "NWSheadline": [
+            "RED FLAG WARNING NOW IN EFFECT UNTIL 8 PM PDT THIS EVENING FOR LIGHTNING AND GUSTY OUTFLOW WINDS FOR FIRE WEATHER ZONE 658"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXT.KSEW.FW.W.0006.260822T1349Z-260823T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-22T20:00:00-07:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.98a1501daf0135cd5bc2e0513c07440c551c7676.002.1,2026-08-21T21:02:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b7ae2a9ff1ee3eca268d67e3ec7e55d6493efb64.002.2,2026-08-21T13:02:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FWW"
           ]
         }
       }
@@ -893,229 +2744,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e61a8d87ba214f44464a8877b6c2417de2c07ec5.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -94.48,
-              38.84
-            ],
-            [
-              -94.59,
-              39.13
-            ],
-            [
-              -94.31,
-              39.26
-            ],
-            [
-              -94.11,
-              38.99
-            ],
-            [
-              -94.12,
-              38.83
-            ],
-            [
-              -94.48,
-              38.84
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e61a8d87ba214f44464a8877b6c2417de2c07ec5.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.e61a8d87ba214f44464a8877b6c2417de2c07ec5.001.1",
-        "areaDesc": "Clay; Jackson",
-        "geocode": {
-          "SAME": [
-            "029047",
-            "029095"
-          ],
-          "UGC": [
-            "MOZ029",
-            "MOZ037"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MOZ029",
-          "https://api.weather.gov/zones/forecast/MOZ037"
-        ],
-        "references": [],
-        "sent": "2026-08-22T08:22:00-05:00",
-        "effective": "2026-08-22T08:22:00-05:00",
-        "onset": "2026-08-22T08:22:00-05:00",
-        "expires": "2026-08-22T08:45:00-05:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Kansas City/Pleasant Hill MO",
-        "headline": "Special Weather Statement issued August 22 at 8:22AM CDT by NWS Kansas City/Pleasant Hill MO",
-        "description": "At 821 AM CDT, Doppler radar was tracking a strong thunderstorm near\nSugar Creek, moving south at 40 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nKansas City, Independence, Lee's Summit, Blue Springs, Raytown,\nLiberty, Grandview, Grain Valley, Greenwood, North Kansas City, Sugar\nCreek, Lake Lotawana, Claycomo, Courtney, Lake Winnebago, Lone Jack,\nLake Tapawingo, Avondale, Missouri City, and River Bend.\n\nThis includes the following highways...\nInterstate 70 in Missouri between mile markers 2 and 28.\nInterstate 35 in Missouri between mile markers 3 and 5.\nInterstate 470 between mile markers 2 and 16.\nInterstate 435 between mile markers 54 and 69.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSEAX"
-          ],
-          "WMOidentifier": [
-            "WWUS83 KEAX 221322"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT SOUTHERN CLAY AND JACKSON COUNTIES THROUGH 845 AM CDT"
-          ],
-          "eventMotionDescription": [
-            "2026-08-22T13:21:00-00:00...storm...337DEG...35KT...39.09,-94.45"
-          ],
-          "maxWindGust": [
-            "40 MPH"
-          ],
-          "maxHailSize": [
-            "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71b44dd09e18c9bc7e665f88b4741ca7a743d569.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -84.14,
-              42.53
-            ],
-            [
-              -84.5,
-              42.56
-            ],
-            [
-              -84.48,
-              42.65
-            ],
-            [
-              -84.15,
-              42.72
-            ],
-            [
-              -84.14,
-              42.53
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71b44dd09e18c9bc7e665f88b4741ca7a743d569.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.71b44dd09e18c9bc7e665f88b4741ca7a743d569.001.1",
-        "areaDesc": "Ingham",
-        "geocode": {
-          "SAME": [
-            "026065"
-          ],
-          "UGC": [
-            "MIZ067"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MIZ067"
-        ],
-        "references": [],
-        "sent": "2026-08-22T09:20:00-04:00",
-        "effective": "2026-08-22T09:20:00-04:00",
-        "onset": "2026-08-22T09:20:00-04:00",
-        "expires": "2026-08-22T10:00:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Grand Rapids MI",
-        "headline": "Special Weather Statement issued August 22 at 9:20AM EDT by NWS Grand Rapids MI",
-        "description": "At 919 AM EDT, Doppler radar was tracking a strong thunderstorm near\nMason, moving east at 20 mph.\n\nHAZARD...Winds in excess of 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nMason...               Williamston...         Webberville...\nDansville...",
-        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSGRR"
-          ],
-          "WMOidentifier": [
-            "WWUS83 KGRR 221320"
-          ],
-          "NWSheadline": [
-            "A strong thunderstorm will impact portions of central Ingham County through 1000 AM EDT"
-          ],
-          "eventMotionDescription": [
-            "2026-08-22T13:19:00-00:00...storm...267DEG...19KT...42.6,-84.41"
-          ],
-          "maxWindGust": [
-            "40 MPH"
-          ],
-          "maxHailSize": [
-            "0.25"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e80a7be2c2d98c35f61ef5eb64e076af07b97e76.001.1",
       "type": "Feature",
       "geometry": {
@@ -1452,316 +3080,6 @@
           ],
           "NationalWeatherService": [
             "WIY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a8103423ed8ce392975505f2f8fe3c51f2d7bb01.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.47,
-              42.89
-            ],
-            [
-              -82.48,
-              42.8
-            ],
-            [
-              -82.47,
-              42.76
-            ],
-            [
-              -82.52,
-              42.62
-            ],
-            [
-              -82.59,
-              42.55
-            ],
-            [
-              -82.64,
-              42.56
-            ],
-            [
-              -82.65,
-              42.55
-            ],
-            [
-              -82.85,
-              42.65
-            ],
-            [
-              -82.85,
-              42.66
-            ],
-            [
-              -82.69,
-              42.72
-            ],
-            [
-              -82.61,
-              42.7
-            ],
-            [
-              -82.59,
-              42.65
-            ],
-            [
-              -82.57,
-              42.65
-            ],
-            [
-              -82.56,
-              42.64
-            ],
-            [
-              -82.51,
-              42.76
-            ],
-            [
-              -82.52,
-              42.89
-            ],
-            [
-              -82.48,
-              42.98
-            ],
-            [
-              -82.42,
-              42.97
-            ],
-            [
-              -82.47,
-              42.89
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a8103423ed8ce392975505f2f8fe3c51f2d7bb01.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a8103423ed8ce392975505f2f8fe3c51f2d7bb01.001.1",
-        "areaDesc": "St. Clair River; Lake St. Clair Open Lake (U.S. Portion)",
-        "geocode": {
-          "SAME": [
-            "094422",
-            "094460"
-          ],
-          "UGC": [
-            "LCZ422",
-            "LCZ460"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LCZ422",
-          "https://api.weather.gov/zones/forecast/LCZ460"
-        ],
-        "references": [],
-        "sent": "2026-08-22T08:49:00-04:00",
-        "effective": "2026-08-22T08:49:00-04:00",
-        "onset": "2026-08-22T08:49:00-04:00",
-        "expires": "2026-08-22T09:45:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Marine Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Detroit/Pontiac MI",
-        "headline": "Marine Weather Statement issued August 22 at 8:49AM EDT by NWS Detroit/Pontiac MI",
-        "description": "The areas affected include...\nLake St. Clair Open Lake (U.S. Portion)...\nSt. Clair River...\n\nAt 848 AM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds up to 30 knots. These thunderstorms were located\nalong a line extending from 10 nm northwest of St. Clair to near New\nBaltimore, moving east at 15 knots.\n\nstrong thunderstorms will be near...\nNew Baltimore around 855 AM EDT.\nSt. Clair around 910 AM EDT.",
-        "instruction": "Mariners can expect gusty winds up to 30 knots, locally higher waves,\nand lightning strikes. Boaters should seek safe harbor immediately\nuntil these storms pass.\n\nIntense lightning is occurring with these storms. If caught on the\nopen water stay below deck if possible, keep away from ungrounded\nmetal objects.",
-        "response": "Monitor",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWSDTX"
-          ],
-          "WMOidentifier": [
-            "FZUS73 KDTX 221249"
-          ],
-          "NWSheadline": [
-            "STRONG THUNDERSTORMS APPROACHING THE WATERS"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "MWS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a1b3010439bd9c2403999b1c96c4df2a6e016fff.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.46,
-              42.93
-            ],
-            [
-              -82.47,
-              42.89
-            ],
-            [
-              -82.47,
-              42.85
-            ],
-            [
-              -82.48,
-              42.81
-            ],
-            [
-              -82.47,
-              42.76
-            ],
-            [
-              -82.51,
-              42.67
-            ],
-            [
-              -82.51,
-              42.62
-            ],
-            [
-              -82.58,
-              42.55
-            ],
-            [
-              -82.6,
-              42.55
-            ],
-            [
-              -82.62,
-              42.56
-            ],
-            [
-              -82.65,
-              42.55
-            ],
-            [
-              -82.92,
-              42.7
-            ],
-            [
-              -82.84,
-              42.85
-            ],
-            [
-              -82.72,
-              43.01
-            ],
-            [
-              -82.42,
-              42.96
-            ],
-            [
-              -82.46,
-              42.93
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a1b3010439bd9c2403999b1c96c4df2a6e016fff.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a1b3010439bd9c2403999b1c96c4df2a6e016fff.001.1",
-        "areaDesc": "St. Clair; Macomb",
-        "geocode": {
-          "SAME": [
-            "026147",
-            "026099"
-          ],
-          "UGC": [
-            "MIZ063",
-            "MIZ070"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MIZ063",
-          "https://api.weather.gov/zones/forecast/MIZ070"
-        ],
-        "references": [],
-        "sent": "2026-08-22T08:47:00-04:00",
-        "effective": "2026-08-22T08:47:00-04:00",
-        "onset": "2026-08-22T08:47:00-04:00",
-        "expires": "2026-08-22T09:45:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Detroit/Pontiac MI",
-        "headline": "Special Weather Statement issued August 22 at 8:47AM EDT by NWS Detroit/Pontiac MI",
-        "description": "At 847 AM EDT, Doppler radar was tracking a cluster of strong\nthunderstorms along a line extending from near Memphis to Richmond to\nnear New Baltimore. Movement was southeast at 15 mph.\n\nHAZARD...Winds in excess of 30 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nStrong thunderstorms will be near...\nNew Baltimore and Richmond around 855 AM EDT.\n\nOther locations impacted by these storms include Anchorville, New\nHaven, Adair, Columbus, Rattle Run, Goodells, Pearl Beach,\nChesterfield Township, Smiths Creek, and Fair Haven.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nFrequent cloud to ground lightning is occurring with these storms.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSDTX"
-          ],
-          "WMOidentifier": [
-            "WWUS83 KDTX 221247"
-          ],
-          "NWSheadline": [
-            "STRONG THUNDERSTORMS WILL IMPACT NORTHEASTERN MACOMB AND SOUTHEASTERN ST. CLAIR COUNTIES THROUGH 945 AM EDT"
-          ],
-          "eventMotionDescription": [
-            "2026-08-22T12:47:00-00:00...storm...294DEG...11KT...42.94,-82.72 42.83,-82.76 42.74,-82.82"
-          ],
-          "maxWindGust": [
-            "30 MPH"
-          ],
-          "maxHailSize": [
-            "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
           ]
         }
       }
@@ -2524,134 +3842,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6752b708fb559695eb0445d85b62b9d25990309e.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -78.06,
-              34.34
-            ],
-            [
-              -77.6,
-              34.5
-            ],
-            [
-              -77.6,
-              34.51
-            ],
-            [
-              -77.58,
-              34.48
-            ],
-            [
-              -77.53,
-              34.44
-            ],
-            [
-              -77.66,
-              34.34
-            ],
-            [
-              -77.75,
-              34.26
-            ],
-            [
-              -77.83,
-              34.16
-            ],
-            [
-              -77.9,
-              34.03
-            ],
-            [
-              -78.06,
-              34.34
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6752b708fb559695eb0445d85b62b9d25990309e.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.6752b708fb559695eb0445d85b62b9d25990309e.001.1",
-        "areaDesc": "Brunswick, NC; New Hanover, NC; Pender, NC",
-        "geocode": {
-          "SAME": [
-            "037019",
-            "037129",
-            "037141"
-          ],
-          "UGC": [
-            "NCC019",
-            "NCC129",
-            "NCC141"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NCC019",
-          "https://api.weather.gov/zones/county/NCC129",
-          "https://api.weather.gov/zones/county/NCC141"
-        ],
-        "references": [],
-        "sent": "2026-08-22T08:31:00-04:00",
-        "effective": "2026-08-22T08:31:00-04:00",
-        "onset": "2026-08-22T08:31:00-04:00",
-        "expires": "2026-08-22T10:30:00-04:00",
-        "ends": "2026-08-22T10:30:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Wilmington NC",
-        "headline": "Flood Advisory issued August 22 at 8:31AM EDT until August 22 at 10:30AM EDT by NWS Wilmington NC",
-        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northeastern Brunswick County in southeastern North\nCarolina...\nNew Hanover County in southeastern North Carolina...\nSoutheastern Pender County in southeastern North Carolina...\n\n* WHEN...Until 1030 AM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 831 AM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area.\n- Some locations that will experience flooding include...\nWilmington, Leland, Carolina Beach, Wrightsville Beach, Surf\nCity, Figure Eight Island, Johnny Mercer Pier, Rich Inlet, North\nMasonboro Island, South Masonboro Island, Snows Cut, Hampstead,\nTopsail Beach, Murrayville, Bayshore, Porters Neck, Ogden, Cape\nFear Community College North Campus, Kings Grant and Mayfaire.\n- weather.gov/safety/flood",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSILM"
-          ],
-          "WMOidentifier": [
-            "WGUS82 KILM 221231"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 1030 AM EDT THIS MORNING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KILM.FA.Y.0031.260822T1231Z-260822T1430Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-22T10:30:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4152a1819cfa765f0a3764ea62d69533c6dfdaee.005.1",
       "type": "Feature",
       "geometry": null,
@@ -3387,346 +4577,6 @@
           ],
           "NationalWeatherService": [
             "FAY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.19cf8ebec8a4395796570fbad80d58484c39b517.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.19cf8ebec8a4395796570fbad80d58484c39b517.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.19cf8ebec8a4395796570fbad80d58484c39b517.001.1",
-        "areaDesc": "Mecklenburg; Lunenburg; Brunswick; Greensville",
-        "geocode": {
-          "SAME": [
-            "051117",
-            "051111",
-            "051025",
-            "051081",
-            "051595"
-          ],
-          "UGC": [
-            "VAZ065",
-            "VAZ066",
-            "VAZ079",
-            "VAZ087"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/VAZ065",
-          "https://api.weather.gov/zones/forecast/VAZ066",
-          "https://api.weather.gov/zones/forecast/VAZ079",
-          "https://api.weather.gov/zones/forecast/VAZ087"
-        ],
-        "references": [],
-        "sent": "2026-08-22T08:07:00-04:00",
-        "effective": "2026-08-22T08:07:00-04:00",
-        "onset": "2026-08-22T08:07:00-04:00",
-        "expires": "2026-08-22T10:00:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Wakefield VA",
-        "headline": "Special Weather Statement issued August 22 at 8:07AM EDT by NWS Wakefield VA",
-        "description": "Areas of fog have developed this morning across portions of south\ncentral Virginia. Visibilities are generally expected to range\nfrom around 1/2 to 1 mile. However, patchy dense fog has also\nbeen noted with visibilities locally dropping to around 1/4 mile\nor less. The fog should gradually improve later this morning.",
-        "instruction": null,
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSAKQ"
-          ],
-          "WMOidentifier": [
-            "WWUS81 KAKQ 221207"
-          ],
-          "NWSheadline": [
-            "PATCHY DENSE FOG THIS MORNING ACROSS PORTIONS OF SOUTH CENTRAL VIRGINIA"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7d602e7c93187f603f2439eae6aa8faab4d7a358.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.48,
-              39.96
-            ],
-            [
-              -82.46,
-              39.96
-            ],
-            [
-              -82.47,
-              39.94
-            ],
-            [
-              -82.51,
-              39.92
-            ],
-            [
-              -82.52,
-              39.93
-            ],
-            [
-              -82.51,
-              39.94
-            ],
-            [
-              -82.48,
-              39.96
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7d602e7c93187f603f2439eae6aa8faab4d7a358.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.7d602e7c93187f603f2439eae6aa8faab4d7a358.001.1",
-        "areaDesc": "Fairfield, OH; Licking, OH",
-        "geocode": {
-          "SAME": [
-            "039045",
-            "039089"
-          ],
-          "UGC": [
-            "OHC045",
-            "OHC089"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/OHC045",
-          "https://api.weather.gov/zones/county/OHC089"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.514d7f773b15c1d2b3f0bf904221fb43b0154472.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.514d7f773b15c1d2b3f0bf904221fb43b0154472.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T21:46:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.901531b3f2032bb399b203cf20caac238e02b25c.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.901531b3f2032bb399b203cf20caac238e02b25c.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-22T01:28:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5264850241861ea4df115fd23a119d0220bdd4b3.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.5264850241861ea4df115fd23a119d0220bdd4b3.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-22T05:57:00-04:00"
-          }
-        ],
-        "sent": "2026-08-22T07:44:00-04:00",
-        "effective": "2026-08-22T07:44:00-04:00",
-        "onset": "2026-08-22T07:44:00-04:00",
-        "expires": "2026-08-22T19:45:00-04:00",
-        "ends": "2026-08-22T20:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Flood Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Wilmington OH",
-        "headline": "Flood Warning issued August 22 at 7:44AM EDT until August 22 at 8:00PM EDT by NWS Wilmington OH",
-        "description": "...The Flood Warning is extended for the following rivers...\n\nSouth Fork Licking River Near I 70 near Buckeye Lake.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...South Fork Licking River near I 70 near Buckeye Lake.\n\n* WHEN...Until this evening.\n\n* IMPACTS...At 881.0 feet, The Route 79 eastbound exit is likely\nclosed due to high water, with water also encroaching onto the edge\nof eastbound outer lane of Interstate 70.\n\n* ADDITIONAL DETAILS...\n- At 6:45 AM EDT Saturday the stage was 881.0 feet.\n- Forecast...The river is expected to fall below flood stage this\nafternoon and continue falling, remaining below flood stage.\n- Flood stage is 880.0 feet.",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov/iln.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSILN"
-          ],
-          "WMOidentifier": [
-            "WGUS81 KILN 221144"
-          ],
-          "NWSheadline": [
-            "FLOOD WARNING NOW IN EFFECT UNTIL THIS EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.EXT.KILN.FL.W.0056.000000T0000Z-260823T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-22T20:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.a39c2d290ed33391d5082373053546a0bedcf40d.001.1,2026-08-21T09:25:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.11725aecb9c91ddd9b03621a0b74bf290917384e.001.1,2026-08-21T05:54:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b7d9c14359436426598c3f81eb2a6a10f483fbaf.001.1,2026-08-20T21:03:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.95d82982b9c5729a52d8bdeff7b5a6a125fe560b.001.1,2026-08-20T18:30:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.8e709063275be34503cc3a36e6408369814a62c4.001.1,2026-08-20T17:23:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c085cc8a0dbfe62ff36ecc4f8af10b3e8c3a54fa.001.1,2026-08-20T12:03:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.61fc89fc93214195c18ae0eabc4c6f6b33c08e09.001.1,2026-08-20T10:16:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f8d3e689a0919927b23b7501d5dc54f3bab2635f.001.1,2026-08-20T06:51:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FLS"
-          ],
-          "NationalWeatherService": [
-            "FLW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1e6f12775e77f7cc09fe378cd3dc4c914e658d49.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.49,
-              39.96
-            ],
-            [
-              -82.5,
-              39.98
-            ],
-            [
-              -82.47,
-              40
-            ],
-            [
-              -82.45,
-              40.01
-            ],
-            [
-              -82.46,
-              39.96
-            ],
-            [
-              -82.49,
-              39.96
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1e6f12775e77f7cc09fe378cd3dc4c914e658d49.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1e6f12775e77f7cc09fe378cd3dc4c914e658d49.001.1",
-        "areaDesc": "Licking, OH",
-        "geocode": {
-          "SAME": [
-            "039089"
-          ],
-          "UGC": [
-            "OHC089"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/OHC089"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9686eb82278aa2767f5de6187ddda8a58f64eb85.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.9686eb82278aa2767f5de6187ddda8a58f64eb85.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T23:04:00-04:00"
-          }
-        ],
-        "sent": "2026-08-22T07:39:00-04:00",
-        "effective": "2026-08-22T07:39:00-04:00",
-        "onset": "2026-08-22T07:39:00-04:00",
-        "expires": "2026-08-22T16:00:00-04:00",
-        "ends": "2026-08-22T16:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Flood Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Wilmington OH",
-        "headline": "Flood Warning issued August 22 at 7:39AM EDT until August 22 at 4:00PM EDT by NWS Wilmington OH",
-        "description": "...The Flood Warning continues for the following rivers...\n\nSouth Fork Licking River near Hebron.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...South Fork Licking River near Hebron.\n\n* WHEN...Until this afternoon.\n\n* IMPACTS...At 11.0 feet, Minor flooding along Ridgely Tract Road\noccurs.\n\n* ADDITIONAL DETAILS...\n- At 7:15 AM EDT Saturday the stage was 11.3 feet.\n- Forecast...The river is expected to fall below flood stage late\nthis morning and continue falling, remaining below flood stage.\n- Flood stage is 11.0 feet.",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov/iln.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSILN"
-          ],
-          "WMOidentifier": [
-            "WGUS81 KILN 221139"
-          ],
-          "NWSheadline": [
-            "FLOOD WARNING NOW IN EFFECT UNTIL THIS AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.EXT.KILN.FL.W.0055.000000T0000Z-260822T2000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-22T16:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.3bed510269b183446c7e83d809ef446a97b53455.001.1,2026-08-21T11:35:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2d55ba2140a11055898d75f8c49385e41b470a9c.001.1,2026-08-21T06:51:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2a4158af8061cdcee390eb53412b8f2f36cc6958.001.1,2026-08-20T23:43:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2a5b3807de5182a58304b6a81cc994814bd3fade.001.1,2026-08-20T22:55:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9fef37eba3befd2a8742a706890ca95a13360124.001.1,2026-08-20T17:41:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.e9a92a50eb0aadccd53a88f207894cadd0820bd2.001.1,2026-08-20T14:02:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.cccd548eb62d441d814fc1f31aa3a513f86081f2.001.1,2026-08-20T11:56:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.5dfb3e3073c77b30c59dbc8ef8502003005dd0d8.001.1,2026-08-20T10:46:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.71f637fd9ce0abf093ff2489a0d3e6fded839319.001.1,2026-08-20T06:06:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FLS"
-          ],
-          "NationalWeatherService": [
-            "FLW"
           ]
         }
       }
@@ -4573,123 +5423,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.81b382d6cd612f6896d37495894d2937c6ba2e1e.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -97.14,
-              35.05
-            ],
-            [
-              -97.18,
-              35.05
-            ],
-            [
-              -97.22,
-              35.14
-            ],
-            [
-              -97.14,
-              35.33
-            ],
-            [
-              -97.03,
-              35.35
-            ],
-            [
-              -96.96,
-              35.24
-            ],
-            [
-              -97.03,
-              35.06
-            ],
-            [
-              -97.14,
-              35.05
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.81b382d6cd612f6896d37495894d2937c6ba2e1e.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.81b382d6cd612f6896d37495894d2937c6ba2e1e.001.1",
-        "areaDesc": "Cleveland, OK; Pottawatomie, OK",
-        "geocode": {
-          "SAME": [
-            "040027",
-            "040125"
-          ],
-          "UGC": [
-            "OKC027",
-            "OKC125"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/OKC027",
-          "https://api.weather.gov/zones/county/OKC125"
-        ],
-        "references": [],
-        "sent": "2026-08-22T06:03:00-05:00",
-        "effective": "2026-08-22T06:03:00-05:00",
-        "onset": "2026-08-22T06:03:00-05:00",
-        "expires": "2026-08-22T09:00:00-05:00",
-        "ends": "2026-08-22T09:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Norman OK",
-        "headline": "Flood Advisory issued August 22 at 6:03AM CDT until August 22 at 9:00AM CDT by NWS Norman OK",
-        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...East Central Cleveland County in central Oklahoma...\nNorthwestern Pottawatomie County in central Oklahoma...\n\n* WHEN...Until 900 AM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 603 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Up to 1 inch of rain has fallen.\n- Additional rainfall amounts up to 1 inch are expected over the\narea. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nEastern Norman, Tecumseh, Pink, Tribbey, Etowah, Brooksville,\nMacomb and Bethel Acres.\n- http://www.weather.gov/safety/flood",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSOUN"
-          ],
-          "WMOidentifier": [
-            "WGUS84 KOUN 221103"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 9 AM CDT THIS MORNING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KOUN.FA.Y.0237.260822T1103Z-260822T1400Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-22T09:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a4b8d50189c5e0ebebaecf46957265b61b746f27.001.1",
       "type": "Feature",
       "geometry": {
@@ -4946,178 +5679,6 @@
           ],
           "NationalWeatherService": [
             "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.001.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.001.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.001.2",
-        "areaDesc": "West Slopes of the Central Cascades Generally above 1500 Feet",
-        "geocode": {
-          "SAME": [
-            "053015",
-            "053033",
-            "053041",
-            "053053",
-            "053059",
-            "053061",
-            "053067"
-          ],
-          "UGC": [
-            "WAZ659"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/fire/WAZ659"
-        ],
-        "references": [],
-        "sent": "2026-08-22T03:43:00-07:00",
-        "effective": "2026-08-22T03:43:00-07:00",
-        "onset": "2026-08-22T09:00:00-07:00",
-        "expires": "2026-08-22T15:30:00-07:00",
-        "ends": "2026-08-22T17:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Red Flag Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Seattle WA",
-        "headline": "Red Flag Warning issued August 22 at 3:43AM PDT until August 22 at 5:00PM PDT by NWS Seattle WA",
-        "description": "The National Weather Service in Seattle has issued a Red Flag\nWarning for lightning and gusty outflow winds, which is in effect\nfrom 9 AM this morning to 5 PM PDT this afternoon.\n\n* AFFECTED AREA...Fire Weather Zone 659 West Slopes of the\nCentral Cascades Generally above 1500 Feet.\n\n* LIGHTNING...Scattered thunderstorm coverage is possible across\nthe Central Cascades.\n\n* OUTFLOW WINDS...Any storms that develop will be capable of\ngusty and erratic outflow winds between 20 and 30 miles per\nhour. Outflow winds can occur ahead of and behind storms and\ncause erratic wind directions.\n\n* IMPACTS...Scattered lightning in dry fuels can cause multiple\nfire starts. Thunderstorms can also bring sudden sharp wind\nshifts on existing fires, causing rapid changes in a fire's\nrate of spread and direction of spread. Thunderstorm outflow\nwinds can be a threat for several hours following the start of\na new lightning-caused fire. If a fire were to begin, air\nquality may diminish in the surrounding area.",
-        "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either imminent or occurring now. Any fires that develop will\nlikely spread quickly. Outdoor burning is not recommended.",
-        "response": "Prepare",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "RFWSEW"
-          ],
-          "WMOidentifier": [
-            "WWUS86 KSEW 221043"
-          ],
-          "NWSheadline": [
-            "RED FLAG WARNING IN EFFECT FROM 9 AM THIS MORNING TO 5 PM PDT THIS AFTERNOON FOR LIGHTNING AND GUSTY OUTFLOW WINDS FOR FIRE WEATHER ZONE 659"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KSEW.FW.W.0007.260822T1600Z-260823T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-22T17:00:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FWW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.003.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.003.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.0a23f29845b80719b06606e1d89b0eb7bf7cb0c5.003.1",
-        "areaDesc": "West Slopes of the North Cascades Generally above 1500 Feet",
-        "geocode": {
-          "SAME": [
-            "053007",
-            "053033",
-            "053057",
-            "053061",
-            "053073"
-          ],
-          "UGC": [
-            "WAZ658"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/fire/WAZ658"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.98a1501daf0135cd5bc2e0513c07440c551c7676.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.98a1501daf0135cd5bc2e0513c07440c551c7676.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T21:02:00-07:00"
-          }
-        ],
-        "sent": "2026-08-22T03:43:00-07:00",
-        "effective": "2026-08-22T03:43:00-07:00",
-        "onset": "2026-08-22T11:00:00-07:00",
-        "expires": "2026-08-22T15:30:00-07:00",
-        "ends": "2026-08-22T20:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Red Flag Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Seattle WA",
-        "headline": "Red Flag Warning issued August 22 at 3:43AM PDT until August 22 at 8:00PM PDT by NWS Seattle WA",
-        "description": "* AFFECTED AREA...Fire Weather Zone 658 West Slopes of the North\nCascades Generally above 1500 Feet.\n\n* LIGHTNING...Scattered thunderstorm coverage is possible across\nthe North Cascades.\n\n* OUTFLOW WINDS...Any storms that develop will be capable of\ngusty and erratic outflow winds between 20 and 30 miles per\nhour. Outflow winds can occur ahead of and behind storms and\ncause erratic wind directions.\n\n* IMPACTS...Scattered lightning in dry fuels can cause multiple\nfire starts. Thunderstorms can also bring sudden sharp wind\nshifts on existing fires, causing rapid changes in a fire's\nrate of spread and direction of spread. Thunderstorm outflow\nwinds can be a threat for several hours following the start of\na new lightning-caused fire. If a fire were to begin, air\nquality may diminish in the surrounding area.",
-        "instruction": "A Red Flag Warning means that critical fire weather conditions\nare either imminent or occurring now. Any fires that develop will\nlikely spread quickly. Outdoor burning is not recommended.",
-        "response": "Prepare",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "RFWSEW"
-          ],
-          "WMOidentifier": [
-            "WWUS86 KSEW 221043"
-          ],
-          "NWSheadline": [
-            "RED FLAG WARNING NOW IN EFFECT FROM 11 AM THIS MORNING TO 8 PM PDT THIS EVENING FOR LIGHTNING AND GUSTY OUTFLOW WINDS FOR FIRE WEATHER ZONE 658"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXT.KSEW.FW.W.0006.260822T1800Z-260823T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-22T20:00:00-07:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b7ae2a9ff1ee3eca268d67e3ec7e55d6493efb64.002.2,2026-08-21T13:02:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FWW"
           ]
         }
       }
@@ -14559,220 +15120,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d605b6fd718a11cf294b4292df96f13ee07dfe3e.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d605b6fd718a11cf294b4292df96f13ee07dfe3e.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.d605b6fd718a11cf294b4292df96f13ee07dfe3e.001.1",
-        "areaDesc": "St Joseph to South Haven MI; South Haven to Holland MI; Holland to Grand Haven MI; Grand Haven to Whitehall MI; Whitehall to Pentwater MI; Pentwater to Manistee MI",
-        "geocode": {
-          "SAME": [
-            "092844",
-            "092845",
-            "092846",
-            "092847",
-            "092848",
-            "092849"
-          ],
-          "UGC": [
-            "LMZ844",
-            "LMZ845",
-            "LMZ846",
-            "LMZ847",
-            "LMZ848",
-            "LMZ849"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LMZ844",
-          "https://api.weather.gov/zones/forecast/LMZ845",
-          "https://api.weather.gov/zones/forecast/LMZ846",
-          "https://api.weather.gov/zones/forecast/LMZ847",
-          "https://api.weather.gov/zones/forecast/LMZ848",
-          "https://api.weather.gov/zones/forecast/LMZ849"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5d66db7ec01c637edc5bc8c81d2cdf8460a1504.001.2",
-            "identifier": "urn:oid:2.49.0.1.840.0.b5d66db7ec01c637edc5bc8c81d2cdf8460a1504.001.2",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T19:51:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5d66db7ec01c637edc5bc8c81d2cdf8460a1504.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.b5d66db7ec01c637edc5bc8c81d2cdf8460a1504.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T19:51:00-04:00"
-          }
-        ],
-        "sent": "2026-08-22T03:00:00-04:00",
-        "effective": "2026-08-22T03:00:00-04:00",
-        "onset": "2026-08-22T08:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-23T23:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Grand Rapids MI",
-        "headline": "Small Craft Advisory issued August 22 at 3:00AM EDT until August 23 at 11:00PM EDT by NWS Grand Rapids MI",
-        "description": "* WHAT...North winds 15 to 25 knots with gusts up to 30 knots\nand waves 3 to 6 feet expected.\n\n* WHERE...St Joseph to Manistee.\n\n* WHEN...From 8 AM this morning to 11 PM EDT Sunday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWGRR"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KGRR 220700"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 8 AM THIS MORNING TO 11 PM EDT SUNDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KGRR.SC.Y.0060.260822T1200Z-260824T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-23T23:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1cc468b59cc43af9a7367714619126ee606cf834.002.1,2026-08-21T14:20:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1cc468b59cc43af9a7367714619126ee606cf834.001.2,2026-08-21T14:20:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d271ee244680414a9ab1a4ea78d00a106cd99311.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d271ee244680414a9ab1a4ea78d00a106cd99311.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.d271ee244680414a9ab1a4ea78d00a106cd99311.001.1",
-        "areaDesc": "Mason; Oceana; Muskegon; Ottawa; Allegan; Van Buren",
-        "geocode": {
-          "SAME": [
-            "026105",
-            "026127",
-            "026121",
-            "026139",
-            "026005",
-            "026159"
-          ],
-          "UGC": [
-            "MIZ037",
-            "MIZ043",
-            "MIZ050",
-            "MIZ056",
-            "MIZ064",
-            "MIZ071"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MIZ037",
-          "https://api.weather.gov/zones/forecast/MIZ043",
-          "https://api.weather.gov/zones/forecast/MIZ050",
-          "https://api.weather.gov/zones/forecast/MIZ056",
-          "https://api.weather.gov/zones/forecast/MIZ064",
-          "https://api.weather.gov/zones/forecast/MIZ071"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d5eb40082666cb731d33554e80a3927e3e11bd78.001.2",
-            "identifier": "urn:oid:2.49.0.1.840.0.d5eb40082666cb731d33554e80a3927e3e11bd78.001.2",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T19:50:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d5eb40082666cb731d33554e80a3927e3e11bd78.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.d5eb40082666cb731d33554e80a3927e3e11bd78.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-21T19:50:00-04:00"
-          }
-        ],
-        "sent": "2026-08-22T02:59:00-04:00",
-        "effective": "2026-08-22T02:59:00-04:00",
-        "onset": "2026-08-22T08:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-23T23:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Beach Hazards Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Grand Rapids MI",
-        "headline": "Beach Hazards Statement issued August 22 at 2:59AM EDT until August 23 at 11:00PM EDT by NWS Grand Rapids MI",
-        "description": "* WHAT...High wave action, strong currents, and dangerous\nswimming conditions expected. Piers may be heavily swamped by\nwaves.\n\n* WHERE...Mason, Oceana, Muskegon, Ottawa, Allegan and Van Buren\ncounties.\n\n* WHEN...From 8 AM EDT this morning through Sunday evening.\n\n* IMPACTS...Strong currents can pull swimmers into deeper water\nand high waves can sweep people off piers. The north sides of\npiers will be especially dangerous this weekend.",
-        "instruction": "Remain out of the water to avoid hazardous swimming conditions\nand do not venture out on piers. Please check with your local\nauthorities on potential beach closures.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "CFWGRR"
-          ],
-          "WMOidentifier": [
-            "WHUS43 KGRR 220659"
-          ],
-          "NWSheadline": [
-            "BEACH HAZARDS STATEMENT REMAINS IN EFFECT FROM 8 AM EDT THIS MORNING THROUGH SUNDAY EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KGRR.BH.S.0019.260822T1200Z-260824T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-23T23:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.77f566776fd66304d48f9defdd811bc9eeb35cdd.002.1,2026-08-21T14:20:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.77f566776fd66304d48f9defdd811bc9eeb35cdd.001.1,2026-08-21T14:20:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "BHS"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f419bb10cc29c7d0f30632975401c82f71a14f1c.001.1",
       "type": "Feature",
       "geometry": null,
@@ -14931,483 +15278,6 @@
           ],
           "NationalWeatherService": [
             "HTY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.002.1",
-        "areaDesc": "Straits of Mackinac within 5 nm of Mackinac Bridge including Mackinac Island; Grand Traverse Bay south of a line Grand Traverse Light to Norwood MI; Seul Choix Point to 5NM West of Mackinac Bridge; Norwood MI to 5NM West of Mackinac Bridge including Little Traverse Bay; Sleeping Bear Point to Grand Traverse Light MI",
-        "geocode": {
-          "SAME": [
-            "093345",
-            "092323",
-            "092341",
-            "092342",
-            "092344"
-          ],
-          "UGC": [
-            "LHZ345",
-            "LMZ323",
-            "LMZ341",
-            "LMZ342",
-            "LMZ344"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LHZ345",
-          "https://api.weather.gov/zones/forecast/LMZ323",
-          "https://api.weather.gov/zones/forecast/LMZ341",
-          "https://api.weather.gov/zones/forecast/LMZ342",
-          "https://api.weather.gov/zones/forecast/LMZ344"
-        ],
-        "references": [],
-        "sent": "2026-08-22T02:49:00-04:00",
-        "effective": "2026-08-22T02:49:00-04:00",
-        "onset": "2026-08-22T17:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-24T17:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Gaylord MI",
-        "headline": "Small Craft Advisory issued August 22 at 2:49AM EDT until August 24 at 5:00PM EDT by NWS Gaylord MI",
-        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 5 feet expected.\n\n* WHERE...In Lake Huron, Straits of Mackinac within 5 nm of\nMackinac Bridge including Mackinac Island. In Lake Michigan,\nGrand Traverse Bay south of a line Grand Traverse Light to\nNorwood MI, Seul Choix Point to 5NM West of Mackinac Bridge,\nNorwood MI to 5NM West of Mackinac Bridge including Little\nTraverse Bay and Sleeping Bear Point to Grand Traverse Light\nMI.\n\n* WHEN...From 5 PM this afternoon to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWAPX"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KAPX 220649"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 5 PM THIS AFTERNOON TO 5 PM EDT MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KAPX.SC.Y.0071.260822T2100Z-260824T2100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-24T17:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.004.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.004.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.004.1",
-        "areaDesc": "St Ignace to False Detour Channel",
-        "geocode": {
-          "SAME": [
-            "093346"
-          ],
-          "UGC": [
-            "LHZ346"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LHZ346"
-        ],
-        "references": [],
-        "sent": "2026-08-22T02:49:00-04:00",
-        "effective": "2026-08-22T02:49:00-04:00",
-        "onset": "2026-08-22T17:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-24T20:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Gaylord MI",
-        "headline": "Small Craft Advisory issued August 22 at 2:49AM EDT until August 24 at 8:00PM EDT by NWS Gaylord MI",
-        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 3 feet expected.\n\n* WHERE...St Ignace to False Detour Channel.\n\n* WHEN...From 5 PM this afternoon to 8 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWAPX"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KAPX 220649"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 5 PM THIS AFTERNOON TO 8 PM EDT MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KAPX.SC.Y.0071.260822T2100Z-260825T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-24T20:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.001.1",
-        "areaDesc": "Whitefish Bay (U.S. Portion)/Whitefish Point to Point Iroquois MI; St. Marys River Point Iroquois to E. Potagannissing Bay",
-        "geocode": {
-          "SAME": [
-            "091321",
-            "091322"
-          ],
-          "UGC": [
-            "LSZ321",
-            "LSZ322"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LSZ321",
-          "https://api.weather.gov/zones/forecast/LSZ322"
-        ],
-        "references": [],
-        "sent": "2026-08-22T02:49:00-04:00",
-        "effective": "2026-08-22T02:49:00-04:00",
-        "onset": "2026-08-22T17:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-24T17:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Gaylord MI",
-        "headline": "Small Craft Advisory issued August 22 at 2:49AM EDT until August 24 at 5:00PM EDT by NWS Gaylord MI",
-        "description": "* WHAT...Highest gusts up to 25 kts from the northwest and\nhighest waves around 7 feet expected.\n\n* WHERE...Whitefish Bay (U. S. Portion)/Whitefish Point to Point\nIroquois MI and St. Marys River Point Iroquois to E.\nPotagannissing Bay.\n\n* WHEN...From 5 PM this afternoon to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWAPX"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KAPX 220649"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 5 PM THIS AFTERNOON TO 5 PM EDT MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KAPX.SC.Y.0071.260822T2100Z-260824T2100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-24T17:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.003.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.003.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.003.1",
-        "areaDesc": "Point Betsie to Sleeping Bear Point MI; Manistee to Point Betsie MI",
-        "geocode": {
-          "SAME": [
-            "092345",
-            "092346"
-          ],
-          "UGC": [
-            "LMZ345",
-            "LMZ346"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LMZ345",
-          "https://api.weather.gov/zones/forecast/LMZ346"
-        ],
-        "references": [],
-        "sent": "2026-08-22T02:49:00-04:00",
-        "effective": "2026-08-22T02:49:00-04:00",
-        "onset": "2026-08-22T22:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-24T00:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Gaylord MI",
-        "headline": "Small Craft Advisory issued August 22 at 2:49AM EDT until August 24 at 12:00AM EDT by NWS Gaylord MI",
-        "description": "* WHAT...Highest gusts up to 25 kts from the north and highest\nwaves around 6 feet expected.\n\n* WHERE...Point Betsie to Sleeping Bear Point MI and Manistee to\nPoint Betsie MI.\n\n* WHEN...From 10 PM this evening to midnight EDT Sunday night.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWAPX"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KAPX 220649"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 10 PM THIS EVENING TO MIDNIGHT EDT SUNDAY NIGHT"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KAPX.SC.Y.0071.260823T0200Z-260824T0400Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-24T00:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.006.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.006.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.006.1",
-        "areaDesc": "Sturgeon Pt to Alabaster MI",
-        "geocode": {
-          "SAME": [
-            "093349"
-          ],
-          "UGC": [
-            "LHZ349"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LHZ349"
-        ],
-        "references": [],
-        "sent": "2026-08-22T02:49:00-04:00",
-        "effective": "2026-08-22T02:49:00-04:00",
-        "onset": "2026-08-22T23:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-24T17:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Gaylord MI",
-        "headline": "Small Craft Advisory issued August 22 at 2:49AM EDT until August 24 at 5:00PM EDT by NWS Gaylord MI",
-        "description": "* WHAT...Highest gusts up to 30 kts from the northwest and\nhighest waves around 4 feet expected.\n\n* WHERE...Sturgeon Pt to Alabaster MI.\n\n* WHEN...From 11 PM this evening to 5 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWAPX"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KAPX 220649"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 11 PM THIS EVENING TO 5 PM EDT MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KAPX.SC.Y.0071.260823T0300Z-260824T2100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-24T17:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.005.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.005.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1d914a842ba38ad7971fd008046df2161f508f43.005.1",
-        "areaDesc": "5NM East of Mackinac Bridge to Presque Isle Light MI including Bois Blanc Island; Presque Isle Light to Sturgeon Pt MI Including Thunder Bay National Marine Sanctuary",
-        "geocode": {
-          "SAME": [
-            "093347",
-            "093348"
-          ],
-          "UGC": [
-            "LHZ347",
-            "LHZ348"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LHZ347",
-          "https://api.weather.gov/zones/forecast/LHZ348"
-        ],
-        "references": [],
-        "sent": "2026-08-22T02:49:00-04:00",
-        "effective": "2026-08-22T02:49:00-04:00",
-        "onset": "2026-08-22T17:00:00-04:00",
-        "expires": "2026-08-22T11:00:00-04:00",
-        "ends": "2026-08-24T21:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Gaylord MI",
-        "headline": "Small Craft Advisory issued August 22 at 2:49AM EDT until August 24 at 9:00PM EDT by NWS Gaylord MI",
-        "description": "* WHAT...Highest gusts up to 35 kts from the northwest and\nhighest waves around 7 feet expected.\n\n* WHERE...5NM East of Mackinac Bridge to Presque Isle Light MI\nincluding Bois Blanc Island and Presque Isle Light to Sturgeon\nPt MI Including Thunder Bay National Marine Sanctuary.\n\n* WHEN...From 5 PM this afternoon to 9 PM EDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWAPX"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KAPX 220649"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 5 PM THIS AFTERNOON TO 9 PM EDT MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KAPX.SC.Y.0071.260822T2100Z-260825T0100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-24T21:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
           ]
         }
       }
@@ -24098,5 +23968,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-22T13:38:10+00:00"
+  "updated": "2026-08-22T14:39:33+00:00"
 }
