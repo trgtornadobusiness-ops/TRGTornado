@@ -1,4 +1,4 @@
-name: Set Website Version 79
+name: Set Website Version 80
 on:
   push:
     branches: [main]
@@ -12,16 +12,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Set every page footer to Version 79
+      - name: Set every page footer to Version 80
         shell: bash
         run: |
           set -euo pipefail
           for file in *.html; do
             [ -f "$file" ] || continue
-            sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 79/g' "$file"
+            sed -i -E 's/(class="site-version">)Version [0-9]+/\1Version 80/g' "$file"
           done
-      - name: Commit Version 79 updates
+      - name: Commit Version 80 updates
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Set all website footers to Version 79"
+          commit_message: "Set all website footers to Version 80"
           file_pattern: '*.html'
