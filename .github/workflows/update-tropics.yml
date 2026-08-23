@@ -23,15 +23,19 @@ jobs:
           mkdir -p assets/nhc
           stamp=$(date +%s)
           for basin in atl epac cpac; do
-            url="https://www.nhc.noaa.gov/archive/xgtwo/${basin}/latest/xgtwo_${basin}_7d0.png?cache=${stamp}"
-            echo "Updating ${basin}: ${url}"
-            curl -fL --retry 5 --retry-delay 2 --connect-timeout 15 --max-time 60 -H 'Cache-Control: no-cache' "$url" -o "assets/nhc/${basin}-7day.png.tmp"
-            if [ $? -eq 0 ] && [ -s "assets/nhc/${basin}-7day.png.tmp" ]; then
-              mv "assets/nhc/${basin}-7day.png.tmp" "assets/nhc/${basin}-7day.png"
-            else
+            ok=1
+            for host in https://prod-west-nhc.woc.noaa.gov https://prod-east-nhc.woc.noaa.gov https://www.nhc.noaa.gov; do
+              url="${host}/archive/xgtwo/${basin}/latest/xgtwo_${basin}_7d0.png?cache=${stamp}"
+              echo "Updating ${basin}: ${url}"
+              curl -fL --retry 4 --retry-delay 2 --connect-timeout 15 --max-time 60 -H 'Cache-Control: no-cache' "$url" -o "assets/nhc/${basin}-7day.png.tmp"
+              if [ $? -eq 0 ] && [ -s "assets/nhc/${basin}-7day.png.tmp" ]; then
+                mv "assets/nhc/${basin}-7day.png.tmp" "assets/nhc/${basin}-7day.png"
+                ok=0
+                break
+              fi
               rm -f "assets/nhc/${basin}-7day.png.tmp"
-              echo "${basin} download failed; keeping last known-good image."
-            fi
+            done
+            if [ $ok -ne 0 ]; then echo "${basin} download failed; keeping last known-good image."; fi
           done
       - name: Commit updated graphics
         shell: bash
