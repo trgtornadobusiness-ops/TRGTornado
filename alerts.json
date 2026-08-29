@@ -10,56 +10,391 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-5115",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a9a396dd606999c35a0d5d9b5225c550e38b6ea5.001.1",
       "type": "Feature",
-      "geometry": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -111.31,
+              39.14
+            ],
+            [
+              -111.4,
+              39.29
+            ],
+            [
+              -111.13,
+              39.47
+            ],
+            [
+              -111.08,
+              39.46
+            ],
+            [
+              -110.9,
+              39.21
+            ],
+            [
+              -111.31,
+              39.14
+            ]
+          ]
+        ]
+      },
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-5115",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a9a396dd606999c35a0d5d9b5225c550e38b6ea5.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-5115",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.a9a396dd606999c35a0d5d9b5225c550e38b6ea5.001.1",
+        "areaDesc": "Central Mountains; Castle Country",
         "geocode": {
           "SAME": [
-            "024031"
+            "049015",
+            "049023",
+            "049027",
+            "049039",
+            "049041",
+            "049007"
           ],
           "UGC": [
-            "MDC031"
+            "UTZ117",
+            "UTZ120"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/forecast/UTZ117",
+          "https://api.weather.gov/zones/forecast/UTZ120"
         ],
         "references": [],
-        "sent": "2026-08-29T18:07:16+00:00",
-        "effective": "2026-08-29T18:07:16+00:00",
-        "onset": null,
-        "expires": "2026-08-29T18:17:16+00:00",
+        "sent": "2026-08-29T12:16:00-06:00",
+        "effective": "2026-08-29T12:16:00-06:00",
+        "onset": "2026-08-29T12:16:00-06:00",
+        "expires": "2026-08-29T13:00:00-06:00",
         "ends": null,
-        "status": "Test",
+        "status": "Actual",
         "messageType": "Alert",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Salt Lake City UT",
+        "headline": "Special Weather Statement issued August 29 at 12:16PM MDT by NWS Salt Lake City UT",
+        "description": "At 1216 PM MDT, Doppler radar was tracking a strong thunderstorm 10\nmiles northwest of Clawson, or 21 miles east of Manti, moving\nnortheast at 10 mph.\n\nHAZARD...Wind gusts of 50 to 55 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nCastle Dale and Orangeville.\n\nThis includes Utah Route 10 between mile markers 36 and 45.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+        "response": "Execute",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "SPSSLC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 291807"
+            "WWUS85 KSLC 291816"
+          ],
+          "NWSheadline": [
+            "A strong thunderstorm will impact portions of east central Sanpete and west central Emery Counties through 100 PM MDT"
+          ],
+          "eventMotionDescription": [
+            "2026-08-29T18:16:00-00:00...storm...240DEG...10KT...39.23,-111.24"
+          ],
+          "maxWindGust": [
+            "55 MPH"
+          ],
+          "maxHailSize": [
+            "0.88"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7d5d2b0b9ac4106c849730b6bfd45abaf45c918d.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -81.41,
+              27.03
+            ],
+            [
+              -81.28,
+              26.91
+            ],
+            [
+              -81.55,
+              26.59
+            ],
+            [
+              -81.57,
+              26.6
+            ],
+            [
+              -81.56,
+              27.03
+            ],
+            [
+              -81.41,
+              27.03
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7d5d2b0b9ac4106c849730b6bfd45abaf45c918d.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7d5d2b0b9ac4106c849730b6bfd45abaf45c918d.001.1",
+        "areaDesc": "Glades; Hendry",
+        "geocode": {
+          "SAME": [
+            "012043",
+            "012051"
+          ],
+          "UGC": [
+            "FLZ063",
+            "FLZ066"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/FLZ063",
+          "https://api.weather.gov/zones/forecast/FLZ066"
+        ],
+        "references": [],
+        "sent": "2026-08-29T14:14:00-04:00",
+        "effective": "2026-08-29T14:14:00-04:00",
+        "onset": "2026-08-29T14:14:00-04:00",
+        "expires": "2026-08-29T14:45:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Miami FL",
+        "headline": "Special Weather Statement issued August 29 at 2:14PM EDT by NWS Miami FL",
+        "description": "At 214 PM EDT, National Weather Service meteorologists were tracking\nstrong thunderstorms along a line extending from near Muse to\nCharleston Park. Movement was northwest at 10 mph.\n\nHAZARD...Wind gusts of 45 to 50 mph.n far western Hendry County\napproaching Lehigh Acres. 60 DBz core around 25,000 ft last\ntwo scans.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nLabelle, Muse, and Port La Belle.",
+        "instruction": "These winds can down small tree limbs and branches, and blow around\nunsecured small objects. Seek shelter in a safe building until the\nstorm passes.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with these storms.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSMFL"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KMFL 291814"
+          ],
+          "NWSheadline": [
+            "Strong thunderstorms will impact portions of northwestern Hendry and southwestern Glades Counties through 245 PM EDT"
+          ],
+          "eventMotionDescription": [
+            "2026-08-29T18:14:00-00:00...storm...154DEG...10KT...26.86,-81.42 26.7,-81.56"
+          ],
+          "maxWindGust": [
+            "50 MPH"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.501c3f7994fc304baf7fba9fc2da62b65f1d1813.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -78.78,
+              34.85
+            ],
+            [
+              -78.76,
+              35
+            ],
+            [
+              -78.64,
+              35.25
+            ],
+            [
+              -78.62,
+              35.25
+            ],
+            [
+              -78.54,
+              35.31
+            ],
+            [
+              -78.49,
+              35.26
+            ],
+            [
+              -78.41,
+              35.26
+            ],
+            [
+              -78.27,
+              35.29
+            ],
+            [
+              -77.83,
+              35.25
+            ],
+            [
+              -77.83,
+              35.18
+            ],
+            [
+              -77.89,
+              35.15
+            ],
+            [
+              -78.02,
+              35.19
+            ],
+            [
+              -78.08,
+              35.18
+            ],
+            [
+              -78.16,
+              35.19
+            ],
+            [
+              -78.17,
+              35.09
+            ],
+            [
+              -78.15,
+              34.9
+            ],
+            [
+              -78.16,
+              34.86
+            ],
+            [
+              -78.39,
+              34.74
+            ],
+            [
+              -78.5,
+              34.86
+            ],
+            [
+              -78.78,
+              34.85
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.501c3f7994fc304baf7fba9fc2da62b65f1d1813.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.501c3f7994fc304baf7fba9fc2da62b65f1d1813.001.1",
+        "areaDesc": "Cumberland, NC; Sampson, NC; Wayne, NC",
+        "geocode": {
+          "SAME": [
+            "037051",
+            "037163",
+            "037191"
+          ],
+          "UGC": [
+            "NCC051",
+            "NCC163",
+            "NCC191"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/NCC051",
+          "https://api.weather.gov/zones/county/NCC163",
+          "https://api.weather.gov/zones/county/NCC191"
+        ],
+        "references": [],
+        "sent": "2026-08-29T14:12:00-04:00",
+        "effective": "2026-08-29T14:12:00-04:00",
+        "onset": "2026-08-29T14:12:00-04:00",
+        "expires": "2026-08-29T17:15:00-04:00",
+        "ends": "2026-08-29T17:15:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Raleigh NC",
+        "headline": "Flood Advisory issued August 29 at 2:12PM EDT until August 29 at 5:15PM EDT by NWS Raleigh NC",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Eastern Cumberland County in central North Carolina...\nSampson County in central North Carolina...\nSouthern Wayne County in central North Carolina...\n\n* WHEN...Until 515 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 212 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain have\nfallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nClinton, Mount Olive, Roseboro, Stedman, Garland, Newton Grove,\nSalemburg, Turkey, Falcon, Autryville, Seven Springs, Hobbton,\nSpivey's Corner, Bushy Lake Natural Area, Cedar Creek and Cliffs\nOf The Neuse State Park.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSRAH"
+          ],
+          "WMOidentifier": [
+            "WGUS82 KRAH 291812"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 515 PM EDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KRAH.FA.Y.0130.260829T1812Z-260829T2115Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T17:15:00-04:00"
           ]
         },
         "scope": "Public",
@@ -71,7 +406,137 @@
             "NWS"
           ],
           "NationalWeatherService": [
-            "TST"
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.47c2cfe5d7a16844fb7c204a996a8f495c6be056.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -81.62,
+              26.21
+            ],
+            [
+              -81.73,
+              26.01
+            ],
+            [
+              -81.77,
+              26.02
+            ],
+            [
+              -81.8,
+              26.09
+            ],
+            [
+              -81.81,
+              26.15
+            ],
+            [
+              -81.83,
+              26.29
+            ],
+            [
+              -81.82,
+              26.29
+            ],
+            [
+              -81.83,
+              26.3
+            ],
+            [
+              -81.84,
+              26.33
+            ],
+            [
+              -81.62,
+              26.21
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.47c2cfe5d7a16844fb7c204a996a8f495c6be056.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.47c2cfe5d7a16844fb7c204a996a8f495c6be056.001.1",
+        "areaDesc": "Coastal Collier County; Inland Collier County",
+        "geocode": {
+          "SAME": [
+            "012021"
+          ],
+          "UGC": [
+            "FLZ069",
+            "FLZ070"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/FLZ069",
+          "https://api.weather.gov/zones/forecast/FLZ070"
+        ],
+        "references": [],
+        "sent": "2026-08-29T14:10:00-04:00",
+        "effective": "2026-08-29T14:10:00-04:00",
+        "onset": "2026-08-29T14:10:00-04:00",
+        "expires": "2026-08-29T14:45:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Miami FL",
+        "headline": "Special Weather Statement issued August 29 at 2:10PM EDT by NWS Miami FL",
+        "description": "At 210 PM EDT, National Weather Service meteorologists were tracking\na strong thunderstorm over East Naples, or over Naples, moving\nnorthwest at 10 mph.\n\nHAZARD...Wind gusts of 45 to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nNaples, Golden Gate Estates, Naples Park, Vineyards, Naples Manor,\nGolden Gate, East Naples, Lely Resort, North Naples, Pelican Bay,\nLely, and Rookery Bay Aquatic Preserve.",
+        "instruction": "These winds can down small tree limbs and branches, and blow around\nunsecured small objects. Seek shelter in a safe building until the\nstorm passes.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSMFL"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KMFL 291810"
+          ],
+          "NWSheadline": [
+            "A strong thunderstorm will impact portions of west central Collier County through 245 PM EDT"
+          ],
+          "eventMotionDescription": [
+            "2026-08-29T18:10:00-00:00...storm...119DEG...9KT...26.12,-81.76"
+          ],
+          "maxWindGust": [
+            "50 MPH"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
           ]
         }
       }
@@ -1355,166 +1820,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.577c1727b9268a5acd8267cf131d7839ddade15d.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -80.71,
-              27.16
-            ],
-            [
-              -80.79,
-              27.21
-            ],
-            [
-              -80.83,
-              27.2
-            ],
-            [
-              -80.87,
-              27.14
-            ],
-            [
-              -80.88,
-              27.17
-            ],
-            [
-              -80.89,
-              27.16
-            ],
-            [
-              -80.91,
-              27.17
-            ],
-            [
-              -80.91,
-              27.19
-            ],
-            [
-              -80.94,
-              27.2
-            ],
-            [
-              -80.95,
-              27.22
-            ],
-            [
-              -80.97,
-              27.22
-            ],
-            [
-              -80.99,
-              27.23
-            ],
-            [
-              -80.98,
-              27.25
-            ],
-            [
-              -80.99,
-              27.25
-            ],
-            [
-              -80.88,
-              27.4
-            ],
-            [
-              -80.68,
-              27.16
-            ],
-            [
-              -80.68,
-              27.12
-            ],
-            [
-              -80.71,
-              27.16
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.577c1727b9268a5acd8267cf131d7839ddade15d.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.577c1727b9268a5acd8267cf131d7839ddade15d.001.1",
-        "areaDesc": "Okeechobee",
-        "geocode": {
-          "SAME": [
-            "012093"
-          ],
-          "UGC": [
-            "FLZ058"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/FLZ058"
-        ],
-        "references": [],
-        "sent": "2026-08-29T13:49:00-04:00",
-        "effective": "2026-08-29T13:49:00-04:00",
-        "onset": "2026-08-29T13:49:00-04:00",
-        "expires": "2026-08-29T14:15:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Melbourne FL",
-        "headline": "Special Weather Statement issued August 29 at 1:49PM EDT by NWS Melbourne FL",
-        "description": "At 149 PM EDT, Doppler radar was tracking a strong thunderstorm over\nOkeechobee, moving northwest at 5 mph.\n\nHAZARD...Wind gusts of 50 to 55 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nTreasure Island, Okeechobee, Four Seasons Estates, Taylor Creek, and\nOkee Tantie Recreation Area.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nConditions are favorable for the development of weak, brief funnel\nclouds. On rare occasions they can briefly touch down, producing wind\ngusts over 50 mph. If a funnel cloud is spotted move indoors and\nreport your sighting to the National Weather Service.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSMLB"
-          ],
-          "WMOidentifier": [
-            "WWUS82 KMLB 291749"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT SOUTHEASTERN OKEECHOBEE COUNTY THROUGH 215 PM EDT"
-          ],
-          "eventMotionDescription": [
-            "2026-08-29T17:49:00-00:00...storm...125DEG...5KT...27.21,-80.83"
-          ],
-          "maxWindGust": [
-            "55 MPH"
-          ],
-          "maxHailSize": [
-            "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ad82908c9040639d2f799f07099ef93c721f46a9.001.1",
       "type": "Feature",
       "geometry": {
@@ -1892,142 +2197,6 @@
           ],
           "NationalWeatherService": [
             "FAY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.96e5bb0fc006212f1e70e00ac46ce23ec7e847ef.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -80.74,
-              27.18
-            ],
-            [
-              -80.7,
-              27.16
-            ],
-            [
-              -80.68,
-              27.12
-            ],
-            [
-              -80.66,
-              27.11
-            ],
-            [
-              -80.66,
-              27.09
-            ],
-            [
-              -80.72,
-              27.05
-            ],
-            [
-              -80.89,
-              27.15
-            ],
-            [
-              -80.88,
-              27.16
-            ],
-            [
-              -80.87,
-              27.15
-            ],
-            [
-              -80.83,
-              27.2
-            ],
-            [
-              -80.79,
-              27.21
-            ],
-            [
-              -80.74,
-              27.18
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.96e5bb0fc006212f1e70e00ac46ce23ec7e847ef.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.96e5bb0fc006212f1e70e00ac46ce23ec7e847ef.001.1",
-        "areaDesc": "Lake Okeechobee",
-        "geocode": {
-          "SAME": [
-            "075610"
-          ],
-          "UGC": [
-            "AMZ610"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ610"
-        ],
-        "references": [],
-        "sent": "2026-08-29T13:40:00-04:00",
-        "effective": "2026-08-29T13:40:00-04:00",
-        "onset": "2026-08-29T13:40:00-04:00",
-        "expires": "2026-08-29T14:15:00-04:00",
-        "ends": "2026-08-29T14:15:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Special Marine Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Miami FL",
-        "headline": "Special Marine Warning issued August 29 at 1:40PM EDT until August 29 at 2:15PM EDT by NWS Miami FL",
-        "description": "SMWMFL\n\nThe National Weather Service in Miami has issued a\n\n* Special Marine Warning for...\nLake Okeechobee...\n\n* Until 215 PM EDT.\n\n* At 140 PM EDT, a severe thunderstorm capable of producing\nwaterspouts was located 8 nm east of Buckhead Ridge, moving\nnorthwest at 5 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas. Small craft could be damaged in briefly\nhigher winds and suddenly higher waves.\n\n* Locations impacted include...\nBuckhead Ridge.",
-        "instruction": "Move to safe harbor until hazardous weather passes.\n\nReport severe weather to the Coast Guard or the National Weather\nService. You can also share your report with NWS Miami on Facebook\nand Twitter.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SMWMFL"
-          ],
-          "WMOidentifier": [
-            "WHUS52 KMFL 291740"
-          ],
-          "eventMotionDescription": [
-            "2026-08-29T17:40:00-00:00...storm...135DEG...6KT...27.13,-80.73"
-          ],
-          "waterspoutDetection": [
-            "POSSIBLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KMFL.MA.W.0244.260829T1740Z-260829T1815Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T14:15:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SMW"
-          ],
-          "NationalWeatherService": [
-            "MAW"
           ]
         }
       }
@@ -20689,5 +20858,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-29T18:08:02+00:00"
+  "updated": "2026-08-29T18:17:22+00:00"
 }
