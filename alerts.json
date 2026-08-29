@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-44169",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-36350",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-44169",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-36350",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-44169",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-36350",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-08-29T03:47:16+00:00",
-        "effective": "2026-08-29T03:47:16+00:00",
+        "sent": "2026-08-29T03:57:16+00:00",
+        "effective": "2026-08-29T03:57:16+00:00",
         "onset": null,
-        "expires": "2026-08-29T03:57:16+00:00",
+        "expires": "2026-08-29T04:07:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 290347"
+            "NZUS91 KWBC 290357"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,142 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d50c0f73cca3da363d09231aaaf87e584fe1757c.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.86,
+              44.53
+            ],
+            [
+              -98.87,
+              44.72
+            ],
+            [
+              -98.24,
+              44.77
+            ],
+            [
+              -98.24,
+              44.63
+            ],
+            [
+              -98.71,
+              44.63
+            ],
+            [
+              -98.71,
+              44.55
+            ],
+            [
+              -98.7,
+              44.55
+            ],
+            [
+              -98.7,
+              44.5
+            ],
+            [
+              -98.86,
+              44.53
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d50c0f73cca3da363d09231aaaf87e584fe1757c.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.d50c0f73cca3da363d09231aaaf87e584fe1757c.001.1",
+        "areaDesc": "Hand, SD; Spink, SD",
+        "geocode": {
+          "SAME": [
+            "046059",
+            "046115"
+          ],
+          "UGC": [
+            "SDC059",
+            "SDC115"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC059",
+          "https://api.weather.gov/zones/county/SDC115"
+        ],
+        "references": [],
+        "sent": "2026-08-28T22:52:00-05:00",
+        "effective": "2026-08-28T22:52:00-05:00",
+        "onset": "2026-08-28T22:52:00-05:00",
+        "expires": "2026-08-28T23:45:00-05:00",
+        "ends": "2026-08-28T23:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Aberdeen SD",
+        "headline": "Severe Thunderstorm Warning issued August 28 at 10:52PM CDT until August 28 at 11:45PM CDT by NWS Aberdeen SD",
+        "description": "SVRABR\n\nThe National Weather Service in Aberdeen has issued a\n\n* Severe Thunderstorm Warning for...\nEast Central Hand County in central South Dakota...\nSouthwestern Spink County in northeastern South Dakota...\n\n* Until 1145 PM CDT.\n\n* At 1052 PM CDT, a severe thunderstorm was located 8 miles southeast\nof Burdette, or 15 miles northeast of Miller, moving east at 25\nmph.\n\nHAZARD...60 mph wind gusts and half dollar size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nSpottswood and Tulare around 1115 PM CDT.",
+        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.\n\nReport severe weather to your nearest law enforcement agency or the\nNational Weather Service office in Aberdeen SD.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVRABR"
+          ],
+          "WMOidentifier": [
+            "WUUS53 KABR 290352"
+          ],
+          "eventMotionDescription": [
+            "2026-08-29T03:52:00-00:00...storm...267DEG...22KT...44.62,-98.71"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "1.25"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KABR.SV.W.0237.260829T0352Z-260829T0445Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-28T23:45:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVR"
+          ],
+          "NationalWeatherService": [
+            "SVW"
           ]
         }
       }
@@ -19536,5 +19672,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-29T03:47:22+00:00"
+  "updated": "2026-08-29T03:57:20+00:00"
 }
