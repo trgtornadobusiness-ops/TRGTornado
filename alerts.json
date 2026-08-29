@@ -10,19 +10,19 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c47fb5bac229caa097e72101bf999e2d8af5cf49.001.1",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0024e87ac74d1303fa375adedfe0a15d1c90196e.001.1",
       "type": "Feature",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              -113.09,
-              40
+              -112.94,
+              40.04
             ],
             [
-              -113.26,
-              40.24
+              -113.13,
+              40.32
             ],
             [
               -112.55,
@@ -33,16 +33,16 @@
               40.19
             ],
             [
-              -113.09,
-              40
+              -112.94,
+              40.04
             ]
           ]
         ]
       },
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c47fb5bac229caa097e72101bf999e2d8af5cf49.001.1",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0024e87ac74d1303fa375adedfe0a15d1c90196e.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.c47fb5bac229caa097e72101bf999e2d8af5cf49.001.1",
+        "id": "urn:oid:2.49.0.1.840.0.0024e87ac74d1303fa375adedfe0a15d1c90196e.001.1",
         "areaDesc": "Tooele, UT",
         "geocode": {
           "SAME": [
@@ -55,14 +55,21 @@
         "affectedZones": [
           "https://api.weather.gov/zones/county/UTC045"
         ],
-        "references": [],
-        "sent": "2026-08-29T09:51:00-06:00",
-        "effective": "2026-08-29T09:51:00-06:00",
-        "onset": "2026-08-29T09:51:00-06:00",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c47fb5bac229caa097e72101bf999e2d8af5cf49.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c47fb5bac229caa097e72101bf999e2d8af5cf49.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T09:51:00-06:00"
+          }
+        ],
+        "sent": "2026-08-29T10:02:00-06:00",
+        "effective": "2026-08-29T10:02:00-06:00",
+        "onset": "2026-08-29T10:02:00-06:00",
         "expires": "2026-08-29T10:15:00-06:00",
         "ends": "2026-08-29T10:15:00-06:00",
         "status": "Actual",
-        "messageType": "Alert",
+        "messageType": "Update",
         "category": "Met",
         "severity": "Severe",
         "certainty": "Observed",
@@ -70,20 +77,23 @@
         "event": "Severe Thunderstorm Warning",
         "sender": "w-nws.webmaster@noaa.gov",
         "senderName": "NWS Salt Lake City UT",
-        "headline": "Severe Thunderstorm Warning issued August 29 at 9:51AM MDT until August 29 at 10:15AM MDT by NWS Salt Lake City UT",
-        "description": "SVRSLC\n\nThe National Weather Service in Salt Lake City has issued a\n\n* Severe Thunderstorm Warning for...\nSoutheastern Tooele County in northern Utah...\n\n* Until 1015 AM MDT.\n\n* At 951 AM MDT, a severe thunderstorm was located 14 miles west of\nDugway English Village, moving northeast at 45 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Mesonet reported.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage\nto roofs, siding, and trees.\n\n* Locations impacted include...\nGrantsville, Dugway English Village, Skull Valley, Tooele Army\nDepot South, Tooele Army Depot, Dugway Proving Ground Test Range,\nRush Valley, and Faust.",
+        "headline": "Severe Thunderstorm Warning issued August 29 at 10:02AM MDT until August 29 at 10:15AM MDT by NWS Salt Lake City UT",
+        "description": "At 1002 AM MDT, a severe thunderstorm was located 9 miles west of\nDugway English Village, moving northeast at 45 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Mesonet reported.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\nLocations impacted include...\nGrantsville, Dugway English Village, Skull Valley, Tooele Army Depot\nSouth, Tooele Army Depot, Rush Valley, and Faust.",
         "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
         "response": "Shelter",
         "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "SVRSLC"
+            "SVSSLC"
           ],
           "WMOidentifier": [
-            "WUUS55 KSLC 291551"
+            "WWUS55 KSLC 291602"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 1015 AM MDT FOR SOUTHEASTERN TOOELE COUNTY"
           ],
           "eventMotionDescription": [
-            "2026-08-29T15:51:00-00:00...storm...246DEG...39KT...40.17,-113.01"
+            "2026-08-29T16:02:00-00:00...storm...246DEG...39KT...40.2,-112.93"
           ],
           "windThreat": [
             "OBSERVED"
@@ -106,7 +116,7 @@
             "WXR"
           ],
           "VTEC": [
-            "/O.NEW.KSLC.SV.W.0091.260829T1551Z-260829T1615Z/"
+            "/O.CON.KSLC.SV.W.0091.000000T0000Z-260829T1615Z/"
           ],
           "eventEndingTime": [
             "2026-08-29T10:15:00-06:00"
@@ -118,7 +128,7 @@
         "web": "http://www.weather.gov",
         "eventCode": {
           "SAME": [
-            "SVR"
+            "SVS"
           ],
           "NationalWeatherService": [
             "SVW"
@@ -127,13 +137,13 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-56332",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-45944",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-56332",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-45944",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-56332",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-45944",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -147,10 +157,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-08-29T15:47:16+00:00",
-        "effective": "2026-08-29T15:47:16+00:00",
+        "sent": "2026-08-29T15:57:16+00:00",
+        "effective": "2026-08-29T15:57:16+00:00",
         "onset": null,
-        "expires": "2026-08-29T15:57:16+00:00",
+        "expires": "2026-08-29T16:07:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -171,7 +181,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 291547"
+            "NZUS91 KWBC 291557"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -1900,121 +1910,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7347374374f974f66282f14c3d99456ef0116e0c.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -113.02,
-              40.45
-            ],
-            [
-              -112.77,
-              39.97
-            ],
-            [
-              -113.27,
-              39.9
-            ],
-            [
-              -113.63,
-              39.9
-            ],
-            [
-              -113.75,
-              40.09
-            ],
-            [
-              -113.02,
-              40.45
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7347374374f974f66282f14c3d99456ef0116e0c.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.7347374374f974f66282f14c3d99456ef0116e0c.001.1",
-        "areaDesc": "Great Salt Lake Desert and Mountains",
-        "geocode": {
-          "SAME": [
-            "049003",
-            "049035",
-            "049045",
-            "049049"
-          ],
-          "UGC": [
-            "UTZ101"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/UTZ101"
-        ],
-        "references": [],
-        "sent": "2026-08-29T09:10:00-06:00",
-        "effective": "2026-08-29T09:10:00-06:00",
-        "onset": "2026-08-29T09:10:00-06:00",
-        "expires": "2026-08-29T10:00:00-06:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Salt Lake City UT",
-        "headline": "Special Weather Statement issued August 29 at 9:10AM MDT by NWS Salt Lake City UT",
-        "description": "At 910 AM MDT, Doppler radar was tracking a strong thunderstorm 15\nmiles northwest of Fish Springs Wildlife Refuge, or 45 miles west of\nDugway English Village, moving northeast at 45 mph.\n\nHAZARD...Wind gusts up to 50 mph and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nDugway Proving Ground Test Range and Fish Springs Wildlife Refuge.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSSLC"
-          ],
-          "WMOidentifier": [
-            "WWUS85 KSLC 291510"
-          ],
-          "NWSheadline": [
-            "A strong thunderstorm will impact portions of southwestern Tooele County through 1000 AM MDT"
-          ],
-          "eventMotionDescription": [
-            "2026-08-29T15:10:00-00:00...storm...245DEG...38KT...40.02,-113.56"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.88"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.891933d60f46e61fc4eb06900de58c30d85ba790.004.1",
       "type": "Feature",
       "geometry": null,
@@ -3090,131 +2985,6 @@
           ],
           "NationalWeatherService": [
             "HTY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ffc20b4f77fc13bf9d6244a166b0c24bd086d1a8.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -84.45,
-              29.41
-            ],
-            [
-              -84.55,
-              28.93
-            ],
-            [
-              -84.85,
-              28.61
-            ],
-            [
-              -85.3,
-              28.67
-            ],
-            [
-              -85.37,
-              29.1
-            ],
-            [
-              -85.07,
-              29.34
-            ],
-            [
-              -84.45,
-              29.41
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ffc20b4f77fc13bf9d6244a166b0c24bd086d1a8.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.ffc20b4f77fc13bf9d6244a166b0c24bd086d1a8.001.1",
-        "areaDesc": "Coastal Waters from Mexico Beach to Apalachicola out 20 NM; Coastal Waters From  Ochlockonee River to Apalachicola FL out to 20 Nm; Waters from Mexico Beach to Apalachicola FL from 20 to 60 NM; Waters from Suwannee River to Apalachicola FL from 20 to 60 NM",
-        "geocode": {
-          "SAME": [
-            "077752",
-            "077755",
-            "077772",
-            "077775"
-          ],
-          "UGC": [
-            "GMZ752",
-            "GMZ755",
-            "GMZ772",
-            "GMZ775"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/GMZ752",
-          "https://api.weather.gov/zones/forecast/GMZ755",
-          "https://api.weather.gov/zones/forecast/GMZ772",
-          "https://api.weather.gov/zones/forecast/GMZ775"
-        ],
-        "references": [],
-        "sent": "2026-08-29T10:45:00-04:00",
-        "effective": "2026-08-29T10:45:00-04:00",
-        "onset": "2026-08-29T10:45:00-04:00",
-        "expires": "2026-08-29T12:45:00-04:00",
-        "ends": "2026-08-29T12:45:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Special Marine Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Tallahassee FL",
-        "headline": "Special Marine Warning issued August 29 at 10:45AM EDT until August 29 at 12:45PM EDT by NWS Tallahassee FL",
-        "description": "SMWTAE\n\nThe National Weather Service in Tallahassee has issued a\n\n* Special Marine Warning for...\nCoastal Waters From  Ochlockonee River to Apalachicola FL out to 20\nNm...\nCoastal Waters from Mexico Beach to Apalachicola out 20 NM...\nWaters from Mexico Beach to Apalachicola FL from 20 to 60 NM...\nWaters from Suwannee River to Apalachicola FL from 20 to 60 NM...\n\n* Until 1245 PM EDT/1145 AM CDT/.\n\n* At 1045 AM EDT/945 AM CDT/, severe thunderstorms capable of\nproducing waterspouts were located along a line extending from 15\nnm east of Empire Mica Wreck to 32 nm southwest of C Tower to 47 nm\nsouthwest of S Tower, moving east at 15 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can quickly form and capsize boats...damage\nvessels...and create suddenly higher waves. Make sure all\non board are in a secure location and wearing life\njackets. Expect wind gusts in excess of 34\nknots...suddenly higher waves...frequent lightning...and\nheavy downpours. Make sure all on board are wearing life\njackets.\n\n* Locations impacted include...\nS Tower.",
-        "instruction": "Thunderstorms can produce sudden waterspouts. Waterspouts can easily\noverturn boats and create locally hazardous seas. Seek safe harbor\nimmediately.\n\nFrequent lightning is occurring with these storms. If caught on the\nopen water stay below deck if possible, keep away from ungrounded\nmetal objects.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SMWTAE"
-          ],
-          "WMOidentifier": [
-            "WHUS52 KTAE 291445"
-          ],
-          "eventMotionDescription": [
-            "2026-08-29T14:45:00-00:00...storm...264DEG...16KT...29.23,-85.08 29.01,-85.28 28.75,-85.26"
-          ],
-          "waterspoutDetection": [
-            "POSSIBLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KTAE.MA.W.0349.260829T1445Z-260829T1645Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T12:45:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SMW"
-          ],
-          "NationalWeatherService": [
-            "MAW"
           ]
         }
       }
@@ -16290,5 +16060,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-29T15:51:37+00:00"
+  "updated": "2026-08-29T16:03:06+00:00"
 }
