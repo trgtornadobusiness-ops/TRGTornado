@@ -10,6 +10,195 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55201",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55201",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-55201",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-08-29T06:17:16+00:00",
+        "effective": "2026-08-29T06:17:16+00:00",
+        "onset": null,
+        "expires": "2026-08-29T06:27:16+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 290617"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0efd886919f16240eabfef4df30f2bc3642580a8.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -80.63,
+              32.26
+            ],
+            [
+              -80.58,
+              32.3
+            ],
+            [
+              -80.47,
+              32.34
+            ],
+            [
+              -80.47,
+              32.35
+            ],
+            [
+              -80.37,
+              32.3
+            ],
+            [
+              -80.56,
+              32.19
+            ],
+            [
+              -80.63,
+              32.26
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0efd886919f16240eabfef4df30f2bc3642580a8.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0efd886919f16240eabfef4df30f2bc3642580a8.001.1",
+        "areaDesc": "Coastal waters from Edisto Beach SC to Savannah GA out 20 NM",
+        "geocode": {
+          "SAME": [
+            "075362"
+          ],
+          "UGC": [
+            "AMZ362"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AMZ362"
+        ],
+        "references": [],
+        "sent": "2026-08-29T02:16:00-04:00",
+        "effective": "2026-08-29T02:16:00-04:00",
+        "onset": "2026-08-29T02:16:00-04:00",
+        "expires": "2026-08-29T02:45:00-04:00",
+        "ends": "2026-08-29T02:45:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Special Marine Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Charleston SC",
+        "headline": "Special Marine Warning issued August 29 at 2:16AM EDT until August 29 at 2:45AM EDT by NWS Charleston SC",
+        "description": "SMWCHS\n\nThe National Weather Service in Charleston has issued a\n\n* Special Marine Warning for...\nCoastal waters from Edisto Beach SC to Savannah GA out 20 NM...\n\n* Until 245 AM EDT.\n\n* At 216 AM EDT, a severe thunderstorm capable of producing\nwaterspouts was located near Port Royal Sound, moving northeast at\n10 knots.\n\nHAZARD...Waterspouts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas.\n\n* Locations impacted include...\nFripp Inlet Buoy and Fripp Island Wreck.",
+        "instruction": "Move to safe harbor until hazardous weather passes.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SMWCHS"
+          ],
+          "WMOidentifier": [
+            "WHUS52 KCHS 290616"
+          ],
+          "eventMotionDescription": [
+            "2026-08-29T06:16:00-00:00...storm...225DEG...10KT...32.26,-80.57"
+          ],
+          "maxWindGust": [
+            "Up to 34 knots"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "waterspoutDetection": [
+            "POSSIBLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KCHS.MA.W.0121.260829T0616Z-260829T0645Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T02:45:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SMW"
+          ],
+          "NationalWeatherService": [
+            "MAW"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c81ec37a00b01247608905985b467cfd1dcc455d.004.1",
       "type": "Feature",
       "geometry": null,
@@ -330,73 +519,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-45840",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-45840",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-45840",
-        "areaDesc": "Montgomery",
-        "geocode": {
-          "SAME": [
-            "024031"
-          ],
-          "UGC": [
-            "MDC031"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
-        ],
-        "references": [],
-        "sent": "2026-08-29T06:07:16+00:00",
-        "effective": "2026-08-29T06:07:16+00:00",
-        "onset": null,
-        "expires": "2026-08-29T06:17:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
-        "parameters": {
-          "AWIPSidentifier": [
-            "KEPWBC"
-          ],
-          "WMOidentifier": [
-            "NZUS91 KWBC 290607"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS",
-            "EAS",
-            "NWEM"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "TST"
           ]
         }
       }
@@ -18964,5 +19086,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-29T06:11:32+00:00"
+  "updated": "2026-08-29T06:17:30+00:00"
 }
