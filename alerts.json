@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-6279",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55589",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-6279",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55589",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-6279",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-55589",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-08-30T04:17:16+00:00",
-        "effective": "2026-08-30T04:17:16+00:00",
+        "sent": "2026-08-30T04:27:16+00:00",
+        "effective": "2026-08-30T04:27:16+00:00",
         "onset": null,
-        "expires": "2026-08-30T04:27:16+00:00",
+        "expires": "2026-08-30T04:37:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 300417"
+            "NZUS91 KWBC 300427"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,146 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cec632a517e31e0a3d8acf2150828b3fb261ae71.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -101.09,
+              44.99
+            ],
+            [
+              -101.06,
+              45.06
+            ],
+            [
+              -100.71,
+              45.16
+            ],
+            [
+              -100.63,
+              44.89
+            ],
+            [
+              -101.02,
+              44.9
+            ],
+            [
+              -101.09,
+              44.99
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cec632a517e31e0a3d8acf2150828b3fb261ae71.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.cec632a517e31e0a3d8acf2150828b3fb261ae71.001.1",
+        "areaDesc": "Dewey, SD",
+        "geocode": {
+          "SAME": [
+            "046041"
+          ],
+          "UGC": [
+            "SDC041"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC041"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2b095b574b82ad853c25192599f340c4535d8500.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.2b095b574b82ad853c25192599f340c4535d8500.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T23:11:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2a915881c7ab80d0914d38d9a6298a9e3f26930c.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.2a915881c7ab80d0914d38d9a6298a9e3f26930c.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T23:14:00-05:00"
+          }
+        ],
+        "sent": "2026-08-29T23:22:00-05:00",
+        "effective": "2026-08-29T23:22:00-05:00",
+        "onset": "2026-08-29T23:22:00-05:00",
+        "expires": "2026-08-30T00:00:00-05:00",
+        "ends": "2026-08-30T00:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Aberdeen SD",
+        "headline": "Severe Thunderstorm Warning issued August 29 at 11:22PM CDT until August 30 at 12:00AM CDT by NWS Aberdeen SD",
+        "description": "At 1022 PM MDT, a severe thunderstorm was located 8 miles east of\nParade, or 14 miles east of Eagle Butte, moving east at 20 mph.\n\nHAZARD...Tennis ball size hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nThis severe thunderstorm will be near...\nRidgeview around 1050 PM MDT.",
+        "instruction": "Anyone outdoors should move to shelter inside a well-built structure\nand stay away from windows. This storm is capable of producing\ndangerous hail and damaging winds.\n\nReport severe weather to your nearest law enforcement agency or the\nNational Weather Service office in Aberdeen SD.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSABR"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KABR 300422"
+          ],
+          "NWSheadline": [
+            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 11 PM MDT FOR SOUTH CENTRAL DEWEY COUNTY"
+          ],
+          "eventMotionDescription": [
+            "2026-08-30T04:14:00-00:00...storm...261DEG...16KT...44.98,-101.0"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "2.50"
+          ],
+          "thunderstormDamageThreat": [
+            "CONSIDERABLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KABR.SV.W.0254.000000T0000Z-260830T0500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T00:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
           ]
         }
       }
@@ -213,144 +353,6 @@
           ],
           "NationalWeatherService": [
             "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2a915881c7ab80d0914d38d9a6298a9e3f26930c.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -101.16,
-              44.99
-            ],
-            [
-              -101.15,
-              45.04
-            ],
-            [
-              -100.71,
-              45.16
-            ],
-            [
-              -100.63,
-              44.89
-            ],
-            [
-              -101.14,
-              44.9
-            ],
-            [
-              -101.14,
-              44.99
-            ],
-            [
-              -101.16,
-              44.99
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2a915881c7ab80d0914d38d9a6298a9e3f26930c.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.2a915881c7ab80d0914d38d9a6298a9e3f26930c.001.1",
-        "areaDesc": "Dewey, SD",
-        "geocode": {
-          "SAME": [
-            "046041"
-          ],
-          "UGC": [
-            "SDC041"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/SDC041"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2b095b574b82ad853c25192599f340c4535d8500.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.2b095b574b82ad853c25192599f340c4535d8500.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T23:11:00-05:00"
-          }
-        ],
-        "sent": "2026-08-29T23:14:00-05:00",
-        "effective": "2026-08-29T23:14:00-05:00",
-        "onset": "2026-08-29T23:14:00-05:00",
-        "expires": "2026-08-30T00:00:00-05:00",
-        "ends": "2026-08-30T00:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Aberdeen SD",
-        "headline": "Severe Thunderstorm Warning issued August 29 at 11:14PM CDT until August 30 at 12:00AM CDT by NWS Aberdeen SD",
-        "description": "At 1014 PM MDT, a severe thunderstorm was located 5 miles southeast\nof Parade, or 11 miles east of Eagle Butte, moving east at 20 mph.\n\nHAZARD...Tennis ball size hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nThis severe thunderstorm will be near...\nParade around 1015 PM MDT.\nRidgeview around 1050 PM MDT.",
-        "instruction": "Anyone outdoors should move to shelter inside a well-built structure\nand stay away from windows. This storm is capable of producing\ndangerous hail and damaging winds.\n\nReport severe weather to your nearest law enforcement agency or the\nNational Weather Service office in Aberdeen SD.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSABR"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KABR 300414"
-          ],
-          "NWSheadline": [
-            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 11 PM MDT FOR SOUTH CENTRAL DEWEY COUNTY"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T04:11:00-00:00...storm...257DEG...16KT...44.98,-101.03"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "2.50"
-          ],
-          "thunderstormDamageThreat": [
-            "CONSIDERABLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KABR.SV.W.0254.000000T0000Z-260830T0500Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T00:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -22883,5 +22885,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T04:18:19+00:00"
+  "updated": "2026-08-30T04:27:25+00:00"
 }
