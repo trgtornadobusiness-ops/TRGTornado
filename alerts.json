@@ -10,56 +10,78 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55591",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8c67ec8c5d3842f1eacd5952842f487b80b0bd5c.001.1",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55591",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8c67ec8c5d3842f1eacd5952842f487b80b0bd5c.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-55591",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.8c67ec8c5d3842f1eacd5952842f487b80b0bd5c.001.1",
+        "areaDesc": "Winthrop Harbor to Wilmette Harbor IL; Wilmette Harbor to Northerly Island IL; Northerly Island to Calumet Harbor IL",
         "geocode": {
           "SAME": [
-            "024031"
+            "092740",
+            "092741",
+            "092742"
           ],
           "UGC": [
-            "MDC031"
+            "LMZ740",
+            "LMZ741",
+            "LMZ742"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/forecast/LMZ740",
+          "https://api.weather.gov/zones/forecast/LMZ741",
+          "https://api.weather.gov/zones/forecast/LMZ742"
         ],
-        "references": [],
-        "sent": "2026-08-30T14:27:16+00:00",
-        "effective": "2026-08-30T14:27:16+00:00",
-        "onset": null,
-        "expires": "2026-08-30T14:37:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c9b189021be0904e0939a50b0637236fb1c6f0d6.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c9b189021be0904e0939a50b0637236fb1c6f0d6.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-30T03:01:00-05:00"
+          }
+        ],
+        "sent": "2026-08-30T09:29:00-05:00",
+        "effective": "2026-08-30T09:29:00-05:00",
+        "onset": "2026-08-30T09:29:00-05:00",
+        "expires": "2026-08-30T15:00:00-05:00",
+        "ends": "2026-08-30T15:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Chicago IL",
+        "headline": "Small Craft Advisory issued August 30 at 9:29AM CDT until August 30 at 3:00PM CDT by NWS Chicago IL",
+        "description": "* WHAT...South winds to 25 kt expected.\n\n* WHERE...Winthrop Harbor to Calumet Harbor IL.\n\n* WHEN...Until 3 PM CDT this afternoon.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "MWWLOT"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 301427"
+            "WHUS73 KLOT 301429"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 3 PM CDT THIS AFTERNOON"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KLOT.SC.Y.0077.000000T0000Z-260830T2000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T15:00:00-05:00"
           ]
         },
         "scope": "Public",
@@ -71,7 +93,7 @@
             "NWS"
           ],
           "NationalWeatherService": [
-            "TST"
+            "SCY"
           ]
         }
       }
@@ -158,118 +180,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a2a1403e6fca22f8e85b19c57cf3a4f345c0945.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -79.84,
-              26.59
-            ],
-            [
-              -79.92,
-              26.48
-            ],
-            [
-              -80.09,
-              26.51
-            ],
-            [
-              -80.08,
-              26.72
-            ],
-            [
-              -79.84,
-              26.59
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a2a1403e6fca22f8e85b19c57cf3a4f345c0945.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.7a2a1403e6fca22f8e85b19c57cf3a4f345c0945.001.1",
-        "areaDesc": "Coastal waters from Jupiter Inlet to Deerfield Beach FL out 20 NM",
-        "geocode": {
-          "SAME": [
-            "075650"
-          ],
-          "UGC": [
-            "AMZ650"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ650"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.47a15e53e0edf4a844e0c751629f4a81896b45d0.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.47a15e53e0edf4a844e0c751629f4a81896b45d0.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-30T10:14:00-04:00"
-          }
-        ],
-        "sent": "2026-08-30T10:26:00-04:00",
-        "effective": "2026-08-30T10:26:00-04:00",
-        "onset": "2026-08-30T10:26:00-04:00",
-        "expires": "2026-08-30T10:36:00-04:00",
-        "ends": "2026-08-30T10:30:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Special Marine Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Miami FL",
-        "headline": "Special Marine Warning issued August 30 at 10:26AM EDT until August 30 at 10:30AM EDT by NWS Miami FL",
-        "description": "The affected areas were...\nCoastal waters from Jupiter Inlet to Deerfield Beach FL out 20 NM...\n\nThe thunderstorm has weakened and no longer poses a significant\nthreat to boaters.",
-        "instruction": null,
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWSMFL"
-          ],
-          "WMOidentifier": [
-            "FZUS72 KMFL 301426"
-          ],
-          "NWSheadline": [
-            "THE SPECIAL MARINE WARNING WILL EXPIRE AT 1030 AM EDT"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T14:26:00-00:00...storm...120DEG...17KT...26.59,-80.04"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXP.KMFL.MA.W.0250.000000T0000Z-260830T1430Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T10:30:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "MAW"
           ]
         }
       }
@@ -9823,88 +9733,6 @@
           ],
           "eventEndingTime": [
             "2026-08-30T17:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c9b189021be0904e0939a50b0637236fb1c6f0d6.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c9b189021be0904e0939a50b0637236fb1c6f0d6.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.c9b189021be0904e0939a50b0637236fb1c6f0d6.001.1",
-        "areaDesc": "Winthrop Harbor to Wilmette Harbor IL; Wilmette Harbor to Northerly Island IL; Northerly Island to Calumet Harbor IL",
-        "geocode": {
-          "SAME": [
-            "092740",
-            "092741",
-            "092742"
-          ],
-          "UGC": [
-            "LMZ740",
-            "LMZ741",
-            "LMZ742"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LMZ740",
-          "https://api.weather.gov/zones/forecast/LMZ741",
-          "https://api.weather.gov/zones/forecast/LMZ742"
-        ],
-        "references": [],
-        "sent": "2026-08-30T03:01:00-05:00",
-        "effective": "2026-08-30T03:01:00-05:00",
-        "onset": "2026-08-30T03:01:00-05:00",
-        "expires": "2026-08-30T15:00:00-05:00",
-        "ends": "2026-08-30T15:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Chicago IL",
-        "headline": "Small Craft Advisory issued August 30 at 3:01AM CDT until August 30 at 3:00PM CDT by NWS Chicago IL",
-        "description": "* WHAT...South winds to 25 kt expected.\n\n* WHERE...Winthrop Harbor to Calumet Harbor IL.\n\n* WHEN...Until 3 PM CDT this afternoon.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWLOT"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KLOT 300801"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT UNTIL 3 PM CDT THIS AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KLOT.SC.Y.0077.260830T0801Z-260830T2000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T15:00:00-05:00"
           ]
         },
         "scope": "Public",
@@ -23275,5 +23103,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T14:29:30+00:00"
+  "updated": "2026-08-30T14:37:16+00:00"
 }
