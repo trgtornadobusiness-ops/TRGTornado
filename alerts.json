@@ -10,6 +10,222 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-42020",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-42020",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-42020",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-08-30T07:57:16+00:00",
+        "effective": "2026-08-30T07:57:16+00:00",
+        "onset": null,
+        "expires": "2026-08-30T08:07:16+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 300757"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dd31d810f20c0c5d2c0272652efde8daebed8547.002.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.72,
+              45.24
+            ],
+            [
+              -98.72,
+              45.31
+            ],
+            [
+              -98.52,
+              45.32
+            ],
+            [
+              -98.5,
+              45.19
+            ],
+            [
+              -98.72,
+              45.17
+            ],
+            [
+              -98.72,
+              45.24
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dd31d810f20c0c5d2c0272652efde8daebed8547.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.dd31d810f20c0c5d2c0272652efde8daebed8547.002.1",
+        "areaDesc": "Brown, SD; Spink, SD",
+        "geocode": {
+          "SAME": [
+            "046013",
+            "046115"
+          ],
+          "UGC": [
+            "SDC013",
+            "SDC115"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC013",
+          "https://api.weather.gov/zones/county/SDC115"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c8864154c4290a7378cc8f878300b63ae3d8b106.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c8864154c4290a7378cc8f878300b63ae3d8b106.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-30T02:23:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b7b732fba0ad418d7fbc9c7dc118c0e554f10105.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.b7b732fba0ad418d7fbc9c7dc118c0e554f10105.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-30T02:34:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a980ddc63ef999318307a0510beccef5347f22ff.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.a980ddc63ef999318307a0510beccef5347f22ff.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-30T02:43:00-05:00"
+          }
+        ],
+        "sent": "2026-08-30T02:51:00-05:00",
+        "effective": "2026-08-30T02:51:00-05:00",
+        "onset": "2026-08-30T02:51:00-05:00",
+        "expires": "2026-08-30T03:15:00-05:00",
+        "ends": "2026-08-30T03:15:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Aberdeen SD",
+        "headline": "Severe Thunderstorm Warning issued August 30 at 2:51AM CDT until August 30 at 3:15AM CDT by NWS Aberdeen SD",
+        "description": "At 251 AM CDT, a severe thunderstorm was located near Mansfield, or 8\nmiles southwest of Warner, moving east at 35 mph.\n\nHAZARD...Two inch hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nThis severe thunderstorm will be near...\nMansfield around 255 AM CDT.",
+        "instruction": "Anyone outdoors should move to shelter inside a well-built structure\nand stay away from windows. This storm is capable of producing\ndangerous hail and damaging winds.\n\nReport severe weather to your nearest law enforcement agency or the\nNational Weather Service office in Aberdeen SD.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSABR"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KABR 300751"
+          ],
+          "NWSheadline": [
+            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 315 AM CDT FOR SOUTHWESTERN BROWN AND NORTHWESTERN SPINK COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-08-30T07:43:00-00:00...storm...266DEG...28KT...45.25,-98.72"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "2.00"
+          ],
+          "thunderstormDamageThreat": [
+            "CONSIDERABLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KABR.SV.W.0257.000000T0000Z-260830T0815Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T03:15:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e5cb8f28028fb95a2d00eed16ed8434ca11ad8cd.001.1",
       "type": "Feature",
       "geometry": null,
@@ -518,73 +734,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-49595",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-49595",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-49595",
-        "areaDesc": "Montgomery",
-        "geocode": {
-          "SAME": [
-            "024031"
-          ],
-          "UGC": [
-            "MDC031"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
-        ],
-        "references": [],
-        "sent": "2026-08-30T07:47:16+00:00",
-        "effective": "2026-08-30T07:47:16+00:00",
-        "onset": null,
-        "expires": "2026-08-30T07:57:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
-        "parameters": {
-          "AWIPSidentifier": [
-            "KEPWBC"
-          ],
-          "WMOidentifier": [
-            "NZUS91 KWBC 300747"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS",
-            "EAS",
-            "NWEM"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "TST"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ab66132c8d7288e814a0a4be32223162ff32933b.001.1",
       "type": "Feature",
       "geometry": {
@@ -862,155 +1011,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a980ddc63ef999318307a0510beccef5347f22ff.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -98.8,
-              45.22
-            ],
-            [
-              -98.79,
-              45.33
-            ],
-            [
-              -98.53,
-              45.35
-            ],
-            [
-              -98.5,
-              45.19
-            ],
-            [
-              -98.79,
-              45.17
-            ],
-            [
-              -98.8,
-              45.22
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a980ddc63ef999318307a0510beccef5347f22ff.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a980ddc63ef999318307a0510beccef5347f22ff.001.1",
-        "areaDesc": "Brown, SD; Edmunds, SD; Faulk, SD; Spink, SD",
-        "geocode": {
-          "SAME": [
-            "046013",
-            "046045",
-            "046049",
-            "046115"
-          ],
-          "UGC": [
-            "SDC013",
-            "SDC045",
-            "SDC049",
-            "SDC115"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/SDC013",
-          "https://api.weather.gov/zones/county/SDC045",
-          "https://api.weather.gov/zones/county/SDC049",
-          "https://api.weather.gov/zones/county/SDC115"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c8864154c4290a7378cc8f878300b63ae3d8b106.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.c8864154c4290a7378cc8f878300b63ae3d8b106.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-30T02:23:00-05:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b7b732fba0ad418d7fbc9c7dc118c0e554f10105.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.b7b732fba0ad418d7fbc9c7dc118c0e554f10105.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-30T02:34:00-05:00"
-          }
-        ],
-        "sent": "2026-08-30T02:43:00-05:00",
-        "effective": "2026-08-30T02:43:00-05:00",
-        "onset": "2026-08-30T02:43:00-05:00",
-        "expires": "2026-08-30T03:15:00-05:00",
-        "ends": "2026-08-30T03:15:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Aberdeen SD",
-        "headline": "Severe Thunderstorm Warning issued August 30 at 2:43AM CDT until August 30 at 3:15AM CDT by NWS Aberdeen SD",
-        "description": "At 243 AM CDT, a severe thunderstorm was located over North\nScatterwood Lake, or 12 miles southwest of Warner, moving east at 35\nmph.\n\nHAZARD...Two inch hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nThis severe thunderstorm will be near...\nMansfield around 255 AM CDT.",
-        "instruction": "Anyone outdoors should move to shelter inside a well-built structure\nand stay away from windows. This storm is capable of producing\ndangerous hail and damaging winds.\n\nReport severe weather to your nearest law enforcement agency or the\nNational Weather Service office in Aberdeen SD.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSABR"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KABR 300743"
-          ],
-          "NWSheadline": [
-            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 315 AM CDT FOR SOUTHEASTERN EDMUNDS, NORTHEASTERN FAULK, SOUTHWESTERN BROWN AND NORTHWESTERN SPINK COUNTIES"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T07:34:00-00:00...storm...266DEG...28KT...45.25,-98.82"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "2.00"
-          ],
-          "thunderstormDamageThreat": [
-            "CONSIDERABLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KABR.SV.W.0257.000000T0000Z-260830T0815Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T03:15:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -1662,140 +1662,6 @@
           ],
           "NationalWeatherService": [
             "FFW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e5e63234e3503ec7a8ead7192ac47582022709c6.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -98.29,
-              41.6
-            ],
-            [
-              -98.29,
-              41.53
-            ],
-            [
-              -98.63,
-              41.25
-            ],
-            [
-              -98.95,
-              41.41
-            ],
-            [
-              -98.6,
-              41.74
-            ],
-            [
-              -98.52,
-              41.74
-            ],
-            [
-              -98.29,
-              41.6
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e5e63234e3503ec7a8ead7192ac47582022709c6.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.e5e63234e3503ec7a8ead7192ac47582022709c6.001.1",
-        "areaDesc": "Greeley, NE; Howard, NE; Sherman, NE; Valley, NE",
-        "geocode": {
-          "SAME": [
-            "031077",
-            "031093",
-            "031163",
-            "031175"
-          ],
-          "UGC": [
-            "NEC077",
-            "NEC093",
-            "NEC163",
-            "NEC175"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NEC077",
-          "https://api.weather.gov/zones/county/NEC093",
-          "https://api.weather.gov/zones/county/NEC163",
-          "https://api.weather.gov/zones/county/NEC175"
-        ],
-        "references": [],
-        "sent": "2026-08-30T02:24:00-05:00",
-        "effective": "2026-08-30T02:24:00-05:00",
-        "onset": "2026-08-30T02:24:00-05:00",
-        "expires": "2026-08-30T03:15:00-05:00",
-        "ends": "2026-08-30T03:15:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Hastings NE",
-        "headline": "Severe Thunderstorm Warning issued August 30 at 2:24AM CDT until August 30 at 3:15AM CDT by NWS Hastings NE",
-        "description": "SVRGID\n\nThe National Weather Service in Hastings has issued a\n\n* Severe Thunderstorm Warning for...\nGreeley County in central Nebraska...\nSoutheastern Valley County in central Nebraska...\nNortheastern Sherman County in central Nebraska...\nNorthwestern Howard County in central Nebraska...\n\n* Until 315 AM CDT.\n\n* At 224 AM CDT, a severe thunderstorm was located near Scotia, or 16\nmiles southeast of Ord, moving northeast at 35 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nScotia around 230 AM CDT.\nGreeley around 240 AM CDT.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRGID"
-          ],
-          "WMOidentifier": [
-            "WUUS53 KGID 300724"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T07:24:00-00:00...storm...227DEG...30KT...41.41,-98.73"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "Up to .75"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KGID.SV.W.0281.260830T0724Z-260830T0815Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T03:15:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -21968,5 +21834,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T07:49:25+00:00"
+  "updated": "2026-08-30T07:57:27+00:00"
 }
