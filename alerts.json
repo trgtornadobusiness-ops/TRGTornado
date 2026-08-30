@@ -10,57 +10,60 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dddcd9da0264ab9257cbe1017ada142257f77258.001.1",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f661c308fd0ab825c5f628177e696ba394140e92.001.1",
       "type": "Feature",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              -111.78,
-              31.56
+              -100.06,
+              44.98
             ],
             [
-              -112.13,
-              31.67
+              -99.98,
+              45.11
             ],
             [
-              -111.99,
-              31.83
+              -99.58,
+              45.06
             ],
             [
-              -111.59,
-              31.73
+              -99.73,
+              44.81
             ],
             [
-              -111.78,
-              31.56
+              -100.06,
+              44.98
             ]
           ]
         ]
       },
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dddcd9da0264ab9257cbe1017ada142257f77258.001.1",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f661c308fd0ab825c5f628177e696ba394140e92.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.dddcd9da0264ab9257cbe1017ada142257f77258.001.1",
-        "areaDesc": "Pima, AZ",
+        "id": "urn:oid:2.49.0.1.840.0.f661c308fd0ab825c5f628177e696ba394140e92.001.1",
+        "areaDesc": "Potter, SD; Sully, SD",
         "geocode": {
           "SAME": [
-            "004019"
+            "046107",
+            "046119"
           ],
           "UGC": [
-            "AZC019"
+            "SDC107",
+            "SDC119"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/AZC019"
+          "https://api.weather.gov/zones/county/SDC107",
+          "https://api.weather.gov/zones/county/SDC119"
         ],
         "references": [],
-        "sent": "2026-08-29T18:59:00-07:00",
-        "effective": "2026-08-29T18:59:00-07:00",
-        "onset": "2026-08-29T18:59:00-07:00",
-        "expires": "2026-08-29T19:09:00-07:00",
-        "ends": "2026-08-29T19:00:00-07:00",
+        "sent": "2026-08-29T21:06:00-05:00",
+        "effective": "2026-08-29T21:06:00-05:00",
+        "onset": "2026-08-29T21:06:00-05:00",
+        "expires": "2026-08-29T21:45:00-05:00",
+        "ends": "2026-08-29T21:45:00-05:00",
         "status": "Actual",
         "messageType": "Alert",
         "category": "Met",
@@ -69,24 +72,33 @@
         "urgency": "Immediate",
         "event": "Severe Thunderstorm Warning",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Tucson AZ",
-        "headline": "Severe Thunderstorm Warning issued August 29 at 6:59PM MST until August 29 at 7:00PM MST by NWS Tucson AZ",
-        "description": "The storm which prompted the warning has weakened below severe\nlimits, and no longer poses an immediate threat to life or property.\nTherefore, the warning will be allowed to expire. However, gusty\nwinds are still possible with this thunderstorm.",
-        "instruction": null,
+        "senderName": "NWS Aberdeen SD",
+        "headline": "Severe Thunderstorm Warning issued August 29 at 9:06PM CDT until August 29 at 9:45PM CDT by NWS Aberdeen SD",
+        "description": "SVRABR\n\nThe National Weather Service in Aberdeen has issued a\n\n* Severe Thunderstorm Warning for...\nNortheastern Sully County in central South Dakota...\nSoutheastern Potter County in north central South Dakota...\n\n* Until 945 PM CDT.\n\n* At 906 PM CDT, a severe thunderstorm was located over Gettysburg,\nmoving east at 20 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nGettysburg around 910 PM CDT.\nLebanon around 920 PM CDT.\nStone Lake around 940 PM CDT.",
+        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.",
         "response": "Shelter",
         "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "SVSTWC"
+            "SVRABR"
           ],
           "WMOidentifier": [
-            "WWUS55 KTWC 300159"
-          ],
-          "NWSheadline": [
-            "SEVERE THUNDERSTORM WARNING WILL EXPIRE AT 7 PM MST FOR SOUTH CENTRAL PIMA COUNTY"
+            "WUUS53 KABR 300206"
           ],
           "eventMotionDescription": [
-            "2026-08-30T01:44:00-00:00...storm...103DEG...3KT...31.68,-111.84"
+            "2026-08-30T02:06:00-00:00...storm...292DEG...19KT...45.01,-99.94"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "1.00"
           ],
           "BLOCKCHANNEL": [
             "EAS",
@@ -97,13 +109,10 @@
             "WXR"
           ],
           "VTEC": [
-            "/O.EXP.KTWC.SV.W.0241.000000T0000Z-260830T0200Z/"
+            "/O.NEW.KABR.SV.W.0249.260830T0206Z-260830T0245Z/"
           ],
           "eventEndingTime": [
-            "2026-08-29T19:00:00-07:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c7cb9095edf0bb621a4c7a76fa2f47c5fe0e6fb7.001.1,2026-08-29T18:44:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2e2d4f71f6ef9154c6cb8151b3fd05ba77296fd5.001.1,2026-08-29T18:14:00-07:00"
+            "2026-08-29T21:45:00-05:00"
           ]
         },
         "scope": "Public",
@@ -112,7 +121,7 @@
         "web": "http://www.weather.gov",
         "eventCode": {
           "SAME": [
-            "SVS"
+            "SVR"
           ],
           "NationalWeatherService": [
             "SVW"
@@ -121,56 +130,120 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-30288",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.330530a34fb0521eea3a04113882642bdfefcc39.001.1",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-30288",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.330530a34fb0521eea3a04113882642bdfefcc39.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-30288",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.330530a34fb0521eea3a04113882642bdfefcc39.001.1",
+        "areaDesc": "Harper; Woods; Alfalfa; Grant; Kay; Woodward; Major; Garfield; Noble; Blaine; Kingfisher; Logan; Payne",
         "geocode": {
           "SAME": [
-            "024031"
+            "040059",
+            "040151",
+            "040003",
+            "040053",
+            "040071",
+            "040153",
+            "040093",
+            "040047",
+            "040103",
+            "040011",
+            "040073",
+            "040083",
+            "040119"
           ],
           "UGC": [
-            "MDC031"
+            "OKZ004",
+            "OKZ005",
+            "OKZ006",
+            "OKZ007",
+            "OKZ008",
+            "OKZ010",
+            "OKZ011",
+            "OKZ012",
+            "OKZ013",
+            "OKZ017",
+            "OKZ018",
+            "OKZ019",
+            "OKZ020"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/forecast/OKZ004",
+          "https://api.weather.gov/zones/forecast/OKZ005",
+          "https://api.weather.gov/zones/forecast/OKZ006",
+          "https://api.weather.gov/zones/forecast/OKZ007",
+          "https://api.weather.gov/zones/forecast/OKZ008",
+          "https://api.weather.gov/zones/forecast/OKZ010",
+          "https://api.weather.gov/zones/forecast/OKZ011",
+          "https://api.weather.gov/zones/forecast/OKZ012",
+          "https://api.weather.gov/zones/forecast/OKZ013",
+          "https://api.weather.gov/zones/forecast/OKZ017",
+          "https://api.weather.gov/zones/forecast/OKZ018",
+          "https://api.weather.gov/zones/forecast/OKZ019",
+          "https://api.weather.gov/zones/forecast/OKZ020"
         ],
-        "references": [],
-        "sent": "2026-08-30T01:57:16+00:00",
-        "effective": "2026-08-30T01:57:16+00:00",
-        "onset": null,
-        "expires": "2026-08-30T02:07:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.02da1c239ebca0c2cd500069db91fdd03962d805.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.02da1c239ebca0c2cd500069db91fdd03962d805.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T11:22:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T14:42:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T14:42:00-05:00"
+          }
+        ],
+        "sent": "2026-08-29T21:05:00-05:00",
+        "effective": "2026-08-29T21:05:00-05:00",
+        "onset": "2026-08-30T13:00:00-05:00",
+        "expires": "2026-08-30T11:15:00-05:00",
+        "ends": "2026-08-30T19:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Heat Advisory",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Norman OK",
+        "headline": "Heat Advisory issued August 29 at 9:05PM CDT until August 30 at 7:00PM CDT by NWS Norman OK",
+        "description": "* WHAT...Heat index values up to 107 expected.\n\n* WHERE...Portions of central, northern, and northwest Oklahoma.\n\n* WHEN...From 1 PM to 7 PM CDT Sunday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+        "response": "Execute",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "NPWOUN"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 300157"
+            "WWUS74 KOUN 300205"
+          ],
+          "NWSheadline": [
+            "HEAT ADVISORY REMAINS IN EFFECT FROM 1 PM TO 7 PM CDT SUNDAY"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KOUN.HT.Y.0045.260830T1800Z-260831T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T19:00:00-05:00"
           ]
         },
         "scope": "Public",
@@ -182,7 +255,509 @@
             "NWS"
           ],
           "NationalWeatherService": [
-            "TST"
+            "HTY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.002.1",
+        "areaDesc": "Anegada Passage east of Virgin Gorda and Saint Croix south to 17N",
+        "geocode": {
+          "SAME": [
+            "075723"
+          ],
+          "UGC": [
+            "AMZ723"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AMZ723"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.004.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.004.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T16:12:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T10:00:00-04:00"
+          }
+        ],
+        "sent": "2026-08-29T22:00:00-04:00",
+        "effective": "2026-08-29T22:00:00-04:00",
+        "onset": "2026-08-30T06:00:00-04:00",
+        "expires": "2026-08-30T06:00:00-04:00",
+        "ends": "2026-08-31T06:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Juan PR",
+        "headline": "Small Craft Advisory issued August 29 at 10:00PM AST until August 31 at 6:00AM AST by NWS San Juan PR",
+        "description": "* WHAT...Southeast winds 15 to 25 kt with gusts up to 30 kt and\nseas 4 to 7 ft expected.\n\n* WHERE...Anegada Passage east of Virgin Gorda and Saint Croix\nsouth to 17N.\n\n* WHEN...From 6 AM Sunday to 6 AM AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWSJU"
+          ],
+          "WMOidentifier": [
+            "WHCA72 TJSJ 300200"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 6 AM SUNDAY TO 6 AM AST MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.TJSJ.SC.Y.0024.260830T1000Z-260831T1000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T06:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1bf1dfbaad2f00aee56ba5d9e89123a43b2f950a.002.1,2026-08-29T03:36:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.001.1",
+        "areaDesc": "Atlantic Waters of Puerto Rico AND USVI from 10 NM to 19.5N",
+        "geocode": {
+          "SAME": [
+            "075711"
+          ],
+          "UGC": [
+            "AMZ711"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AMZ711"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.003.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.003.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T16:12:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T10:00:00-04:00"
+          }
+        ],
+        "sent": "2026-08-29T22:00:00-04:00",
+        "effective": "2026-08-29T22:00:00-04:00",
+        "onset": "2026-08-30T06:00:00-04:00",
+        "expires": "2026-08-30T06:00:00-04:00",
+        "ends": "2026-08-31T12:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Juan PR",
+        "headline": "Small Craft Advisory issued August 29 at 10:00PM AST until August 31 at 12:00PM AST by NWS San Juan PR",
+        "description": "* WHAT...East winds 15 to 25 kt with gusts up to 35 kt and seas\n6 to 9 ft expected.\n\n* WHERE...Atlantic Waters of Puerto Rico and USVI from 10 NM to\n19.5N.\n\n* WHEN...From 6 AM Sunday to noon AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWSJU"
+          ],
+          "WMOidentifier": [
+            "WHCA72 TJSJ 300200"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 6 AM SUNDAY TO NOON AST MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.TJSJ.SC.Y.0024.260830T1000Z-260831T1600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T12:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1bf1dfbaad2f00aee56ba5d9e89123a43b2f950a.001.1,2026-08-29T03:36:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.003.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.003.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.003.1",
+        "areaDesc": "Coastal Waters from Cabo San Juan to the waters between Anegada Island and Virgin Gorda and North 10 NM; Coastal Waters east of Puerto Rico, around Vieques, and around and just north of Culebra and Saint John",
+        "geocode": {
+          "SAME": [
+            "075716",
+            "075726"
+          ],
+          "UGC": [
+            "AMZ716",
+            "AMZ726"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AMZ716",
+          "https://api.weather.gov/zones/forecast/AMZ726"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T16:12:00-04:00"
+          }
+        ],
+        "sent": "2026-08-29T22:00:00-04:00",
+        "effective": "2026-08-29T22:00:00-04:00",
+        "onset": "2026-08-30T12:00:00-04:00",
+        "expires": "2026-08-30T06:00:00-04:00",
+        "ends": "2026-08-31T06:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Juan PR",
+        "headline": "Small Craft Advisory issued August 29 at 10:00PM AST until August 31 at 6:00AM AST by NWS San Juan PR",
+        "description": "* WHAT...Southeast winds 15 to 25 kt with gusts up to 30 kt and\nseas 4 to 7 ft expected.\n\n* WHERE...Coastal Waters from Cabo San Juan to the waters\nbetween Anegada Island and Virgin Gorda and North 10 NM and\nCoastal waters east of Puerto Rico, around Vieques, and around\nand just north of Culebra and Saint John.\n\n* WHEN...From noon Sunday to 6 AM AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWSJU"
+          ],
+          "WMOidentifier": [
+            "WHCA72 TJSJ 300200"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM NOON SUNDAY TO 6 AM AST MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.TJSJ.SC.Y.0024.260830T1600Z-260831T1000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T06:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.004.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.004.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a3a2a09f3e3d83b8f24e6a2be149bb7c8b76fac.004.1",
+        "areaDesc": "Coastal Waters of Northern Puerto Rico out 10 NM; Caribbean Waters of Puerto Rico from 10 NM to 17N, including the Coastal Waters of Saint Croix",
+        "geocode": {
+          "SAME": [
+            "075712",
+            "075733"
+          ],
+          "UGC": [
+            "AMZ712",
+            "AMZ733"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AMZ712",
+          "https://api.weather.gov/zones/forecast/AMZ733"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T16:12:00-04:00"
+          }
+        ],
+        "sent": "2026-08-29T22:00:00-04:00",
+        "effective": "2026-08-29T22:00:00-04:00",
+        "onset": "2026-08-30T18:00:00-04:00",
+        "expires": "2026-08-30T06:00:00-04:00",
+        "ends": "2026-08-31T06:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Juan PR",
+        "headline": "Small Craft Advisory issued August 29 at 10:00PM AST until August 31 at 6:00AM AST by NWS San Juan PR",
+        "description": "* WHAT...Seas 4 to 6 ft expected.\n\n* WHERE...Coastal Waters of Northern Puerto Rico out 10 NM and\nCaribbean waters of Puerto Rico from 10 NM to 17N, including\nthe coastal waters of Saint Croix.\n\n* WHEN...From 6 PM Sunday to 6 AM AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWSJU"
+          ],
+          "WMOidentifier": [
+            "WHCA72 TJSJ 300200"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 6 PM SUNDAY TO 6 AM AST MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.TJSJ.SC.Y.0024.260830T2200Z-260831T1000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T06:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.18dbe873d1f274089a1665db199b19e3556e39ad.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.18dbe873d1f274089a1665db199b19e3556e39ad.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.18dbe873d1f274089a1665db199b19e3556e39ad.001.1",
+        "areaDesc": "San Juan and Vicinity; Northeast; Southeast; North Central; Northwest; Culebra; Vieques; St.Thomas...St. John.. and Adjacent Islands; St Croix",
+        "geocode": {
+          "SAME": [
+            "072021",
+            "072031",
+            "072033",
+            "072061",
+            "072127",
+            "072135",
+            "072137",
+            "072139",
+            "072029",
+            "072037",
+            "072053",
+            "072069",
+            "072087",
+            "072089",
+            "072103",
+            "072119",
+            "072015",
+            "072057",
+            "072095",
+            "072109",
+            "072123",
+            "072151",
+            "072013",
+            "072017",
+            "072051",
+            "072054",
+            "072091",
+            "072143",
+            "072145",
+            "072005",
+            "072027",
+            "072065",
+            "072071",
+            "072115",
+            "072049",
+            "072147",
+            "078020",
+            "078030",
+            "078010"
+          ],
+          "UGC": [
+            "PRZ001",
+            "PRZ002",
+            "PRZ003",
+            "PRZ005",
+            "PRZ008",
+            "PRZ012",
+            "PRZ013",
+            "VIZ001",
+            "VIZ002"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PRZ001",
+          "https://api.weather.gov/zones/forecast/PRZ002",
+          "https://api.weather.gov/zones/forecast/PRZ003",
+          "https://api.weather.gov/zones/forecast/PRZ005",
+          "https://api.weather.gov/zones/forecast/PRZ008",
+          "https://api.weather.gov/zones/forecast/PRZ012",
+          "https://api.weather.gov/zones/forecast/PRZ013",
+          "https://api.weather.gov/zones/forecast/VIZ001",
+          "https://api.weather.gov/zones/forecast/VIZ002"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ef96f25d18892d9d14ce84c66a84d9aec2e6ff12.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.ef96f25d18892d9d14ce84c66a84d9aec2e6ff12.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T16:13:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3f2ed5a95aa1e341a622d7fb453005bc2d9ccc6a.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.3f2ed5a95aa1e341a622d7fb453005bc2d9ccc6a.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T10:00:00-04:00"
+          }
+        ],
+        "sent": "2026-08-29T21:59:00-04:00",
+        "effective": "2026-08-29T21:59:00-04:00",
+        "onset": "2026-08-30T06:00:00-04:00",
+        "expires": "2026-08-30T06:00:00-04:00",
+        "ends": "2026-08-31T18:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Rip Current Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Juan PR",
+        "headline": "Rip Current Statement issued August 29 at 9:59PM AST until August 31 at 6:00PM AST by NWS San Juan PR",
+        "description": "* WHAT..Life-threatening rip currents.\n\n* WHERE...Beaches of northern, eastern and southeastern Puerto\nRico, Vieques, Culebra, and the US Virgin Islands.\n\n* WHEN...From Sunday morning through Monday afternoon.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water, where it becomes difficult to\nreturn to safety.",
+        "instruction": "There is a high risk of rip currents.\n\nRip currents are powerful channels of water flowing quickly away\nfrom shore, which occur most often at low spots or breaks in the\nsandbar and in the vicinity of structures such as groins, jetties\nand piers. Heed the advice of lifeguards, beach patrol flags and\nsigns.\n\nIf you become caught in a rip current, yell for help. Remain\ncalm, do not exhaust yourself and stay afloat while waiting for\nhelp. If you have to swim out of a rip current, swim parallel to\nshore and back toward the beach when possible. Do not attempt to\nswim directly against a rip current as you will tire quickly.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CFWSJU"
+          ],
+          "WMOidentifier": [
+            "WHCA42 TJSJ 300159"
+          ],
+          "NWSheadline": [
+            "HIGH RIP CURRENT RISK REMAINS IN EFFECT FROM 6 AM AST SUNDAY THROUGH MONDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.TJSJ.RP.S.0020.260830T1000Z-260831T2200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T18:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.184761b840f71543c1f3f6dc114a2a95cd224659.001.1,2026-08-29T06:30:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "RPS"
           ]
         }
       }
@@ -530,155 +1105,6 @@
         "eventCode": {
           "SAME": [
             "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5d21f4f737ef48dd02e0c76c43274678cecaa4ce.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -99.52,
-              44.86
-            ],
-            [
-              -99.49,
-              44.92
-            ],
-            [
-              -99.33,
-              45.04
-            ],
-            [
-              -99.1,
-              45.07
-            ],
-            [
-              -99.23,
-              44.72
-            ],
-            [
-              -99.52,
-              44.86
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5d21f4f737ef48dd02e0c76c43274678cecaa4ce.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.5d21f4f737ef48dd02e0c76c43274678cecaa4ce.001.1",
-        "areaDesc": "Faulk, SD; Hand, SD; Hyde, SD",
-        "geocode": {
-          "SAME": [
-            "046049",
-            "046059",
-            "046069"
-          ],
-          "UGC": [
-            "SDC049",
-            "SDC059",
-            "SDC069"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/SDC049",
-          "https://api.weather.gov/zones/county/SDC059",
-          "https://api.weather.gov/zones/county/SDC069"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.54f0a9fe4f7b0e948ceaa7e277872a97a0ba5824.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.54f0a9fe4f7b0e948ceaa7e277872a97a0ba5824.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T20:07:00-05:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b2a52cf7ee2fc51421fe70f7a07f0a7de93d80b5.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.b2a52cf7ee2fc51421fe70f7a07f0a7de93d80b5.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T20:30:00-05:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.88edbe5f1f9af95563adf8d7ab9410a578500f68.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.88edbe5f1f9af95563adf8d7ab9410a578500f68.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T20:47:00-05:00"
-          }
-        ],
-        "sent": "2026-08-29T20:49:00-05:00",
-        "effective": "2026-08-29T20:49:00-05:00",
-        "onset": "2026-08-29T20:49:00-05:00",
-        "expires": "2026-08-29T21:00:00-05:00",
-        "ends": "2026-08-29T21:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Aberdeen SD",
-        "headline": "Severe Thunderstorm Warning issued August 29 at 8:49PM CDT until August 29 at 9:00PM CDT by NWS Aberdeen SD",
-        "description": "At 847 PM CDT, a severe thunderstorm was located 9 miles southwest of\nFaulkton, moving east at 15 mph.\n\nHAZARD...Ping pong ball size hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated. Trained spotters in Eureka reported\ngolfball-sized hail at 714 PM CDT.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nThis severe thunderstorm will be near...\nFaulkton around 855 PM CDT.",
-        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSABR"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KABR 300149 CCA"
-          ],
-          "NWSheadline": [
-            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 9 PM CDT FOR NORTHWESTERN HAND, NORTHEASTERN HYDE AND SOUTHWESTERN FAULK COUNTIES"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T01:30:00-00:00...storm...275DEG...14KT...44.94,-99.33"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.50"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.COR.KABR.SV.W.0247.000000T0000Z-260830T0200Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T21:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
           ],
           "NationalWeatherService": [
             "SVW"
@@ -11885,479 +12311,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ef96f25d18892d9d14ce84c66a84d9aec2e6ff12.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ef96f25d18892d9d14ce84c66a84d9aec2e6ff12.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.ef96f25d18892d9d14ce84c66a84d9aec2e6ff12.001.1",
-        "areaDesc": "San Juan and Vicinity; Northeast; Southeast; North Central; Northwest; Culebra; Vieques; St.Thomas...St. John.. and Adjacent Islands; St Croix",
-        "geocode": {
-          "SAME": [
-            "072021",
-            "072031",
-            "072033",
-            "072061",
-            "072127",
-            "072135",
-            "072137",
-            "072139",
-            "072029",
-            "072037",
-            "072053",
-            "072069",
-            "072087",
-            "072089",
-            "072103",
-            "072119",
-            "072015",
-            "072057",
-            "072095",
-            "072109",
-            "072123",
-            "072151",
-            "072013",
-            "072017",
-            "072051",
-            "072054",
-            "072091",
-            "072143",
-            "072145",
-            "072005",
-            "072027",
-            "072065",
-            "072071",
-            "072115",
-            "072049",
-            "072147",
-            "078020",
-            "078030",
-            "078010"
-          ],
-          "UGC": [
-            "PRZ001",
-            "PRZ002",
-            "PRZ003",
-            "PRZ005",
-            "PRZ008",
-            "PRZ012",
-            "PRZ013",
-            "VIZ001",
-            "VIZ002"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PRZ001",
-          "https://api.weather.gov/zones/forecast/PRZ002",
-          "https://api.weather.gov/zones/forecast/PRZ003",
-          "https://api.weather.gov/zones/forecast/PRZ005",
-          "https://api.weather.gov/zones/forecast/PRZ008",
-          "https://api.weather.gov/zones/forecast/PRZ012",
-          "https://api.weather.gov/zones/forecast/PRZ013",
-          "https://api.weather.gov/zones/forecast/VIZ001",
-          "https://api.weather.gov/zones/forecast/VIZ002"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.184761b840f71543c1f3f6dc114a2a95cd224659.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.184761b840f71543c1f3f6dc114a2a95cd224659.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T06:30:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3f2ed5a95aa1e341a622d7fb453005bc2d9ccc6a.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.3f2ed5a95aa1e341a622d7fb453005bc2d9ccc6a.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T10:00:00-04:00"
-          }
-        ],
-        "sent": "2026-08-29T16:13:00-04:00",
-        "effective": "2026-08-29T16:13:00-04:00",
-        "onset": "2026-08-30T06:00:00-04:00",
-        "expires": "2026-08-30T00:15:00-04:00",
-        "ends": "2026-08-31T18:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Rip Current Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS San Juan PR",
-        "headline": "Rip Current Statement issued August 29 at 4:13PM AST until August 31 at 6:00PM AST by NWS San Juan PR",
-        "description": "* WHAT..Life-threatening rip current.\n\n* WHERE...Beaches of northern, eastern and southeastern Puerto\nRico, Vieques, Culebra, and the US Virgin Islands.\n\n* WHEN...From Sunday morning through Monday afternoon.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water, where it becomes difficult to\nreturn to safety.",
-        "instruction": "There is a high risk of rip currents.\n\nRip currents are powerful channels of water flowing quickly away\nfrom shore, which occur most often at low spots or breaks in the\nsandbar and in the vicinity of structures such as groins, jetties\nand piers. Heed the advice of lifeguards, beach patrol flags and\nsigns.\n\nIf you become caught in a rip current, yell for help. Remain\ncalm, do not exhaust yourself and stay afloat while waiting for\nhelp. If you have to swim out of a rip current, swim parallel to\nshore and back toward the beach when possible. Do not attempt to\nswim directly against a rip current as you will tire quickly.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "CFWSJU"
-          ],
-          "WMOidentifier": [
-            "WHCA42 TJSJ 292013"
-          ],
-          "NWSheadline": [
-            "HIGH RIP CURRENT RISK REMAINS IN EFFECT FROM SUNDAY MORNING THROUGH MONDAY AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.TJSJ.RP.S.0020.260830T1000Z-260831T2200Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T18:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "RPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.003.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.003.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.003.1",
-        "areaDesc": "Atlantic Waters of Puerto Rico AND USVI from 10 NM to 19.5N",
-        "geocode": {
-          "SAME": [
-            "075711"
-          ],
-          "UGC": [
-            "AMZ711"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ711"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T10:00:00-04:00"
-          }
-        ],
-        "sent": "2026-08-29T16:12:00-04:00",
-        "effective": "2026-08-29T16:12:00-04:00",
-        "onset": "2026-08-30T06:00:00-04:00",
-        "expires": "2026-08-30T00:15:00-04:00",
-        "ends": "2026-08-31T12:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS San Juan PR",
-        "headline": "Small Craft Advisory issued August 29 at 4:12PM AST until August 31 at 12:00PM AST by NWS San Juan PR",
-        "description": "* WHAT...East winds 15 to 25 kt with gusts up to 35 kt and seas\n6 to 9 ft expected.\n\n* WHERE...Atlantic Waters of Puerto Rico and USVI from 10 NM to\n19.5N.\n\n* WHEN...From 6 AM Sunday to noon AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWSJU"
-          ],
-          "WMOidentifier": [
-            "WHCA72 TJSJ 292012"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 6 AM SUNDAY TO NOON AST MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.TJSJ.SC.Y.0024.260830T1000Z-260831T1600Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T12:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1bf1dfbaad2f00aee56ba5d9e89123a43b2f950a.001.1,2026-08-29T03:36:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.001.1",
-        "areaDesc": "Coastal Waters from Cabo San Juan to the waters between Anegada Island and Virgin Gorda and North 10 NM; Coastal Waters east of Puerto Rico, around Vieques, and around and just north of Culebra and Saint John",
-        "geocode": {
-          "SAME": [
-            "075716",
-            "075726"
-          ],
-          "UGC": [
-            "AMZ716",
-            "AMZ726"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ716",
-          "https://api.weather.gov/zones/forecast/AMZ726"
-        ],
-        "references": [],
-        "sent": "2026-08-29T16:12:00-04:00",
-        "effective": "2026-08-29T16:12:00-04:00",
-        "onset": "2026-08-30T12:00:00-04:00",
-        "expires": "2026-08-30T00:15:00-04:00",
-        "ends": "2026-08-31T06:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS San Juan PR",
-        "headline": "Small Craft Advisory issued August 29 at 4:12PM AST until August 31 at 6:00AM AST by NWS San Juan PR",
-        "description": "* WHAT...Southeast winds 15 to 25 kt with gusts up to 35 kt and\nseas 4 to 7 ft expected.\n\n* WHERE...Coastal Waters from Cabo San Juan to the waters\nbetween Anegada Island and Virgin Gorda and North 10 NM and\nCoastal waters east of Puerto Rico, around Vieques, and around\nand just north of Culebra and Saint John.\n\n* WHEN...From noon Sunday to 6 AM AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWSJU"
-          ],
-          "WMOidentifier": [
-            "WHCA72 TJSJ 292012"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM NOON SUNDAY TO 6 AM AST MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXB.TJSJ.SC.Y.0024.260830T1600Z-260831T1000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T06:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.004.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.004.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.004.1",
-        "areaDesc": "Anegada Passage east of Virgin Gorda and Saint Croix south to 17N",
-        "geocode": {
-          "SAME": [
-            "075723"
-          ],
-          "UGC": [
-            "AMZ723"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ723"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.57be6037696bd552022b718a452cc348d5ab26a1.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T10:00:00-04:00"
-          }
-        ],
-        "sent": "2026-08-29T16:12:00-04:00",
-        "effective": "2026-08-29T16:12:00-04:00",
-        "onset": "2026-08-30T06:00:00-04:00",
-        "expires": "2026-08-30T00:15:00-04:00",
-        "ends": "2026-08-31T06:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS San Juan PR",
-        "headline": "Small Craft Advisory issued August 29 at 4:12PM AST until August 31 at 6:00AM AST by NWS San Juan PR",
-        "description": "* WHAT...Southeast winds 15 to 25 kt with gusts up to 35 kt and\nseas 6 to 8 ft expected.\n\n* WHERE...Anegada Passage east of Virgin Gorda and Saint Croix\nsouth to 17N.\n\n* WHEN...From 6 AM Sunday to 6 AM AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWSJU"
-          ],
-          "WMOidentifier": [
-            "WHCA72 TJSJ 292012"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 6 AM SUNDAY TO 6 AM AST MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.TJSJ.SC.Y.0024.260830T1000Z-260831T1000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T06:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1bf1dfbaad2f00aee56ba5d9e89123a43b2f950a.002.1,2026-08-29T03:36:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.71f65e390f835fa99609e93b9363b8220c2358e4.002.1",
-        "areaDesc": "Coastal Waters of Northern Puerto Rico out 10 NM; Caribbean Waters of Puerto Rico from 10 NM to 17N, including the Coastal Waters of Saint Croix",
-        "geocode": {
-          "SAME": [
-            "075712",
-            "075733"
-          ],
-          "UGC": [
-            "AMZ712",
-            "AMZ733"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ712",
-          "https://api.weather.gov/zones/forecast/AMZ733"
-        ],
-        "references": [],
-        "sent": "2026-08-29T16:12:00-04:00",
-        "effective": "2026-08-29T16:12:00-04:00",
-        "onset": "2026-08-30T18:00:00-04:00",
-        "expires": "2026-08-30T00:15:00-04:00",
-        "ends": "2026-08-31T06:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS San Juan PR",
-        "headline": "Small Craft Advisory issued August 29 at 4:12PM AST until August 31 at 6:00AM AST by NWS San Juan PR",
-        "description": "* WHAT...Seas 4 to 7 ft expected.\n\n* WHERE...Coastal Waters of Northern Puerto Rico out 10 NM and\nCaribbean waters of Puerto Rico from 10 NM to 17N, including\nthe coastal waters of Saint Croix.\n\n* WHEN...From 6 PM Sunday to 6 AM AST Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWSJU"
-          ],
-          "WMOidentifier": [
-            "WHCA72 TJSJ 292012"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT FROM 6 PM SUNDAY TO 6 AM AST MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXB.TJSJ.SC.Y.0024.260830T2200Z-260831T1000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T06:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.001.1",
       "type": "Feature",
       "geometry": null,
@@ -12718,205 +12671,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.002.1",
-        "areaDesc": "Harper; Kay; Noble; Logan; Payne",
-        "geocode": {
-          "SAME": [
-            "040059",
-            "040071",
-            "040103",
-            "040083",
-            "040119"
-          ],
-          "UGC": [
-            "OKZ004",
-            "OKZ008",
-            "OKZ013",
-            "OKZ019",
-            "OKZ020"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/OKZ004",
-          "https://api.weather.gov/zones/forecast/OKZ008",
-          "https://api.weather.gov/zones/forecast/OKZ013",
-          "https://api.weather.gov/zones/forecast/OKZ019",
-          "https://api.weather.gov/zones/forecast/OKZ020"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.02da1c239ebca0c2cd500069db91fdd03962d805.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.02da1c239ebca0c2cd500069db91fdd03962d805.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T11:22:00-05:00"
-          }
-        ],
-        "sent": "2026-08-29T14:42:00-05:00",
-        "effective": "2026-08-29T14:42:00-05:00",
-        "onset": "2026-08-30T13:00:00-05:00",
-        "expires": "2026-08-30T04:45:00-05:00",
-        "ends": "2026-08-30T19:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Norman OK",
-        "headline": "Heat Advisory issued August 29 at 2:42PM CDT until August 30 at 7:00PM CDT by NWS Norman OK",
-        "description": "* WHAT...Heat index values up to 105 expected.\n\n* WHERE...Logan, Payne, Kay, Noble, and Harper Counties.\n\n* WHEN...From 1 PM to 7 PM CDT Sunday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWOUN"
-          ],
-          "WMOidentifier": [
-            "WWUS74 KOUN 291942"
-          ],
-          "NWSheadline": [
-            "HEAT ADVISORY REMAINS IN EFFECT FROM 1 PM TO 7 PM CDT SUNDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KOUN.HT.Y.0045.260830T1800Z-260831T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T19:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.001.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.001.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.022df9d8eddf60cc68b5998baa1030b0ab81fb6b.001.2",
-        "areaDesc": "Woods; Alfalfa; Grant; Woodward; Major; Garfield; Blaine; Kingfisher",
-        "geocode": {
-          "SAME": [
-            "040151",
-            "040003",
-            "040053",
-            "040153",
-            "040093",
-            "040047",
-            "040011",
-            "040073"
-          ],
-          "UGC": [
-            "OKZ005",
-            "OKZ006",
-            "OKZ007",
-            "OKZ010",
-            "OKZ011",
-            "OKZ012",
-            "OKZ017",
-            "OKZ018"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/OKZ005",
-          "https://api.weather.gov/zones/forecast/OKZ006",
-          "https://api.weather.gov/zones/forecast/OKZ007",
-          "https://api.weather.gov/zones/forecast/OKZ010",
-          "https://api.weather.gov/zones/forecast/OKZ011",
-          "https://api.weather.gov/zones/forecast/OKZ012",
-          "https://api.weather.gov/zones/forecast/OKZ017",
-          "https://api.weather.gov/zones/forecast/OKZ018"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.02da1c239ebca0c2cd500069db91fdd03962d805.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.02da1c239ebca0c2cd500069db91fdd03962d805.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T11:22:00-05:00"
-          }
-        ],
-        "sent": "2026-08-29T14:42:00-05:00",
-        "effective": "2026-08-29T14:42:00-05:00",
-        "onset": "2026-08-30T13:00:00-05:00",
-        "expires": "2026-08-30T04:45:00-05:00",
-        "ends": "2026-08-30T19:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Norman OK",
-        "headline": "Heat Advisory issued August 29 at 2:42PM CDT until August 30 at 7:00PM CDT by NWS Norman OK",
-        "description": "* WHAT...For the first Heat Advisory, air temperatures and heat index\nvalues up to 107 expected. For the second Heat Advisory, heat index\nvalues up to 106 expected.\n\n* WHERE...Kingfisher, Garfield, Grant, Alfalfa, Blaine, Major, Woods,\nand Woodward Counties.\n\n* WHEN...For the first Heat Advisory, until 7 PM CDT this evening.\nFor the second Heat Advisory, from 1 PM to 7 PM CDT Sunday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWOUN"
-          ],
-          "WMOidentifier": [
-            "WWUS74 KOUN 291942"
-          ],
-          "NWSheadline": [
-            "HEAT ADVISORY IN EFFECT UNTIL 7 PM CDT THIS EVENING... ...HEAT ADVISORY REMAINS IN EFFECT FROM 1 PM TO 7 PM CDT SUNDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KOUN.HT.Y.0045.260830T1800Z-260831T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T19:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
           ]
         }
       }
@@ -23756,5 +23510,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T01:59:37+00:00"
+  "updated": "2026-08-30T02:07:34+00:00"
 }
