@@ -10,56 +10,248 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-54953",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3f6cef28a247db22ebc21f90857f3051925040ae.001.1",
       "type": "Feature",
-      "geometry": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.33,
+              37.43
+            ],
+            [
+              -112.22,
+              37.47
+            ],
+            [
+              -112.11,
+              37.35
+            ],
+            [
+              -111.95,
+              37.07
+            ],
+            [
+              -111.84,
+              37
+            ],
+            [
+              -112.05,
+              37
+            ],
+            [
+              -112.33,
+              37.43
+            ]
+          ]
+        ]
+      },
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-54953",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3f6cef28a247db22ebc21f90857f3051925040ae.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-54953",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.3f6cef28a247db22ebc21f90857f3051925040ae.001.1",
+        "areaDesc": "Kane, UT",
         "geocode": {
           "SAME": [
-            "024031"
+            "049025"
           ],
           "UGC": [
-            "MDC031"
+            "UTC025"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/county/UTC025"
         ],
-        "references": [],
-        "sent": "2026-08-30T01:17:16+00:00",
-        "effective": "2026-08-30T01:17:16+00:00",
-        "onset": null,
-        "expires": "2026-08-30T01:27:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4bdfbb036b1369b88d063d9994d86435ed1937dc.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.4bdfbb036b1369b88d063d9994d86435ed1937dc.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T15:43:00-06:00"
+          }
+        ],
+        "sent": "2026-08-29T19:23:00-06:00",
+        "effective": "2026-08-29T19:23:00-06:00",
+        "onset": "2026-08-29T19:23:00-06:00",
+        "expires": "2026-08-29T22:45:00-06:00",
+        "ends": "2026-08-29T22:45:00-06:00",
+        "status": "Actual",
+        "messageType": "Update",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Flash Flood Warning",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Salt Lake City UT",
+        "headline": "Flash Flood Warning issued August 29 at 7:23PM MDT until August 29 at 10:45PM MDT by NWS Salt Lake City UT",
+        "description": "At 723 PM MDT, Doppler radar indicated earlier thunderstorms produced\nheavy rain across primarily the far upper reaches of the drainage\nleading into Buckskin Gulch. Water is likely flowing downstream\nthrough Lick Wash and into Buckskin Gulch. Up to 0.75 inches of rain\nhave fallen. Flash flooding is ongoing or expected to begin shortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar indicated.\n\nIMPACT...Life threatening flash flooding of creeks, streams, slot\ncanyons, and normally dry washes.\n\nSome locations that will experience flash flooding include...\nareas along the drainage leading into Buckskin Gulch from Bryce\nCanyon National Park, through Lick Wash, Deer Springs Wash, Riggs\nCreek, and into Buckskin Gulch and The Wave.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMove to higher ground now. Act quickly to protect your life.\n\nRemain alert for flooding even in locations not receiving rain. Dry\nwashes, streams, and rivers can become raging killer currents in a\nmatter of minutes, even from distant rainfall.",
+        "response": "Avoid",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "FFSSLC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 300117"
+            "WGUS75 KSLC 300123"
+          ],
+          "NWSheadline": [
+            "FLASH FLOOD WARNING REMAINS IN EFFECT UNTIL 1045 PM MDT THIS EVENING FOR CENTRAL KANE COUNTY"
+          ],
+          "flashFloodDetection": [
+            "RADAR INDICATED"
+          ],
+          "flashFloodDamageThreat": [
+            "CONSIDERABLE"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KSLC.FF.W.0089.000000T0000Z-260830T0445Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T22:45:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFS"
+          ],
+          "NationalWeatherService": [
+            "FFW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.37a7b719f881e0760352314f150ac7864ecb7104.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -107.79,
+              35.31
+            ],
+            [
+              -107.8,
+              35.33
+            ],
+            [
+              -107.79,
+              35.41
+            ],
+            [
+              -107.66,
+              35.53
+            ],
+            [
+              -107.52,
+              35.58
+            ],
+            [
+              -107.5,
+              35.47
+            ],
+            [
+              -107.56,
+              35.35
+            ],
+            [
+              -107.56,
+              35.26
+            ],
+            [
+              -107.63,
+              35.25
+            ],
+            [
+              -107.67,
+              35.21
+            ],
+            [
+              -107.77,
+              35.22
+            ],
+            [
+              -107.79,
+              35.31
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.37a7b719f881e0760352314f150ac7864ecb7104.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.37a7b719f881e0760352314f150ac7864ecb7104.001.1",
+        "areaDesc": "Cibola, NM; McKinley, NM",
+        "geocode": {
+          "SAME": [
+            "035006",
+            "035031"
+          ],
+          "UGC": [
+            "NMC006",
+            "NMC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/NMC006",
+          "https://api.weather.gov/zones/county/NMC031"
+        ],
+        "references": [],
+        "sent": "2026-08-29T19:22:00-06:00",
+        "effective": "2026-08-29T19:22:00-06:00",
+        "onset": "2026-08-29T19:22:00-06:00",
+        "expires": "2026-08-29T22:15:00-06:00",
+        "ends": "2026-08-29T22:15:00-06:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Albuquerque NM",
+        "headline": "Flood Advisory issued August 29 at 7:22PM MDT until August 29 at 10:15PM MDT by NWS Albuquerque NM",
+        "description": "* WHAT...Arroyo and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...North Central Cibola County in west central New Mexico...\nEast Central McKinley County in west central New Mexico...\n\n* WHEN...Until 1015 PM MDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 722 PM MDT, Doppler radar indicated heavy rain due to\nthunderstorms. This will cause arroyo and small stream flooding.\nBetween 0.75 and 1.25 inches of rain have fallen on the northeast\nslopes of Mount Taylor.\n- Additional rainfall amounts up to 0.5 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nSan Mateo.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nArroyos, streams, and normally dry rivers can become raging killer\ncurrents in a matter of minutes. Water in arroyos can travel many\nmiles and take hours to reach your location from upstream rain areas.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSABQ"
+          ],
+          "WMOidentifier": [
+            "WGUS85 KABQ 300122"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 1015 PM MDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KABQ.FA.Y.0207.260830T0122Z-260830T0415Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T22:15:00-06:00"
           ]
         },
         "scope": "Public",
@@ -71,7 +263,279 @@
             "NWS"
           ],
           "NationalWeatherService": [
-            "TST"
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.bf654a3fbfc2d741b723776af95868d7f4d92d3b.002.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -100.29,
+              45.06
+            ],
+            [
+              -100.24,
+              45.24
+            ],
+            [
+              -99.73,
+              45.44
+            ],
+            [
+              -99.68,
+              44.9
+            ],
+            [
+              -99.8,
+              44.9
+            ],
+            [
+              -100.29,
+              45.06
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.bf654a3fbfc2d741b723776af95868d7f4d92d3b.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.bf654a3fbfc2d741b723776af95868d7f4d92d3b.002.1",
+        "areaDesc": "Potter, SD; Walworth, SD",
+        "geocode": {
+          "SAME": [
+            "046107",
+            "046129"
+          ],
+          "UGC": [
+            "SDC107",
+            "SDC129"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC107",
+          "https://api.weather.gov/zones/county/SDC129"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.20266e9868c1365fffd70df16e45f37590080a9a.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.20266e9868c1365fffd70df16e45f37590080a9a.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T19:58:00-05:00"
+          }
+        ],
+        "sent": "2026-08-29T20:21:00-05:00",
+        "effective": "2026-08-29T20:21:00-05:00",
+        "onset": "2026-08-29T20:21:00-05:00",
+        "expires": "2026-08-29T20:45:00-05:00",
+        "ends": "2026-08-29T20:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Aberdeen SD",
+        "headline": "Severe Thunderstorm Warning issued August 29 at 8:21PM CDT until August 29 at 8:45PM CDT by NWS Aberdeen SD",
+        "description": "At 821 PM CDT, a severe thunderstorm was located 6 miles northeast of\nWhitlocks Bay Rec Area, or 12 miles northwest of Gettysburg, moving\neast at 25 mph.\n\nHAZARD...60 mph wind gusts and half dollar size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\nThis severe thunderstorm will be near...\nWhitlocks Bay Rec Area around 825 PM CDT.\nGettysburg around 840 PM CDT.",
+        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.\n\nTorrential rainfall is also occurring with this storm and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSABR"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KABR 300121"
+          ],
+          "NWSheadline": [
+            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 845 PM CDT FOR POTTER AND SOUTHEASTERN WALWORTH COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-08-30T00:58:00-00:00...storm...284DEG...19KT...45.15,-100.32"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "1.25"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KABR.SV.W.0246.000000T0000Z-260830T0145Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T20:45:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6d9d26775a6f6940577b92b00c26f90570727980.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.66,
+              34.51
+            ],
+            [
+              -112.77,
+              34.58
+            ],
+            [
+              -112.91,
+              34.52
+            ],
+            [
+              -113,
+              34.45
+            ],
+            [
+              -113.08,
+              34.34
+            ],
+            [
+              -113.13,
+              34.28
+            ],
+            [
+              -113.1,
+              34.22
+            ],
+            [
+              -113.06,
+              34.2
+            ],
+            [
+              -112.95,
+              34.26
+            ],
+            [
+              -112.89,
+              34.32
+            ],
+            [
+              -112.79,
+              34.39
+            ],
+            [
+              -112.65,
+              34.5
+            ],
+            [
+              -112.66,
+              34.5
+            ],
+            [
+              -112.66,
+              34.51
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6d9d26775a6f6940577b92b00c26f90570727980.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.6d9d26775a6f6940577b92b00c26f90570727980.001.1",
+        "areaDesc": "Yavapai, AZ",
+        "geocode": {
+          "SAME": [
+            "004025"
+          ],
+          "UGC": [
+            "AZC025"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/AZC025"
+        ],
+        "references": [],
+        "sent": "2026-08-29T18:21:00-07:00",
+        "effective": "2026-08-29T18:21:00-07:00",
+        "onset": "2026-08-29T18:21:00-07:00",
+        "expires": "2026-08-29T21:15:00-07:00",
+        "ends": "2026-08-29T21:15:00-07:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Flagstaff AZ",
+        "headline": "Flood Advisory issued August 29 at 6:21PM MST until August 29 at 9:15PM MST by NWS Flagstaff AZ",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Yavapai County in west central Arizona...\n\n* WHEN...Until 915 PM MST.\n\n* IMPACTS...Minor flooding in creeks and normally dry washes is\nimminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 621 PM MST, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain have\nfallen.\n- This includes the following creeks, washes and rivers...\nTank Creek, Sycamore Creek, Cottonwood Creek, Finch Wash,\nKirkland Creek, Bland Creek, Santa Maria River, Tank Wash, Black\nCanyon Wash, North Fork Date Creek, Woolsey Wash, Date Creek,\nAlkali Wash, Skull Valley Wash, South Fork Santa Maria River,\nEastwood Creek, Waterman Creek and Tonto Wash.\n- Some locations that will experience flooding include...\nHillside, Yava, Date and Skull Valley.\n- This includes the following highways...\nHighway 93 between mile markers 168 and 174. State Route 96\nbetween mile markers 17 and 21.\n- Additional information is available at weather.gov/flagstaff.",
+        "instruction": "Be aware of your surroundings and do not drive on flooded roads.\n\nLow water crossings will become dangerous in heavy rain. Do not\nattempt to cross flooded roads. Find an alternate route.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSFGZ"
+          ],
+          "WMOidentifier": [
+            "WGUS85 KFGZ 300121"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 915 PM MST THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KFGZ.FA.Y.0023.260830T0121Z-260830T0415Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T21:15:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
           ]
         }
       }
@@ -449,137 +913,6 @@
           ],
           "NationalWeatherService": [
             "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6a2ad376b05274c8a6db08f0972ffbc6f9bb0740.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -99.63,
-              45.94
-            ],
-            [
-              -99.63,
-              46.02
-            ],
-            [
-              -99.56,
-              46.17
-            ],
-            [
-              -99.17,
-              46.04
-            ],
-            [
-              -99.29,
-              45.94
-            ],
-            [
-              -99.63,
-              45.94
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6a2ad376b05274c8a6db08f0972ffbc6f9bb0740.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.6a2ad376b05274c8a6db08f0972ffbc6f9bb0740.001.1",
-        "areaDesc": "McIntosh, ND",
-        "geocode": {
-          "SAME": [
-            "038051"
-          ],
-          "UGC": [
-            "NDC051"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NDC051"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f1930e41e3b4109078cd7cfcd9e7d8a341776c8d.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.f1930e41e3b4109078cd7cfcd9e7d8a341776c8d.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T19:51:00-05:00"
-          }
-        ],
-        "sent": "2026-08-29T20:10:00-05:00",
-        "effective": "2026-08-29T20:10:00-05:00",
-        "onset": "2026-08-29T20:10:00-05:00",
-        "expires": "2026-08-29T20:45:00-05:00",
-        "ends": "2026-08-29T20:45:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Bismarck ND",
-        "headline": "Severe Thunderstorm Warning issued August 29 at 8:10PM CDT until August 29 at 8:45PM CDT by NWS Bismarck ND",
-        "description": "At 810 PM CDT, a severe thunderstorm was located over Venturia, or 40\nmiles southeast of Linton, moving northeast at 15 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\nLocations impacted include...\nAshley, Venturia and Danzig.",
-        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSBIS"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KBIS 300110"
-          ],
-          "NWSheadline": [
-            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 845 PM CDT FOR SOUTHEASTERN MCINTOSH COUNTY"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T00:51:00-00:00...storm...212DEG...13KT...45.93,-99.56"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KBIS.SV.W.0303.000000T0000Z-260830T0145Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T20:45:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -1565,136 +1898,6 @@
           ],
           "NationalWeatherService": [
             "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.20266e9868c1365fffd70df16e45f37590080a9a.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -100.42,
-              45.1
-            ],
-            [
-              -100.39,
-              45.27
-            ],
-            [
-              -99.73,
-              45.44
-            ],
-            [
-              -99.68,
-              44.9
-            ],
-            [
-              -99.8,
-              44.9
-            ],
-            [
-              -100.42,
-              45.1
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.20266e9868c1365fffd70df16e45f37590080a9a.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.20266e9868c1365fffd70df16e45f37590080a9a.001.1",
-        "areaDesc": "Dewey, SD; Potter, SD; Walworth, SD",
-        "geocode": {
-          "SAME": [
-            "046041",
-            "046107",
-            "046129"
-          ],
-          "UGC": [
-            "SDC041",
-            "SDC107",
-            "SDC129"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/SDC041",
-          "https://api.weather.gov/zones/county/SDC107",
-          "https://api.weather.gov/zones/county/SDC129"
-        ],
-        "references": [],
-        "sent": "2026-08-29T19:58:00-05:00",
-        "effective": "2026-08-29T19:58:00-05:00",
-        "onset": "2026-08-29T19:58:00-05:00",
-        "expires": "2026-08-29T20:45:00-05:00",
-        "ends": "2026-08-29T20:45:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Aberdeen SD",
-        "headline": "Severe Thunderstorm Warning issued August 29 at 7:58PM CDT until August 29 at 8:45PM CDT by NWS Aberdeen SD",
-        "description": "SVRABR\n\nThe National Weather Service in Aberdeen has issued a\n\n* Severe Thunderstorm Warning for...\nEast Central Dewey County in north central South Dakota...\nPotter County in north central South Dakota...\nSoutheastern Walworth County in north central South Dakota...\n\n* Until 845 PM CDT /745 PM MDT/.\n\n* At 758 PM CDT /658 PM MDT/, a severe thunderstorm was located 7\nmiles northeast of Whitlocks Bay Rec Area, or 14 miles northwest of\nGettysburg, moving east at 35 mph.\n\nHAZARD...Golf ball size hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect\nwind damage to roofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nWhitlocks Bay Rec Area around 800 PM CDT.\nGettysburg around 820 PM CDT.\nLebanon around 835 PM CDT.",
-        "instruction": "Anyone outdoors should move to shelter inside a well-built structure\nand stay away from windows. This storm is capable of producing\ndangerous hail and damaging winds.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRABR"
-          ],
-          "WMOidentifier": [
-            "WUUS53 KABR 300058"
-          ],
-          "eventMotionDescription": [
-            "2026-08-30T00:58:00-00:00...storm...282DEG...28KT...45.15,-100.17"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.75"
-          ],
-          "thunderstormDamageThreat": [
-            "CONSIDERABLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KABR.SV.W.0246.260830T0058Z-260830T0145Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T20:45:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -5933,82 +6136,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.034.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.034.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.034.1",
-        "areaDesc": "Kuskokwim Delta and Etolin Strait out to 15 NM",
-        "geocode": {
-          "SAME": [
-            "058763"
-          ],
-          "UGC": [
-            "PKZ763"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PKZ763"
-        ],
-        "references": [],
-        "sent": "2026-08-29T15:53:00-08:00",
-        "effective": "2026-08-29T15:53:00-08:00",
-        "onset": "2026-08-30T17:00:00-08:00",
-        "expires": "2026-08-30T04:15:00-08:00",
-        "ends": "2026-08-31T05:00:00-08:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Anchorage AK",
-        "headline": "Small Craft Advisory issued August 29 at 3:53PM AKDT until August 31 at 5:00AM AKDT by NWS Anchorage AK",
-        "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 4 ft. Patchy fog.\n.SUN...SW wind 20 kt. Seas 4 ft. Rain.\n.SUN NIGHT...NW wind 25 kt diminishing to 15 kt after midnight.\nSeas\n3 ft.\n.MON...N wind 10 kt. Seas 3 ft.\n.MON NIGHT...E wind 15 kt. Seas 3 ft.\n.TUE...SE wind 25 kt. Seas 6 ft.\n.WED THROUGH THU...S wind 30 kt. Seas 7 ft.",
-        "instruction": null,
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "CWFALU"
-          ],
-          "WMOidentifier": [
-            "FZAK52 PAFC 292353"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY SUNDAY NIGHT"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.PAFC.SC.Y.9763.260831T0100Z-260831T1300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T05:00:00-08:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.002.1",
       "type": "Feature",
       "geometry": null,
@@ -6065,6 +6192,82 @@
           ],
           "VTEC": [
             "/O.NEW.PAFC.SC.Y.9732.260830T1300Z-260831T1300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T05:00:00-08:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.034.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.034.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.152133b6637ac7fc11f3ca88390a9c62f2ef6544.034.1",
+        "areaDesc": "Kuskokwim Delta and Etolin Strait out to 15 NM",
+        "geocode": {
+          "SAME": [
+            "058763"
+          ],
+          "UGC": [
+            "PKZ763"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PKZ763"
+        ],
+        "references": [],
+        "sent": "2026-08-29T15:53:00-08:00",
+        "effective": "2026-08-29T15:53:00-08:00",
+        "onset": "2026-08-30T17:00:00-08:00",
+        "expires": "2026-08-30T04:15:00-08:00",
+        "ends": "2026-08-31T05:00:00-08:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Anchorage AK",
+        "headline": "Small Craft Advisory issued August 29 at 3:53PM AKDT until August 31 at 5:00AM AKDT by NWS Anchorage AK",
+        "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TONIGHT...W wind 20 kt. Seas 4 ft. Patchy fog.\n.SUN...SW wind 20 kt. Seas 4 ft. Rain.\n.SUN NIGHT...NW wind 25 kt diminishing to 15 kt after midnight.\nSeas\n3 ft.\n.MON...N wind 10 kt. Seas 3 ft.\n.MON NIGHT...E wind 15 kt. Seas 3 ft.\n.TUE...SE wind 25 kt. Seas 6 ft.\n.WED THROUGH THU...S wind 30 kt. Seas 7 ft.",
+        "instruction": null,
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CWFALU"
+          ],
+          "WMOidentifier": [
+            "FZAK52 PAFC 292353"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY SUNDAY NIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.PAFC.SC.Y.9763.260831T0100Z-260831T1300Z/"
           ],
           "eventEndingTime": [
             "2026-08-31T05:00:00-08:00"
@@ -11261,130 +11464,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4bdfbb036b1369b88d063d9994d86435ed1937dc.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -112.33,
-              37.43
-            ],
-            [
-              -112.22,
-              37.47
-            ],
-            [
-              -112.11,
-              37.35
-            ],
-            [
-              -111.95,
-              37.07
-            ],
-            [
-              -111.84,
-              37
-            ],
-            [
-              -112.05,
-              37
-            ],
-            [
-              -112.33,
-              37.43
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4bdfbb036b1369b88d063d9994d86435ed1937dc.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.4bdfbb036b1369b88d063d9994d86435ed1937dc.001.1",
-        "areaDesc": "Kane, UT",
-        "geocode": {
-          "SAME": [
-            "049025"
-          ],
-          "UGC": [
-            "UTC025"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/UTC025"
-        ],
-        "references": [],
-        "sent": "2026-08-29T15:43:00-06:00",
-        "effective": "2026-08-29T15:43:00-06:00",
-        "onset": "2026-08-29T15:43:00-06:00",
-        "expires": "2026-08-29T22:45:00-06:00",
-        "ends": "2026-08-29T22:45:00-06:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Flash Flood Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Salt Lake City UT",
-        "headline": "Flash Flood Warning issued August 29 at 3:43PM MDT until August 29 at 10:45PM MDT by NWS Salt Lake City UT",
-        "description": "FFWSLC\n\nThe National Weather Service in Salt Lake City has issued a\n\n* Flash Flood Warning for...\nCentral Kane County in southern Utah...\n\n* Until 1045 PM MDT Saturday.\n\n* At 343 PM MDT, Doppler radar indicated thunderstorms producing\nheavy rain across primarily the far upper reaches of the drainage\nleading into Buckskin Gulch. Water will likely flow downstream\nthrough Lick Wash and into Buckskin Gulch. Up to 0.75 inches of\nrain have fallen. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar indicated.\n\nIMPACT...Life threatening flash flooding of creeks, streams, slot\ncanyons, and normally dry washes.\n\n* Some locations that will experience flash flooding include...\nareas along the drainage leading into Buckskin Gulch from Bryce\nCanyon National Park, through Lick Wash, Deer Springs Wash, Riggs\nCreek, and into Buckskin Gulch and The Wave.",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nMove to higher ground now. Act quickly to protect your life.\n\nRemain alert for flooding even in locations not receiving rain. Dry\nwashes, streams, and rivers can become raging killer currents in a\nmatter of minutes, even from distant rainfall.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FFWSLC"
-          ],
-          "WMOidentifier": [
-            "WGUS55 KSLC 292143"
-          ],
-          "flashFloodDetection": [
-            "RADAR INDICATED"
-          ],
-          "flashFloodDamageThreat": [
-            "CONSIDERABLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KSLC.FF.W.0089.260829T2143Z-260830T0445Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T22:45:00-06:00"
-          ],
-          "WEAHandling": [
-            "Imminent Threat"
-          ],
-          "CMAMtext": [
-            "NWS: FLASH FLOOD WARNING this area til 10:45 PM MDT. Avoid flooded areas."
-          ],
-          "CMAMlongtext": [
-            "National Weather Service: A FLASH FLOOD WARNING is in effect for this area until 10:45 PM MDT. This is a dangerous and life-threatening situation. Do not attempt to travel unless you are fleeing an area subject to flooding or under an evacuation order."
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FFW"
-          ],
-          "NationalWeatherService": [
-            "FFW"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.778ac92ca36c0e0fa084de1e1e772954cd0f48a3.001.1",
       "type": "Feature",
       "geometry": null,
@@ -13074,98 +13153,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.003.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.003.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.003.1",
-        "areaDesc": "Grand Portage to Grand Marais MN; Grand Marais to Taconite Harbor MN; Taconite Harbor to Silver Bay Harbor MN",
-        "geocode": {
-          "SAME": [
-            "091140",
-            "091141",
-            "091142"
-          ],
-          "UGC": [
-            "LSZ140",
-            "LSZ141",
-            "LSZ142"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LSZ140",
-          "https://api.weather.gov/zones/forecast/LSZ141",
-          "https://api.weather.gov/zones/forecast/LSZ142"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.891933d60f46e61fc4eb06900de58c30d85ba790.003.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.891933d60f46e61fc4eb06900de58c30d85ba790.003.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T10:00:00-05:00"
-          }
-        ],
-        "sent": "2026-08-29T14:56:00-05:00",
-        "effective": "2026-08-29T14:56:00-05:00",
-        "onset": "2026-08-30T10:00:00-05:00",
-        "expires": "2026-08-30T03:00:00-05:00",
-        "ends": "2026-08-31T07:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Duluth MN",
-        "headline": "Small Craft Advisory issued August 29 at 2:56PM CDT until August 31 at 7:00AM CDT by NWS Duluth MN",
-        "description": "* WHAT...Northeast winds 10 to 15 kt with gusts up to 30 kt and\nwaves 1 to 3 ft expected.\n\n* WHERE...Grand Portage to Grand Marais MN, Grand Marais to\nTaconite Harbor MN and Taconite Harbor to Silver Bay Harbor MN.\n\n* WHEN...From 10 AM Sunday to 7 AM CDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWDLH"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KDLH 291956"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 10 AM SUNDAY TO 7 AM CDT MONDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KDLH.SC.Y.0098.260830T1500Z-260831T1200Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-31T07:00:00-05:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c81ec37a00b01247608905985b467cfd1dcc455d.003.1,2026-08-29T01:11:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.004.1",
       "type": "Feature",
       "geometry": null,
@@ -13241,6 +13228,98 @@
           ],
           "expiredReferences": [
             "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c81ec37a00b01247608905985b467cfd1dcc455d.004.1,2026-08-29T01:11:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.003.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.003.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8825e2540b20d50b6a14a9cf7637b1d04669c5e6.003.1",
+        "areaDesc": "Grand Portage to Grand Marais MN; Grand Marais to Taconite Harbor MN; Taconite Harbor to Silver Bay Harbor MN",
+        "geocode": {
+          "SAME": [
+            "091140",
+            "091141",
+            "091142"
+          ],
+          "UGC": [
+            "LSZ140",
+            "LSZ141",
+            "LSZ142"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LSZ140",
+          "https://api.weather.gov/zones/forecast/LSZ141",
+          "https://api.weather.gov/zones/forecast/LSZ142"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.891933d60f46e61fc4eb06900de58c30d85ba790.003.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.891933d60f46e61fc4eb06900de58c30d85ba790.003.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T10:00:00-05:00"
+          }
+        ],
+        "sent": "2026-08-29T14:56:00-05:00",
+        "effective": "2026-08-29T14:56:00-05:00",
+        "onset": "2026-08-30T10:00:00-05:00",
+        "expires": "2026-08-30T03:00:00-05:00",
+        "ends": "2026-08-31T07:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Duluth MN",
+        "headline": "Small Craft Advisory issued August 29 at 2:56PM CDT until August 31 at 7:00AM CDT by NWS Duluth MN",
+        "description": "* WHAT...Northeast winds 10 to 15 kt with gusts up to 30 kt and\nwaves 1 to 3 ft expected.\n\n* WHERE...Grand Portage to Grand Marais MN, Grand Marais to\nTaconite Harbor MN and Taconite Harbor to Silver Bay Harbor MN.\n\n* WHEN...From 10 AM Sunday to 7 AM CDT Monday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Anyone operating a smaller vessel should avoid navigating in\nhazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWDLH"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KDLH 291956"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 10 AM SUNDAY TO 7 AM CDT MONDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KDLH.SC.Y.0098.260830T1500Z-260831T1200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-31T07:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c81ec37a00b01247608905985b467cfd1dcc455d.003.1,2026-08-29T01:11:00-05:00"
           ]
         },
         "scope": "Public",
@@ -13997,100 +14076,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.001.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.001.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.001.2",
-        "areaDesc": "Yavapai County Mountains; Northern Gila County; Yavapai County Valleys and Basins; Oak Creek and Sycamore Canyons",
-        "geocode": {
-          "SAME": [
-            "004025",
-            "004007",
-            "004005"
-          ],
-          "UGC": [
-            "AZZ008",
-            "AZZ018",
-            "AZZ037",
-            "AZZ038"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AZZ008",
-          "https://api.weather.gov/zones/forecast/AZZ018",
-          "https://api.weather.gov/zones/forecast/AZZ037",
-          "https://api.weather.gov/zones/forecast/AZZ038"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5dd2c83dad0e6660d9649c7833aa84cade70769d.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.5dd2c83dad0e6660d9649c7833aa84cade70769d.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-28T23:48:00-07:00"
-          }
-        ],
-        "sent": "2026-08-29T11:50:00-07:00",
-        "effective": "2026-08-29T11:50:00-07:00",
-        "onset": "2026-08-29T17:00:00-07:00",
-        "expires": "2026-08-30T00:30:00-07:00",
-        "ends": "2026-08-30T05:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Possible",
-        "urgency": "Future",
-        "event": "Flood Watch",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Flagstaff AZ",
-        "headline": "Flood Watch issued August 29 at 11:50AM MST until August 30 at 5:00AM MST by NWS Flagstaff AZ",
-        "description": "* WHAT...Flash flooding caused by excessive rainfall is possible.\n\n* WHERE...Yavapai and northern Gila counties.\n\n* WHEN...From Sunday afternoon through Monday evening.\n\n* IMPACTS...Flash flooding will be possible in creeks, normally dry\nwashes, swimming holes, and over recently burned areas. Raging\nkiller currents will be possible in side canyons and narrow slot\ncanyons. Low-water crossings may be flooded.\n\n* ADDITIONAL DETAILS...\n- Numerous to widespread showers and thunderstorms are expected\nacross much of central and northern Arizona on Sunday and Monday,\nincluding the overnight hours Sunday night. These storms will\nhave the potential to produce heavy rainfall, which could lead to\nflash flooding.\n- Additional information is available at weather.gov/flagstaff.",
-        "instruction": "Have a way to receive Flash Flood Warnings and be prepared to take\naction should warnings be issued.\n\nConsider changing your plans if you were going to hike, boat, or\npaddleboard to a slot canyon or normally dry wash. If you do still\ndecide to recreate, check in at a nearby visitor center or ranger\nstation.\n\n\nYou should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
-        "response": "Prepare",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FFAFGZ"
-          ],
-          "WMOidentifier": [
-            "WGUS65 KFGZ 291850"
-          ],
-          "NWSheadline": [
-            "FLOOD WATCH IN EFFECT FROM SUNDAY AFTERNOON THROUGH MONDAY EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KFGZ.FA.A.0006.260830T0000Z-260830T1200Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T05:00:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FFA"
-          ],
-          "NationalWeatherService": [
-            "FAA"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.002.1",
       "type": "Feature",
       "geometry": null,
@@ -14183,6 +14168,100 @@
           ],
           "eventEndingTime": [
             "2026-09-01T00:00:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.001.2",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.001.2",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.70dae73703173e7d2f166645bb9a760d94a0197b.001.2",
+        "areaDesc": "Yavapai County Mountains; Northern Gila County; Yavapai County Valleys and Basins; Oak Creek and Sycamore Canyons",
+        "geocode": {
+          "SAME": [
+            "004025",
+            "004007",
+            "004005"
+          ],
+          "UGC": [
+            "AZZ008",
+            "AZZ018",
+            "AZZ037",
+            "AZZ038"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/AZZ008",
+          "https://api.weather.gov/zones/forecast/AZZ018",
+          "https://api.weather.gov/zones/forecast/AZZ037",
+          "https://api.weather.gov/zones/forecast/AZZ038"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5dd2c83dad0e6660d9649c7833aa84cade70769d.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.5dd2c83dad0e6660d9649c7833aa84cade70769d.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-28T23:48:00-07:00"
+          }
+        ],
+        "sent": "2026-08-29T11:50:00-07:00",
+        "effective": "2026-08-29T11:50:00-07:00",
+        "onset": "2026-08-29T17:00:00-07:00",
+        "expires": "2026-08-30T00:30:00-07:00",
+        "ends": "2026-08-30T05:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Flagstaff AZ",
+        "headline": "Flood Watch issued August 29 at 11:50AM MST until August 30 at 5:00AM MST by NWS Flagstaff AZ",
+        "description": "* WHAT...Flash flooding caused by excessive rainfall is possible.\n\n* WHERE...Yavapai and northern Gila counties.\n\n* WHEN...From Sunday afternoon through Monday evening.\n\n* IMPACTS...Flash flooding will be possible in creeks, normally dry\nwashes, swimming holes, and over recently burned areas. Raging\nkiller currents will be possible in side canyons and narrow slot\ncanyons. Low-water crossings may be flooded.\n\n* ADDITIONAL DETAILS...\n- Numerous to widespread showers and thunderstorms are expected\nacross much of central and northern Arizona on Sunday and Monday,\nincluding the overnight hours Sunday night. These storms will\nhave the potential to produce heavy rainfall, which could lead to\nflash flooding.\n- Additional information is available at weather.gov/flagstaff.",
+        "instruction": "Have a way to receive Flash Flood Warnings and be prepared to take\naction should warnings be issued.\n\nConsider changing your plans if you were going to hike, boat, or\npaddleboard to a slot canyon or normally dry wash. If you do still\ndecide to recreate, check in at a nearby visitor center or ranger\nstation.\n\n\nYou should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAFGZ"
+          ],
+          "WMOidentifier": [
+            "WGUS65 KFGZ 291850"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH IN EFFECT FROM SUNDAY AFTERNOON THROUGH MONDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KFGZ.FA.A.0006.260830T0000Z-260830T1200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T05:00:00-07:00"
           ]
         },
         "scope": "Public",
@@ -18576,6 +18655,98 @@
       }
     },
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.001.2",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.001.2",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.001.2",
+        "areaDesc": "Santa Barbara County Southwestern Coast",
+        "geocode": {
+          "SAME": [
+            "006083"
+          ],
+          "UGC": [
+            "CAZ349"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/CAZ349"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b8b2bc08fe9178021b7158805c3cf358b58f8fd7.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.b8b2bc08fe9178021b7158805c3cf358b58f8fd7.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-28T11:16:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97a3c89bfc31fd87a79dfc32319e682e703051ea.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.97a3c89bfc31fd87a79dfc32319e682e703051ea.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-08-29T01:20:00-07:00"
+          }
+        ],
+        "sent": "2026-08-29T07:49:00-07:00",
+        "effective": "2026-08-29T07:49:00-07:00",
+        "onset": "2026-08-29T07:49:00-07:00",
+        "expires": "2026-08-30T06:00:00-07:00",
+        "ends": "2026-08-29T20:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Heat Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Los Angeles/Oxnard CA",
+        "headline": "Heat Advisory issued August 29 at 7:49AM PDT until August 29 at 8:00PM PDT by NWS Los Angeles/Oxnard CA",
+        "description": "* WHAT...For the Heat Advisory, temperatures of 80 to 90 degrees. For\nthe Wind Advisory, northwest winds 25 to 35 mph with gusts up to 50\nmph expected.\n\n* WHERE...Santa Barbara County Southwestern Coast.\n\n* WHEN...For the Heat Advisory, until 8 PM PDT this evening. For the\nWind Advisory, from 6 PM this evening to 6 AM PDT Sunday.\n\n* IMPACTS...Gusty winds will blow around unsecured objects. Tree\nlimbs could be blown down and a few power outages may result. Hot\ntemperatures may cause heat illnesses.",
+        "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nDrink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWLOX"
+          ],
+          "WMOidentifier": [
+            "WWUS76 KLOX 291449"
+          ],
+          "NWSheadline": [
+            "WIND ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO 6 AM PDT SUNDAY... ...HEAT ADVISORY REMAINS IN EFFECT UNTIL 8 PM PDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KLOX.HT.Y.0014.000000T0000Z-260830T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-29T20:00:00-07:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.359007049044b9758a546697d04465c4866e762f.002.2,2026-08-25T00:02:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.97061869a302f13492dae7a08e76d857129f36b1.002.3,2026-08-24T12:44:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1a1001010d6aa926b6a094a799e9f3664d7e5c5b.002.1,2026-08-23T00:06:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.8f155ef3d85a991e5db9a5f5131709f1ab4035b5.001.1,2026-08-22T14:25:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.ec5cb67d2e9f82d41b57cc3e5b29d8398c270b56.002.1,2026-08-22T19:35:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "HTY"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.002.1",
       "type": "Feature",
       "geometry": null,
@@ -18723,98 +18894,6 @@
           ],
           "NationalWeatherService": [
             "WIY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.001.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.001.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.112662fb37114d6b6e5d7289f125e94c929e188e.001.2",
-        "areaDesc": "Santa Barbara County Southwestern Coast",
-        "geocode": {
-          "SAME": [
-            "006083"
-          ],
-          "UGC": [
-            "CAZ349"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/CAZ349"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b8b2bc08fe9178021b7158805c3cf358b58f8fd7.001.2",
-            "identifier": "urn:oid:2.49.0.1.840.0.b8b2bc08fe9178021b7158805c3cf358b58f8fd7.001.2",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-28T11:16:00-07:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97a3c89bfc31fd87a79dfc32319e682e703051ea.001.2",
-            "identifier": "urn:oid:2.49.0.1.840.0.97a3c89bfc31fd87a79dfc32319e682e703051ea.001.2",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-08-29T01:20:00-07:00"
-          }
-        ],
-        "sent": "2026-08-29T07:49:00-07:00",
-        "effective": "2026-08-29T07:49:00-07:00",
-        "onset": "2026-08-29T07:49:00-07:00",
-        "expires": "2026-08-30T06:00:00-07:00",
-        "ends": "2026-08-29T20:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Los Angeles/Oxnard CA",
-        "headline": "Heat Advisory issued August 29 at 7:49AM PDT until August 29 at 8:00PM PDT by NWS Los Angeles/Oxnard CA",
-        "description": "* WHAT...For the Heat Advisory, temperatures of 80 to 90 degrees. For\nthe Wind Advisory, northwest winds 25 to 35 mph with gusts up to 50\nmph expected.\n\n* WHERE...Santa Barbara County Southwestern Coast.\n\n* WHEN...For the Heat Advisory, until 8 PM PDT this evening. For the\nWind Advisory, from 6 PM this evening to 6 AM PDT Sunday.\n\n* IMPACTS...Gusty winds will blow around unsecured objects. Tree\nlimbs could be blown down and a few power outages may result. Hot\ntemperatures may cause heat illnesses.",
-        "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nDrink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWLOX"
-          ],
-          "WMOidentifier": [
-            "WWUS76 KLOX 291449"
-          ],
-          "NWSheadline": [
-            "WIND ADVISORY IN EFFECT FROM 6 PM THIS EVENING TO 6 AM PDT SUNDAY... ...HEAT ADVISORY REMAINS IN EFFECT UNTIL 8 PM PDT THIS EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KLOX.HT.Y.0014.000000T0000Z-260830T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-29T20:00:00-07:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.359007049044b9758a546697d04465c4866e762f.002.2,2026-08-25T00:02:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.97061869a302f13492dae7a08e76d857129f36b1.002.3,2026-08-24T12:44:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1a1001010d6aa926b6a094a799e9f3664d7e5c5b.002.1,2026-08-23T00:06:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.8f155ef3d85a991e5db9a5f5131709f1ab4035b5.001.1,2026-08-22T14:25:00-07:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.ec5cb67d2e9f82d41b57cc3e5b29d8398c270b56.002.1,2026-08-22T19:35:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
           ]
         }
       }
@@ -21024,6 +21103,82 @@
       }
     },
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.036.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.036.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.036.1",
+        "areaDesc": "North and West of Nunivak Island",
+        "geocode": {
+          "SAME": [
+            "058765"
+          ],
+          "UGC": [
+            "PKZ765"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PKZ765"
+        ],
+        "references": [],
+        "sent": "2026-08-29T04:48:00-08:00",
+        "effective": "2026-08-29T04:48:00-08:00",
+        "onset": "2026-08-29T04:00:00-08:00",
+        "expires": "2026-08-29T17:45:00-08:00",
+        "ends": "2026-08-30T17:00:00-08:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Anchorage AK",
+        "headline": "Small Craft Advisory issued August 29 at 4:48AM AKDT until August 30 at 5:00PM AKDT by NWS Anchorage AK",
+        "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 25 kt. Seas 7 ft.\n.TONIGHT...SW wind 25 kt. Seas 7 ft. Patchy fog.\n.SUN...W wind 25 kt. Seas 6 ft.\n.SUN NIGHT...NW wind 25 kt. Seas 6 ft.\n.MON...SW wind 20 kt. Seas 6 ft.\n.TUE...E wind 20 kt. Seas 9 ft.\n.WED...SE wind 25 kt. Seas 9 ft.",
+        "instruction": null,
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CWFALU"
+          ],
+          "WMOidentifier": [
+            "FZAK52 PAFC 291248"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY THROUGH SUNDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.PAFC.SC.Y.2585.260829T1200Z-260831T0100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T17:00:00-08:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.004.1",
       "type": "Feature",
       "geometry": null,
@@ -21156,82 +21311,6 @@
           ],
           "VTEC": [
             "/O.NEW.PAFC.SC.Y.2571.260830T1300Z-260831T0100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-08-30T17:00:00-08:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.036.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.036.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.119f66c7e0caca255516668b5f7cd6d10594c6b9.036.1",
-        "areaDesc": "North and West of Nunivak Island",
-        "geocode": {
-          "SAME": [
-            "058765"
-          ],
-          "UGC": [
-            "PKZ765"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PKZ765"
-        ],
-        "references": [],
-        "sent": "2026-08-29T04:48:00-08:00",
-        "effective": "2026-08-29T04:48:00-08:00",
-        "onset": "2026-08-29T04:00:00-08:00",
-        "expires": "2026-08-29T17:45:00-08:00",
-        "ends": "2026-08-30T17:00:00-08:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Anchorage AK",
-        "headline": "Small Craft Advisory issued August 29 at 4:48AM AKDT until August 30 at 5:00PM AKDT by NWS Anchorage AK",
-        "description": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height.\n\n.TODAY...SW wind 25 kt. Seas 7 ft.\n.TONIGHT...SW wind 25 kt. Seas 7 ft. Patchy fog.\n.SUN...W wind 25 kt. Seas 6 ft.\n.SUN NIGHT...NW wind 25 kt. Seas 6 ft.\n.MON...SW wind 20 kt. Seas 6 ft.\n.TUE...E wind 20 kt. Seas 9 ft.\n.WED...SE wind 25 kt. Seas 9 ft.",
-        "instruction": null,
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "CWFALU"
-          ],
-          "WMOidentifier": [
-            "FZAK52 PAFC 291248"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY THROUGH SUNDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.PAFC.SC.Y.2585.260829T1200Z-260831T0100Z/"
           ],
           "eventEndingTime": [
             "2026-08-30T17:00:00-08:00"
@@ -24739,5 +24818,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T01:17:27+00:00"
+  "updated": "2026-08-30T01:28:04+00:00"
 }
