@@ -10,56 +10,62 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-58135",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e44e7dfd30f46d7839b8ac85d37c1facdd771cf9.001.1",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-58135",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e44e7dfd30f46d7839b8ac85d37c1facdd771cf9.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-58135",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.e44e7dfd30f46d7839b8ac85d37c1facdd771cf9.001.1",
+        "areaDesc": "Marquette",
         "geocode": {
           "SAME": [
-            "024031"
+            "026103"
           ],
           "UGC": [
-            "MDC031"
+            "MIZ005"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/forecast/MIZ005"
         ],
         "references": [],
-        "sent": "2026-08-30T11:27:16+00:00",
-        "effective": "2026-08-30T11:27:16+00:00",
-        "onset": null,
-        "expires": "2026-08-30T11:37:16+00:00",
+        "sent": "2026-08-30T07:32:00-04:00",
+        "effective": "2026-08-30T07:32:00-04:00",
+        "onset": "2026-08-30T07:32:00-04:00",
+        "expires": "2026-08-30T08:45:00-04:00",
         "ends": null,
-        "status": "Test",
+        "status": "Actual",
         "messageType": "Alert",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Marquette MI",
+        "headline": "Special Weather Statement issued August 30 at 7:32AM EDT by NWS Marquette MI",
+        "description": "Areas of dense fog are being seen in the higher terrain areas of\nMarquette County this morning. Drivers should use their low-beam\nheadlights if out this morning. The fog should lift later this\nmorning.",
+        "instruction": null,
+        "response": "Execute",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "SPSMQT"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 301127"
+            "WWUS83 KMQT 301132"
+          ],
+          "NWSheadline": [
+            "AREAS OF DENSE FOG BEING SEEN AWAY FROM THE LAKESHORE THIS MORNING"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
           ]
         },
         "scope": "Public",
@@ -68,10 +74,149 @@
         "web": "http://www.weather.gov",
         "eventCode": {
           "SAME": [
-            "NWS"
+            "SPS"
           ],
           "NationalWeatherService": [
-            "TST"
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9875ffe089f32d8606ce2a68275d078b58ff7405.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9875ffe089f32d8606ce2a68275d078b58ff7405.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.9875ffe089f32d8606ce2a68275d078b58ff7405.001.1",
+        "areaDesc": "Person; Granville; Vance; Warren; Halifax; Forsyth; Guilford; Alamance; Orange; Durham; Franklin; Nash; Edgecombe; Davidson; Randolph; Chatham; Wake; Johnston; Wilson; Lee; Harnett; Wayne; Sampson",
+        "geocode": {
+          "SAME": [
+            "037145",
+            "037077",
+            "037181",
+            "037185",
+            "037083",
+            "037067",
+            "037081",
+            "037001",
+            "037135",
+            "037063",
+            "037069",
+            "037127",
+            "037065",
+            "037057",
+            "037151",
+            "037037",
+            "037183",
+            "037101",
+            "037195",
+            "037105",
+            "037085",
+            "037191",
+            "037163"
+          ],
+          "UGC": [
+            "NCZ007",
+            "NCZ008",
+            "NCZ009",
+            "NCZ010",
+            "NCZ011",
+            "NCZ021",
+            "NCZ022",
+            "NCZ023",
+            "NCZ024",
+            "NCZ025",
+            "NCZ026",
+            "NCZ027",
+            "NCZ028",
+            "NCZ038",
+            "NCZ039",
+            "NCZ040",
+            "NCZ041",
+            "NCZ042",
+            "NCZ043",
+            "NCZ076",
+            "NCZ077",
+            "NCZ078",
+            "NCZ089"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NCZ007",
+          "https://api.weather.gov/zones/forecast/NCZ008",
+          "https://api.weather.gov/zones/forecast/NCZ009",
+          "https://api.weather.gov/zones/forecast/NCZ010",
+          "https://api.weather.gov/zones/forecast/NCZ011",
+          "https://api.weather.gov/zones/forecast/NCZ021",
+          "https://api.weather.gov/zones/forecast/NCZ022",
+          "https://api.weather.gov/zones/forecast/NCZ023",
+          "https://api.weather.gov/zones/forecast/NCZ024",
+          "https://api.weather.gov/zones/forecast/NCZ025",
+          "https://api.weather.gov/zones/forecast/NCZ026",
+          "https://api.weather.gov/zones/forecast/NCZ027",
+          "https://api.weather.gov/zones/forecast/NCZ028",
+          "https://api.weather.gov/zones/forecast/NCZ038",
+          "https://api.weather.gov/zones/forecast/NCZ039",
+          "https://api.weather.gov/zones/forecast/NCZ040",
+          "https://api.weather.gov/zones/forecast/NCZ041",
+          "https://api.weather.gov/zones/forecast/NCZ042",
+          "https://api.weather.gov/zones/forecast/NCZ043",
+          "https://api.weather.gov/zones/forecast/NCZ076",
+          "https://api.weather.gov/zones/forecast/NCZ077",
+          "https://api.weather.gov/zones/forecast/NCZ078",
+          "https://api.weather.gov/zones/forecast/NCZ089"
+        ],
+        "references": [],
+        "sent": "2026-08-30T07:32:00-04:00",
+        "effective": "2026-08-30T07:32:00-04:00",
+        "onset": "2026-08-30T07:32:00-04:00",
+        "expires": "2026-08-30T09:00:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Raleigh NC",
+        "headline": "Special Weather Statement issued August 30 at 7:32AM EDT by NWS Raleigh NC",
+        "description": "Low visibility across portions of central North Carolina could\nmake driving conditions locally hazardous in spots this morning.\nIf driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you. Be on the lookout for sudden changes in\nvisibility, especially when driving near bodies of water. The fog\nis expected to dissipate by 9 AM this morning.",
+        "instruction": null,
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSRAH"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KRAH 301132"
+          ],
+          "NWSheadline": [
+            "Patches of dense fog this morning through 9 AM this morning"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
           ]
         }
       }
@@ -21494,5 +21639,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T11:27:30+00:00"
+  "updated": "2026-08-30T11:37:16+00:00"
 }
