@@ -10,56 +10,140 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-58217",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d756f263e4f68832db044b604f236dffd89c11eb.001.1",
       "type": "Feature",
-      "geometry": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.26,
+              41.63
+            ],
+            [
+              -97.17,
+              41.26
+            ],
+            [
+              -97.37,
+              41.25
+            ],
+            [
+              -97.37,
+              41.4
+            ],
+            [
+              -97.45,
+              41.37
+            ],
+            [
+              -97.52,
+              41.36
+            ],
+            [
+              -97.59,
+              41.33
+            ],
+            [
+              -97.6,
+              41.39
+            ],
+            [
+              -97.7,
+              41.4
+            ],
+            [
+              -97.7,
+              41.52
+            ],
+            [
+              -97.72,
+              41.53
+            ],
+            [
+              -97.26,
+              41.63
+            ]
+          ]
+        ]
+      },
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-58217",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d756f263e4f68832db044b604f236dffd89c11eb.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-58217",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.d756f263e4f68832db044b604f236dffd89c11eb.001.1",
+        "areaDesc": "Butler, NE; Colfax, NE; Platte, NE",
         "geocode": {
           "SAME": [
-            "024031"
+            "031023",
+            "031037",
+            "031141"
           ],
           "UGC": [
-            "MDC031"
+            "NEC023",
+            "NEC037",
+            "NEC141"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/county/NEC023",
+          "https://api.weather.gov/zones/county/NEC037",
+          "https://api.weather.gov/zones/county/NEC141"
         ],
         "references": [],
-        "sent": "2026-08-30T09:07:16+00:00",
-        "effective": "2026-08-30T09:07:16+00:00",
-        "onset": null,
-        "expires": "2026-08-30T09:17:16+00:00",
-        "ends": null,
-        "status": "Test",
+        "sent": "2026-08-30T04:16:00-05:00",
+        "effective": "2026-08-30T04:16:00-05:00",
+        "onset": "2026-08-30T04:16:00-05:00",
+        "expires": "2026-08-30T05:00:00-05:00",
+        "ends": "2026-08-30T05:00:00-05:00",
+        "status": "Actual",
         "messageType": "Alert",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Omaha/Valley NE",
+        "headline": "Severe Thunderstorm Warning issued August 30 at 4:16AM CDT until August 30 at 5:00AM CDT by NWS Omaha/Valley NE",
+        "description": "SVROAX\n\nThe National Weather Service in Omaha has issued a\n\n* Severe Thunderstorm Warning for...\nSouthwestern Colfax County in northeastern Nebraska...\nSouthern Platte County in northeastern Nebraska...\nNorthwestern Butler County in east central Nebraska...\n\n* Until 500 AM CDT.\n\n* At 416 AM CDT, a severe thunderstorm was located 6 miles east of\nFullerton, or 23 miles south of Albion, moving east at 45 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nDuncan around 435 AM CDT.\n\nOther locations in the path of this severe thunderstorm include\nColumbus, Lakeview and Richland.",
+        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
+        "response": "Shelter",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "SVROAX"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 300907"
+            "WUUS53 KOAX 300916"
+          ],
+          "eventMotionDescription": [
+            "2026-08-30T09:16:00-00:00...storm...258DEG...38KT...41.37,-97.84"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "Up to .75"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KOAX.SV.W.0379.260830T0916Z-260830T1000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T05:00:00-05:00"
           ]
         },
         "scope": "Public",
@@ -68,10 +152,134 @@
         "web": "http://www.weather.gov",
         "eventCode": {
           "SAME": [
-            "NWS"
+            "SVR"
           ],
           "NationalWeatherService": [
-            "TST"
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0b02fa4d100a245816cf29b2dee7eb12273835dc.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -103.75,
+              48.04
+            ],
+            [
+              -103.77,
+              48.11
+            ],
+            [
+              -103.34,
+              48.17
+            ],
+            [
+              -103.24,
+              47.84
+            ],
+            [
+              -103.69,
+              47.86
+            ],
+            [
+              -103.75,
+              48.04
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0b02fa4d100a245816cf29b2dee7eb12273835dc.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0b02fa4d100a245816cf29b2dee7eb12273835dc.001.1",
+        "areaDesc": "McKenzie, ND; Williams, ND",
+        "geocode": {
+          "SAME": [
+            "038053",
+            "038105"
+          ],
+          "UGC": [
+            "NDC053",
+            "NDC105"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/NDC053",
+          "https://api.weather.gov/zones/county/NDC105"
+        ],
+        "references": [],
+        "sent": "2026-08-30T04:13:00-05:00",
+        "effective": "2026-08-30T04:13:00-05:00",
+        "onset": "2026-08-30T04:13:00-05:00",
+        "expires": "2026-08-30T05:15:00-05:00",
+        "ends": "2026-08-30T05:15:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Bismarck ND",
+        "headline": "Severe Thunderstorm Warning issued August 30 at 4:13AM CDT until August 30 at 5:15AM CDT by NWS Bismarck ND",
+        "description": "SVRBIS\n\nThe National Weather Service in Bismarck has issued a\n\n* Severe Thunderstorm Warning for...\nNorth Central McKenzie County in northwestern North Dakota...\nSouth Central Williams County in northwestern North Dakota...\n\n* Until 515 AM CDT.\n\n* At 413 AM CDT, a severe thunderstorm was located 8 miles north of\nAlexander, or 15 miles south of Williston, moving east at 15 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\n* Locations impacted include...\nMainly rural areas of North Central McKenzie and South Central\nWilliams Counties.",
+        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.\n\nTorrential rainfall is also occurring with this storm and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVRBIS"
+          ],
+          "WMOidentifier": [
+            "WUUS53 KBIS 300913"
+          ],
+          "eventMotionDescription": [
+            "2026-08-30T09:13:00-00:00...storm...263DEG...11KT...47.95,-103.63"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "1.00"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KBIS.SV.W.0304.260830T0913Z-260830T1015Z/"
+          ],
+          "eventEndingTime": [
+            "2026-08-30T05:15:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVR"
+          ],
+          "NationalWeatherService": [
+            "SVW"
           ]
         }
       }
@@ -22014,5 +22222,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-08-30T09:07:21+00:00"
+  "updated": "2026-08-30T09:17:16+00:00"
 }
