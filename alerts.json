@@ -10,6 +10,73 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-19281",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-19281",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-19281",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-09-05T03:37:16+00:00",
+        "effective": "2026-09-05T03:37:16+00:00",
+        "onset": null,
+        "expires": "2026-09-05T03:47:16+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 050337"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2eab3fa678944a15f6f4e9d3f2fc6ebc54ace862.001.1",
       "type": "Feature",
       "geometry": {
@@ -252,146 +319,6 @@
           ],
           "NationalWeatherService": [
             "MWS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a01752aee1dd9c0857fdef27ec2f7a59b42d0c73.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -102.91,
-              30.3
-            ],
-            [
-              -102.93,
-              30.39
-            ],
-            [
-              -102.81,
-              30.4
-            ],
-            [
-              -102.64,
-              30.4
-            ],
-            [
-              -102.63,
-              30.22
-            ],
-            [
-              -102.66,
-              29.99
-            ],
-            [
-              -102.88,
-              29.99
-            ],
-            [
-              -102.89,
-              30.19
-            ],
-            [
-              -102.91,
-              30.3
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a01752aee1dd9c0857fdef27ec2f7a59b42d0c73.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a01752aee1dd9c0857fdef27ec2f7a59b42d0c73.001.1",
-        "areaDesc": "Brewster, TX; Pecos, TX",
-        "geocode": {
-          "SAME": [
-            "048043",
-            "048371"
-          ],
-          "UGC": [
-            "TXC043",
-            "TXC371"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/TXC043",
-          "https://api.weather.gov/zones/county/TXC371"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8f43eb6bf885086636e82720f6c2aadd484e4257.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.8f43eb6bf885086636e82720f6c2aadd484e4257.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T19:27:00-05:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dee89375f3f2025424361136860c6dfde0c788f8.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.dee89375f3f2025424361136860c6dfde0c788f8.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T20:27:00-05:00"
-          }
-        ],
-        "sent": "2026-09-04T22:12:00-05:00",
-        "effective": "2026-09-04T22:12:00-05:00",
-        "onset": "2026-09-04T22:12:00-05:00",
-        "expires": "2026-09-04T22:30:00-05:00",
-        "ends": "2026-09-04T22:30:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Flash Flood Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Midland/Odessa TX",
-        "headline": "Flash Flood Warning issued September 4 at 10:12PM CDT until September 4 at 10:30PM CDT by NWS Midland/Odessa TX",
-        "description": "At 1012 PM CDT, Doppler radar indicated thunderstorms producing heavy\nrain across the warned area. Between 2 and 3.5 inches of rain have\nfallen. Flooding impacts will continue, but no additional rainfall is\nexpected. Flash flooding is still likely ongoing.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\nSome locations that will experience flash flooding include...\nMainly rural areas along Hwy 90 across Northeastern Brewster and\nfar Southeastern Pecos Counties.",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FFSMAF"
-          ],
-          "WMOidentifier": [
-            "WGUS74 KMAF 050312"
-          ],
-          "NWSheadline": [
-            "FLASH FLOOD WARNING REMAINS IN EFFECT UNTIL 1030 PM CDT THIS EVENING FOR NORTHEASTERN BREWSTER AND SOUTH CENTRAL PECOS COUNTIES"
-          ],
-          "flashFloodDetection": [
-            "RADAR INDICATED"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KMAF.FF.W.0180.000000T0000Z-260905T0330Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-04T22:30:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FFS"
-          ],
-          "NationalWeatherService": [
-            "FFW"
           ]
         }
       }
@@ -863,144 +790,6 @@
           ],
           "NationalWeatherService": [
             "FFW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.27c47fae293dd08b75c577de60600eadd34557cf.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -77.83,
-              35.31
-            ],
-            [
-              -78.23,
-              35.25
-            ],
-            [
-              -78.27,
-              35.25
-            ],
-            [
-              -78.3,
-              35.29
-            ],
-            [
-              -78.39,
-              35.26
-            ],
-            [
-              -78.5,
-              35.27
-            ],
-            [
-              -78.52,
-              35.3
-            ],
-            [
-              -78.41,
-              35.7
-            ],
-            [
-              -78.08,
-              35.72
-            ],
-            [
-              -77.81,
-              35.37
-            ],
-            [
-              -77.83,
-              35.31
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.27c47fae293dd08b75c577de60600eadd34557cf.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.27c47fae293dd08b75c577de60600eadd34557cf.001.1",
-        "areaDesc": "Johnston; Wilson; Wayne",
-        "geocode": {
-          "SAME": [
-            "037101",
-            "037195",
-            "037191"
-          ],
-          "UGC": [
-            "NCZ042",
-            "NCZ043",
-            "NCZ078"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/NCZ042",
-          "https://api.weather.gov/zones/forecast/NCZ043",
-          "https://api.weather.gov/zones/forecast/NCZ078"
-        ],
-        "references": [],
-        "sent": "2026-09-04T22:29:00-04:00",
-        "effective": "2026-09-04T22:29:00-04:00",
-        "onset": "2026-09-04T22:29:00-04:00",
-        "expires": "2026-09-04T23:30:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Raleigh NC",
-        "headline": "Special Weather Statement issued September 4 at 10:29PM EDT by NWS Raleigh NC",
-        "description": "At 1029 PM EDT, Doppler radar was tracking a strong thunderstorm near\nSmithfield, moving south at 20 mph.\n\nHAZARD...Wind gusts up to 50 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nGoldsboro, Smithfield, Fremont, Walnut Creek, Micro, Selma, Four\nOaks, Pine Level, Kenly and Princeton.\n\nThis includes the following highways...\nInterstate 95 between Mile Markers 107 and 87.\nInterstate 40 between Mile Markers 330 and 340.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSRAH"
-          ],
-          "WMOidentifier": [
-            "WWUS82 KRAH 050229"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT WAYNE...SOUTHWESTERN WILSON AND JOHNSTON COUNTIES THROUGH 1130 PM EDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-05T02:29:00-00:00...storm...354DEG...16KT...35.59,-78.31"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.25"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
           ]
         }
       }
@@ -17580,5 +17369,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-05T03:27:16+00:00"
+  "updated": "2026-09-05T03:37:35+00:00"
 }
