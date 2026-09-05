@@ -10,13 +10,153 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-26308",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cfba30d5cbe0107f440486d03a68f141c7831347.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -84.82,
+              41.76
+            ],
+            [
+              -84.87,
+              41.76
+            ],
+            [
+              -85.08,
+              41.89
+            ],
+            [
+              -84.85,
+              41.92
+            ],
+            [
+              -84.67,
+              41.88
+            ],
+            [
+              -84.82,
+              41.76
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cfba30d5cbe0107f440486d03a68f141c7831347.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.cfba30d5cbe0107f440486d03a68f141c7831347.001.1",
+        "areaDesc": "Branch, MI; Hillsdale, MI",
+        "geocode": {
+          "SAME": [
+            "026023",
+            "026059"
+          ],
+          "UGC": [
+            "MIC023",
+            "MIC059"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MIC023",
+          "https://api.weather.gov/zones/county/MIC059"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e3d4f060a7daaa0fc5f9ff30318896718becc751.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.e3d4f060a7daaa0fc5f9ff30318896718becc751.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-05T01:22:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f5a71ca7ac176f764d7f22c5b9f358f5e1d904b8.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.f5a71ca7ac176f764d7f22c5b9f358f5e1d904b8.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-05T01:11:00-04:00"
+          }
+        ],
+        "sent": "2026-09-05T01:28:00-04:00",
+        "effective": "2026-09-05T01:28:00-04:00",
+        "onset": "2026-09-05T01:28:00-04:00",
+        "expires": "2026-09-05T02:00:00-04:00",
+        "ends": "2026-09-05T02:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Northern Indiana",
+        "headline": "Severe Thunderstorm Warning issued September 5 at 1:28AM EDT until September 5 at 2:00AM EDT by NWS Northern Indiana",
+        "description": "At 127 AM EDT, a severe thunderstorm was located near Reading, or 10\nmiles southeast of Coldwater, moving southeast at 25 mph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nReading, Long Lake, Ray, California, Montgomery, Lake Wilson, and\nMarble Lake.\n\nThis includes Interstate 69 in Michigan between mile markers 6 and\n10.",
+        "instruction": "A tornado watch remains in effect for the warned area. Tornadoes can\ndevelop quickly from severe thunderstorms. Although a tornado is not\nimmediately likely, if one is spotted act quickly and move to a place\nof safety inside a sturdy structure, such as a basement or small\ninterior room.\n\nFor your protection move to an interior room on the lowest floor of a\nbuilding.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSIWX"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KIWX 050528"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 200 AM EDT FOR SOUTHEASTERN BRANCH AND WEST CENTRAL HILLSDALE COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-09-05T05:27:00-00:00...storm...299DEG...20KT...41.87,-84.83"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "0.75"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KIWX.SV.W.0299.000000T0000Z-260905T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T02:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-17325",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-26308",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-17325",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-26308",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-17325",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +170,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-05T05:17:16+00:00",
-        "effective": "2026-09-05T05:17:16+00:00",
+        "sent": "2026-09-05T05:27:16+00:00",
+        "effective": "2026-09-05T05:27:16+00:00",
         "onset": null,
-        "expires": "2026-09-05T05:27:16+00:00",
+        "expires": "2026-09-05T05:37:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +194,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 050517"
+            "NZUS91 KWBC 050527"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +212,718 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9524307cc55abd3c003de9c6a18536378f4cdcd9.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.36,
+              44.16
+            ],
+            [
+              -98.75,
+              43.93
+            ],
+            [
+              -98.77,
+              43.94
+            ],
+            [
+              -98.87,
+              44.01
+            ],
+            [
+              -98.91,
+              44.1
+            ],
+            [
+              -98.93,
+              44.2
+            ],
+            [
+              -98.72,
+              44.2
+            ],
+            [
+              -98.7,
+              44.26
+            ],
+            [
+              -98.36,
+              44.16
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9524307cc55abd3c003de9c6a18536378f4cdcd9.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.9524307cc55abd3c003de9c6a18536378f4cdcd9.001.1",
+        "areaDesc": "Beadle, SD; Jerauld, SD",
+        "geocode": {
+          "SAME": [
+            "046005",
+            "046073"
+          ],
+          "UGC": [
+            "SDC005",
+            "SDC073"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC005",
+          "https://api.weather.gov/zones/county/SDC073"
+        ],
+        "references": [],
+        "sent": "2026-09-05T00:25:00-05:00",
+        "effective": "2026-09-05T00:25:00-05:00",
+        "onset": "2026-09-05T00:25:00-05:00",
+        "expires": "2026-09-05T01:00:00-05:00",
+        "ends": "2026-09-05T01:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Sioux Falls SD",
+        "headline": "Severe Thunderstorm Warning issued September 5 at 12:25AM CDT until September 5 at 1:00AM CDT by NWS Sioux Falls SD",
+        "description": "SVRFSD\n\nThe National Weather Service in Sioux Falls has issued a\n\n* Severe Thunderstorm Warning for...\nSouthwestern Beadle County in east central South Dakota...\nNorthwestern Jerauld County in central South Dakota...\n\n* Until 100 AM CDT.\n\n* At 1224 AM CDT, a severe thunderstorm was located 9 miles west of\nWessington Springs, or 22 miles northeast of Kimball, moving\nnortheast at 30 mph.\n\nHAZARD...60 mph wind gusts and half dollar size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage\nto roofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nWessington Springs around 1230 AM CDT.",
+        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nTorrential rainfall is occurring with this storm, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVRFSD"
+          ],
+          "WMOidentifier": [
+            "WUUS53 KFSD 050525"
+          ],
+          "eventMotionDescription": [
+            "2026-09-05T05:24:00-00:00...storm...214DEG...27KT...44.05,-98.76"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "1.25"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KFSD.SV.W.0268.260905T0525Z-260905T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T01:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVR"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ad73a66f18de2fe5962c9a026471055ea9d92e74.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ad73a66f18de2fe5962c9a026471055ea9d92e74.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.ad73a66f18de2fe5962c9a026471055ea9d92e74.001.1",
+        "areaDesc": "Franklin; Hart; Elbert; Mecklenburg; Cabarrus; Union; York; Anderson; Abbeville; Laurens; Union; Chester; Greenwood",
+        "geocode": {
+          "SAME": [
+            "013119",
+            "013147",
+            "013105",
+            "037119",
+            "037025",
+            "037179",
+            "045091",
+            "045007",
+            "045001",
+            "045059",
+            "045087",
+            "045023",
+            "045047"
+          ],
+          "UGC": [
+            "GAZ026",
+            "GAZ028",
+            "GAZ029",
+            "NCZ071",
+            "NCZ072",
+            "NCZ082",
+            "SCZ009",
+            "SCZ010",
+            "SCZ011",
+            "SCZ012",
+            "SCZ013",
+            "SCZ014",
+            "SCZ019"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/GAZ026",
+          "https://api.weather.gov/zones/forecast/GAZ028",
+          "https://api.weather.gov/zones/forecast/GAZ029",
+          "https://api.weather.gov/zones/forecast/NCZ071",
+          "https://api.weather.gov/zones/forecast/NCZ072",
+          "https://api.weather.gov/zones/forecast/NCZ082",
+          "https://api.weather.gov/zones/forecast/SCZ009",
+          "https://api.weather.gov/zones/forecast/SCZ010",
+          "https://api.weather.gov/zones/forecast/SCZ011",
+          "https://api.weather.gov/zones/forecast/SCZ012",
+          "https://api.weather.gov/zones/forecast/SCZ013",
+          "https://api.weather.gov/zones/forecast/SCZ014",
+          "https://api.weather.gov/zones/forecast/SCZ019"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-04T20:29:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-04T20:29:00-04:00"
+          }
+        ],
+        "sent": "2026-09-05T01:23:00-04:00",
+        "effective": "2026-09-05T01:23:00-04:00",
+        "onset": "2026-09-05T11:00:00-04:00",
+        "expires": "2026-09-05T20:00:00-04:00",
+        "ends": "2026-09-05T20:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Heat Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Greenville-Spartanburg SC",
+        "headline": "Heat Advisory issued September 5 at 1:23AM EDT until September 5 at 8:00PM EDT by NWS Greenville-Spartanburg SC",
+        "description": "* WHAT...Heat index values up to 107 expected.\n\n* WHERE...In North Carolina, Cabarrus, Mecklenburg, and Union\nCounties. In South Carolina, Abbeville, Anderson, Chester,\nGreenwood, Laurens, Union, and York Counties. In Georgia, Elbert,\nFranklin, and Hart Counties.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+        "instruction": "Take extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWGSP"
+          ],
+          "WMOidentifier": [
+            "WWUS72 KGSP 050523"
+          ],
+          "NWSheadline": [
+            "HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM THIS MORNING TO 8 PM EDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KGSP.HT.Y.0015.260905T1500Z-260906T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T20:00:00-04:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.104b88aa03b0ebb698c001ea77aa23d9a002dd8d.002.1,2026-09-04T13:36:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.104b88aa03b0ebb698c001ea77aa23d9a002dd8d.001.2,2026-09-04T13:36:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9cb3036eee7420aabe60e533bb8bed3e15b48d07.002.1,2026-09-04T13:34:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9cb3036eee7420aabe60e533bb8bed3e15b48d07.001.1,2026-09-04T13:34:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "HTY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9c2c7075ad3583c7f85c9b3f8d0b3e1c35db18db.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9c2c7075ad3583c7f85c9b3f8d0b3e1c35db18db.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.9c2c7075ad3583c7f85c9b3f8d0b3e1c35db18db.001.1",
+        "areaDesc": "Lincoln; McDuffie; Columbia; Richmond; Burke; Chesterfield; McCormick; Newberry; Fairfield; Kershaw; Edgefield; Saluda; Lexington; Richland; Lee; Aiken; Sumter; Barnwell; Calhoun; Clarendon; Bamberg; Northern Lancaster; Southern Lancaster; Northwestern Orangeburg; Central Orangeburg; Southeastern Orangeburg",
+        "geocode": {
+          "SAME": [
+            "013181",
+            "013189",
+            "013073",
+            "013245",
+            "013033",
+            "045025",
+            "045065",
+            "045071",
+            "045039",
+            "045055",
+            "045037",
+            "045081",
+            "045063",
+            "045079",
+            "045061",
+            "045003",
+            "045085",
+            "045011",
+            "045017",
+            "045027",
+            "045009",
+            "045057",
+            "045075"
+          ],
+          "UGC": [
+            "GAZ040",
+            "GAZ063",
+            "GAZ064",
+            "GAZ065",
+            "GAZ077",
+            "SCZ016",
+            "SCZ018",
+            "SCZ020",
+            "SCZ021",
+            "SCZ022",
+            "SCZ025",
+            "SCZ026",
+            "SCZ027",
+            "SCZ028",
+            "SCZ029",
+            "SCZ030",
+            "SCZ031",
+            "SCZ035",
+            "SCZ037",
+            "SCZ038",
+            "SCZ041",
+            "SCZ115",
+            "SCZ116",
+            "SCZ135",
+            "SCZ136",
+            "SCZ137"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/GAZ040",
+          "https://api.weather.gov/zones/forecast/GAZ063",
+          "https://api.weather.gov/zones/forecast/GAZ064",
+          "https://api.weather.gov/zones/forecast/GAZ065",
+          "https://api.weather.gov/zones/forecast/GAZ077",
+          "https://api.weather.gov/zones/forecast/SCZ016",
+          "https://api.weather.gov/zones/forecast/SCZ018",
+          "https://api.weather.gov/zones/forecast/SCZ020",
+          "https://api.weather.gov/zones/forecast/SCZ021",
+          "https://api.weather.gov/zones/forecast/SCZ022",
+          "https://api.weather.gov/zones/forecast/SCZ025",
+          "https://api.weather.gov/zones/forecast/SCZ026",
+          "https://api.weather.gov/zones/forecast/SCZ027",
+          "https://api.weather.gov/zones/forecast/SCZ028",
+          "https://api.weather.gov/zones/forecast/SCZ029",
+          "https://api.weather.gov/zones/forecast/SCZ030",
+          "https://api.weather.gov/zones/forecast/SCZ031",
+          "https://api.weather.gov/zones/forecast/SCZ035",
+          "https://api.weather.gov/zones/forecast/SCZ037",
+          "https://api.weather.gov/zones/forecast/SCZ038",
+          "https://api.weather.gov/zones/forecast/SCZ041",
+          "https://api.weather.gov/zones/forecast/SCZ115",
+          "https://api.weather.gov/zones/forecast/SCZ116",
+          "https://api.weather.gov/zones/forecast/SCZ135",
+          "https://api.weather.gov/zones/forecast/SCZ136",
+          "https://api.weather.gov/zones/forecast/SCZ137"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-04T12:47:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-04T12:47:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-04T19:58:00-04:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-04T19:58:00-04:00"
+          }
+        ],
+        "sent": "2026-09-05T01:23:00-04:00",
+        "effective": "2026-09-05T01:23:00-04:00",
+        "onset": "2026-09-05T11:00:00-04:00",
+        "expires": "2026-09-05T20:00:00-04:00",
+        "ends": "2026-09-05T20:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Heat Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Columbia SC",
+        "headline": "Heat Advisory issued September 5 at 1:23AM EDT until September 5 at 8:00PM EDT by NWS Columbia SC",
+        "description": "* WHAT...Heat index values up to 110 expected.\n\n* WHERE...Portions of east central Georgia and central South\nCarolina.\n\n* WHEN...From 11 AM this morning to 8 PM EDT this evening.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWCAE"
+          ],
+          "WMOidentifier": [
+            "WWUS72 KCAE 050523"
+          ],
+          "NWSheadline": [
+            "HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM THIS MORNING TO 8 PM EDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KCAE.HT.Y.0010.260905T1500Z-260906T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T20:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "HTY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.743327cad86b933dc9b42fad5ac4a060b7312ea3.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -84.36,
+              41.83
+            ],
+            [
+              -84.36,
+              41.71
+            ],
+            [
+              -84.4,
+              41.71
+            ],
+            [
+              -84.4,
+              41.68
+            ],
+            [
+              -84.53,
+              41.63
+            ],
+            [
+              -84.76,
+              41.8
+            ],
+            [
+              -84.56,
+              41.89
+            ],
+            [
+              -84.36,
+              41.83
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.743327cad86b933dc9b42fad5ac4a060b7312ea3.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.743327cad86b933dc9b42fad5ac4a060b7312ea3.001.1",
+        "areaDesc": "Hillsdale, MI; Williams, OH",
+        "geocode": {
+          "SAME": [
+            "026059",
+            "039171"
+          ],
+          "UGC": [
+            "MIC059",
+            "OHC171"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MIC059",
+          "https://api.weather.gov/zones/county/OHC171"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6a22e148bcda7a7e428b42b4b7e0d905fb7651dd.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.6a22e148bcda7a7e428b42b4b7e0d905fb7651dd.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-05T01:08:00-04:00"
+          }
+        ],
+        "sent": "2026-09-05T01:21:00-04:00",
+        "effective": "2026-09-05T01:21:00-04:00",
+        "onset": "2026-09-05T01:21:00-04:00",
+        "expires": "2026-09-05T02:00:00-04:00",
+        "ends": "2026-09-05T02:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Northern Indiana",
+        "headline": "Severe Thunderstorm Warning issued September 5 at 1:21AM EDT until September 5 at 2:00AM EDT by NWS Northern Indiana",
+        "description": "At 121 AM EDT, a severe thunderstorm was located near Pioneer, or 12\nmiles southwest of Hudson, moving southeast at 30 mph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nPioneer, Cambria, Pittsford, Ransom, Waldron, Prattville, Shadyside,\nBetzer, Frontier, Osseo, and Alvordton.",
+        "instruction": "Remain alert for a possible tornado! Tornadoes can develop quickly\nfrom severe thunderstorms. If you spot a tornado go at once into the\nbasement or small central room in a sturdy structure.\n\nFor your protection move to an interior room on the lowest floor of a\nbuilding.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSIWX"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KIWX 050521"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 200 AM EDT FOR SOUTHERN HILLSDALE AND NORTH CENTRAL WILLIAMS COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-09-05T05:21:00-00:00...storm...308DEG...24KT...41.76,-84.54"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "0.75"
+          ],
+          "tornadoDetection": [
+            "POSSIBLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KIWX.SV.W.0298.000000T0000Z-260905T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T02:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6d6046cce38d5268ea9cec9a73d7945c2470fa3f.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -103.23,
+              48.86
+            ],
+            [
+              -103.55,
+              48.88
+            ],
+            [
+              -103.36,
+              49
+            ],
+            [
+              -102.94,
+              49
+            ],
+            [
+              -103.23,
+              48.86
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6d6046cce38d5268ea9cec9a73d7945c2470fa3f.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.6d6046cce38d5268ea9cec9a73d7945c2470fa3f.001.1",
+        "areaDesc": "Divide, ND",
+        "geocode": {
+          "SAME": [
+            "038023"
+          ],
+          "UGC": [
+            "NDC023"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/NDC023"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e0050e89261505c404e641a743fcfcbb8882e9ad.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.e0050e89261505c404e641a743fcfcbb8882e9ad.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-05T00:11:00-05:00"
+          }
+        ],
+        "sent": "2026-09-05T00:19:00-05:00",
+        "effective": "2026-09-05T00:19:00-05:00",
+        "onset": "2026-09-05T00:19:00-05:00",
+        "expires": "2026-09-05T00:45:00-05:00",
+        "ends": "2026-09-05T00:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Bismarck ND",
+        "headline": "Severe Thunderstorm Warning issued September 5 at 12:19AM CDT until September 5 at 12:45AM CDT by NWS Bismarck ND",
+        "description": "At 1219 AM CDT, a severe thunderstorm was located 6 miles northeast\nof Crosby, moving northeast at 30 mph.\n\nHAZARD...Golf ball size hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nLocations impacted include...\nCrosby.",
+        "instruction": "Anyone outdoors should move to shelter inside a well-built structure\nand stay away from windows. This storm is capable of producing\ndangerous hail and damaging winds.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSBIS"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KBIS 050519"
+          ],
+          "NWSheadline": [
+            "SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 1245 AM CDT FOR NORTHEASTERN DIVIDE COUNTY"
+          ],
+          "eventMotionDescription": [
+            "2026-09-05T05:11:00-00:00...storm...244DEG...25KT...48.96,-103.31"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "1.75"
+          ],
+          "thunderstormDamageThreat": [
+            "CONSIDERABLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KBIS.SV.W.0328.000000T0000Z-260905T0545Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T00:45:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
           ]
         }
       }
@@ -192,389 +1044,6 @@
           ],
           "NationalWeatherService": [
             "FFW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f5a71ca7ac176f764d7f22c5b9f358f5e1d904b8.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -84.61,
-              41.93
-            ],
-            [
-              -84.82,
-              41.76
-            ],
-            [
-              -84.87,
-              41.76
-            ],
-            [
-              -85.29,
-              42
-            ],
-            [
-              -85.14,
-              42.07
-            ],
-            [
-              -85.01,
-              42.07
-            ],
-            [
-              -84.61,
-              41.93
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f5a71ca7ac176f764d7f22c5b9f358f5e1d904b8.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.f5a71ca7ac176f764d7f22c5b9f358f5e1d904b8.001.1",
-        "areaDesc": "Branch, MI; Hillsdale, MI",
-        "geocode": {
-          "SAME": [
-            "026023",
-            "026059"
-          ],
-          "UGC": [
-            "MIC023",
-            "MIC059"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MIC023",
-          "https://api.weather.gov/zones/county/MIC059"
-        ],
-        "references": [],
-        "sent": "2026-09-05T01:11:00-04:00",
-        "effective": "2026-09-05T01:11:00-04:00",
-        "onset": "2026-09-05T01:11:00-04:00",
-        "expires": "2026-09-05T02:00:00-04:00",
-        "ends": "2026-09-05T02:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Northern Indiana",
-        "headline": "Severe Thunderstorm Warning issued September 5 at 1:11AM EDT until September 5 at 2:00AM EDT by NWS Northern Indiana",
-        "description": "SVRIWX\n\nThe National Weather Service in Northern Indiana has issued a\n\n* Severe Thunderstorm Warning for...\nCentral Branch County in southwestern Michigan...\nWest central Hillsdale County in southeastern Michigan...\n\n* Until 200 AM EDT.\n\n* At 111 AM EDT, a severe thunderstorm was located near Quincy, or\nnear Coldwater, moving southeast at 25 mph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nColdwater, Hillsdale, Quincy, Union City, Reading, Long Lake, Ray,\nGirard, Batavia, California, Montgomery, Sherwood, Allen, Lake\nWilson, South Butler, Marble Lake, Hodunk, and Coldwater Lake.\n\nThis includes Interstate 69 in Michigan between mile markers 6 and\n20.",
-        "instruction": "Remain alert for a possible tornado! Tornadoes can develop quickly\nfrom severe thunderstorms. If you spot a tornado go at once into the\nbasement or small central room in a sturdy structure.\n\nFor your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRIWX"
-          ],
-          "WMOidentifier": [
-            "WUUS53 KIWX 050511"
-          ],
-          "eventMotionDescription": [
-            "2026-09-05T05:11:00-00:00...storm...299DEG...20KT...41.92,-84.94"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "0.75"
-          ],
-          "tornadoDetection": [
-            "POSSIBLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KIWX.SV.W.0299.260905T0511Z-260905T0600Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T02:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e0050e89261505c404e641a743fcfcbb8882e9ad.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -103.23,
-              48.86
-            ],
-            [
-              -103.55,
-              48.88
-            ],
-            [
-              -103.36,
-              49
-            ],
-            [
-              -102.94,
-              49
-            ],
-            [
-              -103.23,
-              48.86
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e0050e89261505c404e641a743fcfcbb8882e9ad.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.e0050e89261505c404e641a743fcfcbb8882e9ad.001.1",
-        "areaDesc": "Divide, ND",
-        "geocode": {
-          "SAME": [
-            "038023"
-          ],
-          "UGC": [
-            "NDC023"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NDC023"
-        ],
-        "references": [],
-        "sent": "2026-09-05T00:11:00-05:00",
-        "effective": "2026-09-05T00:11:00-05:00",
-        "onset": "2026-09-05T00:11:00-05:00",
-        "expires": "2026-09-05T00:45:00-05:00",
-        "ends": "2026-09-05T00:45:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Bismarck ND",
-        "headline": "Severe Thunderstorm Warning issued September 5 at 12:11AM CDT until September 5 at 12:45AM CDT by NWS Bismarck ND",
-        "description": "SVRBIS\n\nThe National Weather Service in Bismarck has issued a\n\n* Severe Thunderstorm Warning for...\nNortheastern Divide County in northwestern North Dakota...\n\n* Until 1245 AM CDT.\n\n* At 1211 AM CDT, a severe thunderstorm was located near Crosby,\nmoving northeast at 30 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\n* Locations impacted include...\nCrosby.",
-        "instruction": "Seek shelter inside a well-built structure and stay away from\nwindows. This storm is capable of producing damaging winds and large\nhail.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRBIS"
-          ],
-          "WMOidentifier": [
-            "WUUS53 KBIS 050511"
-          ],
-          "eventMotionDescription": [
-            "2026-09-05T05:11:00-00:00...storm...244DEG...26KT...48.96,-103.3"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KBIS.SV.W.0328.260905T0511Z-260905T0545Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T00:45:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6a22e148bcda7a7e428b42b4b7e0d905fb7651dd.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -84.36,
-              41.83
-            ],
-            [
-              -84.36,
-              41.71
-            ],
-            [
-              -84.4,
-              41.71
-            ],
-            [
-              -84.4,
-              41.68
-            ],
-            [
-              -84.53,
-              41.63
-            ],
-            [
-              -84.79,
-              41.82
-            ],
-            [
-              -84.63,
-              41.92
-            ],
-            [
-              -84.36,
-              41.83
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6a22e148bcda7a7e428b42b4b7e0d905fb7651dd.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.6a22e148bcda7a7e428b42b4b7e0d905fb7651dd.001.1",
-        "areaDesc": "Hillsdale, MI; Williams, OH",
-        "geocode": {
-          "SAME": [
-            "026059",
-            "039171"
-          ],
-          "UGC": [
-            "MIC059",
-            "OHC171"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MIC059",
-          "https://api.weather.gov/zones/county/OHC171"
-        ],
-        "references": [],
-        "sent": "2026-09-05T01:08:00-04:00",
-        "effective": "2026-09-05T01:08:00-04:00",
-        "onset": "2026-09-05T01:08:00-04:00",
-        "expires": "2026-09-05T02:00:00-04:00",
-        "ends": "2026-09-05T02:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Northern Indiana",
-        "headline": "Severe Thunderstorm Warning issued September 5 at 1:08AM EDT until September 5 at 2:00AM EDT by NWS Northern Indiana",
-        "description": "SVRIWX\n\nThe National Weather Service in Northern Indiana has issued a\n\n* Severe Thunderstorm Warning for...\nSouthern Hillsdale County in southeastern Michigan...\nNorth central Williams County in northwestern Ohio...\n\n* Until 200 AM EDT.\n\n* At 108 AM EDT, a severe thunderstorm was located near Reading, or 8\nmiles south of Hillsdale, moving southeast at 30 mph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nHillsdale, Pioneer, Reading, Cambria, Pittsford, Ransom, Waldron,\nBear Lake, Prattville, Lake Wilson, Frontier, Shadyside, Betzer,\nOsseo, and Alvordton.",
-        "instruction": "Remain alert for a possible tornado! Tornadoes can develop quickly\nfrom severe thunderstorms. If you spot a tornado go at once into the\nbasement or small central room in a sturdy structure.\n\nFor your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRIWX"
-          ],
-          "WMOidentifier": [
-            "WUUS53 KIWX 050508"
-          ],
-          "eventMotionDescription": [
-            "2026-09-05T05:08:00-00:00...storm...308DEG...24KT...41.81,-84.63"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "0.75"
-          ],
-          "tornadoDetection": [
-            "POSSIBLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KIWX.SV.W.0298.260905T0508Z-260905T0600Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T02:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -5715,217 +6184,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.001.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.001.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.001.2",
-        "areaDesc": "Mecklenburg; Cabarrus; Union",
-        "geocode": {
-          "SAME": [
-            "037119",
-            "037025",
-            "037179"
-          ],
-          "UGC": [
-            "NCZ071",
-            "NCZ072",
-            "NCZ082"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/NCZ071",
-          "https://api.weather.gov/zones/forecast/NCZ072",
-          "https://api.weather.gov/zones/forecast/NCZ082"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9cb3036eee7420aabe60e533bb8bed3e15b48d07.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.9cb3036eee7420aabe60e533bb8bed3e15b48d07.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T13:34:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.104b88aa03b0ebb698c001ea77aa23d9a002dd8d.001.2",
-            "identifier": "urn:oid:2.49.0.1.840.0.104b88aa03b0ebb698c001ea77aa23d9a002dd8d.001.2",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T13:36:00-04:00"
-          }
-        ],
-        "sent": "2026-09-04T20:29:00-04:00",
-        "effective": "2026-09-04T20:29:00-04:00",
-        "onset": "2026-09-05T11:00:00-04:00",
-        "expires": "2026-09-05T04:30:00-04:00",
-        "ends": "2026-09-05T20:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Greenville-Spartanburg SC",
-        "headline": "Heat Advisory issued September 4 at 8:29PM EDT until September 5 at 8:00PM EDT by NWS Greenville-Spartanburg SC",
-        "description": "* WHAT...Heat index values up to 107 expected.\n\n* WHERE...Cabarrus, Mecklenburg, and Union Counties.\n\n* WHEN...From 11 AM to 8 PM EDT Saturday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWGSP"
-          ],
-          "WMOidentifier": [
-            "WWUS72 KGSP 050029"
-          ],
-          "NWSheadline": [
-            "TODAY'S HEAT ADVISORY HAS EXPIRED... ...ANOTHER HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM TO 8 PM EDT SATURDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KGSP.HT.Y.0015.260905T1500Z-260906T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T20:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.aef53ba076c19a6f4e196174992edf67b45c3237.002.1",
-        "areaDesc": "Franklin; Hart; Elbert; York; Anderson; Abbeville; Laurens; Union; Chester; Greenwood",
-        "geocode": {
-          "SAME": [
-            "013119",
-            "013147",
-            "013105",
-            "045091",
-            "045007",
-            "045001",
-            "045059",
-            "045087",
-            "045023",
-            "045047"
-          ],
-          "UGC": [
-            "GAZ026",
-            "GAZ028",
-            "GAZ029",
-            "SCZ009",
-            "SCZ010",
-            "SCZ011",
-            "SCZ012",
-            "SCZ013",
-            "SCZ014",
-            "SCZ019"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/GAZ026",
-          "https://api.weather.gov/zones/forecast/GAZ028",
-          "https://api.weather.gov/zones/forecast/GAZ029",
-          "https://api.weather.gov/zones/forecast/SCZ009",
-          "https://api.weather.gov/zones/forecast/SCZ010",
-          "https://api.weather.gov/zones/forecast/SCZ011",
-          "https://api.weather.gov/zones/forecast/SCZ012",
-          "https://api.weather.gov/zones/forecast/SCZ013",
-          "https://api.weather.gov/zones/forecast/SCZ014",
-          "https://api.weather.gov/zones/forecast/SCZ019"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9cb3036eee7420aabe60e533bb8bed3e15b48d07.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.9cb3036eee7420aabe60e533bb8bed3e15b48d07.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T13:34:00-04:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.104b88aa03b0ebb698c001ea77aa23d9a002dd8d.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.104b88aa03b0ebb698c001ea77aa23d9a002dd8d.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T13:36:00-04:00"
-          }
-        ],
-        "sent": "2026-09-04T20:29:00-04:00",
-        "effective": "2026-09-04T20:29:00-04:00",
-        "onset": "2026-09-05T11:00:00-04:00",
-        "expires": "2026-09-05T04:30:00-04:00",
-        "ends": "2026-09-05T20:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Greenville-Spartanburg SC",
-        "headline": "Heat Advisory issued September 4 at 8:29PM EDT until September 5 at 8:00PM EDT by NWS Greenville-Spartanburg SC",
-        "description": "* WHAT...Heat index values up to 106 expected.\n\n* WHERE...In Georgia, Elbert, Franklin, and Hart Counties. In South\nCarolina, Abbeville, Anderson, Chester, Greenwood, Laurens, Union,\nand York Counties.\n\n* WHEN...From 11 AM to 8 PM EDT Saturday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nDo not leave young children and pets in unattended vehicles. Car\ninteriors will reach lethal temperatures in a matter of minutes.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWGSP"
-          ],
-          "WMOidentifier": [
-            "WWUS72 KGSP 050029"
-          ],
-          "NWSheadline": [
-            "A HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM TO 8 PM EDT SATURDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KGSP.HT.Y.0015.260905T1500Z-260906T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T20:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f860d15a2261cd7c653d8027619274e702179fc7.030.1",
       "type": "Feature",
       "geometry": null,
@@ -8532,241 +8790,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.002.1",
-        "areaDesc": "Lincoln; McDuffie; Columbia; Richmond; Burke; McCormick; Newberry; Fairfield; Kershaw; Edgefield; Saluda; Lexington; Richland; Lee; Aiken; Sumter; Barnwell; Calhoun; Clarendon; Bamberg; Northwestern Orangeburg; Central Orangeburg; Southeastern Orangeburg",
-        "geocode": {
-          "SAME": [
-            "013181",
-            "013189",
-            "013073",
-            "013245",
-            "013033",
-            "045065",
-            "045071",
-            "045039",
-            "045055",
-            "045037",
-            "045081",
-            "045063",
-            "045079",
-            "045061",
-            "045003",
-            "045085",
-            "045011",
-            "045017",
-            "045027",
-            "045009",
-            "045075"
-          ],
-          "UGC": [
-            "GAZ040",
-            "GAZ063",
-            "GAZ064",
-            "GAZ065",
-            "GAZ077",
-            "SCZ018",
-            "SCZ020",
-            "SCZ021",
-            "SCZ022",
-            "SCZ025",
-            "SCZ026",
-            "SCZ027",
-            "SCZ028",
-            "SCZ029",
-            "SCZ030",
-            "SCZ031",
-            "SCZ035",
-            "SCZ037",
-            "SCZ038",
-            "SCZ041",
-            "SCZ135",
-            "SCZ136",
-            "SCZ137"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/GAZ040",
-          "https://api.weather.gov/zones/forecast/GAZ063",
-          "https://api.weather.gov/zones/forecast/GAZ064",
-          "https://api.weather.gov/zones/forecast/GAZ065",
-          "https://api.weather.gov/zones/forecast/GAZ077",
-          "https://api.weather.gov/zones/forecast/SCZ018",
-          "https://api.weather.gov/zones/forecast/SCZ020",
-          "https://api.weather.gov/zones/forecast/SCZ021",
-          "https://api.weather.gov/zones/forecast/SCZ022",
-          "https://api.weather.gov/zones/forecast/SCZ025",
-          "https://api.weather.gov/zones/forecast/SCZ026",
-          "https://api.weather.gov/zones/forecast/SCZ027",
-          "https://api.weather.gov/zones/forecast/SCZ028",
-          "https://api.weather.gov/zones/forecast/SCZ029",
-          "https://api.weather.gov/zones/forecast/SCZ030",
-          "https://api.weather.gov/zones/forecast/SCZ031",
-          "https://api.weather.gov/zones/forecast/SCZ035",
-          "https://api.weather.gov/zones/forecast/SCZ037",
-          "https://api.weather.gov/zones/forecast/SCZ038",
-          "https://api.weather.gov/zones/forecast/SCZ041",
-          "https://api.weather.gov/zones/forecast/SCZ135",
-          "https://api.weather.gov/zones/forecast/SCZ136",
-          "https://api.weather.gov/zones/forecast/SCZ137"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T12:47:00-04:00"
-          }
-        ],
-        "sent": "2026-09-04T19:58:00-04:00",
-        "effective": "2026-09-04T19:58:00-04:00",
-        "onset": "2026-09-05T11:00:00-04:00",
-        "expires": "2026-09-05T15:30:00-04:00",
-        "ends": "2026-09-05T20:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Columbia SC",
-        "headline": "Heat Advisory issued September 4 at 7:58PM EDT until September 5 at 8:00PM EDT by NWS Columbia SC",
-        "description": "* WHAT...Heat index values up to 110 expected.\n\n* WHERE...Portions of east central Georgia and central South\nCarolina.\n\n* WHEN...From 11 AM to 8 PM EDT Saturday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWCAE"
-          ],
-          "WMOidentifier": [
-            "WWUS72 KCAE 042358"
-          ],
-          "NWSheadline": [
-            "HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM TO 8 PM EDT SATURDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KCAE.HT.Y.0010.260905T1500Z-260906T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T20:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.001.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.001.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.6b2bc3e10e1d0153c4ceb39501b610b8e21dca1f.001.2",
-        "areaDesc": "Chesterfield; Northern Lancaster; Southern Lancaster",
-        "geocode": {
-          "SAME": [
-            "045025",
-            "045057"
-          ],
-          "UGC": [
-            "SCZ016",
-            "SCZ115",
-            "SCZ116"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/SCZ016",
-          "https://api.weather.gov/zones/forecast/SCZ115",
-          "https://api.weather.gov/zones/forecast/SCZ116"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.fc910d3c3512adb2f9922fe784747783418675e8.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-04T12:47:00-04:00"
-          }
-        ],
-        "sent": "2026-09-04T19:58:00-04:00",
-        "effective": "2026-09-04T19:58:00-04:00",
-        "onset": "2026-09-05T11:00:00-04:00",
-        "expires": "2026-09-05T15:30:00-04:00",
-        "ends": "2026-09-05T20:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Columbia SC",
-        "headline": "Heat Advisory issued September 4 at 7:58PM EDT until September 5 at 8:00PM EDT by NWS Columbia SC",
-        "description": "* WHAT...Heat index values up to 108 expected.\n\n* WHERE...Chesterfield, Northern Lancaster, and Southern Lancaster\nCounties.\n\n* WHEN...From 11 AM to 8 PM EDT Saturday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.\n\nTake extra precautions when outside. Wear lightweight and loose\nfitting clothing. Try to limit strenuous activities to early morning\nor evening. Take action when you see symptoms of heat exhaustion and\nheat stroke.\n\nTo reduce risk during outdoor work, the Occupational Safety and\nHealth Administration recommends scheduling frequent rest breaks in\nshaded or air conditioned environments. Anyone overcome by heat\nshould be moved to a cool and shaded location. Heat stroke is an\nemergency! Call 9 1 1.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWCAE"
-          ],
-          "WMOidentifier": [
-            "WWUS72 KCAE 042358"
-          ],
-          "NWSheadline": [
-            "HEAT ADVISORY WILL EXPIRE AT 8 PM EDT THIS EVENING... ...HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM TO 8 PM EDT SATURDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KCAE.HT.Y.0010.260905T1500Z-260906T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T20:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
           ]
         }
       }
@@ -17754,5 +17777,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-05T05:17:27+00:00"
+  "updated": "2026-09-05T05:28:18+00:00"
 }
