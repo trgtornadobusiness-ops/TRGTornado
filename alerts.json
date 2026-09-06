@@ -10,13 +10,101 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-27603",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0e4bb113e39936838370f19e1a67ab9cff8c1b10.001.1",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-27603",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0e4bb113e39936838370f19e1a67ab9cff8c1b10.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-27603",
+        "id": "urn:oid:2.49.0.1.840.0.0e4bb113e39936838370f19e1a67ab9cff8c1b10.001.1",
+        "areaDesc": "Boone; McHenry; Ogle; Lee; De Kalb; Kane",
+        "geocode": {
+          "SAME": [
+            "017007",
+            "017111",
+            "017141",
+            "017103",
+            "017037",
+            "017089"
+          ],
+          "UGC": [
+            "ILZ004",
+            "ILZ005",
+            "ILZ008",
+            "ILZ010",
+            "ILZ011",
+            "ILZ012"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/ILZ004",
+          "https://api.weather.gov/zones/forecast/ILZ005",
+          "https://api.weather.gov/zones/forecast/ILZ008",
+          "https://api.weather.gov/zones/forecast/ILZ010",
+          "https://api.weather.gov/zones/forecast/ILZ011",
+          "https://api.weather.gov/zones/forecast/ILZ012"
+        ],
+        "references": [],
+        "sent": "2026-09-06T06:11:02-05:00",
+        "effective": "2026-09-06T06:02:00-05:00",
+        "onset": "2026-09-06T06:02:00-05:00",
+        "expires": "2026-09-06T08:00:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Chicago IL",
+        "headline": "Special Weather Statement issued September 6 at 6:02AM CDT by NWS Chicago IL",
+        "description": "Areas of dense fog will reduce visibilities to locally down to one\nquarter mile or less early this morning from portions of the\nnorthwest suburbs of Chicago west into portions of north central\nIllinois. Fog will quickly dissipate by mid-morning.\n\nIncrease following distance and use your low beams if dense fog is\nencountered while driving this morning.",
+        "instruction": null,
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSLOT"
+          ],
+          "WMOidentifier": [
+            "WWUS83 KLOT 061102"
+          ],
+          "NWSheadline": [
+            "Locally Dense Fog Early This Morning"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-47987",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-47987",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-47987",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +118,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-06T10:57:16+00:00",
-        "effective": "2026-09-06T10:57:16+00:00",
+        "sent": "2026-09-06T11:07:16+00:00",
+        "effective": "2026-09-06T11:07:16+00:00",
         "onset": null,
-        "expires": "2026-09-06T11:07:16+00:00",
+        "expires": "2026-09-06T11:17:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +142,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 061057"
+            "NZUS91 KWBC 061107"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -336,133 +424,6 @@
           ],
           "NationalWeatherService": [
             "MWS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1ec8983ab50f6dd9ebaedc548ba88c1323745ce7.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -98.78,
-              42.49
-            ],
-            [
-              -99,
-              42.56
-            ],
-            [
-              -99.04,
-              42.75
-            ],
-            [
-              -98.69,
-              42.75
-            ],
-            [
-              -98.78,
-              42.49
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1ec8983ab50f6dd9ebaedc548ba88c1323745ce7.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.1ec8983ab50f6dd9ebaedc548ba88c1323745ce7.001.1",
-        "areaDesc": "Holt, NE",
-        "geocode": {
-          "SAME": [
-            "031089"
-          ],
-          "UGC": [
-            "NEC089"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NEC089"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3f035f4d247d6a638c64ce6eeafb9089ab6c0a24.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.3f035f4d247d6a638c64ce6eeafb9089ab6c0a24.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-06T05:35:00-05:00"
-          }
-        ],
-        "sent": "2026-09-06T05:52:00-05:00",
-        "effective": "2026-09-06T05:52:00-05:00",
-        "onset": "2026-09-06T05:52:00-05:00",
-        "expires": "2026-09-06T06:15:00-05:00",
-        "ends": "2026-09-06T06:15:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS North Platte NE",
-        "headline": "Severe Thunderstorm Warning issued September 6 at 5:52AM CDT until September 6 at 6:15AM CDT by NWS North Platte NE",
-        "description": "At 552 AM CDT, a severe thunderstorm was located near Atkinson, or 13\nmiles northwest of O'Neill, moving north at 20 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\nThis severe thunderstorm will remain over mainly rural areas of north\ncentral Holt County.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nTo report severe weather contact your nearest law enforcement agency.\nThey will send your report to the National Weather Service office in\nNorth Platte.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSLBF"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KLBF 061052"
-          ],
-          "NWSheadline": [
-            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 615 AM CDT FOR NORTH CENTRAL HOLT COUNTY"
-          ],
-          "eventMotionDescription": [
-            "2026-09-06T10:52:00-00:00...storm...175DEG...16KT...42.57,-98.86"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KLBF.SV.W.0441.000000T0000Z-260906T1115Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-06T06:15:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -19782,5 +19743,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-06T11:00:00+00:00"
+  "updated": "2026-09-06T11:15:00+00:00"
 }
