@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-1398",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-28324",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-1398",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-28324",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-1398",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-28324",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-06T05:17:16+00:00",
-        "effective": "2026-09-06T05:17:16+00:00",
+        "sent": "2026-09-06T05:27:16+00:00",
+        "effective": "2026-09-06T05:27:16+00:00",
         "onset": null,
-        "expires": "2026-09-06T05:27:16+00:00",
+        "expires": "2026-09-06T05:37:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 060517"
+            "NZUS91 KWBC 060527"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,151 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f3140deecdabe3c022882865ca39470e0dfdd247.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -103.58,
+              40.69
+            ],
+            [
+              -103.67,
+              40.69
+            ],
+            [
+              -103.78,
+              40.73
+            ],
+            [
+              -103.84,
+              40.73
+            ],
+            [
+              -103.87,
+              40.75
+            ],
+            [
+              -103.85,
+              40.78
+            ],
+            [
+              -103.73,
+              40.8
+            ],
+            [
+              -103.72,
+              40.83
+            ],
+            [
+              -103.62,
+              40.79
+            ],
+            [
+              -103.61,
+              40.74
+            ],
+            [
+              -103.57,
+              40.72
+            ],
+            [
+              -103.57,
+              40.7
+            ],
+            [
+              -103.58,
+              40.7
+            ],
+            [
+              -103.58,
+              40.69
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f3140deecdabe3c022882865ca39470e0dfdd247.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.f3140deecdabe3c022882865ca39470e0dfdd247.001.1",
+        "areaDesc": "Weld, CO",
+        "geocode": {
+          "SAME": [
+            "008123"
+          ],
+          "UGC": [
+            "COC123"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/COC123"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ca8f5eedfb4f4fe75b0973f7b715f11c95b610e7.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.ca8f5eedfb4f4fe75b0973f7b715f11c95b610e7.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-05T20:23:00-06:00"
+          }
+        ],
+        "sent": "2026-09-05T23:25:00-06:00",
+        "effective": "2026-09-05T23:25:00-06:00",
+        "onset": "2026-09-05T23:25:00-06:00",
+        "expires": "2026-09-05T23:35:00-06:00",
+        "ends": "2026-09-05T23:30:00-06:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Denver CO",
+        "headline": "Flood Advisory issued September 5 at 11:25PM MDT until September 5 at 11:30PM MDT by NWS Denver CO",
+        "description": "The Flood Advisory will expire at 1130 PM MDT this evening for a\nportion of northeast Colorado, including the following area, Weld.\n\nFlood waters have receded. The heavy rain has ended. Flooding is no\nlonger expected to pose a threat. Please continue to heed any\nremaining closures.\n\nA Flood Watch remains in effect until 300 AM MDT for a portion of\nnortheast Colorado...",
+        "instruction": null,
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSBOU"
+          ],
+          "WMOidentifier": [
+            "WGUS85 KBOU 060525"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY WILL EXPIRE AT 1130 PM MDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXP.KBOU.FA.Y.0149.000000T0000Z-260906T0530Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-05T23:30:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
           ]
         }
       }
@@ -5127,144 +5272,6 @@
           ],
           "NationalWeatherService": [
             "HTY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ca8f5eedfb4f4fe75b0973f7b715f11c95b610e7.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -103.58,
-              40.69
-            ],
-            [
-              -103.67,
-              40.69
-            ],
-            [
-              -103.78,
-              40.73
-            ],
-            [
-              -103.84,
-              40.73
-            ],
-            [
-              -103.87,
-              40.75
-            ],
-            [
-              -103.85,
-              40.78
-            ],
-            [
-              -103.73,
-              40.8
-            ],
-            [
-              -103.72,
-              40.83
-            ],
-            [
-              -103.62,
-              40.79
-            ],
-            [
-              -103.61,
-              40.74
-            ],
-            [
-              -103.57,
-              40.72
-            ],
-            [
-              -103.57,
-              40.7
-            ],
-            [
-              -103.58,
-              40.7
-            ],
-            [
-              -103.58,
-              40.69
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ca8f5eedfb4f4fe75b0973f7b715f11c95b610e7.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.ca8f5eedfb4f4fe75b0973f7b715f11c95b610e7.001.1",
-        "areaDesc": "Weld, CO",
-        "geocode": {
-          "SAME": [
-            "008123"
-          ],
-          "UGC": [
-            "COC123"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/COC123"
-        ],
-        "references": [],
-        "sent": "2026-09-05T20:23:00-06:00",
-        "effective": "2026-09-05T20:23:00-06:00",
-        "onset": "2026-09-05T20:23:00-06:00",
-        "expires": "2026-09-05T23:30:00-06:00",
-        "ends": "2026-09-05T23:30:00-06:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Denver CO",
-        "headline": "Flood Advisory issued September 5 at 8:23PM MDT until September 5 at 11:30PM MDT by NWS Denver CO",
-        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northeastern Weld County in northeastern Colorado...\n\n* WHEN...Until 1130 PM MDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n\n- At 823 PM MDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain have\nfallen.\n\n- This includes the following streams and drainages...\nPawnee Creek, South Pawnee Creek, Spring Creek, Cottonwood Creek,\nNorth Pawnee Creek, Horsetail Creek and Igo Creek.\n\n- Some locations that will experience flooding include...\nMainly rural areas of Northeastern Weld County.",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nExcessive runoff from heavy rainfall will cause minor flooding of\nsmall creeks and streams, country roads, farmland along creeks, and\nother low lying areas.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSBOU"
-          ],
-          "WMOidentifier": [
-            "WGUS85 KBOU 060223"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 1130 PM MDT THIS EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KBOU.FA.Y.0149.260906T0223Z-260906T0530Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-05T23:30:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
           ]
         }
       }
@@ -18467,5 +18474,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-06T05:17:41+00:00"
+  "updated": "2026-09-06T05:27:59+00:00"
 }
