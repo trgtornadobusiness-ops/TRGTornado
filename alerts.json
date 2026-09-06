@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-14006",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-843",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-14006",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-843",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-14006",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-843",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-06T13:07:16+00:00",
-        "effective": "2026-09-06T13:07:16+00:00",
+        "sent": "2026-09-06T13:17:16+00:00",
+        "effective": "2026-09-06T13:17:16+00:00",
         "onset": null,
-        "expires": "2026-09-06T13:17:16+00:00",
+        "expires": "2026-09-06T13:27:16+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 061307"
+            "NZUS91 KWBC 061317"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,147 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.903c02da65bdce4691fc246e0bf0d8847096a080.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -81.81,
+              36.11
+            ],
+            [
+              -81.69,
+              36.12
+            ],
+            [
+              -81.55,
+              36.12
+            ],
+            [
+              -81.52,
+              36.1
+            ],
+            [
+              -81.5,
+              36.1
+            ],
+            [
+              -81.33,
+              35.97
+            ],
+            [
+              -81.64,
+              35.85
+            ],
+            [
+              -81.71,
+              35.88
+            ],
+            [
+              -81.76,
+              35.93
+            ],
+            [
+              -81.88,
+              36.14
+            ],
+            [
+              -81.82,
+              36.15
+            ],
+            [
+              -81.81,
+              36.11
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.903c02da65bdce4691fc246e0bf0d8847096a080.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.903c02da65bdce4691fc246e0bf0d8847096a080.001.1",
+        "areaDesc": "Avery; Caldwell Mountains; Greater Caldwell",
+        "geocode": {
+          "SAME": [
+            "037011",
+            "037027"
+          ],
+          "UGC": [
+            "NCZ033",
+            "NCZ501",
+            "NCZ502"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NCZ033",
+          "https://api.weather.gov/zones/forecast/NCZ501",
+          "https://api.weather.gov/zones/forecast/NCZ502"
+        ],
+        "references": [],
+        "sent": "2026-09-06T09:16:00-04:00",
+        "effective": "2026-09-06T09:16:00-04:00",
+        "onset": "2026-09-06T09:16:00-04:00",
+        "expires": "2026-09-06T09:45:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Greenville-Spartanburg SC",
+        "headline": "Special Weather Statement issued September 6 at 9:16AM EDT by NWS Greenville-Spartanburg SC",
+        "description": "At 916 AM EDT, Doppler radar was tracking a strong thunderstorm 6\nmiles south of Blowing Rock, or 5 miles south of Blowing Rock In\nCaldwell County, moving southeast at 20 mph.\n\nHAZARD...Wind gusts up to 50 mph and half inch hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to outdoor objects is\npossible.\n\nLocations impacted include...\nLenoir, Gamewell, Blowing Rock In Caldwell County, Cedar Rock, Sugar\nMountain, Seven Devils, Grandfather Mountain State Park, B.R.\nParkway-Linville Falls To Grandfather, Edgemont, and Collettsville.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSGSP"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KGSP 061316"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT CALDWELL AND EAST CENTRAL AVERY COUNTIES THROUGH 945 AM EDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-06T13:16:00-00:00...storm...314DEG...17KT...36.05,-81.66"
+          ],
+          "maxWindGust": [
+            "50 MPH"
+          ],
+          "maxHailSize": [
+            "0.50"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
           ]
         }
       }
@@ -4201,94 +4342,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7462f79314378f6b0f4c25dc61dc7741179f59ae.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7462f79314378f6b0f4c25dc61dc7741179f59ae.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.7462f79314378f6b0f4c25dc61dc7741179f59ae.001.1",
-        "areaDesc": "Johnston; Harnett; Wayne; Hoke; Cumberland; Sampson",
-        "geocode": {
-          "SAME": [
-            "037101",
-            "037085",
-            "037191",
-            "037093",
-            "037051",
-            "037163"
-          ],
-          "UGC": [
-            "NCZ042",
-            "NCZ077",
-            "NCZ078",
-            "NCZ086",
-            "NCZ088",
-            "NCZ089"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/NCZ042",
-          "https://api.weather.gov/zones/forecast/NCZ077",
-          "https://api.weather.gov/zones/forecast/NCZ078",
-          "https://api.weather.gov/zones/forecast/NCZ086",
-          "https://api.weather.gov/zones/forecast/NCZ088",
-          "https://api.weather.gov/zones/forecast/NCZ089"
-        ],
-        "references": [],
-        "sent": "2026-09-06T07:17:00-04:00",
-        "effective": "2026-09-06T07:17:00-04:00",
-        "onset": "2026-09-06T07:17:00-04:00",
-        "expires": "2026-09-06T09:15:00-04:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Raleigh NC",
-        "headline": "Special Weather Statement issued September 6 at 7:17AM EDT by NWS Raleigh NC",
-        "description": "Areas of fog may be locally dense through 9 AM. Visibility may\nvary over short distances and decrease to one quarter to one half\nmile in some areas.\n\nMotorists should slow down, allow extra following distance, and be\nalert for rapidly changing visibility.",
-        "instruction": null,
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSRAH"
-          ],
-          "WMOidentifier": [
-            "WWUS82 KRAH 061117"
-          ],
-          "NWSheadline": [
-            "Areas of fog this morning"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
           ]
         }
       }
@@ -18821,5 +18874,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-06T13:07:23+00:00"
+  "updated": "2026-09-06T13:17:26+00:00"
 }
