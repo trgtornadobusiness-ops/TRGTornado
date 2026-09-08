@@ -10,6 +10,787 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55310",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-55310",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-55310",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-09-08T04:57:16+00:00",
+        "effective": "2026-09-08T04:57:16+00:00",
+        "onset": null,
+        "expires": "2026-09-08T05:07:16+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 080457"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8408154ed44c78b7808e75aa3eeae4457e069ce2.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -96.61,
+              43.16
+            ],
+            [
+              -96.84,
+              43.47
+            ],
+            [
+              -96.47,
+              43.57
+            ],
+            [
+              -96.45,
+              43.54
+            ],
+            [
+              -96.45,
+              43.5
+            ],
+            [
+              -96.42,
+              43.5
+            ],
+            [
+              -96.26,
+              43.25
+            ],
+            [
+              -96.61,
+              43.16
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8408154ed44c78b7808e75aa3eeae4457e069ce2.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8408154ed44c78b7808e75aa3eeae4457e069ce2.001.1",
+        "areaDesc": "Lyon, IA; Sioux, IA; Lincoln, SD; Minnehaha, SD",
+        "geocode": {
+          "SAME": [
+            "019119",
+            "019167",
+            "046083",
+            "046099"
+          ],
+          "UGC": [
+            "IAC119",
+            "IAC167",
+            "SDC083",
+            "SDC099"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/IAC119",
+          "https://api.weather.gov/zones/county/IAC167",
+          "https://api.weather.gov/zones/county/SDC083",
+          "https://api.weather.gov/zones/county/SDC099"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.adb3c4438bc2f85d9747324333683b6629244eef.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.adb3c4438bc2f85d9747324333683b6629244eef.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-07T23:42:00-05:00"
+          }
+        ],
+        "sent": "2026-09-07T23:57:00-05:00",
+        "effective": "2026-09-07T23:57:00-05:00",
+        "onset": "2026-09-07T23:57:00-05:00",
+        "expires": "2026-09-08T00:30:00-05:00",
+        "ends": "2026-09-08T00:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Sioux Falls SD",
+        "headline": "Severe Thunderstorm Warning issued September 7 at 11:57PM CDT until September 8 at 12:30AM CDT by NWS Sioux Falls SD",
+        "description": "At 1157 PM CDT, a severe thunderstorm was located near Inwood, or 8\nmiles northeast of Canton, moving east at 35 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nThis severe thunderstorm will remain over mainly rural areas of\nwestern Lyon, northwestern Sioux, southeastern Minnehaha and eastern\nLincoln Counties.",
+        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSFSD"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KFSD 080457"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 1230 AM CDT FOR WESTERN LYON...NORTHWESTERN SIOUX...SOUTHEASTERN MINNEHAHA AND EASTERN LINCOLN COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-09-08T04:57:00-00:00...storm...259DEG...29KT...43.36,-96.43"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "Up to .75"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KFSD.SV.W.0286.000000T0000Z-260908T0530Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-08T00:30:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e1ac6df97f4f31e0ed56c3e63f11cc3d6b081cff.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.64,
+              43.18
+            ],
+            [
+              -98.83,
+              43.36
+            ],
+            [
+              -98.8,
+              43.39
+            ],
+            [
+              -98.5,
+              43.49
+            ],
+            [
+              -98.35,
+              43.27
+            ],
+            [
+              -98.64,
+              43.18
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e1ac6df97f4f31e0ed56c3e63f11cc3d6b081cff.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e1ac6df97f4f31e0ed56c3e63f11cc3d6b081cff.001.1",
+        "areaDesc": "Charles Mix, SD; Douglas, SD",
+        "geocode": {
+          "SAME": [
+            "046023",
+            "046043"
+          ],
+          "UGC": [
+            "SDC023",
+            "SDC043"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC023",
+          "https://api.weather.gov/zones/county/SDC043"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c9ab7bb8e6e64384acc73d65bcd7c86510ec01b.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.2c9ab7bb8e6e64384acc73d65bcd7c86510ec01b.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-07T23:21:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.81b4b5373659993570779b5cd5f02bc201551516.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.81b4b5373659993570779b5cd5f02bc201551516.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-07T23:33:00-05:00"
+          }
+        ],
+        "sent": "2026-09-07T23:56:00-05:00",
+        "effective": "2026-09-07T23:56:00-05:00",
+        "onset": "2026-09-07T23:56:00-05:00",
+        "expires": "2026-09-08T00:05:00-05:00",
+        "ends": "2026-09-08T00:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Sioux Falls SD",
+        "headline": "Severe Thunderstorm Warning issued September 7 at 11:56PM CDT until September 8 at 12:00AM CDT by NWS Sioux Falls SD",
+        "description": "The storm which prompted the warning has moved out of the area.\nTherefore, the warning will be allowed to expire.\n\nA Severe Thunderstorm Watch remains in effect until 200 AM CDT for\nsouth central South Dakota.",
+        "instruction": null,
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSFSD"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KFSD 080456"
+          ],
+          "NWSheadline": [
+            "THE SEVERE THUNDERSTORM WARNING FOR NORTHEASTERN CHARLES MIX AND NORTHWESTERN DOUGLAS COUNTIES WILL EXPIRE AT MIDNIGHT CDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-08T04:55:00-00:00...storm...245DEG...29KT...43.39,-98.42"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXP.KFSD.SV.W.0285.000000T0000Z-260908T0500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-08T00:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.48509210cdb31f5dd1fe3e1cf91be5d676fde872.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.56,
+              42.88
+            ],
+            [
+              -97.61,
+              43.06
+            ],
+            [
+              -97.33,
+              43.13
+            ],
+            [
+              -97.27,
+              42.87
+            ],
+            [
+              -97.56,
+              42.88
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.48509210cdb31f5dd1fe3e1cf91be5d676fde872.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.48509210cdb31f5dd1fe3e1cf91be5d676fde872.001.1",
+        "areaDesc": "Yankton, SD",
+        "geocode": {
+          "SAME": [
+            "046135"
+          ],
+          "UGC": [
+            "SDC135"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC135"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e4bf42d9f714c7f391e49b73906ad31ee35313a8.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.e4bf42d9f714c7f391e49b73906ad31ee35313a8.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-07T23:12:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5ab20fa066e85ea688229e5103028483a91ed6b.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.b5ab20fa066e85ea688229e5103028483a91ed6b.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-07T23:29:00-05:00"
+          }
+        ],
+        "sent": "2026-09-07T23:56:00-05:00",
+        "effective": "2026-09-07T23:56:00-05:00",
+        "onset": "2026-09-07T23:56:00-05:00",
+        "expires": "2026-09-08T00:06:00-05:00",
+        "ends": "2026-09-08T00:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Sioux Falls SD",
+        "headline": "Severe Thunderstorm Warning issued September 7 at 11:56PM CDT until September 8 at 12:00AM CDT by NWS Sioux Falls SD",
+        "description": "The storm which prompted the warning has weakened below severe\nlimits, and no longer poses an immediate threat to life or property.\nTherefore, the warning will be allowed to expire.\n\nA Severe Thunderstorm Watch remains in effect until 200 AM CDT for\nsoutheastern South Dakota.",
+        "instruction": null,
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSFSD"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KFSD 080456 RRA"
+          ],
+          "NWSheadline": [
+            "THE SEVERE THUNDERSTORM WARNING FOR CENTRAL YANKTON COUNTY WILL EXPIRE AT MIDNIGHT CDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-08T04:56:00-00:00...storm...253DEG...26KT...43.09,-97.16"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXP.KFSD.SV.W.0283.000000T0000Z-260908T0500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-08T00:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d4e07dcaa64df22802dfef47299ea9dfb9b3d195.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.47,
+              43.81
+            ],
+            [
+              -97.86,
+              43.5
+            ],
+            [
+              -97.01,
+              43.49
+            ],
+            [
+              -96.99,
+              43.17
+            ],
+            [
+              -98.38,
+              43.16
+            ],
+            [
+              -98.8,
+              43.56
+            ],
+            [
+              -98.8,
+              43.58
+            ],
+            [
+              -98.47,
+              43.81
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d4e07dcaa64df22802dfef47299ea9dfb9b3d195.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.d4e07dcaa64df22802dfef47299ea9dfb9b3d195.001.1",
+        "areaDesc": "Aurora, SD; Charles Mix, SD; Davison, SD; Douglas, SD; Hanson, SD; Hutchinson, SD; Turner, SD",
+        "geocode": {
+          "SAME": [
+            "046003",
+            "046023",
+            "046035",
+            "046043",
+            "046061",
+            "046067",
+            "046125"
+          ],
+          "UGC": [
+            "SDC003",
+            "SDC023",
+            "SDC035",
+            "SDC043",
+            "SDC061",
+            "SDC067",
+            "SDC125"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/SDC003",
+          "https://api.weather.gov/zones/county/SDC023",
+          "https://api.weather.gov/zones/county/SDC035",
+          "https://api.weather.gov/zones/county/SDC043",
+          "https://api.weather.gov/zones/county/SDC061",
+          "https://api.weather.gov/zones/county/SDC067",
+          "https://api.weather.gov/zones/county/SDC125"
+        ],
+        "references": [],
+        "sent": "2026-09-07T23:55:00-05:00",
+        "effective": "2026-09-07T23:55:00-05:00",
+        "onset": "2026-09-07T23:55:00-05:00",
+        "expires": "2026-09-08T00:45:00-05:00",
+        "ends": "2026-09-08T00:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Sioux Falls SD",
+        "headline": "Severe Thunderstorm Warning issued September 7 at 11:55PM CDT until September 8 at 12:45AM CDT by NWS Sioux Falls SD",
+        "description": "SVRFSD\n\nThe National Weather Service in Sioux Falls has issued a\n\n* Severe Thunderstorm Warning for...\nSouthern Davison County in southeastern South Dakota...\nSouthern Aurora County in south central South Dakota...\nNortheastern Charles Mix County in south central South Dakota...\nDouglas County in south central South Dakota...\nSouthwestern Hanson County in southeastern South Dakota...\nTurner County in southeastern South Dakota...\nHutchinson County in southeastern South Dakota...\n\n* Until 1245 AM CDT.\n\n* At 1154 PM CDT, severe thunderstorms were located along a line\nextending from near Stickney to 6 miles northeast of Ravinia to 7\nmiles west of Hurley, moving northeast at 45 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Severe thunderstorms will be near...\nParker, Plankinton, Freeman, Armour, Tripp, Menno, Corsica,\nHurley, Stickney, and Delmont around 1200 AM CDT.\nMarion around 1205 AM CDT.\nParkston and Milltown around 1210 AM CDT.\n\nOther locations in the path of these severe thunderstorms include\nMonroe, Clayton, Ethan, Dimock and Dolton.",
+        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVRFSD"
+          ],
+          "WMOidentifier": [
+            "WUUS53 KFSD 080455"
+          ],
+          "eventMotionDescription": [
+            "2026-09-08T04:54:00-00:00...storm...227DEG...40KT...43.61,-98.55 43.2,-98.33 43.27,-97.23"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "Up to .75"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KFSD.SV.W.0287.260908T0455Z-260908T0545Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-08T00:45:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVR"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5afa90bf7bdec069d963c976d776d504811743c5.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5afa90bf7bdec069d963c976d776d504811743c5.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.5afa90bf7bdec069d963c976d776d504811743c5.002.1",
+        "areaDesc": "Coastal Glynn; Coastal Camden",
+        "geocode": {
+          "SAME": [
+            "013127",
+            "013039"
+          ],
+          "UGC": [
+            "GAZ154",
+            "GAZ166"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/GAZ154",
+          "https://api.weather.gov/zones/forecast/GAZ166"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.64ceb274b39137583fef0dc3cfe0635f5aa1a6ba.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.64ceb274b39137583fef0dc3cfe0635f5aa1a6ba.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-07T14:29:00-04:00"
+          }
+        ],
+        "sent": "2026-09-08T00:52:00-04:00",
+        "effective": "2026-09-08T00:52:00-04:00",
+        "onset": "2026-09-08T08:00:00-04:00",
+        "expires": "2026-09-09T04:00:00-04:00",
+        "ends": "2026-09-09T04:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Rip Current Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Jacksonville FL",
+        "headline": "Rip Current Statement issued September 8 at 12:52AM EDT until September 9 at 4:00AM EDT by NWS Jacksonville FL",
+        "description": "* WHAT...Dangerous rip currents expected.\n\n* WHERE...Southeast Georgia Beaches.\n\n* WHEN...From 8 AM EDT this morning through late tonight.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
+        "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CFWJAX"
+          ],
+          "WMOidentifier": [
+            "WHUS42 KJAX 080452"
+          ],
+          "NWSheadline": [
+            "HIGH RIP CURRENT RISK REMAINS IN EFFECT FROM 8 AM EDT THIS MORNING THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KJAX.RP.S.0029.260908T1200Z-260909T0800Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-09T04:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "RPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5afa90bf7bdec069d963c976d776d504811743c5.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5afa90bf7bdec069d963c976d776d504811743c5.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.5afa90bf7bdec069d963c976d776d504811743c5.001.1",
+        "areaDesc": "Coastal Nassau; Coastal Duval; Northeast Coastal St. Johns; Southeast Coastal St. Johns",
+        "geocode": {
+          "SAME": [
+            "012089",
+            "012031",
+            "012109"
+          ],
+          "UGC": [
+            "FLZ124",
+            "FLZ125",
+            "FLZ233",
+            "FLZ333"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/FLZ124",
+          "https://api.weather.gov/zones/forecast/FLZ125",
+          "https://api.weather.gov/zones/forecast/FLZ233",
+          "https://api.weather.gov/zones/forecast/FLZ333"
+        ],
+        "references": [],
+        "sent": "2026-09-08T00:52:00-04:00",
+        "effective": "2026-09-08T00:52:00-04:00",
+        "onset": "2026-09-08T08:00:00-04:00",
+        "expires": "2026-09-09T04:00:00-04:00",
+        "ends": "2026-09-09T04:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Rip Current Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Jacksonville FL",
+        "headline": "Rip Current Statement issued September 8 at 12:52AM EDT until September 9 at 4:00AM EDT by NWS Jacksonville FL",
+        "description": "* WHAT...Dangerous rip currents expected.\n\n* WHERE...Coastal Nassau, Coastal Duval, Northeast Coastal St.\nJohns and Southeast Coastal St. Johns Counties.\n\n* WHEN...From 8 AM EDT this morning through late tonight.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
+        "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CFWJAX"
+          ],
+          "WMOidentifier": [
+            "WHUS42 KJAX 080452"
+          ],
+          "NWSheadline": [
+            "HIGH RIP CURRENT RISK IN EFFECT FROM 8 AM EDT THIS MORNING THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXA.KJAX.RP.S.0029.260908T1200Z-260909T0800Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-09T04:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "RPS"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5a1534e4811e747b9f49acce647f1a05fa85d2b0.001.1",
       "type": "Feature",
       "geometry": null,
@@ -1798,73 +2579,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-10831",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-10831",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-10831",
-        "areaDesc": "Montgomery",
-        "geocode": {
-          "SAME": [
-            "024031"
-          ],
-          "UGC": [
-            "MDC031"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
-        ],
-        "references": [],
-        "sent": "2026-09-08T04:47:16+00:00",
-        "effective": "2026-09-08T04:47:16+00:00",
-        "onset": null,
-        "expires": "2026-09-08T04:57:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
-        "parameters": {
-          "AWIPSidentifier": [
-            "KEPWBC"
-          ],
-          "WMOidentifier": [
-            "NZUS91 KWBC 080447"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS",
-            "EAS",
-            "NWEM"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "TST"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f11a95bb262f94c6cd7954aad3fc564486a423e3.001.1",
       "type": "Feature",
       "geometry": null,
@@ -2438,278 +3152,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.adb3c4438bc2f85d9747324333683b6629244eef.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -96.61,
-              43.16
-            ],
-            [
-              -96.84,
-              43.47
-            ],
-            [
-              -96.47,
-              43.57
-            ],
-            [
-              -96.45,
-              43.54
-            ],
-            [
-              -96.45,
-              43.5
-            ],
-            [
-              -96.42,
-              43.5
-            ],
-            [
-              -96.26,
-              43.25
-            ],
-            [
-              -96.61,
-              43.16
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.adb3c4438bc2f85d9747324333683b6629244eef.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.adb3c4438bc2f85d9747324333683b6629244eef.001.1",
-        "areaDesc": "Lyon, IA; Sioux, IA; Lincoln, SD; Minnehaha, SD",
-        "geocode": {
-          "SAME": [
-            "019119",
-            "019167",
-            "046083",
-            "046099"
-          ],
-          "UGC": [
-            "IAC119",
-            "IAC167",
-            "SDC083",
-            "SDC099"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/IAC119",
-          "https://api.weather.gov/zones/county/IAC167",
-          "https://api.weather.gov/zones/county/SDC083",
-          "https://api.weather.gov/zones/county/SDC099"
-        ],
-        "references": [],
-        "sent": "2026-09-07T23:42:00-05:00",
-        "effective": "2026-09-07T23:42:00-05:00",
-        "onset": "2026-09-07T23:42:00-05:00",
-        "expires": "2026-09-08T00:30:00-05:00",
-        "ends": "2026-09-08T00:30:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Sioux Falls SD",
-        "headline": "Severe Thunderstorm Warning issued September 7 at 11:42PM CDT until September 8 at 12:30AM CDT by NWS Sioux Falls SD",
-        "description": "SVRFSD\n\nThe National Weather Service in Sioux Falls has issued a\n\n* Severe Thunderstorm Warning for...\nWestern Lyon County in northwestern Iowa...\nNorthwestern Sioux County in northwestern Iowa...\nSoutheastern Minnehaha County in southeastern South Dakota...\nEastern Lincoln County in southeastern South Dakota...\n\n* Until 1230 AM CDT.\n\n* At 1142 PM CDT, a severe thunderstorm was located near Canton,\nmoving east at 35 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* This severe thunderstorm will be near...\nCanton, Inwood, Newton Hills State Park, and Lake Alvin State\nRecreation Area around 1145 PM CDT.\nLarchwood around 1150 PM CDT.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRFSD"
-          ],
-          "WMOidentifier": [
-            "WUUS53 KFSD 080442"
-          ],
-          "eventMotionDescription": [
-            "2026-09-08T04:42:00-00:00...storm...259DEG...29KT...43.34,-96.6"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "Up to .75"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KFSD.SV.W.0286.260908T0442Z-260908T0530Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T00:30:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.81b4b5373659993570779b5cd5f02bc201551516.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -98.64,
-              43.18
-            ],
-            [
-              -98.83,
-              43.36
-            ],
-            [
-              -98.8,
-              43.39
-            ],
-            [
-              -98.5,
-              43.49
-            ],
-            [
-              -98.35,
-              43.27
-            ],
-            [
-              -98.64,
-              43.18
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.81b4b5373659993570779b5cd5f02bc201551516.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.81b4b5373659993570779b5cd5f02bc201551516.001.1",
-        "areaDesc": "Charles Mix, SD; Douglas, SD",
-        "geocode": {
-          "SAME": [
-            "046023",
-            "046043"
-          ],
-          "UGC": [
-            "SDC023",
-            "SDC043"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/SDC023",
-          "https://api.weather.gov/zones/county/SDC043"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2c9ab7bb8e6e64384acc73d65bcd7c86510ec01b.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.2c9ab7bb8e6e64384acc73d65bcd7c86510ec01b.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-07T23:21:00-05:00"
-          }
-        ],
-        "sent": "2026-09-07T23:33:00-05:00",
-        "effective": "2026-09-07T23:33:00-05:00",
-        "onset": "2026-09-07T23:33:00-05:00",
-        "expires": "2026-09-08T00:00:00-05:00",
-        "ends": "2026-09-08T00:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Sioux Falls SD",
-        "headline": "Severe Thunderstorm Warning issued September 7 at 11:33PM CDT until September 8 at 12:00AM CDT by NWS Sioux Falls SD",
-        "description": "At 1133 PM CDT, a severe thunderstorm was located near Geddes, or 12\nmiles northwest of Lake Andes, moving northeast at 35 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nThis severe storm will be near...\nNew Holland and Harrison around 1140 PM CDT.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSFSD"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KFSD 080433"
-          ],
-          "NWSheadline": [
-            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL MIDNIGHT CDT FOR NORTHEASTERN CHARLES MIX AND NORTHWESTERN DOUGLAS COUNTIES"
-          ],
-          "eventMotionDescription": [
-            "2026-09-08T04:33:00-00:00...storm...246DEG...31KT...43.32,-98.63"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "Up to .75"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KFSD.SV.W.0285.000000T0000Z-260908T0500Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T00:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.68aad3490d621d1668056838a1f01421607143c9.001.1",
       "type": "Feature",
       "geometry": {
@@ -2820,133 +3262,6 @@
           ],
           "VTEC": [
             "/O.CON.KFSD.SV.W.0284.000000T0000Z-260908T0500Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T00:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5ab20fa066e85ea688229e5103028483a91ed6b.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -97.56,
-              42.88
-            ],
-            [
-              -97.61,
-              43.06
-            ],
-            [
-              -97.33,
-              43.13
-            ],
-            [
-              -97.27,
-              42.87
-            ],
-            [
-              -97.56,
-              42.88
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5ab20fa066e85ea688229e5103028483a91ed6b.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.b5ab20fa066e85ea688229e5103028483a91ed6b.001.1",
-        "areaDesc": "Yankton, SD",
-        "geocode": {
-          "SAME": [
-            "046135"
-          ],
-          "UGC": [
-            "SDC135"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/SDC135"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e4bf42d9f714c7f391e49b73906ad31ee35313a8.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.e4bf42d9f714c7f391e49b73906ad31ee35313a8.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-07T23:12:00-05:00"
-          }
-        ],
-        "sent": "2026-09-07T23:29:00-05:00",
-        "effective": "2026-09-07T23:29:00-05:00",
-        "onset": "2026-09-07T23:29:00-05:00",
-        "expires": "2026-09-08T00:00:00-05:00",
-        "ends": "2026-09-08T00:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Sioux Falls SD",
-        "headline": "Severe Thunderstorm Warning issued September 7 at 11:29PM CDT until September 8 at 12:00AM CDT by NWS Sioux Falls SD",
-        "description": "At 1129 PM CDT, a severe thunderstorm was located near Mayfield, or\n10 miles north of Yankton, moving east at 30 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\nThis severe thunderstorm will remain over mainly rural areas of\ncentral Yankton County, including the following locations...\nLesterville.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSFSD"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KFSD 080429"
-          ],
-          "NWSheadline": [
-            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL MIDNIGHT CDT FOR CENTRAL YANKTON COUNTY"
-          ],
-          "eventMotionDescription": [
-            "2026-09-08T04:29:00-00:00...storm...253DEG...26KT...43.04,-97.39"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KFSD.SV.W.0283.000000T0000Z-260908T0500Z/"
           ],
           "eventEndingTime": [
             "2026-09-08T00:00:00-05:00"
@@ -22870,85 +23185,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.64ceb274b39137583fef0dc3cfe0635f5aa1a6ba.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.64ceb274b39137583fef0dc3cfe0635f5aa1a6ba.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.64ceb274b39137583fef0dc3cfe0635f5aa1a6ba.001.1",
-        "areaDesc": "Coastal Glynn; Coastal Camden",
-        "geocode": {
-          "SAME": [
-            "013127",
-            "013039"
-          ],
-          "UGC": [
-            "GAZ154",
-            "GAZ166"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/GAZ154",
-          "https://api.weather.gov/zones/forecast/GAZ166"
-        ],
-        "references": [],
-        "sent": "2026-09-07T14:29:00-04:00",
-        "effective": "2026-09-07T14:29:00-04:00",
-        "onset": "2026-09-08T08:00:00-04:00",
-        "expires": "2026-09-08T04:00:00-04:00",
-        "ends": "2026-09-09T04:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Rip Current Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Jacksonville FL",
-        "headline": "Rip Current Statement issued September 7 at 2:29PM EDT until September 9 at 4:00AM EDT by NWS Jacksonville FL",
-        "description": "* WHAT...Dangerous rip currents expected.\n\n* WHERE...Southeast Georgia Beaches.\n\n* WHEN...From Tuesday morning through late Tuesday night.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
-        "instruction": "Swim near a lifeguard. If caught in a rip current, relax and\nfloat. Don't swim against the current. If able, swim in a\ndirection following the shoreline. If unable to escape, face the\nshore and call or wave for help.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "CFWJAX"
-          ],
-          "WMOidentifier": [
-            "WHUS42 KJAX 071829"
-          ],
-          "NWSheadline": [
-            "HIGH RIP CURRENT RISK IN EFFECT FROM TUESDAY MORNING THROUGH LATE TUESDAY NIGHT"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KJAX.RP.S.0029.260908T1200Z-260909T0800Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-09T04:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "RPS"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.13060b0c50476dbf4f7c51e21639d8a31abba381.001.1",
       "type": "Feature",
       "geometry": null,
@@ -32069,5 +32305,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-08T04:51:45+00:00"
+  "updated": "2026-09-08T04:58:10+00:00"
 }
