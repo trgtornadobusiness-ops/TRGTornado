@@ -10,6 +10,533 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-13643",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-13643",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-13643",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-09-09T02:47:16+00:00",
+        "effective": "2026-09-09T02:47:16+00:00",
+        "onset": null,
+        "expires": "2026-09-09T02:57:16+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 090247"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.40b19b1afabd4c2a416de64e5d8fd14f476af352.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -103.89,
+              37.91
+            ],
+            [
+              -103.9,
+              38.38
+            ],
+            [
+              -103.57,
+              38.47
+            ],
+            [
+              -103.5,
+              38.28
+            ],
+            [
+              -103.46,
+              38.18
+            ],
+            [
+              -103.5,
+              37.84
+            ],
+            [
+              -103.89,
+              37.91
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.40b19b1afabd4c2a416de64e5d8fd14f476af352.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.40b19b1afabd4c2a416de64e5d8fd14f476af352.001.1",
+        "areaDesc": "Crowley, CO; Otero, CO",
+        "geocode": {
+          "SAME": [
+            "008025",
+            "008089"
+          ],
+          "UGC": [
+            "COC025",
+            "COC089"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/COC025",
+          "https://api.weather.gov/zones/county/COC089"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.df61395504f62aa6b693d809f3b8136ebb1dda3e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.df61395504f62aa6b693d809f3b8136ebb1dda3e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-08T20:24:00-06:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.33f3c48142676ce16c48122a8c84c89a959a8483.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.33f3c48142676ce16c48122a8c84c89a959a8483.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-08T20:39:00-06:00"
+          }
+        ],
+        "sent": "2026-09-08T20:47:00-06:00",
+        "effective": "2026-09-08T20:47:00-06:00",
+        "onset": "2026-09-08T20:47:00-06:00",
+        "expires": "2026-09-08T21:00:00-06:00",
+        "ends": "2026-09-08T21:00:00-06:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Pueblo CO",
+        "headline": "Severe Thunderstorm Warning issued September 8 at 8:47PM MDT until September 8 at 9:00PM MDT by NWS Pueblo CO",
+        "description": "At 846 PM MDT, severe thunderstorms were located along a line\nextending from 8 miles north of Ordway to 6 miles southeast of Sugar\nCity to near Rocky Ford, moving east at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated. At 826 PM the public reported 58 mph wind\ngust 2 miles south of Manzanola.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nLa Junta, North La Junta, Rocky Ford, Ordway, Swink, Manzanola, Sugar\nCity, Cheraw, and Crowley.",
+        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nWind damage with these storms will occur before any rain or\nlightning. Do not wait for the sound of thunder before taking cover.\nSEEK SHELTER IMMEDIATELY inside a sturdy structure and stay away from\nwindows.\n\nTorrential rainfall is occurring with these storms, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSPUB"
+          ],
+          "WMOidentifier": [
+            "WWUS55 KPUB 090247"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 900 PM MDT FOR CENTRAL OTERO AND CENTRAL CROWLEY COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-09-09T02:46:00-00:00...storm...280DEG...23KT...38.33,-103.81 38.15,-103.61 37.96,-103.72"
+          ],
+          "windThreat": [
+            "OBSERVED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "Up to .75"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KPUB.SV.W.0324.000000T0000Z-260909T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-08T21:00:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a1d2ae9311a5bdcadb79188a53139b37eeaec2f.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.62,
+              14.9
+            ],
+            [
+              145.57,
+              15.03
+            ],
+            [
+              145.62,
+              15.11
+            ],
+            [
+              145.67,
+              15.13
+            ],
+            [
+              145.69,
+              15.26
+            ],
+            [
+              145.73,
+              15.26
+            ],
+            [
+              145.79,
+              15.31
+            ],
+            [
+              145.82,
+              15.31
+            ],
+            [
+              145.85,
+              15.26
+            ],
+            [
+              145.8,
+              15.2
+            ],
+            [
+              145.81,
+              15.15
+            ],
+            [
+              145.78,
+              15.12
+            ],
+            [
+              145.78,
+              15.08
+            ],
+            [
+              145.76,
+              15.07
+            ],
+            [
+              145.66,
+              15.11
+            ],
+            [
+              145.66,
+              15.04
+            ],
+            [
+              145.69,
+              15.01
+            ],
+            [
+              145.68,
+              14.93
+            ],
+            [
+              145.63,
+              14.9
+            ],
+            [
+              145.62,
+              14.9
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a1d2ae9311a5bdcadb79188a53139b37eeaec2f.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a1d2ae9311a5bdcadb79188a53139b37eeaec2f.001.1",
+        "areaDesc": "Saipan, MP; Tinian, MP",
+        "geocode": {
+          "SAME": [
+            "069110",
+            "069120"
+          ],
+          "UGC": [
+            "MPC110",
+            "MPC120"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MPC110",
+          "https://api.weather.gov/zones/county/MPC120"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4eb7568626c00f2ee3baf329300514aa1a6a3e7e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.4eb7568626c00f2ee3baf329300514aa1a6a3e7e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-09T11:47:00+10:00"
+          }
+        ],
+        "sent": "2026-09-09T12:47:00+10:00",
+        "effective": "2026-09-09T12:47:00+10:00",
+        "onset": "2026-09-09T12:47:00+10:00",
+        "expires": "2026-09-09T14:00:00+10:00",
+        "ends": "2026-09-09T14:00:00+10:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Tiyan GU",
+        "headline": "Flood Advisory issued September 9 at 12:47PM ChST until September 9 at 2:00PM ChST by NWS Tiyan GU",
+        "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall continues.\n\n* WHERE...Saipan...\nTinian...\n\n* WHEN...Until 200 PM ChST.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nPossible water over roadways. Rises in small streams.\n\n* ADDITIONAL DETAILS...\n- At 1246 PM ChST, Doppler radar indicated heavy rain due to\nthunderstorms. This  will cause urban and small stream flooding.\n- Some locations that will experience flooding include...\nGarapan, Dandan, China Town, Tanapag, As Mahetog, Koblerville,\nSan Jose (Tinian Municipality), Chalan Kanoa I, San Antonio,\nChalan Kanoa II, Chalan Kanoa III, San Roque, Kagman, Chalan\nKanoa IV, Kagman III, Gualo Rai, Afetnas, Chalan Piao, Fananganan\nand Chalan Laulau.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGUM"
+          ],
+          "WMOidentifier": [
+            "WGMY80 PGUM 090247"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY NOW IN EFFECT UNTIL 2 PM CHST THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXT.PGUM.FA.Y.0086.000000T0000Z-260909T0400Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-09T14:00:00+10:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9ec71779a88ea19c02410e0a70e45ee18fc36c67.002.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -91.07,
+              42.18
+            ],
+            [
+              -90.9,
+              42.09
+            ],
+            [
+              -90.9,
+              41.64
+            ],
+            [
+              -91.24,
+              41.6
+            ],
+            [
+              -91.32,
+              41.84
+            ],
+            [
+              -91.36,
+              42.11
+            ],
+            [
+              -91.07,
+              42.18
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9ec71779a88ea19c02410e0a70e45ee18fc36c67.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.9ec71779a88ea19c02410e0a70e45ee18fc36c67.002.1",
+        "areaDesc": "Cedar, IA; Jones, IA",
+        "geocode": {
+          "SAME": [
+            "019031",
+            "019105"
+          ],
+          "UGC": [
+            "IAC031",
+            "IAC105"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/IAC031",
+          "https://api.weather.gov/zones/county/IAC105"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eb194da1a32316fae3f4f654a9d8b12bb852773a.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.eb194da1a32316fae3f4f654a9d8b12bb852773a.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-08T21:07:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97a6004ac14007f31467c29ed9d7b92212b8b5bf.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.97a6004ac14007f31467c29ed9d7b92212b8b5bf.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-08T21:24:00-05:00"
+          }
+        ],
+        "sent": "2026-09-08T21:40:00-05:00",
+        "effective": "2026-09-08T21:40:00-05:00",
+        "onset": "2026-09-08T21:40:00-05:00",
+        "expires": "2026-09-08T22:15:00-05:00",
+        "ends": "2026-09-08T22:15:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Quad Cities IA IL",
+        "headline": "Severe Thunderstorm Warning issued September 8 at 9:40PM CDT until September 8 at 10:15PM CDT by NWS Quad Cities IA IL",
+        "description": "At 939 PM CDT, severe thunderstorms were located along a line\nextending from near Olin to near Clarence to near Moscow, moving east\nat 40 mph.\n\nHAZARD...60 mph wind gusts and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nAnamosa, Tipton, Mechanicsville, Stanwood, Lowden, Olin, Wyoming,\nOxford Junction, Bennett, Onslow, Morley, Center Junction, Rochester,\nBuchanan, Clarence, Cedar Valley, Bennett Park, Sunbury, Tipton\nMatthews Airport, and Cedar County Fairgrounds.\n\nThis includes Interstate 80 in Iowa between mile markers 260 and 275.",
+        "instruction": "A tornado watch remains in effect for the warned area. Tornadoes can\ndevelop quickly from severe thunderstorms. Although a tornado is not\nimmediately likely, if one is spotted act quickly and move to a place\nof safety inside a sturdy structure, such as a basement or small\ninterior room.\n\nFor your protection move to an interior room on the lowest floor of a\nsturdy building.\n\nContinuous cloud to ground lightning is occurring with these storms.\nMove indoors immediately. Lightning is one of nature's leading\nkillers. Remember, if you can hear thunder, you are close enough to\nbe struck by lightning.\n\nTorrential rainfall is occurring with these storms, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
+        "response": "Shelter",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSDVN"
+          ],
+          "WMOidentifier": [
+            "WWUS53 KDVN 090240"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 1015 PM CDT FOR CEDAR AND SOUTHERN JONES COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2026-09-09T02:39:00-00:00...storm...270DEG...33KT...41.99,-91.19 41.83,-91.06 41.63,-91.12"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "0.88"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KDVN.SV.W.0288.000000T0000Z-260909T0315Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-08T22:15:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SVS"
+          ],
+          "NationalWeatherService": [
+            "SVW"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.94e48368c392ab3901ebe7c3456160d1a2dd9a4c.001.1",
       "type": "Feature",
       "geometry": null,
@@ -390,284 +917,6 @@
         "eventCode": {
           "SAME": [
             "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.df61395504f62aa6b693d809f3b8136ebb1dda3e.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -104.08,
-              37.94
-            ],
-            [
-              -104.12,
-              38.38
-            ],
-            [
-              -103.58,
-              38.51
-            ],
-            [
-              -103.5,
-              38.28
-            ],
-            [
-              -103.46,
-              38.18
-            ],
-            [
-              -103.5,
-              37.84
-            ],
-            [
-              -104.08,
-              37.94
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.df61395504f62aa6b693d809f3b8136ebb1dda3e.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.df61395504f62aa6b693d809f3b8136ebb1dda3e.001.1",
-        "areaDesc": "Crowley, CO; Otero, CO; Pueblo, CO",
-        "geocode": {
-          "SAME": [
-            "008025",
-            "008089",
-            "008101"
-          ],
-          "UGC": [
-            "COC025",
-            "COC089",
-            "COC101"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/COC025",
-          "https://api.weather.gov/zones/county/COC089",
-          "https://api.weather.gov/zones/county/COC101"
-        ],
-        "references": [],
-        "sent": "2026-09-08T20:24:00-06:00",
-        "effective": "2026-09-08T20:24:00-06:00",
-        "onset": "2026-09-08T20:24:00-06:00",
-        "expires": "2026-09-08T21:00:00-06:00",
-        "ends": "2026-09-08T21:00:00-06:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Pueblo CO",
-        "headline": "Severe Thunderstorm Warning issued September 8 at 8:24PM MDT until September 8 at 9:00PM MDT by NWS Pueblo CO",
-        "description": "SVRPUB\n\nThe National Weather Service in Pueblo has issued a\n\n* Severe Thunderstorm Warning for...\nCentral Otero County in southeastern Colorado...\nCrowley County in southeastern Colorado...\nEast central Pueblo County in southeastern Colorado...\n\n* Until 900 PM MDT.\n\n* At 823 PM MDT, severe thunderstorms were located along a line\nextending from 12 miles north of Olney Springs to near Crowley to 9\nmiles south of Manzanola, moving east at 25 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nLa Junta, North La Junta, Rocky Ford, Fowler, Ordway, Swink,\nManzanola, Olney Springs, Sugar City, Cheraw, and Crowley.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nWind damage with these storms will occur before any rain or\nlightning. Do not wait for the sound of thunder before taking cover.\nSEEK SHELTER IMMEDIATELY inside a sturdy structure and stay away from\nwindows.\n\nTorrential rainfall is occurring with these storms, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRPUB"
-          ],
-          "WMOidentifier": [
-            "WUUS55 KPUB 090224"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T02:23:00-00:00...storm...280DEG...23KT...38.35,-104.0 38.16,-103.82 37.97,-103.89"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "Up to .75"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KPUB.SV.W.0324.260909T0224Z-260909T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T21:00:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97a6004ac14007f31467c29ed9d7b92212b8b5bf.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -91.07,
-              42.18
-            ],
-            [
-              -90.9,
-              42.09
-            ],
-            [
-              -90.9,
-              41.64
-            ],
-            [
-              -91.57,
-              41.53
-            ],
-            [
-              -91.56,
-              41.8
-            ],
-            [
-              -91.75,
-              42.02
-            ],
-            [
-              -91.07,
-              42.18
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97a6004ac14007f31467c29ed9d7b92212b8b5bf.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.97a6004ac14007f31467c29ed9d7b92212b8b5bf.001.1",
-        "areaDesc": "Cedar, IA; Johnson, IA; Jones, IA; Linn, IA; Muscatine, IA",
-        "geocode": {
-          "SAME": [
-            "019031",
-            "019103",
-            "019105",
-            "019113",
-            "019139"
-          ],
-          "UGC": [
-            "IAC031",
-            "IAC103",
-            "IAC105",
-            "IAC113",
-            "IAC139"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/IAC031",
-          "https://api.weather.gov/zones/county/IAC103",
-          "https://api.weather.gov/zones/county/IAC105",
-          "https://api.weather.gov/zones/county/IAC113",
-          "https://api.weather.gov/zones/county/IAC139"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eb194da1a32316fae3f4f654a9d8b12bb852773a.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.eb194da1a32316fae3f4f654a9d8b12bb852773a.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-08T21:07:00-05:00"
-          }
-        ],
-        "sent": "2026-09-08T21:24:00-05:00",
-        "effective": "2026-09-08T21:24:00-05:00",
-        "onset": "2026-09-08T21:24:00-05:00",
-        "expires": "2026-09-08T22:15:00-05:00",
-        "ends": "2026-09-08T22:15:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Quad Cities IA IL",
-        "headline": "Severe Thunderstorm Warning issued September 8 at 9:24PM CDT until September 8 at 10:15PM CDT by NWS Quad Cities IA IL",
-        "description": "At 923 PM CDT, severe thunderstorms were located along a line\nextending from near Lisbon to near Buchanan to West Liberty, moving\neast at 45 mph.\n\nHAZARD...60 mph wind gusts and nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nCedar Rapids, Iowa City, Anamosa, Tipton, West Branch,\nMechanicsville, Stanwood, Marion, Coralville, Hiawatha, Mount Vernon,\nWest Liberty, Lisbon, Solon, Ely, Springville, University Heights,\nLowden, Hills, and Olin.\n\nThis includes the following highways...\nInterstate 80 in Iowa between mile markers 243 and 276.\nInterstate 380 between mile markers 17 and 24.",
-        "instruction": "A tornado watch remains in effect for the warned area. Tornadoes can\ndevelop quickly from severe thunderstorms. Although a tornado is not\nimmediately likely, if one is spotted act quickly and move to a place\nof safety inside a sturdy structure, such as a basement or small\ninterior room.\n\nFor your protection move to an interior room on the lowest floor of a\nsturdy building.\n\nContinuous cloud to ground lightning is occurring with these storms.\nMove indoors immediately. Lightning is one of nature's leading\nkillers. Remember, if you can hear thunder, you are close enough to\nbe struck by lightning.\n\nTorrential rainfall is occurring with these storms, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSDVN"
-          ],
-          "WMOidentifier": [
-            "WWUS53 KDVN 090224"
-          ],
-          "NWSheadline": [
-            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 1015 PM CDT FOR CEDAR...NORTHEASTERN JOHNSON...SOUTHERN JONES...NORTHWESTERN MUSCATINE AND SOUTHERN LINN COUNTIES"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T02:23:00-00:00...storm...270DEG...39KT...41.95,-91.36 41.79,-91.23 41.59,-91.28"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "0.88"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KDVN.SV.W.0288.000000T0000Z-260909T0315Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T22:15:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
           ],
           "NationalWeatherService": [
             "SVW"
@@ -2948,355 +3197,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.33fd6e88dc2e526f7fda57c7da928742c5b56dff.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -103.74,
-              38.46
-            ],
-            [
-              -103.57,
-              38.22
-            ],
-            [
-              -103.65,
-              37.98
-            ],
-            [
-              -104.15,
-              38.04
-            ],
-            [
-              -104.16,
-              38.18
-            ],
-            [
-              -104.2,
-              38.36
-            ],
-            [
-              -103.74,
-              38.46
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.33fd6e88dc2e526f7fda57c7da928742c5b56dff.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.33fd6e88dc2e526f7fda57c7da928742c5b56dff.001.1",
-        "areaDesc": "Pueblo Vicinity/Pueblo County Below 6300 Feet; Crowley County; La Junta Vicinity/Otero County",
-        "geocode": {
-          "SAME": [
-            "008101",
-            "008025",
-            "008089"
-          ],
-          "UGC": [
-            "COZ086",
-            "COZ089",
-            "COZ093"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/COZ086",
-          "https://api.weather.gov/zones/forecast/COZ089",
-          "https://api.weather.gov/zones/forecast/COZ093"
-        ],
-        "references": [],
-        "sent": "2026-09-08T20:15:00-06:00",
-        "effective": "2026-09-08T20:15:00-06:00",
-        "onset": "2026-09-08T20:15:00-06:00",
-        "expires": "2026-09-08T20:45:00-06:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Pueblo CO",
-        "headline": "Special Weather Statement issued September 8 at 8:15PM MDT by NWS Pueblo CO",
-        "description": "At 815 PM MDT, Doppler radar was tracking strong thunderstorms along\na line extending from 12 miles northwest of Crowley to near Olney\nSprings to near Manzanola. Movement was east at 25 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nRocky Ford, Fowler, Ordway, Manzanola, Olney Springs, Sugar City, and\nCrowley.",
-        "instruction": "If outdoors, consider seeking shelter inside a building. Strong\nwinds may occur in advance of the rainfall.\n\nTorrential rainfall is also occurring with these storms and may lead\nto localized flooding. Do not drive your vehicle through flooded\nroadways.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSPUB"
-          ],
-          "WMOidentifier": [
-            "WWUS85 KPUB 090215"
-          ],
-          "NWSheadline": [
-            "STRONG THUNDERSTORMS WILL IMPACT NORTHWESTERN OTERO...CROWLEY AND EAST CENTRAL PUEBLO COUNTIES THROUGH 845 PM MDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T02:15:00-00:00...storm...264DEG...20KT...38.32,-104.03 38.19,-103.92 38.07,-103.95"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.909df4658f3920bab88362a2af36f773e3bf1220.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              144.75,
-              13.27
-            ],
-            [
-              144.76,
-              13.38
-            ],
-            [
-              144.81,
-              13.44
-            ],
-            [
-              144.86,
-              13.45
-            ],
-            [
-              144.95,
-              13.43
-            ],
-            [
-              144.89,
-              13.22
-            ],
-            [
-              144.75,
-              13.27
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.909df4658f3920bab88362a2af36f773e3bf1220.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.909df4658f3920bab88362a2af36f773e3bf1220.001.1",
-        "areaDesc": "Guam Coastal Waters",
-        "geocode": {
-          "SAME": [
-            "065151"
-          ],
-          "UGC": [
-            "PMZ151"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PMZ151"
-        ],
-        "references": [],
-        "sent": "2026-09-09T12:11:00+10:00",
-        "effective": "2026-09-09T12:08:00+10:00",
-        "onset": "2026-09-09T12:11:00+10:00",
-        "expires": "2026-09-09T12:45:00+10:00",
-        "ends": "2026-09-09T12:45:00+10:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Special Marine Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Tiyan GU",
-        "headline": "Special Marine Warning issued September 9 at 12:08PM ChST until September 9 at 12:45PM ChST by NWS Tiyan GU",
-        "description": "SMWGUM\n\nTHE NATIONAL WEATHER SERVICE IN TIYAN GUAM HAS ISSUED A\n\n* SPECIAL MARINE WARNING FOR...\nGUAM COASTAL WATERS...\n\n* UNTIL 1245 PM CHST.\n\n* AT 1208 PM CHST...A SEVERE THUNDERSTORM CAPABLE OF PRODUCING\nWATERSPOUTS WAS LOCATED SOUTHWEST OF GUAM MOVING SOUTHWEST AT 5\nKNOTS.\n\nHAZARD...WATERSPOUTS AND WIND GUSTS 34 KNOTS OR GREATER.\n\nSOURCE...MARINE WEATHER SPOTTER.\n\nIMPACT...WATERSPOUTS CAN EASILY OVERTURN BOATS AND CREATE LOCALLY\n\nHAZARDOUS SEAS. SMALL CRAFT COULD BE DAMAGED IN BRIEFLY\n\nHIGHER WINDS AND SUDDENLY HIGHER WAVES.\n\n* THE SEVERE THUNDERSTORM WILL REMAIN OVER MAINLY OPEN WATERS.",
-        "instruction": "THUNDERSTORMS CAN PRODUCE SUDDEN WATERSPOUTS. WATERSPOUTS CAN EASILY\nOVERTURN BOATS AND CREATE LOCALLY HAZARDOUS SEAS. SEEK SAFE HARBOR\nIMMEDIATELY.\n\nLAT...LON 1327 14475 1338 14476 1344 14481 1345 14486\n1343 14495 1322 14489\nTIME...MOT...LOC 0208Z 025DEG 6KT 1341 14485\n\nWATERSPOUT...POSSIBLE\nHAIL...0.00IN\nWIND...>34KTS",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SMWGUM"
-          ],
-          "WMOidentifier": [
-            "WHMY50 PGUM 090211"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T02:08:00-00:00...storm...025DEG...6KT...13.41,144.85"
-          ],
-          "waterspoutDetection": [
-            "POSSIBLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.PGUM.MA.W.0024.260909T0211Z-260909T0245Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-09T12:45:00+10:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SMW"
-          ],
-          "NationalWeatherService": [
-            "MAW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.51159529cbffdef8b5443dc1fdfbbfa3aab5a0f1.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -102.75,
-              37.74
-            ],
-            [
-              -102.97,
-              37.82
-            ],
-            [
-              -102.88,
-              38.18
-            ],
-            [
-              -102.56,
-              38.08
-            ],
-            [
-              -102.75,
-              37.74
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.51159529cbffdef8b5443dc1fdfbbfa3aab5a0f1.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.51159529cbffdef8b5443dc1fdfbbfa3aab5a0f1.001.1",
-        "areaDesc": "Las Animas Vicinity/Bent County; Lamar Vicinity/Prowers County",
-        "geocode": {
-          "SAME": [
-            "008011",
-            "008099"
-          ],
-          "UGC": [
-            "COZ097",
-            "COZ098"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/COZ097",
-          "https://api.weather.gov/zones/forecast/COZ098"
-        ],
-        "references": [],
-        "sent": "2026-09-08T20:09:00-06:00",
-        "effective": "2026-09-08T20:09:00-06:00",
-        "onset": "2026-09-08T20:09:00-06:00",
-        "expires": "2026-09-08T20:45:00-06:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Pueblo CO",
-        "headline": "Special Weather Statement issued September 8 at 8:09PM MDT by NWS Pueblo CO",
-        "description": "At 809 PM MDT, Doppler radar was tracking a strong thunderstorm 17\nmiles south of Hasty, or 19 miles southwest of Lamar, moving north at\n25 mph.\n\nHAZARD...Wind gusts up to 50 mph and brief small hail up to one half\ninch in diameter.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nLamar and McClave.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSPUB"
-          ],
-          "WMOidentifier": [
-            "WWUS85 KPUB 090209"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT WEST CENTRAL PROWERS AND NORTHEASTERN BENT COUNTIES THROUGH 845 PM MDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T02:09:00-00:00...storm...200DEG...23KT...37.87,-102.85"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.50"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ccf67c77775e280735ba256f133930c5a842bd3b.001.1",
       "type": "Feature",
       "geometry": null,
@@ -3382,114 +3282,6 @@
           ],
           "NationalWeatherService": [
             "FWW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a8ddfd4e799ab08fd85e58e6a5a422b1c5817bab.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -103.15,
-              37.87
-            ],
-            [
-              -103.37,
-              37.93
-            ],
-            [
-              -103.3,
-              38.21
-            ],
-            [
-              -102.98,
-              38.11
-            ],
-            [
-              -103.15,
-              37.87
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a8ddfd4e799ab08fd85e58e6a5a422b1c5817bab.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a8ddfd4e799ab08fd85e58e6a5a422b1c5817bab.001.1",
-        "areaDesc": "Las Animas Vicinity/Bent County",
-        "geocode": {
-          "SAME": [
-            "008011"
-          ],
-          "UGC": [
-            "COZ097"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/COZ097"
-        ],
-        "references": [],
-        "sent": "2026-09-08T20:04:00-06:00",
-        "effective": "2026-09-08T20:04:00-06:00",
-        "onset": "2026-09-08T20:04:00-06:00",
-        "expires": "2026-09-08T20:45:00-06:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Pueblo CO",
-        "headline": "Special Weather Statement issued September 8 at 8:04PM MDT by NWS Pueblo CO",
-        "description": "At 804 PM MDT, Doppler radar was tracking a strong thunderstorm 8\nmiles south of Las Animas, or 14 miles east of North La Junta, moving\nnorth at 15 mph.\n\nHAZARD...Wind gusts up to 50 mph and half inch hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nLas Animas, John Martin Reservoir, and Fort Lyon.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSPUB"
-          ],
-          "WMOidentifier": [
-            "WWUS85 KPUB 090204"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT NORTHWESTERN BENT COUNTY THROUGH 845 PM MDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T02:04:00-00:00...storm...202DEG...13KT...37.95,-103.26"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.50"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
           ]
         }
       }
@@ -3603,171 +3395,6 @@
           ],
           "eventEndingTime": [
             "2026-09-08T20:45:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4eb7568626c00f2ee3baf329300514aa1a6a3e7e.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.62,
-              14.9
-            ],
-            [
-              145.57,
-              15.03
-            ],
-            [
-              145.62,
-              15.11
-            ],
-            [
-              145.67,
-              15.13
-            ],
-            [
-              145.69,
-              15.26
-            ],
-            [
-              145.73,
-              15.26
-            ],
-            [
-              145.79,
-              15.31
-            ],
-            [
-              145.82,
-              15.31
-            ],
-            [
-              145.85,
-              15.26
-            ],
-            [
-              145.8,
-              15.2
-            ],
-            [
-              145.81,
-              15.15
-            ],
-            [
-              145.78,
-              15.12
-            ],
-            [
-              145.78,
-              15.08
-            ],
-            [
-              145.76,
-              15.07
-            ],
-            [
-              145.66,
-              15.11
-            ],
-            [
-              145.66,
-              15.04
-            ],
-            [
-              145.69,
-              15.01
-            ],
-            [
-              145.68,
-              14.93
-            ],
-            [
-              145.63,
-              14.9
-            ],
-            [
-              145.62,
-              14.9
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4eb7568626c00f2ee3baf329300514aa1a6a3e7e.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.4eb7568626c00f2ee3baf329300514aa1a6a3e7e.001.1",
-        "areaDesc": "Saipan, MP; Tinian, MP",
-        "geocode": {
-          "SAME": [
-            "069110",
-            "069120"
-          ],
-          "UGC": [
-            "MPC110",
-            "MPC120"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MPC110",
-          "https://api.weather.gov/zones/county/MPC120"
-        ],
-        "references": [],
-        "sent": "2026-09-09T11:47:00+10:00",
-        "effective": "2026-09-09T11:47:00+10:00",
-        "onset": "2026-09-09T11:47:00+10:00",
-        "expires": "2026-09-09T13:00:00+10:00",
-        "ends": "2026-09-09T13:00:00+10:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Tiyan GU",
-        "headline": "Flood Advisory issued September 9 at 11:47AM ChST until September 9 at 1:00PM ChST by NWS Tiyan GU",
-        "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Saipan...\nTinian...\n\n* WHEN...Until 100 PM ChST.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways is possible. Rises in small streams.\n\n* ADDITIONAL DETAILS...\n- At 1146 AM ChST, Doppler radar indicated heavy rain due to\nthunderstorms. This  will cause urban and small stream flooding.\n- Some locations that will experience flooding include...\nGarapan, Dandan, China Town, Tanapag, As Mahetog, Koblerville,\nSan Jose (Tinian Municipality), Chalan Kanoa I, San Antonio,\nChalan Kanoa II, Chalan Kanoa III, San Roque, Kagman, Chalan\nKanoa IV, Kagman III, Gualo Rai, Afetnas, Chalan Piao, Fananganan\nand Chalan Laulau.\n- http://www.weather.gov/safety/flood",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSGUM"
-          ],
-          "WMOidentifier": [
-            "WGMY80 PGUM 090147"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 1 PM CHST THIS AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.PGUM.FA.Y.0086.260909T0147Z-260909T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-09T13:00:00+10:00"
           ]
         },
         "scope": "Public",
@@ -5308,128 +4935,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3fc77cf73696c289eb8353859ad24085c0c927a9.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -109.05,
-              32.34
-            ],
-            [
-              -108.84,
-              32.46
-            ],
-            [
-              -108.61,
-              32.46
-            ],
-            [
-              -108.56,
-              32.29
-            ],
-            [
-              -108.69,
-              32.27
-            ],
-            [
-              -108.76,
-              32.19
-            ],
-            [
-              -108.66,
-              32.03
-            ],
-            [
-              -109.03,
-              32
-            ],
-            [
-              -109.05,
-              32.08
-            ],
-            [
-              -109.05,
-              32.34
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3fc77cf73696c289eb8353859ad24085c0c927a9.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.3fc77cf73696c289eb8353859ad24085c0c927a9.001.1",
-        "areaDesc": "Hidalgo, NM",
-        "geocode": {
-          "SAME": [
-            "035023"
-          ],
-          "UGC": [
-            "NMC023"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NMC023"
-        ],
-        "references": [],
-        "sent": "2026-09-08T19:11:00-06:00",
-        "effective": "2026-09-08T19:11:00-06:00",
-        "onset": "2026-09-08T19:11:00-06:00",
-        "expires": "2026-09-08T20:45:00-06:00",
-        "ends": "2026-09-08T20:45:00-06:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Dust Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS El Paso Tx/Santa Teresa NM",
-        "headline": "Dust Advisory issued September 8 at 7:11PM MDT until September 8 at 8:45PM MDT by NWS El Paso Tx/Santa Teresa NM",
-        "description": "The National Weather Service in El Paso has issued a\n\n* Dust Advisory for...\nNorthwestern Hidalgo County in southwestern New Mexico...\n\n* Until 845 PM MDT.\n\n* At 710 PM MDT, a strong thunderstorm was located just south of\nLordsburg. Outflow winds from this storm are likely to produce\nblowing dust in Lordsburg, Lordsburg Playa, and down towards\nCotton City in the next hour.\n\nHAZARD...Less than one mile visibility with strong winds up to 40\nmph.\n\nSOURCE...Detected by National Weather Service meteorologists.\n\nIMPACT...Hazardous travel.\n\n* This includes Interstate 10 in New Mexico between mile markers 1\nand 32.\n\nLocations impacted include...\nLordsburg, Cotton City, Steins, Road Forks, Lordsburg Playa, Granite\nGap, Shakespeare, and Pyramid Mountains.",
-        "instruction": "Blowing dust brings reduced visibility, leading to dangerous driving\nconditions. If driving, avoid blowing dust if possible. If caught in\ndense blowing dust, pull off the road, turn off your lights and keep\nyour foot off the brake.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "DSWEPZ"
-          ],
-          "WMOidentifier": [
-            "WWUS54 KEPZ 090111"
-          ],
-          "eventMotionDescription": [
-            "2026-09-09T01:10:00-00:00...storm...180DEG...0KT...32.26,-108.81"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KEPZ.DS.Y.0050.260909T0111Z-260909T0245Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T20:45:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "DSY"
           ]
         }
       }
@@ -9076,250 +8581,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0bca5b4378a24693d1e986e9e53fab8913a41c54.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -103,
-              36.8
-            ],
-            [
-              -103.08,
-              36.76
-            ],
-            [
-              -103.16,
-              36.73
-            ],
-            [
-              -103.2,
-              36.72
-            ],
-            [
-              -103.29,
-              36.73
-            ],
-            [
-              -103.27,
-              36.9
-            ],
-            [
-              -103.26,
-              36.9
-            ],
-            [
-              -103.18,
-              36.95
-            ],
-            [
-              -103,
-              36.98
-            ],
-            [
-              -103,
-              36.8
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0bca5b4378a24693d1e986e9e53fab8913a41c54.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.0bca5b4378a24693d1e986e9e53fab8913a41c54.001.1",
-        "areaDesc": "Union, NM",
-        "geocode": {
-          "SAME": [
-            "035059"
-          ],
-          "UGC": [
-            "NMC059"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NMC059"
-        ],
-        "references": [],
-        "sent": "2026-09-08T17:47:00-06:00",
-        "effective": "2026-09-08T17:47:00-06:00",
-        "onset": "2026-09-08T17:47:00-06:00",
-        "expires": "2026-09-08T20:45:00-06:00",
-        "ends": "2026-09-08T20:45:00-06:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Albuquerque NM",
-        "headline": "Flood Advisory issued September 8 at 5:47PM MDT until September 8 at 8:45PM MDT by NWS Albuquerque NM",
-        "description": "* WHAT...Arroyo and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Northeastern Union County in northeastern New Mexico...\n\n* WHEN...Until 845 PM MDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 547 PM MDT, Doppler radar indicated heavy rain due to\nthunderstorms. This  will cause arroyo and small stream flooding.\nBetween 1 and 2 inches of rain have fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nMainly rural areas of Northeastern Union County.\n- http://www.weather.gov/safety/flood",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSABQ"
-          ],
-          "WMOidentifier": [
-            "WGUS85 KABQ 082347"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 845 PM MDT THIS EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KABQ.FA.Y.0240.260908T2347Z-260909T0245Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T20:45:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.caf18d876ffe0ff468eb204d79e1e513e1c7cb45.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -105.61,
-              33.4
-            ],
-            [
-              -105.6,
-              33.36
-            ],
-            [
-              -105.58,
-              33.34
-            ],
-            [
-              -105.53,
-              33.31
-            ],
-            [
-              -105.52,
-              33.33
-            ],
-            [
-              -105.53,
-              33.36
-            ],
-            [
-              -105.52,
-              33.39
-            ],
-            [
-              -105.55,
-              33.43
-            ],
-            [
-              -105.6,
-              33.43
-            ],
-            [
-              -105.61,
-              33.4
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.caf18d876ffe0ff468eb204d79e1e513e1c7cb45.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.caf18d876ffe0ff468eb204d79e1e513e1c7cb45.001.1",
-        "areaDesc": "Lincoln, NM",
-        "geocode": {
-          "SAME": [
-            "035027"
-          ],
-          "UGC": [
-            "NMC027"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/NMC027"
-        ],
-        "references": [],
-        "sent": "2026-09-08T17:40:00-06:00",
-        "effective": "2026-09-08T17:40:00-06:00",
-        "onset": "2026-09-08T17:40:00-06:00",
-        "expires": "2026-09-08T20:45:00-06:00",
-        "ends": "2026-09-08T20:45:00-06:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Albuquerque NM",
-        "headline": "Flood Advisory issued September 8 at 5:40PM MDT until September 8 at 8:45PM MDT by NWS Albuquerque NM",
-        "description": "* WHAT...Arroyo and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...South Central Lincoln County in central New Mexico...\n\n* WHEN...Until 845 PM MDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 540 PM MDT, Doppler radar indicated heavy rain due to\nthunderstorms. This  will cause arroyo and small stream flooding.\nBetween 0.5 and 1.25 inches of rain have fallen.\n- Additional rainfall amounts of 0.25 to 0.75 inches are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nMainly rural areas of South Central Lincoln County.\n- http://www.weather.gov/safety/flood",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nIn hilly or mountainous terrain there are numerous low water\ncrossings which are potentially dangerous in heavy rain. Do not\nattempt to cross flooded roads. Find an alternate route.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSABQ"
-          ],
-          "WMOidentifier": [
-            "WGUS85 KABQ 082340"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 845 PM MDT THIS EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KABQ.FA.Y.0239.260908T2340Z-260909T0245Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-08T20:45:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
           ]
         }
       }
@@ -31382,5 +30643,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-09T02:37:23+00:00"
+  "updated": "2026-09-09T02:47:58+00:00"
 }
