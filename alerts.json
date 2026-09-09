@@ -10,56 +10,93 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-48046",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e2c4b8e72633ea5f0c8b5458adb4f394e87aca46.001.1",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-48046",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e2c4b8e72633ea5f0c8b5458adb4f394e87aca46.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-48046",
-        "areaDesc": "Montgomery",
+        "id": "urn:oid:2.49.0.1.840.0.e2c4b8e72633ea5f0c8b5458adb4f394e87aca46.001.1",
+        "areaDesc": "Stewart; Montgomery; Robertson; Houston; Humphreys; Dickson; Cheatham; Davidson",
         "geocode": {
           "SAME": [
-            "024031"
+            "047161",
+            "047125",
+            "047147",
+            "047083",
+            "047085",
+            "047043",
+            "047021",
+            "047037"
           ],
           "UGC": [
-            "MDC031"
+            "TNZ005",
+            "TNZ006",
+            "TNZ007",
+            "TNZ023",
+            "TNZ024",
+            "TNZ025",
+            "TNZ026",
+            "TNZ027"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
+          "https://api.weather.gov/zones/forecast/TNZ005",
+          "https://api.weather.gov/zones/forecast/TNZ006",
+          "https://api.weather.gov/zones/forecast/TNZ007",
+          "https://api.weather.gov/zones/forecast/TNZ023",
+          "https://api.weather.gov/zones/forecast/TNZ024",
+          "https://api.weather.gov/zones/forecast/TNZ025",
+          "https://api.weather.gov/zones/forecast/TNZ026",
+          "https://api.weather.gov/zones/forecast/TNZ027"
         ],
-        "references": [],
-        "sent": "2026-09-09T03:17:16+00:00",
-        "effective": "2026-09-09T03:17:16+00:00",
-        "onset": null,
-        "expires": "2026-09-09T03:27:16+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6bc199f995da87a56ab1044754b28f2ebf4f7fb4.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.6bc199f995da87a56ab1044754b28f2ebf4f7fb4.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-08T11:52:00-05:00"
+          }
+        ],
+        "sent": "2026-09-08T22:34:00-05:00",
+        "effective": "2026-09-08T22:34:00-05:00",
+        "onset": "2026-09-09T11:00:00-05:00",
+        "expires": "2026-09-09T11:00:00-05:00",
+        "ends": "2026-09-09T20:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
         "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Heat Advisory",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "senderName": "NWS Nashville TN",
+        "headline": "Heat Advisory issued September 8 at 10:34PM CDT until September 9 at 8:00PM CDT by NWS Nashville TN",
+        "description": "* WHAT...Heat index values up to 105 expected.\n\n* WHERE...Cheatham, Davidson, Dickson, Houston, Humphreys,\nMontgomery, Robertson, and Stewart Counties.\n\n* WHEN...From 11 AM to 8 PM CDT Wednesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
+        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
+        "response": "Execute",
+        "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "KEPWBC"
+            "NPWOHX"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 090317"
+            "WWUS74 KOHX 090334"
+          ],
+          "NWSheadline": [
+            "HEAT ADVISORY REMAINS IN EFFECT FROM 11 AM TO 8 PM CDT WEDNESDAY"
           ],
           "BLOCKCHANNEL": [
-            "CMAS",
             "EAS",
-            "NWEM"
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KOHX.HT.Y.0008.260909T1600Z-260910T0100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-09T20:00:00-05:00"
           ]
         },
         "scope": "Public",
@@ -71,32 +108,32 @@
             "NWS"
           ],
           "NationalWeatherService": [
-            "TST"
+            "HTY"
           ]
         }
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.105c955d179412bd11991372036f2070d63fd46d.001.1",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a859d60aaa31a2f85f3f841b023154b9fbf7f3a9.001.1",
       "type": "Feature",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              -102.58,
-              38.03
+              -102.57,
+              38.06
             ],
             [
-              -102.72,
-              38.13
+              -102.81,
+              38.21
             ],
             [
-              -103.06,
-              38.25
+              -103,
+              38.32
             ],
             [
-              -103.17,
+              -102.98,
               38.61
             ],
             [
@@ -108,16 +145,16 @@
               38.47
             ],
             [
-              -102.58,
-              38.03
+              -102.57,
+              38.06
             ]
           ]
         ]
       },
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.105c955d179412bd11991372036f2070d63fd46d.001.1",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a859d60aaa31a2f85f3f841b023154b9fbf7f3a9.001.1",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.105c955d179412bd11991372036f2070d63fd46d.001.1",
+        "id": "urn:oid:2.49.0.1.840.0.a859d60aaa31a2f85f3f841b023154b9fbf7f3a9.001.1",
         "areaDesc": "Bent, CO; Kiowa, CO; Prowers, CO",
         "geocode": {
           "SAME": [
@@ -136,14 +173,21 @@
           "https://api.weather.gov/zones/county/COC061",
           "https://api.weather.gov/zones/county/COC099"
         ],
-        "references": [],
-        "sent": "2026-09-08T21:17:00-06:00",
-        "effective": "2026-09-08T21:17:00-06:00",
-        "onset": "2026-09-08T21:17:00-06:00",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.105c955d179412bd11991372036f2070d63fd46d.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.105c955d179412bd11991372036f2070d63fd46d.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-08T21:17:00-06:00"
+          }
+        ],
+        "sent": "2026-09-08T21:29:00-06:00",
+        "effective": "2026-09-08T21:29:00-06:00",
+        "onset": "2026-09-08T21:29:00-06:00",
         "expires": "2026-09-08T22:00:00-06:00",
         "ends": "2026-09-08T22:00:00-06:00",
         "status": "Actual",
-        "messageType": "Alert",
+        "messageType": "Update",
         "category": "Met",
         "severity": "Severe",
         "certainty": "Observed",
@@ -151,20 +195,23 @@
         "event": "Severe Thunderstorm Warning",
         "sender": "w-nws.webmaster@noaa.gov",
         "senderName": "NWS Pueblo CO",
-        "headline": "Severe Thunderstorm Warning issued September 8 at 9:17PM MDT until September 8 at 10:00PM MDT by NWS Pueblo CO",
-        "description": "SVRPUB\n\nThe National Weather Service in Pueblo has issued a\n\n* Severe Thunderstorm Warning for...\nNorthwestern Prowers County in southeastern Colorado...\nCentral Kiowa County in southeastern Colorado...\nNortheastern Bent County in southeastern Colorado...\n\n* Until 1000 PM MDT.\n\n* At 916 PM MDT, severe thunderstorms were located along a line\nextending from 11 miles west of Sweetwater Reservoir to near\nNeegronda Reservoir to near Lamar, moving north at 40 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage\nto roofs, siding, and trees.\n\n* Locations impacted include...\nEads, Wiley, Neeoshe Reservoir, Sweetwater Reservoir, Chivington,\nBrandon, Neegronda Reservoir, and Queens Reservoir.",
+        "headline": "Severe Thunderstorm Warning issued September 8 at 9:29PM MDT until September 8 at 10:00PM MDT by NWS Pueblo CO",
+        "description": "At 929 PM MDT, severe thunderstorms were located along a line\nextending from 7 miles southwest of Eads to Queens Reservoir to 11\nmiles northwest of Bristol, moving northeast at 35 mph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nEads, Wiley, Neeoshe Reservoir, Sweetwater Reservoir, Chivington,\nBrandon, Neegronda Reservoir, and Queens Reservoir.",
         "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nTorrential rainfall is occurring with these storms, and may lead to\nflash flooding. Do not drive your vehicle through flooded roadways.",
         "response": "Shelter",
         "note": null,
         "parameters": {
           "AWIPSidentifier": [
-            "SVRPUB"
+            "SVSPUB"
           ],
           "WMOidentifier": [
-            "WUUS55 KPUB 090317"
+            "WWUS55 KPUB 090329"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 1000 PM MDT FOR NORTHWESTERN PROWERS...CENTRAL KIOWA AND NORTHEASTERN BENT COUNTIES"
           ],
           "eventMotionDescription": [
-            "2026-09-09T03:16:00-00:00...storm...172DEG...37KT...38.34,-102.98 38.24,-102.72 38.14,-102.58"
+            "2026-09-09T03:29:00-00:00...storm...216DEG...30KT...38.42,-102.89 38.31,-102.63 38.21,-102.49"
           ],
           "windThreat": [
             "RADAR INDICATED"
@@ -176,7 +223,7 @@
             "RADAR INDICATED"
           ],
           "maxHailSize": [
-            "1.00"
+            "0.75"
           ],
           "BLOCKCHANNEL": [
             "EAS",
@@ -187,7 +234,7 @@
             "WXR"
           ],
           "VTEC": [
-            "/O.NEW.KPUB.SV.W.0326.260909T0317Z-260909T0400Z/"
+            "/O.CON.KPUB.SV.W.0326.000000T0000Z-260909T0400Z/"
           ],
           "eventEndingTime": [
             "2026-09-08T22:00:00-06:00"
@@ -199,7 +246,7 @@
         "web": "http://www.weather.gov",
         "eventCode": {
           "SAME": [
-            "SVR"
+            "SVS"
           ],
           "NationalWeatherService": [
             "SVW"
@@ -23117,103 +23164,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6bc199f995da87a56ab1044754b28f2ebf4f7fb4.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6bc199f995da87a56ab1044754b28f2ebf4f7fb4.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.6bc199f995da87a56ab1044754b28f2ebf4f7fb4.001.1",
-        "areaDesc": "Stewart; Montgomery; Robertson; Houston; Humphreys; Dickson; Cheatham; Davidson",
-        "geocode": {
-          "SAME": [
-            "047161",
-            "047125",
-            "047147",
-            "047083",
-            "047085",
-            "047043",
-            "047021",
-            "047037"
-          ],
-          "UGC": [
-            "TNZ005",
-            "TNZ006",
-            "TNZ007",
-            "TNZ023",
-            "TNZ024",
-            "TNZ025",
-            "TNZ026",
-            "TNZ027"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/TNZ005",
-          "https://api.weather.gov/zones/forecast/TNZ006",
-          "https://api.weather.gov/zones/forecast/TNZ007",
-          "https://api.weather.gov/zones/forecast/TNZ023",
-          "https://api.weather.gov/zones/forecast/TNZ024",
-          "https://api.weather.gov/zones/forecast/TNZ025",
-          "https://api.weather.gov/zones/forecast/TNZ026",
-          "https://api.weather.gov/zones/forecast/TNZ027"
-        ],
-        "references": [],
-        "sent": "2026-09-08T11:52:00-05:00",
-        "effective": "2026-09-08T11:52:00-05:00",
-        "onset": "2026-09-09T11:00:00-05:00",
-        "expires": "2026-09-09T01:00:00-05:00",
-        "ends": "2026-09-09T20:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Heat Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Nashville TN",
-        "headline": "Heat Advisory issued September 8 at 11:52AM CDT until September 9 at 8:00PM CDT by NWS Nashville TN",
-        "description": "* WHAT...Heat index values up to 105 expected.\n\n* WHERE...Cheatham, Davidson, Dickson, Houston, Humphreys,\nMontgomery, Robertson, and Stewart Counties.\n\n* WHEN...From 11 AM to 8 PM CDT Wednesday.\n\n* IMPACTS...Hot temperatures and high humidity may cause heat\nillnesses.",
-        "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWOHX"
-          ],
-          "WMOidentifier": [
-            "WWUS74 KOHX 081652"
-          ],
-          "NWSheadline": [
-            "HEAT ADVISORY IN EFFECT FROM 11 AM TO 8 PM CDT WEDNESDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KOHX.HT.Y.0008.260909T1600Z-260910T0100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-09T20:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "HTY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1a411806d6fddd952bd150c08086b4d838a4173a.001.1",
       "type": "Feature",
       "geometry": null,
@@ -30080,5 +30030,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-09T03:17:45+00:00"
+  "updated": "2026-09-09T03:37:19+00:00"
 }
