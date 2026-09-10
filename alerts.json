@@ -10,102 +10,56 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2cb4ac83b3d45ca51a6791e17a3ce07a889a1311.001.1",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-12507",
       "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -110.11,
-              31.42
-            ],
-            [
-              -110.11,
-              31.44
-            ],
-            [
-              -110.12,
-              31.45
-            ],
-            [
-              -110.1,
-              31.45
-            ],
-            [
-              -110.1,
-              31.42
-            ],
-            [
-              -110.11,
-              31.42
-            ]
-          ]
-        ]
-      },
+      "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2cb4ac83b3d45ca51a6791e17a3ce07a889a1311.001.1",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-12507",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.2cb4ac83b3d45ca51a6791e17a3ce07a889a1311.001.1",
-        "areaDesc": "Cochise, AZ",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-12507",
+        "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
-            "004003"
+            "024031"
           ],
           "UGC": [
-            "AZC003"
+            "MDC031"
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/AZC003"
+          "https://api.weather.gov/zones/county/MDC031"
         ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.bd83466ddb0ded7efda1f5bc671c1b753d2cd5a3.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.bd83466ddb0ded7efda1f5bc671c1b753d2cd5a3.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-10T08:39:00-07:00"
-          }
-        ],
-        "sent": "2026-09-10T14:25:00-07:00",
-        "effective": "2026-09-10T14:25:00-07:00",
-        "onset": "2026-09-10T14:25:00-07:00",
-        "expires": "2026-09-10T14:35:00-07:00",
-        "ends": "2026-09-10T14:30:00-07:00",
-        "status": "Actual",
-        "messageType": "Update",
+        "references": [],
+        "sent": "2026-09-10T21:33:09+00:00",
+        "effective": "2026-09-10T21:33:09+00:00",
+        "onset": null,
+        "expires": "2026-09-10T21:43:09+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
         "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
         "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Tucson AZ",
-        "headline": "Flood Advisory issued September 10 at 2:25PM MST until September 10 at 2:30PM MST by NWS Tucson AZ",
-        "description": "The Flood Advisory will expire at 230 PM MST this afternoon for a\nportion of Southeast Arizona, including the following area, Cochise.\n\nFlood waters have receded. Small stream flooding is no longer\nexpected to pose a threat. Please continue to heed remaining road\nclosures.",
-        "instruction": null,
-        "response": "Avoid",
-        "note": null,
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
         "parameters": {
           "AWIPSidentifier": [
-            "FLSTWC"
+            "KEPWBC"
           ],
           "WMOidentifier": [
-            "WGUS85 KTWC 102125"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY WILL EXPIRE AT 230 PM MST THIS AFTERNOON"
+            "NZUS91 KWBC 102133"
           ],
           "BLOCKCHANNEL": [
+            "CMAS",
             "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXP.KTWC.FA.Y.0137.000000T0000Z-260910T2130Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-10T14:30:00-07:00"
+            "NWEM"
           ]
         },
         "scope": "Public",
@@ -117,7 +71,425 @@
             "NWS"
           ],
           "NationalWeatherService": [
-            "FAY"
+            "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3a4a011969d17856eb18bb70bb46bdf610cea3d5.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -81.11,
+              28.2
+            ],
+            [
+              -81.35,
+              28.16
+            ],
+            [
+              -81.55,
+              28.42
+            ],
+            [
+              -81.14,
+              28.51
+            ],
+            [
+              -81.11,
+              28.2
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3a4a011969d17856eb18bb70bb46bdf610cea3d5.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.3a4a011969d17856eb18bb70bb46bdf610cea3d5.001.1",
+        "areaDesc": "Orange; Osceola",
+        "geocode": {
+          "SAME": [
+            "012095",
+            "012097"
+          ],
+          "UGC": [
+            "FLZ045",
+            "FLZ053"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/FLZ045",
+          "https://api.weather.gov/zones/forecast/FLZ053"
+        ],
+        "references": [],
+        "sent": "2026-09-10T17:31:00-04:00",
+        "effective": "2026-09-10T17:31:00-04:00",
+        "onset": "2026-09-10T17:31:00-04:00",
+        "expires": "2026-09-10T18:00:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Melbourne FL",
+        "headline": "Special Weather Statement issued September 10 at 5:31PM EDT by NWS Melbourne FL",
+        "description": "At 531 PM EDT, Doppler radar was tracking a strong thunderstorm over\nEast Lake Toho, moving north at 25 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nOrlando, Kissimmee, Saint Cloud, Buena Ventura Lakes, and East Lake\nToho.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nConditions are favorable for the development of weak, brief funnel\nclouds. On rare occasions they can briefly touch down, producing wind\ngusts over 50 mph. If a funnel cloud is spotted move indoors and\nreport your sighting to the National Weather Service.\n\nFrequent cloud to ground lightning is occurring with this storm. Seek\nsafe shelter inside a sturdy building or hard-topped vehicle.\nRemember, lightning can strike beyond 10 miles away from a\nthunderstorm. When thunder roars, go indoors!",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSMLB"
+          ],
+          "WMOidentifier": [
+            "WWUS82 KMLB 102131"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT SOUTHWESTERN ORANGE AND NORTH CENTRAL OSCEOLA COUNTIES THROUGH 600 PM EDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-10T21:31:00-00:00...storm...161DEG...21KT...28.27,-81.31"
+          ],
+          "maxWindGust": [
+            "50 MPH"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5213a926c0db4c8a6e0a3901be77110a2917991.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -108.15,
+              32.79
+            ],
+            [
+              -107.82,
+              32.78
+            ],
+            [
+              -107.77,
+              32.61
+            ],
+            [
+              -108.17,
+              32.61
+            ],
+            [
+              -108.15,
+              32.79
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b5213a926c0db4c8a6e0a3901be77110a2917991.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.b5213a926c0db4c8a6e0a3901be77110a2917991.001.1",
+        "areaDesc": "Southern Gila Foothills/Mimbres Valley; Central Grant County/Silver City Area",
+        "geocode": {
+          "SAME": [
+            "035017",
+            "035029"
+          ],
+          "UGC": [
+            "NMZ403",
+            "NMZ425"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NMZ403",
+          "https://api.weather.gov/zones/forecast/NMZ425"
+        ],
+        "references": [],
+        "sent": "2026-09-10T15:30:00-06:00",
+        "effective": "2026-09-10T15:30:00-06:00",
+        "onset": "2026-09-10T15:30:00-06:00",
+        "expires": "2026-09-10T16:00:00-06:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS El Paso Tx/Santa Teresa NM",
+        "headline": "Special Weather Statement issued September 10 at 3:30PM MDT by NWS El Paso Tx/Santa Teresa NM",
+        "description": "At 329 PM MDT, Doppler radar was tracking a strong thunderstorm near\nCobre, moving south at 10 mph.\n\nHAZARD...Wind gusts up to 50 mph and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nLocations impacted include...\nFaywood, Hurley, Bayard, Sherman, Cobre, San Juan, North Hurley, and\nSanta Clara.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSEPZ"
+          ],
+          "WMOidentifier": [
+            "WWUS84 KEPZ 102130"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT EAST CENTRAL GRANT COUNTY THROUGH 400 PM MDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-10T21:29:00-00:00...storm...350DEG...8KT...32.75,-108.06"
+          ],
+          "maxWindGust": [
+            "50 MPH"
+          ],
+          "maxHailSize": [
+            "0.75"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7f77f820b084a6e3546c7194b7ab5fdef69a2617.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7f77f820b084a6e3546c7194b7ab5fdef69a2617.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7f77f820b084a6e3546c7194b7ab5fdef69a2617.001.1",
+        "areaDesc": "Waters from Cape Shoalwater WA to Cape Falcon OR from 10 to 60 nm; Waters from Cape Falcon to Cape Foulweather OR from 10 to 60 nm; Waters from Cape Foulweather to Florence OR from 10 to 60 nm",
+        "geocode": {
+          "SAME": [
+            "057271",
+            "057272",
+            "057273"
+          ],
+          "UGC": [
+            "PZZ271",
+            "PZZ272",
+            "PZZ273"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PZZ271",
+          "https://api.weather.gov/zones/forecast/PZZ272",
+          "https://api.weather.gov/zones/forecast/PZZ273"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7af82de1b9034d7a4eb29480948907af0f6d8348.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.7af82de1b9034d7a4eb29480948907af0f6d8348.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-10T01:44:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-10T12:42:00-07:00"
+          }
+        ],
+        "sent": "2026-09-10T14:26:00-07:00",
+        "effective": "2026-09-10T14:26:00-07:00",
+        "onset": "2026-09-10T14:26:00-07:00",
+        "expires": "2026-09-10T23:00:00-07:00",
+        "ends": "2026-09-11T08:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Portland OR",
+        "headline": "Small Craft Advisory issued September 10 at 2:26PM PDT until September 11 at 8:00AM PDT by NWS Portland OR",
+        "description": "* WHAT...Steep seas 5 to 8 ft at 9 seconds and north winds 10 to\n20 kt with gusts up to 25 kt.\n\n* WHERE...Outer Coastal Waters from Cape Shoalwater to Florence\n10 to 60 NM offshore.\n\n* WHEN...Until 8 AM PDT Friday.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWPQR"
+          ],
+          "WMOidentifier": [
+            "WHUS76 KPQR 102126"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY NOW IN EFFECT UNTIL 8 AM PDT FRIDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXT.KPQR.SC.Y.0096.000000T0000Z-260911T1500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T08:00:00-07:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f8716a330609b68ca3339bee4feb43a0f387b885.001.1,2026-09-09T13:20:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7f77f820b084a6e3546c7194b7ab5fdef69a2617.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7f77f820b084a6e3546c7194b7ab5fdef69a2617.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7f77f820b084a6e3546c7194b7ab5fdef69a2617.002.1",
+        "areaDesc": "Coastal waters from Cape Shoalwater WA to Cape Falcon OR out 10 nm; Coastal waters from Cape Falcon to Cape Foulweather OR out 10 nm; Coastal waters from Cape Foulweather to Florence OR out 10 nm",
+        "geocode": {
+          "SAME": [
+            "057251",
+            "057252",
+            "057253"
+          ],
+          "UGC": [
+            "PZZ251",
+            "PZZ252",
+            "PZZ253"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PZZ251",
+          "https://api.weather.gov/zones/forecast/PZZ252",
+          "https://api.weather.gov/zones/forecast/PZZ253"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7af82de1b9034d7a4eb29480948907af0f6d8348.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.7af82de1b9034d7a4eb29480948907af0f6d8348.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-10T01:44:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-10T12:42:00-07:00"
+          }
+        ],
+        "sent": "2026-09-10T14:26:00-07:00",
+        "effective": "2026-09-10T14:26:00-07:00",
+        "onset": "2026-09-10T14:26:00-07:00",
+        "expires": "2026-09-10T20:00:00-07:00",
+        "ends": "2026-09-10T20:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Portland OR",
+        "headline": "Small Craft Advisory issued September 10 at 2:26PM PDT until September 10 at 8:00PM PDT by NWS Portland OR",
+        "description": "* WHAT...Steep seas 5 to 8 ft at 9 seconds and north winds 15 to\n20 kt with gusts up to 25 kt.\n\n* WHERE...Inner Coastal Waters from Cape Shoalwater to Florence\nout 10 NM.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
+        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWPQR"
+          ],
+          "WMOidentifier": [
+            "WHUS76 KPQR 102126"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 8 PM PDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KPQR.SC.Y.0096.000000T0000Z-260911T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-10T20:00:00-07:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f8716a330609b68ca3339bee4feb43a0f387b885.001.1,2026-09-09T13:20:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
           ]
         }
       }
@@ -605,73 +977,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-12277",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-12277",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-12277",
-        "areaDesc": "Montgomery",
-        "geocode": {
-          "SAME": [
-            "024031"
-          ],
-          "UGC": [
-            "MDC031"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
-        ],
-        "references": [],
-        "sent": "2026-09-10T21:23:09+00:00",
-        "effective": "2026-09-10T21:23:09+00:00",
-        "onset": null,
-        "expires": "2026-09-10T21:33:09+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
-        "parameters": {
-          "AWIPSidentifier": [
-            "KEPWBC"
-          ],
-          "WMOidentifier": [
-            "NZUS91 KWBC 102123"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS",
-            "EAS",
-            "NWEM"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "TST"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.068d08897101aa538fe9e084800c829d5a61590b.001.1",
       "type": "Feature",
       "geometry": {
@@ -799,123 +1104,6 @@
           ],
           "NationalWeatherService": [
             "FFW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9858d7be9c982f7d8264d5f5fd8a855145e6216e.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -81.13,
-              28.06
-            ],
-            [
-              -81.29,
-              28.02
-            ],
-            [
-              -81.42,
-              28.22
-            ],
-            [
-              -81.13,
-              28.29
-            ],
-            [
-              -81.13,
-              28.06
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9858d7be9c982f7d8264d5f5fd8a855145e6216e.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.9858d7be9c982f7d8264d5f5fd8a855145e6216e.001.1",
-        "areaDesc": "Osceola, FL",
-        "geocode": {
-          "SAME": [
-            "012097"
-          ],
-          "UGC": [
-            "FLC097"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/FLC097"
-        ],
-        "references": [],
-        "sent": "2026-09-10T17:15:00-04:00",
-        "effective": "2026-09-10T17:15:00-04:00",
-        "onset": "2026-09-10T17:15:00-04:00",
-        "expires": "2026-09-10T17:45:00-04:00",
-        "ends": "2026-09-10T17:45:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Melbourne FL",
-        "headline": "Severe Thunderstorm Warning issued September 10 at 5:15PM EDT until September 10 at 5:45PM EDT by NWS Melbourne FL",
-        "description": "SVRMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Severe Thunderstorm Warning for...\nNorth central Osceola County in east central Florida...\n\n* Until 545 PM EDT.\n\n* At 515 PM EDT, a severe thunderstorm was located 7 miles southwest\nof Harmony, or 9 miles south of Saint Cloud, moving north at 10\nmph.\n\nHAZARD...60 mph wind gusts and penny size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\n* Locations impacted include...\nSaint Cloud, West Lake Toho, Harmony, Alligator Lake, and Pine\nGrove.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.\n\nFrequent cloud to ground lightning is also occurring with this storm.\nMove indoors immediately. Remember, lightning can strike beyond 10\nmiles away from a thunderstorm.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVRMLB"
-          ],
-          "WMOidentifier": [
-            "WUUS52 KMLB 102115"
-          ],
-          "eventMotionDescription": [
-            "2026-09-10T21:15:00-00:00...storm...166DEG...7KT...28.11,-81.24"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "0.75"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KMLB.SV.W.0119.260910T2115Z-260910T2145Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-10T17:45:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVR"
-          ],
-          "NationalWeatherService": [
-            "SVW"
           ]
         }
       }
@@ -1620,372 +1808,6 @@
           ],
           "maxHailSize": [
             "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c780bc322826dfb9109561a8cb12181aec33d63a.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -94.31,
-              31.06
-            ],
-            [
-              -94.35,
-              31.17
-            ],
-            [
-              -94.09,
-              31.19
-            ],
-            [
-              -94.08,
-              31.11
-            ],
-            [
-              -94.31,
-              31.06
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c780bc322826dfb9109561a8cb12181aec33d63a.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.c780bc322826dfb9109561a8cb12181aec33d63a.001.1",
-        "areaDesc": "Angelina; San Augustine",
-        "geocode": {
-          "SAME": [
-            "048005",
-            "048405"
-          ],
-          "UGC": [
-            "TXZ165",
-            "TXZ166"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/TXZ165",
-          "https://api.weather.gov/zones/forecast/TXZ166"
-        ],
-        "references": [],
-        "sent": "2026-09-10T15:52:00-05:00",
-        "effective": "2026-09-10T15:52:00-05:00",
-        "onset": "2026-09-10T15:52:00-05:00",
-        "expires": "2026-09-10T16:30:00-05:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Shreveport LA",
-        "headline": "Special Weather Statement issued September 10 at 3:52PM CDT by NWS Shreveport LA",
-        "description": "At 352 PM CDT, Doppler radar was tracking a strong thunderstorm 17\nmiles southwest of Pineland, or 36 miles east of Diboll, moving north\nat 5 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nMainly rural areas of Southeastern Angelina and South Central San\nAugustine Counties.",
-        "instruction": "Monitor the weather situation closely and be alert for threatening\nweather conditions.\n\nThis storm may intensify, so be certain to monitor local radio\nstations and available television stations for additional information\nand possible warnings from the National Weather Service.\n\nIf on or near Lake Sam Rayburn, get out of the water and move indoors\nor inside a vehicle. Remember, lightning can strike out to 10 miles\nfrom the parent thunderstorm. If you can hear thunder, you are close\nenough to be struck by lightning. Move to safe shelter now! Do not be\ncaught on the water in a thunderstorm.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSSHV"
-          ],
-          "WMOidentifier": [
-            "WWUS84 KSHV 102052"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT SOUTHEASTERN ANGELINA AND SOUTH CENTRAL SAN AUGUSTINE COUNTIES UNTIL 430 PM CDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-10T20:51:00-00:00...storm...177DEG...4KT...31.08,-94.19"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c0c10bce59e3fa673057b97c5fef261af1f3afad.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -99.11,
-              32.51
-            ],
-            [
-              -99.1,
-              32.52
-            ],
-            [
-              -99.09,
-              32.58
-            ],
-            [
-              -98.49,
-              32.79
-            ],
-            [
-              -98.48,
-              32.29
-            ],
-            [
-              -98.93,
-              32.08
-            ],
-            [
-              -99.12,
-              32.08
-            ],
-            [
-              -99.11,
-              32.51
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c0c10bce59e3fa673057b97c5fef261af1f3afad.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.c0c10bce59e3fa673057b97c5fef261af1f3afad.001.1",
-        "areaDesc": "Stephens; Palo Pinto; Eastland",
-        "geocode": {
-          "SAME": [
-            "048429",
-            "048363",
-            "048133"
-          ],
-          "UGC": [
-            "TXZ115",
-            "TXZ116",
-            "TXZ129"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/TXZ115",
-          "https://api.weather.gov/zones/forecast/TXZ116",
-          "https://api.weather.gov/zones/forecast/TXZ129"
-        ],
-        "references": [],
-        "sent": "2026-09-10T15:52:00-05:00",
-        "effective": "2026-09-10T15:52:00-05:00",
-        "onset": "2026-09-10T15:52:00-05:00",
-        "expires": "2026-09-10T16:30:00-05:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Fort Worth TX",
-        "headline": "Special Weather Statement issued September 10 at 3:52PM CDT by NWS Fort Worth TX",
-        "description": "At 352 PM CDT, Doppler radar was tracking strong thunderstorms along\na line extending from Gordon to near Atwell. Movement was south at 15\nmph.\n\nHAZARD...Wind gusts up to 50 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nEastland, Cisco, Ranger, Gorman, Rising Star, Lake Cisco, Lake\nDaniel, Lake Leon, Gunsight, Necessity, Lake Olden, Caddo, Palo Pinto\nMountains State Park, Strawn, Pleasant Hill, Carbon, Staff, Nimrod,\nKokomo, and Sabanno.\n\nThis includes Interstate 20 between mile markers 324 and 362.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSFWD"
-          ],
-          "WMOidentifier": [
-            "WWUS84 KFWD 102052"
-          ],
-          "NWSheadline": [
-            "Strong thunderstorms will impact portions of Eastland, southern Stephens and southwestern Palo Pinto Counties through 430 PM CDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-10T20:52:00-00:00...storm...346DEG...11KT...32.56,-98.39 32.29,-99.22"
-          ],
-          "maxWindGust": [
-            "50 MPH"
-          ],
-          "maxHailSize": [
-            "0.25"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.01e6465283dc6d3bdd65ead5e57c033ab143a544.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -98.03,
-              33.01
-            ],
-            [
-              -97.55,
-              32.99
-            ],
-            [
-              -97.55,
-              32.56
-            ],
-            [
-              -97.61,
-              32.55
-            ],
-            [
-              -97.62,
-              32.53
-            ],
-            [
-              -98.48,
-              32.21
-            ],
-            [
-              -98.49,
-              32.78
-            ],
-            [
-              -98.03,
-              33.01
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.01e6465283dc6d3bdd65ead5e57c033ab143a544.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.01e6465283dc6d3bdd65ead5e57c033ab143a544.001.1",
-        "areaDesc": "Palo Pinto; Parker; Erath; Hood",
-        "geocode": {
-          "SAME": [
-            "048363",
-            "048367",
-            "048143",
-            "048221"
-          ],
-          "UGC": [
-            "TXZ116",
-            "TXZ117",
-            "TXZ130",
-            "TXZ131"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/TXZ116",
-          "https://api.weather.gov/zones/forecast/TXZ117",
-          "https://api.weather.gov/zones/forecast/TXZ130",
-          "https://api.weather.gov/zones/forecast/TXZ131"
-        ],
-        "references": [],
-        "sent": "2026-09-10T15:49:00-05:00",
-        "effective": "2026-09-10T15:49:00-05:00",
-        "onset": "2026-09-10T15:49:00-05:00",
-        "expires": "2026-09-10T16:30:00-05:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Fort Worth TX",
-        "headline": "Special Weather Statement issued September 10 at 3:49PM CDT by NWS Fort Worth TX",
-        "description": "At 349 PM CDT, Doppler radar was tracking strong thunderstorms along\na line extending from Pelican Bay to near Brock to near Gordon.\nMovement was south at 15 mph.\n\nHAZARD...Wind gusts of 50 to 55 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nWeatherford, Mineral Wells, Azle, Granbury, Briar, Willow Park, Reno,\nAledo, Springtown, Brock, Hudson Oaks, Western Lake, Annetta,\nPoolville, Gordon, Lipan, Palo Pinto, Cool, Lake Weatherford, and\nLake Mineral Wells.\n\nThis includes the following highways...\nInterstate 20 between mile markers 363 and 422.\nInterstate 30 near mile marker 1.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSFWD"
-          ],
-          "WMOidentifier": [
-            "WWUS84 KFWD 102049"
-          ],
-          "NWSheadline": [
-            "Strong thunderstorms will impact portions of northern Erath, Parker, Palo Pinto and northern Hood Counties through 430 PM CDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-10T20:49:00-00:00...storm...341DEG...14KT...32.94,-97.54 32.73,-97.94 32.58,-98.35"
-          ],
-          "maxWindGust": [
-            "55 MPH"
-          ],
-          "maxHailSize": [
-            "0.25"
           ],
           "BLOCKCHANNEL": [
             "EAS",
@@ -4340,107 +4162,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.fe2da97cae254b0cd16e56bfb950ed711a7ceaf4.001.1",
-        "areaDesc": "Coastal waters from Cape Shoalwater WA to Cape Falcon OR out 10 nm; Coastal waters from Cape Falcon to Cape Foulweather OR out 10 nm; Coastal waters from Cape Foulweather to Florence OR out 10 nm; Waters from Cape Shoalwater WA to Cape Falcon OR from 10 to 60 nm; Waters from Cape Falcon to Cape Foulweather OR from 10 to 60 nm; Waters from Cape Foulweather to Florence OR from 10 to 60 nm",
-        "geocode": {
-          "SAME": [
-            "057251",
-            "057252",
-            "057253",
-            "057271",
-            "057272",
-            "057273"
-          ],
-          "UGC": [
-            "PZZ251",
-            "PZZ252",
-            "PZZ253",
-            "PZZ271",
-            "PZZ272",
-            "PZZ273"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PZZ251",
-          "https://api.weather.gov/zones/forecast/PZZ252",
-          "https://api.weather.gov/zones/forecast/PZZ253",
-          "https://api.weather.gov/zones/forecast/PZZ271",
-          "https://api.weather.gov/zones/forecast/PZZ272",
-          "https://api.weather.gov/zones/forecast/PZZ273"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7af82de1b9034d7a4eb29480948907af0f6d8348.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.7af82de1b9034d7a4eb29480948907af0f6d8348.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-10T01:44:00-07:00"
-          }
-        ],
-        "sent": "2026-09-10T12:42:00-07:00",
-        "effective": "2026-09-10T12:42:00-07:00",
-        "onset": "2026-09-10T12:42:00-07:00",
-        "expires": "2026-09-10T20:00:00-07:00",
-        "ends": "2026-09-10T20:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Portland OR",
-        "headline": "Small Craft Advisory issued September 10 at 12:42PM PDT until September 10 at 8:00PM PDT by NWS Portland OR",
-        "description": "* WHAT...Seas 5 to 7 ft at 12 seconds and north winds 15 to 20\nkt with gusts up to 30 kt.\n\n* WHERE...Coastal Waters from Cape Shoalwater to Florence out 60\nNM.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWPQR"
-          ],
-          "WMOidentifier": [
-            "WHUS76 KPQR 101942"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 8 PM PDT THIS EVENING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KPQR.SC.Y.0096.000000T0000Z-260911T0300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-10T20:00:00-07:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f8716a330609b68ca3339bee4feb43a0f387b885.001.1,2026-09-09T13:20:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.21a137bb998c6031a2d2ff2a305100beb2a70aaa.001.1",
       "type": "Feature",
       "geometry": {
@@ -5325,575 +5046,6 @@
           ],
           "NationalWeatherService": [
             "XHW"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/v2-3.13.1-1542034-1789068480048",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -105.6617,
-              32.5906
-            ],
-            [
-              -105.6614,
-              32.5835
-            ],
-            [
-              -105.6444,
-              32.5836
-            ],
-            [
-              -105.6443,
-              32.5764
-            ],
-            [
-              -105.6273,
-              32.5765
-            ],
-            [
-              -105.6272,
-              32.5693
-            ],
-            [
-              -105.6101,
-              32.5693
-            ],
-            [
-              -105.6101,
-              32.562
-            ],
-            [
-              -105.5931,
-              32.562
-            ],
-            [
-              -105.5931,
-              32.5548
-            ],
-            [
-              -105.5845,
-              32.5549
-            ],
-            [
-              -105.5847,
-              32.5476
-            ],
-            [
-              -105.5676,
-              32.5477
-            ],
-            [
-              -105.5674,
-              32.5405
-            ],
-            [
-              -105.5589,
-              32.5404
-            ],
-            [
-              -105.5589,
-              32.5331
-            ],
-            [
-              -105.5249,
-              32.5332
-            ],
-            [
-              -105.5279,
-              32.5082
-            ],
-            [
-              -105.5364,
-              32.5082
-            ],
-            [
-              -105.5364,
-              32.5025
-            ],
-            [
-              -105.5351,
-              32.5046
-            ],
-            [
-              -105.5298,
-              32.5028
-            ],
-            [
-              -105.5282,
-              32.5072
-            ],
-            [
-              -105.5178,
-              32.5075
-            ],
-            [
-              -105.5058,
-              32.5181
-            ],
-            [
-              -105.4879,
-              32.5189
-            ],
-            [
-              -105.4819,
-              32.5236
-            ],
-            [
-              -105.4744,
-              32.5248
-            ],
-            [
-              -105.465,
-              32.5335
-            ],
-            [
-              -105.454,
-              32.5323
-            ],
-            [
-              -105.4402,
-              32.5417
-            ],
-            [
-              -105.4334,
-              32.5601
-            ],
-            [
-              -105.4363,
-              32.5798
-            ],
-            [
-              -105.4395,
-              32.581
-            ],
-            [
-              -105.4393,
-              32.5984
-            ],
-            [
-              -105.4365,
-              32.6018
-            ],
-            [
-              -105.416,
-              32.6079
-            ],
-            [
-              -105.3949,
-              32.6081
-            ],
-            [
-              -105.3942,
-              32.6182
-            ],
-            [
-              -105.3776,
-              32.618
-            ],
-            [
-              -105.3666,
-              32.6145
-            ],
-            [
-              -105.352,
-              32.6162
-            ],
-            [
-              -105.3526,
-              32.9141
-            ],
-            [
-              -105.3751,
-              32.9236
-            ],
-            [
-              -105.3951,
-              32.9258
-            ],
-            [
-              -105.4388,
-              32.9207
-            ],
-            [
-              -105.4545,
-              32.9127
-            ],
-            [
-              -105.4636,
-              32.9114
-            ],
-            [
-              -105.4701,
-              32.9083
-            ],
-            [
-              -105.4785,
-              32.8887
-            ],
-            [
-              -105.4997,
-              32.8691
-            ],
-            [
-              -105.5108,
-              32.8505
-            ],
-            [
-              -105.5217,
-              32.8499
-            ],
-            [
-              -105.5321,
-              32.8537
-            ],
-            [
-              -105.5834,
-              32.8595
-            ],
-            [
-              -105.5983,
-              32.857
-            ],
-            [
-              -105.5985,
-              32.851
-            ],
-            [
-              -105.6112,
-              32.8509
-            ],
-            [
-              -105.6113,
-              32.8468
-            ],
-            [
-              -105.6159,
-              32.8467
-            ],
-            [
-              -105.6161,
-              32.8359
-            ],
-            [
-              -105.6428,
-              32.8286
-            ],
-            [
-              -105.6526,
-              32.8303
-            ],
-            [
-              -105.6608,
-              32.8283
-            ],
-            [
-              -105.6611,
-              32.7755
-            ],
-            [
-              -105.7654,
-              32.7766
-            ],
-            [
-              -105.7664,
-              32.7204
-            ],
-            [
-              -105.7475,
-              32.7143
-            ],
-            [
-              -105.7399,
-              32.7021
-            ],
-            [
-              -105.7313,
-              32.6983
-            ],
-            [
-              -105.7339,
-              32.6983
-            ],
-            [
-              -105.7317,
-              32.6911
-            ],
-            [
-              -105.816,
-              32.6923
-            ],
-            [
-              -105.8158,
-              32.6633
-            ],
-            [
-              -105.7987,
-              32.6637
-            ],
-            [
-              -105.7984,
-              32.6564
-            ],
-            [
-              -105.7898,
-              32.6568
-            ],
-            [
-              -105.7896,
-              32.6495
-            ],
-            [
-              -105.781,
-              32.6498
-            ],
-            [
-              -105.7814,
-              32.6402
-            ],
-            [
-              -105.7644,
-              32.6397
-            ],
-            [
-              -105.7642,
-              32.6323
-            ],
-            [
-              -105.7471,
-              32.6339
-            ],
-            [
-              -105.7471,
-              32.6265
-            ],
-            [
-              -105.7299,
-              32.6264
-            ],
-            [
-              -105.7301,
-              32.6191
-            ],
-            [
-              -105.713,
-              32.6191
-            ],
-            [
-              -105.712,
-              32.6117
-            ],
-            [
-              -105.6961,
-              32.6109
-            ],
-            [
-              -105.6955,
-              32.5979
-            ],
-            [
-              -105.6783,
-              32.598
-            ],
-            [
-              -105.6784,
-              32.5907
-            ],
-            [
-              -105.6617,
-              32.5906
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/v2-3.13.1-1542034-1789068480048",
-        "@type": "wx:Alert",
-        "id": "v2-3.13.1-1542034-1789068480048",
-        "areaDesc": "Otero",
-        "geocode": {
-          "SAME": [
-            "035035"
-          ]
-        },
-        "affectedZones": [],
-        "references": [],
-        "sent": "2026-09-10T20:28:01+01:00",
-        "effective": "2026-09-10T20:28:01+01:00",
-        "onset": null,
-        "expires": "2026-09-10T22:28:01+01:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Safety",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Local Area Emergency",
-        "sender": "mclark@co.otero.nm.us",
-        "senderName": "Public Alert System",
-        "headline": "Flash Flood Warning",
-        "description": "Flash Flood Warning has been issued by NWS El Paso Tx/Santa Teresa NM. Radar indicated heavy rain 1.5 to 2 inches and could expect more.  Flash flooding is ongoing or expected to begin shortly. Turn around, dont drown when encountering flooded roads. Most flood deaths occur in vehicles.",
-        "instruction": "Do not attempt to cross flooded roads. Find an alternate route.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "CMAMtext": [
-            "Do not attempt to cross flooded roads. Find an alternate route."
-          ],
-          "CMAMlongtext": [
-            "Flash Flood Warning has been issued by NWS El Paso Tx/Santa Teresa NM. Radar indicated heavy rain 1.5 to 2 inches and could expect more.  Flash flooding is ongoing or expected to begin shortly. Turn around, dont drown when encountering flooded roads. Most flood deaths occur in vehicles."
-          ],
-          "EAS-ORG": [
-            "CIV"
-          ],
-          "timezone": [
-            "EST"
-          ],
-          "WEAHandling": [
-            "Public Safety"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": null,
-        "eventCode": {
-          "SAME": [
-            "LAE"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301fb213ca35022d9aeef3b9c599739a40592d05.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -97.07,
-              34.32
-            ],
-            [
-              -96.74,
-              34.7
-            ],
-            [
-              -96.52,
-              34.67
-            ],
-            [
-              -96.42,
-              34.52
-            ],
-            [
-              -96.62,
-              34.23
-            ],
-            [
-              -96.98,
-              34.11
-            ],
-            [
-              -97.07,
-              34.32
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301fb213ca35022d9aeef3b9c599739a40592d05.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.301fb213ca35022d9aeef3b9c599739a40592d05.001.1",
-        "areaDesc": "Carter, OK; Coal, OK; Johnston, OK; Marshall, OK; Murray, OK; Pontotoc, OK",
-        "geocode": {
-          "SAME": [
-            "040019",
-            "040029",
-            "040069",
-            "040095",
-            "040099",
-            "040123"
-          ],
-          "UGC": [
-            "OKC019",
-            "OKC029",
-            "OKC069",
-            "OKC095",
-            "OKC099",
-            "OKC123"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/OKC019",
-          "https://api.weather.gov/zones/county/OKC029",
-          "https://api.weather.gov/zones/county/OKC069",
-          "https://api.weather.gov/zones/county/OKC095",
-          "https://api.weather.gov/zones/county/OKC099",
-          "https://api.weather.gov/zones/county/OKC123"
-        ],
-        "references": [],
-        "sent": "2026-09-10T14:28:00-05:00",
-        "effective": "2026-09-10T14:28:00-05:00",
-        "onset": "2026-09-10T14:28:00-05:00",
-        "expires": "2026-09-10T16:30:00-05:00",
-        "ends": "2026-09-10T16:30:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Flood Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Norman OK",
-        "headline": "Flood Advisory issued September 10 at 2:28PM CDT until September 10 at 4:30PM CDT by NWS Norman OK",
-        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southern Pontotoc County in east central Oklahoma...\nSouthwestern Coal County in southeastern Oklahoma...\nJohnston County in southeastern Oklahoma...\nNorthwestern Marshall County in southeastern Oklahoma...\nEast Central Carter County in southern Oklahoma...\nSoutheastern Murray County in southern Oklahoma...\n\n* WHEN...Until 430 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 228 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 2 inches of rain have\nfallen.\n- Additional rainfall amounts up to 1 inch are expected over the\narea. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nTishomingo, Dickson, Mannsville, Ravia, Stonewall, Mill Creek,\nFitzhugh, Bromide, Gene Autry, Hickory, Reagan, Connerville,\nPontotoc, Scullin, Russett, Fittstown, Clarita and Jesse.\n- http://www.weather.gov/safety/flood",
-        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FLSOUN"
-          ],
-          "WMOidentifier": [
-            "WGUS84 KOUN 101928"
-          ],
-          "NWSheadline": [
-            "FLOOD ADVISORY IN EFFECT UNTIL 430 PM CDT THIS AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KOUN.FA.Y.0244.260910T1928Z-260910T2130Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-10T16:30:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FAY"
           ]
         }
       }
@@ -28899,5 +28051,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-10T21:25:51+00:00"
+  "updated": "2026-09-10T21:33:21+00:00"
 }
