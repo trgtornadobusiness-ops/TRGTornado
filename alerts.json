@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-56541",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-41373",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-56541",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-41373",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-56541",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-41373",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-11T11:23:09+00:00",
-        "effective": "2026-09-11T11:23:09+00:00",
+        "sent": "2026-09-11T11:33:09+00:00",
+        "effective": "2026-09-11T11:33:09+00:00",
         "onset": null,
-        "expires": "2026-09-11T11:33:09+00:00",
+        "expires": "2026-09-11T11:43:09+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 111123"
+            "NZUS91 KWBC 111133"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,745 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.551c5ed987cfc2083fe9eda07df7752fd37b52ed.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.551c5ed987cfc2083fe9eda07df7752fd37b52ed.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.551c5ed987cfc2083fe9eda07df7752fd37b52ed.002.1",
+        "areaDesc": "Lee; Henderson; Warren; Hancock; McDonough; Clark",
+        "geocode": {
+          "SAME": [
+            "019111",
+            "017071",
+            "017187",
+            "017067",
+            "017109",
+            "029045"
+          ],
+          "UGC": [
+            "IAZ099",
+            "ILZ025",
+            "ILZ026",
+            "ILZ034",
+            "ILZ035",
+            "MOZ010"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/IAZ099",
+          "https://api.weather.gov/zones/forecast/ILZ025",
+          "https://api.weather.gov/zones/forecast/ILZ026",
+          "https://api.weather.gov/zones/forecast/ILZ034",
+          "https://api.weather.gov/zones/forecast/ILZ035",
+          "https://api.weather.gov/zones/forecast/MOZ010"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9623f499bf701af615af43e4fb380904f947b7b6.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.9623f499bf701af615af43e4fb380904f947b7b6.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-11T02:07:00-05:00"
+          }
+        ],
+        "sent": "2026-09-11T06:33:00-05:00",
+        "effective": "2026-09-11T06:33:00-05:00",
+        "onset": "2026-09-11T06:33:00-05:00",
+        "expires": "2026-09-11T09:00:00-05:00",
+        "ends": "2026-09-11T09:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Fog Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Quad Cities IA IL",
+        "headline": "Dense Fog Advisory issued September 11 at 6:33AM CDT until September 11 at 9:00AM CDT by NWS Quad Cities IA IL",
+        "description": "* WHAT...Visibility one quarter mile or less in dense fog.\n\n* WHERE...In Illinois, Hancock, Henderson, McDonough, and Warren\nCounties. In Iowa, Lee County. In Missouri, Clark County.\n\n* WHEN...Until 9 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
+        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWDVN"
+          ],
+          "WMOidentifier": [
+            "WWUS73 KDVN 111133"
+          ],
+          "NWSheadline": [
+            "DENSE FOG ADVISORY REMAINS IN EFFECT UNTIL 9 AM CDT THIS MORNING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KDVN.FG.Y.0014.000000T0000Z-260911T1400Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T09:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FGY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.551c5ed987cfc2083fe9eda07df7752fd37b52ed.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.551c5ed987cfc2083fe9eda07df7752fd37b52ed.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.551c5ed987cfc2083fe9eda07df7752fd37b52ed.001.1",
+        "areaDesc": "Muscatine; Scott; Louisa; Des Moines; Rock Island; Henry; Mercer",
+        "geocode": {
+          "SAME": [
+            "019139",
+            "019163",
+            "019115",
+            "019057",
+            "017161",
+            "017073",
+            "017131"
+          ],
+          "UGC": [
+            "IAZ067",
+            "IAZ068",
+            "IAZ078",
+            "IAZ089",
+            "ILZ015",
+            "ILZ016",
+            "ILZ024"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/IAZ067",
+          "https://api.weather.gov/zones/forecast/IAZ068",
+          "https://api.weather.gov/zones/forecast/IAZ078",
+          "https://api.weather.gov/zones/forecast/IAZ089",
+          "https://api.weather.gov/zones/forecast/ILZ015",
+          "https://api.weather.gov/zones/forecast/ILZ016",
+          "https://api.weather.gov/zones/forecast/ILZ024"
+        ],
+        "references": [],
+        "sent": "2026-09-11T06:33:00-05:00",
+        "effective": "2026-09-11T06:33:00-05:00",
+        "onset": "2026-09-11T06:33:00-05:00",
+        "expires": "2026-09-11T09:00:00-05:00",
+        "ends": "2026-09-11T09:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Fog Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Quad Cities IA IL",
+        "headline": "Dense Fog Advisory issued September 11 at 6:33AM CDT until September 11 at 9:00AM CDT by NWS Quad Cities IA IL",
+        "description": "* WHAT...Visibility one quarter to one half mile in dense fog.\n\n* WHERE...In Illinois, Henry IL, Mercer, and Rock Island Counties. In\nIowa, Muscatine, Scott, Des Moines, and Louisa Counties.\n\n* WHEN...Until 9 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
+        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWDVN"
+          ],
+          "WMOidentifier": [
+            "WWUS73 KDVN 111133"
+          ],
+          "NWSheadline": [
+            "DENSE FOG ADVISORY IN EFFECT UNTIL 9 AM CDT THIS MORNING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXA.KDVN.FG.Y.0014.000000T0000Z-260911T1400Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T09:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FGY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6f6e529b22935696e38e45081814904dbb5e0e6e.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6f6e529b22935696e38e45081814904dbb5e0e6e.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.6f6e529b22935696e38e45081814904dbb5e0e6e.001.1",
+        "areaDesc": "Lincoln; Lyon; Murray; Cottonwood; Nobles; Jackson; Pipestone",
+        "geocode": {
+          "SAME": [
+            "027081",
+            "027083",
+            "027101",
+            "027033",
+            "027105",
+            "027063",
+            "027117"
+          ],
+          "UGC": [
+            "MNZ071",
+            "MNZ072",
+            "MNZ080",
+            "MNZ081",
+            "MNZ089",
+            "MNZ090",
+            "MNZ097"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/MNZ071",
+          "https://api.weather.gov/zones/forecast/MNZ072",
+          "https://api.weather.gov/zones/forecast/MNZ080",
+          "https://api.weather.gov/zones/forecast/MNZ081",
+          "https://api.weather.gov/zones/forecast/MNZ089",
+          "https://api.weather.gov/zones/forecast/MNZ090",
+          "https://api.weather.gov/zones/forecast/MNZ097"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.59cf4ac88045ae32b15ff51dd83105aa04c85fa9.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.59cf4ac88045ae32b15ff51dd83105aa04c85fa9.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-10T23:51:00-05:00"
+          }
+        ],
+        "sent": "2026-09-11T06:32:00-05:00",
+        "effective": "2026-09-11T06:32:00-05:00",
+        "onset": "2026-09-11T07:00:00-05:00",
+        "expires": "2026-09-11T16:00:00-05:00",
+        "ends": "2026-09-11T19:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Wind Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Sioux Falls SD",
+        "headline": "Wind Advisory issued September 11 at 6:32AM CDT until September 11 at 7:00PM CDT by NWS Sioux Falls SD",
+        "description": "* WHAT...South winds 20 to 30 mph with gusts up to 50 mph expected.\n\n* WHERE...A portion of southwest Minnesota.\n\n* WHEN...Until 7 PM CDT this evening.\n\n* IMPACTS...Gusty winds will blow around unsecured objects. Tree\nlimbs could be blown down and a few power outages may result.",
+        "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nSecure outdoor objects.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWFSD"
+          ],
+          "WMOidentifier": [
+            "WWUS73 KFSD 111132"
+          ],
+          "NWSheadline": [
+            "WIND ADVISORY REMAINS IN EFFECT UNTIL 7 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KFSD.WI.Y.0006.260911T1200Z-260912T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T19:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "WIY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.39af604fd1c412a57634919abf9c0a0828ffceaa.002.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -86.95,
+              30.66
+            ],
+            [
+              -86.98,
+              30.62
+            ],
+            [
+              -86.94,
+              30.54
+            ],
+            [
+              -86.97,
+              30.51
+            ],
+            [
+              -86.86,
+              30.47
+            ],
+            [
+              -86.84,
+              30.43
+            ],
+            [
+              -86.81,
+              30.43
+            ],
+            [
+              -86.84,
+              30.38
+            ],
+            [
+              -87.02,
+              30.35
+            ],
+            [
+              -87.17,
+              30.47
+            ],
+            [
+              -87.13,
+              30.59
+            ],
+            [
+              -87.06,
+              30.55
+            ],
+            [
+              -87.09,
+              30.61
+            ],
+            [
+              -87,
+              30.68
+            ],
+            [
+              -86.95,
+              30.66
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.39af604fd1c412a57634919abf9c0a0828ffceaa.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.39af604fd1c412a57634919abf9c0a0828ffceaa.002.1",
+        "areaDesc": "Pensacola Bay Area including Santa Rosa Sound",
+        "geocode": {
+          "SAME": [
+            "077634"
+          ],
+          "UGC": [
+            "GMZ634"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/GMZ634"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.223b21640f971c16d4a608a7f980e78d612b3db1.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.223b21640f971c16d4a608a7f980e78d612b3db1.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-11T05:59:00-05:00"
+          }
+        ],
+        "sent": "2026-09-11T06:31:00-05:00",
+        "effective": "2026-09-11T06:31:00-05:00",
+        "onset": "2026-09-11T06:31:00-05:00",
+        "expires": "2026-09-11T07:00:00-05:00",
+        "ends": "2026-09-11T07:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Special Marine Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Mobile AL",
+        "headline": "Special Marine Warning issued September 11 at 6:31AM CDT until September 11 at 7:00AM CDT by NWS Mobile AL",
+        "description": "For the following areas...\nPensacola Bay Area including Santa Rosa Sound...\n\nAt 631 AM CDT, a severe thunderstorm capable of producing waterspouts\nwas located near East Bay, or 16 nm west of Mary Esther, moving\nnortheast at 20 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar indicated.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas. Small craft could be damaged in briefly\nhigher winds and suddenly higher waves.\n\nLocations impacted include...\nNavarre Beach, Escambia Bay Bridge, Blackwater Bay Bridge, East Bay,\nEscambia Bay, and Garcon Point Bridge.",
+        "instruction": "Move to safe harbor until hazardous weather passes.\n\nMove to safe harbor immediately as gusty winds and high waves are\nexpected.\n\nThunderstorms can produce sudden waterspouts. Waterspouts can easily\noverturn boats and create locally hazardous seas. Seek safe harbor\nimmediately.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWSMOB"
+          ],
+          "WMOidentifier": [
+            "FZUS74 KMOB 111131"
+          ],
+          "NWSheadline": [
+            "A SPECIAL MARINE WARNING REMAINS IN EFFECT UNTIL 700 AM CDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-11T11:31:00-00:00...storm...216DEG...20KT...30.51,-86.97"
+          ],
+          "waterspoutDetection": [
+            "POSSIBLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KMOB.MA.W.0200.000000T0000Z-260911T1200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T07:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "MAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b6066dad0034aaa6df6c466996b6802a53fde07f.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b6066dad0034aaa6df6c466996b6802a53fde07f.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.b6066dad0034aaa6df6c466996b6802a53fde07f.001.1",
+        "areaDesc": "Doniphan; Harrison; Mercer; Putnam; Andrew; De Kalb; Daviess; Buchanan; Clinton",
+        "geocode": {
+          "SAME": [
+            "020043",
+            "029081",
+            "029129",
+            "029171",
+            "029003",
+            "029063",
+            "029061",
+            "029021",
+            "029049"
+          ],
+          "UGC": [
+            "KSZ102",
+            "MOZ005",
+            "MOZ006",
+            "MOZ007",
+            "MOZ012",
+            "MOZ013",
+            "MOZ014",
+            "MOZ020",
+            "MOZ021"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ102",
+          "https://api.weather.gov/zones/forecast/MOZ005",
+          "https://api.weather.gov/zones/forecast/MOZ006",
+          "https://api.weather.gov/zones/forecast/MOZ007",
+          "https://api.weather.gov/zones/forecast/MOZ012",
+          "https://api.weather.gov/zones/forecast/MOZ013",
+          "https://api.weather.gov/zones/forecast/MOZ014",
+          "https://api.weather.gov/zones/forecast/MOZ020",
+          "https://api.weather.gov/zones/forecast/MOZ021"
+        ],
+        "references": [],
+        "sent": "2026-09-11T06:27:00-05:00",
+        "effective": "2026-09-11T06:27:00-05:00",
+        "onset": "2026-09-11T06:27:00-05:00",
+        "expires": "2026-09-11T10:00:00-05:00",
+        "ends": "2026-09-11T10:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Fog Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Dense Fog Advisory issued September 11 at 6:27AM CDT until September 11 at 10:00AM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "* WHAT...Visibility one quarter mile or less in dense fog.\n\n* WHERE...In Kansas, Doniphan County. In Missouri, Daviess, Harrison,\nMercer, Putnam, Andrew, Buchanan, Clinton, and De Kalb Counties.\n\n* WHEN...Until 10 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
+        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWEAX"
+          ],
+          "WMOidentifier": [
+            "WWUS73 KEAX 111127"
+          ],
+          "NWSheadline": [
+            "DENSE FOG ADVISORY IN EFFECT UNTIL 10 AM CDT THIS MORNING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.EXA.KEAX.FG.Y.0014.000000T0000Z-260911T1500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T10:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FGY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b6066dad0034aaa6df6c466996b6802a53fde07f.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b6066dad0034aaa6df6c466996b6802a53fde07f.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.b6066dad0034aaa6df6c466996b6802a53fde07f.002.1",
+        "areaDesc": "Atchison; Miami; Linn; Leavenworth; Wyandotte; Johnson; Grundy; Sullivan; Adair; Caldwell; Livingston; Linn; Macon; Platte; Clay; Ray; Carroll; Chariton; Randolph; Jackson; Lafayette; Saline; Howard; Cass; Johnson; Pettis; Cooper; Bates; Henry",
+        "geocode": {
+          "SAME": [
+            "020005",
+            "020121",
+            "020107",
+            "020103",
+            "020209",
+            "020091",
+            "029079",
+            "029211",
+            "029001",
+            "029025",
+            "029117",
+            "029115",
+            "029121",
+            "029165",
+            "029047",
+            "029177",
+            "029033",
+            "029041",
+            "029175",
+            "029095",
+            "029107",
+            "029195",
+            "029089",
+            "029037",
+            "029101",
+            "029159",
+            "029053",
+            "029013",
+            "029083"
+          ],
+          "UGC": [
+            "KSZ025",
+            "KSZ057",
+            "KSZ060",
+            "KSZ103",
+            "KSZ104",
+            "KSZ105",
+            "MOZ015",
+            "MOZ016",
+            "MOZ017",
+            "MOZ022",
+            "MOZ023",
+            "MOZ024",
+            "MOZ025",
+            "MOZ028",
+            "MOZ029",
+            "MOZ030",
+            "MOZ031",
+            "MOZ032",
+            "MOZ033",
+            "MOZ037",
+            "MOZ038",
+            "MOZ039",
+            "MOZ040",
+            "MOZ043",
+            "MOZ044",
+            "MOZ045",
+            "MOZ046",
+            "MOZ053",
+            "MOZ054"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ025",
+          "https://api.weather.gov/zones/forecast/KSZ057",
+          "https://api.weather.gov/zones/forecast/KSZ060",
+          "https://api.weather.gov/zones/forecast/KSZ103",
+          "https://api.weather.gov/zones/forecast/KSZ104",
+          "https://api.weather.gov/zones/forecast/KSZ105",
+          "https://api.weather.gov/zones/forecast/MOZ015",
+          "https://api.weather.gov/zones/forecast/MOZ016",
+          "https://api.weather.gov/zones/forecast/MOZ017",
+          "https://api.weather.gov/zones/forecast/MOZ022",
+          "https://api.weather.gov/zones/forecast/MOZ023",
+          "https://api.weather.gov/zones/forecast/MOZ024",
+          "https://api.weather.gov/zones/forecast/MOZ025",
+          "https://api.weather.gov/zones/forecast/MOZ028",
+          "https://api.weather.gov/zones/forecast/MOZ029",
+          "https://api.weather.gov/zones/forecast/MOZ030",
+          "https://api.weather.gov/zones/forecast/MOZ031",
+          "https://api.weather.gov/zones/forecast/MOZ032",
+          "https://api.weather.gov/zones/forecast/MOZ033",
+          "https://api.weather.gov/zones/forecast/MOZ037",
+          "https://api.weather.gov/zones/forecast/MOZ038",
+          "https://api.weather.gov/zones/forecast/MOZ039",
+          "https://api.weather.gov/zones/forecast/MOZ040",
+          "https://api.weather.gov/zones/forecast/MOZ043",
+          "https://api.weather.gov/zones/forecast/MOZ044",
+          "https://api.weather.gov/zones/forecast/MOZ045",
+          "https://api.weather.gov/zones/forecast/MOZ046",
+          "https://api.weather.gov/zones/forecast/MOZ053",
+          "https://api.weather.gov/zones/forecast/MOZ054"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.acbfedef3073888feb3ad73971bae8fc658698ec.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.acbfedef3073888feb3ad73971bae8fc658698ec.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-10T22:48:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-11T03:20:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-11T03:20:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-11T04:40:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-11T04:40:00-05:00"
+          }
+        ],
+        "sent": "2026-09-11T06:27:00-05:00",
+        "effective": "2026-09-11T06:27:00-05:00",
+        "onset": "2026-09-11T06:27:00-05:00",
+        "expires": "2026-09-11T10:00:00-05:00",
+        "ends": "2026-09-11T10:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Fog Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Dense Fog Advisory issued September 11 at 6:27AM CDT until September 11 at 10:00AM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "* WHAT...Visibility one quarter mile or less in dense fog.\n\n* WHERE...Portions of east central and northeast Kansas and central,\nnorth central, northeast, and west central Missouri.\n\n* WHEN...Until 10 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
+        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWEAX"
+          ],
+          "WMOidentifier": [
+            "WWUS73 KEAX 111127"
+          ],
+          "NWSheadline": [
+            "DENSE FOG ADVISORY REMAINS IN EFFECT UNTIL 10 AM CDT THIS MORNING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KEAX.FG.Y.0014.000000T0000Z-260911T1500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-11T10:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FGY"
           ]
         }
       }
@@ -1217,157 +1956,6 @@
           ],
           "NationalWeatherService": [
             "FAY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.223b21640f971c16d4a608a7f980e78d612b3db1.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -86.95,
-              30.66
-            ],
-            [
-              -86.98,
-              30.62
-            ],
-            [
-              -86.94,
-              30.54
-            ],
-            [
-              -86.97,
-              30.51
-            ],
-            [
-              -86.86,
-              30.47
-            ],
-            [
-              -86.84,
-              30.43
-            ],
-            [
-              -86.81,
-              30.43
-            ],
-            [
-              -87.02,
-              30.13
-            ],
-            [
-              -87.2,
-              30.15
-            ],
-            [
-              -87.22,
-              30.32
-            ],
-            [
-              -87.13,
-              30.59
-            ],
-            [
-              -87.06,
-              30.55
-            ],
-            [
-              -87.09,
-              30.61
-            ],
-            [
-              -87,
-              30.68
-            ],
-            [
-              -86.95,
-              30.66
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.223b21640f971c16d4a608a7f980e78d612b3db1.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.223b21640f971c16d4a608a7f980e78d612b3db1.001.1",
-        "areaDesc": "Pensacola Bay Area including Santa Rosa Sound; Coastal waters from Okaloosa-Walton County Line to Pensacola FL out 20 NM",
-        "geocode": {
-          "SAME": [
-            "077634",
-            "077655"
-          ],
-          "UGC": [
-            "GMZ634",
-            "GMZ655"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/GMZ634",
-          "https://api.weather.gov/zones/forecast/GMZ655"
-        ],
-        "references": [],
-        "sent": "2026-09-11T05:59:00-05:00",
-        "effective": "2026-09-11T05:59:00-05:00",
-        "onset": "2026-09-11T05:59:00-05:00",
-        "expires": "2026-09-11T07:00:00-05:00",
-        "ends": "2026-09-11T07:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Likely",
-        "urgency": "Immediate",
-        "event": "Special Marine Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Mobile AL",
-        "headline": "Special Marine Warning issued September 11 at 5:59AM CDT until September 11 at 7:00AM CDT by NWS Mobile AL",
-        "description": "SMWMOB\n\nThe National Weather Service in Mobile has issued a\n\n* Special Marine Warning for...\nCoastal waters from Okaloosa-Walton County Line to Pensacola FL out\n20 NM...\nPensacola Bay Area including Santa Rosa Sound...\n\n* Until 700 AM CDT.\n\n* At 559 AM CDT, strong thunderstorms capable of producing\nwaterspouts were located along a line extending from near\nBlackwater Bay Bridge to 8 nm southeast of Pensacola Beach, moving\nnortheast at 25 knots.\n\nHAZARD...Waterspouts and wind gusts 34 knots or greater.\n\nSOURCE...Radar.\n\nIMPACT...Waterspouts can easily overturn boats and create locally\nhazardous seas. Small craft could be damaged in briefly\nhigher winds and suddenly higher waves.\n\n* Locations impacted include...\nNavarre Beach, West Santa Rosa Sound, Pensacola Beach, Escambia Bay\nBridge, Blackwater Bay Bridge, East Bay, Escambia Bay, Pensacola\nBay Bridge, and Garcon Point Bridge.",
-        "instruction": "Move to safe harbor until hazardous weather passes.\n\nMove to safe harbor immediately as gusty winds and high waves are\nexpected.\n\nThunderstorms can produce sudden waterspouts. Waterspouts can easily\noverturn boats and create locally hazardous seas. Seek safe harbor\nimmediately.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SMWMOB"
-          ],
-          "WMOidentifier": [
-            "WHUS54 KMOB 111059"
-          ],
-          "eventMotionDescription": [
-            "2026-09-11T10:59:00-00:00...storm...216DEG...26KT...30.63,-87.08 30.2,-87.06"
-          ],
-          "waterspoutDetection": [
-            "POSSIBLE"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KMOB.MA.W.0200.260911T1059Z-260911T1200Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-11T07:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SMW"
-          ],
-          "NationalWeatherService": [
-            "MAW"
           ]
         }
       }
@@ -4582,258 +5170,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.001.1",
-        "areaDesc": "Atchison; Miami; Linn; Leavenworth; Wyandotte; Johnson; Platte",
-        "geocode": {
-          "SAME": [
-            "020005",
-            "020121",
-            "020107",
-            "020103",
-            "020209",
-            "020091",
-            "029165"
-          ],
-          "UGC": [
-            "KSZ025",
-            "KSZ057",
-            "KSZ060",
-            "KSZ103",
-            "KSZ104",
-            "KSZ105",
-            "MOZ028"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/KSZ025",
-          "https://api.weather.gov/zones/forecast/KSZ057",
-          "https://api.weather.gov/zones/forecast/KSZ060",
-          "https://api.weather.gov/zones/forecast/KSZ103",
-          "https://api.weather.gov/zones/forecast/KSZ104",
-          "https://api.weather.gov/zones/forecast/KSZ105",
-          "https://api.weather.gov/zones/forecast/MOZ028"
-        ],
-        "references": [],
-        "sent": "2026-09-11T04:40:00-05:00",
-        "effective": "2026-09-11T04:40:00-05:00",
-        "onset": "2026-09-11T04:40:00-05:00",
-        "expires": "2026-09-11T10:00:00-05:00",
-        "ends": "2026-09-11T10:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Dense Fog Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Kansas City/Pleasant Hill MO",
-        "headline": "Dense Fog Advisory issued September 11 at 4:40AM CDT until September 11 at 10:00AM CDT by NWS Kansas City/Pleasant Hill MO",
-        "description": "* WHAT...Visibility one quarter mile or less in dense fog.\n\n* WHERE...In Kansas, Johnson KS, Linn KS, Miami, Atchison KS,\nLeavenworth, and Wyandotte Counties. In Missouri, Platte County.\n\n* WHEN...Until 10 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
-        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWEAX"
-          ],
-          "WMOidentifier": [
-            "WWUS73 KEAX 110940"
-          ],
-          "NWSheadline": [
-            "DENSE FOG ADVISORY IN EFFECT UNTIL 10 AM CDT THIS MORNING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXA.KEAX.FG.Y.0014.000000T0000Z-260911T1500Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-11T10:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FGY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.301583a6d1549c5c99bd02c1a4f9b205f447e5fa.002.1",
-        "areaDesc": "Grundy; Sullivan; Adair; Caldwell; Livingston; Linn; Macon; Clay; Ray; Carroll; Chariton; Randolph; Jackson; Lafayette; Saline; Howard; Cass; Johnson; Pettis; Cooper; Bates; Henry",
-        "geocode": {
-          "SAME": [
-            "029079",
-            "029211",
-            "029001",
-            "029025",
-            "029117",
-            "029115",
-            "029121",
-            "029047",
-            "029177",
-            "029033",
-            "029041",
-            "029175",
-            "029095",
-            "029107",
-            "029195",
-            "029089",
-            "029037",
-            "029101",
-            "029159",
-            "029053",
-            "029013",
-            "029083"
-          ],
-          "UGC": [
-            "MOZ015",
-            "MOZ016",
-            "MOZ017",
-            "MOZ022",
-            "MOZ023",
-            "MOZ024",
-            "MOZ025",
-            "MOZ029",
-            "MOZ030",
-            "MOZ031",
-            "MOZ032",
-            "MOZ033",
-            "MOZ037",
-            "MOZ038",
-            "MOZ039",
-            "MOZ040",
-            "MOZ043",
-            "MOZ044",
-            "MOZ045",
-            "MOZ046",
-            "MOZ053",
-            "MOZ054"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MOZ015",
-          "https://api.weather.gov/zones/forecast/MOZ016",
-          "https://api.weather.gov/zones/forecast/MOZ017",
-          "https://api.weather.gov/zones/forecast/MOZ022",
-          "https://api.weather.gov/zones/forecast/MOZ023",
-          "https://api.weather.gov/zones/forecast/MOZ024",
-          "https://api.weather.gov/zones/forecast/MOZ025",
-          "https://api.weather.gov/zones/forecast/MOZ029",
-          "https://api.weather.gov/zones/forecast/MOZ030",
-          "https://api.weather.gov/zones/forecast/MOZ031",
-          "https://api.weather.gov/zones/forecast/MOZ032",
-          "https://api.weather.gov/zones/forecast/MOZ033",
-          "https://api.weather.gov/zones/forecast/MOZ037",
-          "https://api.weather.gov/zones/forecast/MOZ038",
-          "https://api.weather.gov/zones/forecast/MOZ039",
-          "https://api.weather.gov/zones/forecast/MOZ040",
-          "https://api.weather.gov/zones/forecast/MOZ043",
-          "https://api.weather.gov/zones/forecast/MOZ044",
-          "https://api.weather.gov/zones/forecast/MOZ045",
-          "https://api.weather.gov/zones/forecast/MOZ046",
-          "https://api.weather.gov/zones/forecast/MOZ053",
-          "https://api.weather.gov/zones/forecast/MOZ054"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.acbfedef3073888feb3ad73971bae8fc658698ec.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.acbfedef3073888feb3ad73971bae8fc658698ec.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-10T22:48:00-05:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-11T03:20:00-05:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.002.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.b26cd632ba37f7aea70ec8cc2aee014baa2bcd25.002.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-11T03:20:00-05:00"
-          }
-        ],
-        "sent": "2026-09-11T04:40:00-05:00",
-        "effective": "2026-09-11T04:40:00-05:00",
-        "onset": "2026-09-11T04:40:00-05:00",
-        "expires": "2026-09-11T10:00:00-05:00",
-        "ends": "2026-09-11T10:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Dense Fog Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Kansas City/Pleasant Hill MO",
-        "headline": "Dense Fog Advisory issued September 11 at 4:40AM CDT until September 11 at 10:00AM CDT by NWS Kansas City/Pleasant Hill MO",
-        "description": "* WHAT...Visibility one quarter mile or less in dense fog.\n\n* WHERE...Portions of central, north central, northeast, and west\ncentral Missouri.\n\n* WHEN...Until 10 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
-        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWEAX"
-          ],
-          "WMOidentifier": [
-            "WWUS73 KEAX 110940"
-          ],
-          "NWSheadline": [
-            "DENSE FOG ADVISORY REMAINS IN EFFECT UNTIL 10 AM CDT THIS MORNING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KEAX.FG.Y.0014.000000T0000Z-260911T1500Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-11T10:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FGY"
           ]
         }
       }
@@ -8372,97 +8708,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9623f499bf701af615af43e4fb380904f947b7b6.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9623f499bf701af615af43e4fb380904f947b7b6.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.9623f499bf701af615af43e4fb380904f947b7b6.001.1",
-        "areaDesc": "Lee; Henderson; Warren; Hancock; McDonough; Clark",
-        "geocode": {
-          "SAME": [
-            "019111",
-            "017071",
-            "017187",
-            "017067",
-            "017109",
-            "029045"
-          ],
-          "UGC": [
-            "IAZ099",
-            "ILZ025",
-            "ILZ026",
-            "ILZ034",
-            "ILZ035",
-            "MOZ010"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/IAZ099",
-          "https://api.weather.gov/zones/forecast/ILZ025",
-          "https://api.weather.gov/zones/forecast/ILZ026",
-          "https://api.weather.gov/zones/forecast/ILZ034",
-          "https://api.weather.gov/zones/forecast/ILZ035",
-          "https://api.weather.gov/zones/forecast/MOZ010"
-        ],
-        "references": [],
-        "sent": "2026-09-11T02:07:00-05:00",
-        "effective": "2026-09-11T02:07:00-05:00",
-        "onset": "2026-09-11T02:07:00-05:00",
-        "expires": "2026-09-11T09:00:00-05:00",
-        "ends": "2026-09-11T09:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Dense Fog Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Quad Cities IA IL",
-        "headline": "Dense Fog Advisory issued September 11 at 2:07AM CDT until September 11 at 9:00AM CDT by NWS Quad Cities IA IL",
-        "description": "* WHAT...Visibility one quarter mile or less in dense fog.\n\n* WHERE...In Illinois, Hancock, Henderson, McDonough, and Warren\nCounties. In Iowa, Lee County. In Missouri, Clark County.\n\n* WHEN...Until 9 AM CDT this morning.\n\n* IMPACTS...Low visibility could make driving conditions hazardous.",
-        "instruction": "If driving, slow down, use your headlights, and leave plenty of\ndistance ahead of you.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWDVN"
-          ],
-          "WMOidentifier": [
-            "WWUS73 KDVN 110707"
-          ],
-          "NWSheadline": [
-            "DENSE FOG ADVISORY IN EFFECT UNTIL 9 AM CDT THIS MORNING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KDVN.FG.Y.0014.260911T0707Z-260911T1400Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-11T09:00:00-05:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "FGY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8880ac25641bdb7a6abf48281ec829552c2fd37b.002.1",
       "type": "Feature",
       "geometry": null,
@@ -9680,100 +9925,6 @@
           ],
           "eventEndingTime": [
             "2026-09-11T08:00:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "WIY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.59cf4ac88045ae32b15ff51dd83105aa04c85fa9.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.59cf4ac88045ae32b15ff51dd83105aa04c85fa9.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.59cf4ac88045ae32b15ff51dd83105aa04c85fa9.001.1",
-        "areaDesc": "Lincoln; Lyon; Murray; Cottonwood; Nobles; Jackson; Pipestone",
-        "geocode": {
-          "SAME": [
-            "027081",
-            "027083",
-            "027101",
-            "027033",
-            "027105",
-            "027063",
-            "027117"
-          ],
-          "UGC": [
-            "MNZ071",
-            "MNZ072",
-            "MNZ080",
-            "MNZ081",
-            "MNZ089",
-            "MNZ090",
-            "MNZ097"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MNZ071",
-          "https://api.weather.gov/zones/forecast/MNZ072",
-          "https://api.weather.gov/zones/forecast/MNZ080",
-          "https://api.weather.gov/zones/forecast/MNZ081",
-          "https://api.weather.gov/zones/forecast/MNZ089",
-          "https://api.weather.gov/zones/forecast/MNZ090",
-          "https://api.weather.gov/zones/forecast/MNZ097"
-        ],
-        "references": [],
-        "sent": "2026-09-10T23:51:00-05:00",
-        "effective": "2026-09-10T23:51:00-05:00",
-        "onset": "2026-09-11T07:00:00-05:00",
-        "expires": "2026-09-11T10:00:00-05:00",
-        "ends": "2026-09-11T19:00:00-05:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Wind Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Sioux Falls SD",
-        "headline": "Wind Advisory issued September 10 at 11:51PM CDT until September 11 at 7:00PM CDT by NWS Sioux Falls SD",
-        "description": "* WHAT...South winds 20 to 30 mph with gusts up to 45 mph expected.\n\n* WHERE...A portion of southwest Minnesota.\n\n* WHEN...From 7 AM to 7 PM CDT Friday.\n\n* IMPACTS...Gusty winds will blow around unsecured objects. Tree\nlimbs could be blown down and a few power outages may result.",
-        "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.\n\nSecure outdoor objects.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "NPWFSD"
-          ],
-          "WMOidentifier": [
-            "WWUS73 KFSD 110451"
-          ],
-          "NWSheadline": [
-            "WIND ADVISORY IN EFFECT FROM 7 AM TO 7 PM CDT FRIDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KFSD.WI.Y.0006.260911T1200Z-260912T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-11T19:00:00-05:00"
           ]
         },
         "scope": "Public",
@@ -21639,5 +21790,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-11T11:23:23+00:00"
+  "updated": "2026-09-11T11:34:21+00:00"
 }
