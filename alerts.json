@@ -10,6 +10,188 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cb84ed5665a26481ed7779c588bc73b08f168179.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.61,
+              36.14
+            ],
+            [
+              -95.68,
+              35.9
+            ],
+            [
+              -95.98,
+              36.01
+            ],
+            [
+              -95.93,
+              36.16
+            ],
+            [
+              -95.62,
+              36.16
+            ],
+            [
+              -95.61,
+              36.14
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cb84ed5665a26481ed7779c588bc73b08f168179.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.cb84ed5665a26481ed7779c588bc73b08f168179.001.1",
+        "areaDesc": "Tulsa; Wagoner",
+        "geocode": {
+          "SAME": [
+            "040143",
+            "040145"
+          ],
+          "UGC": [
+            "OKZ060",
+            "OKZ067"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/OKZ060",
+          "https://api.weather.gov/zones/forecast/OKZ067"
+        ],
+        "references": [],
+        "sent": "2026-09-13T02:28:00-05:00",
+        "effective": "2026-09-13T02:28:00-05:00",
+        "onset": "2026-09-13T02:28:00-05:00",
+        "expires": "2026-09-13T03:00:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Tulsa OK",
+        "headline": "Special Weather Statement issued September 13 at 2:28AM CDT by NWS Tulsa OK",
+        "description": "At 228 AM CDT, Doppler radar indicated a strong thunderstorm 5 miles\nsouth of Tulsa, moving east at 25 mph.\n\nHAZARD...Wind gusts up to 50 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down small tree limbs and blow\naround unsecured objects.\n\nLocations in or near the path include...\nTulsa...                          Broken Arrow...\nBixby...                          Jenks...\nCoweta...                         Catoosa...\nOneta...\n\nThis includes Interstate 44 between mile markers 223 and 231.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSTSA"
+          ],
+          "WMOidentifier": [
+            "WWUS84 KTSA 130728"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT NORTHWESTERN WAGONER AND SOUTHEASTERN TULSA COUNTIES THROUGH 300 AM CDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-13T07:28:00-00:00...storm...278DEG...20KT...36.07,-95.89"
+          ],
+          "maxWindGust": [
+            "50 MPH"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-33599",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-33599",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-33599",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-09-13T07:23:09+00:00",
+        "effective": "2026-09-13T07:23:09+00:00",
+        "onset": null,
+        "expires": "2026-09-13T07:33:09+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 130723"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.008.1",
       "type": "Feature",
       "geometry": null,
@@ -505,82 +687,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.009.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.009.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.009.1",
-        "areaDesc": "Lake Superior west of a line from Saxon Harbor WI to Grand Portage MN beyond 5NM",
-        "geocode": {
-          "SAME": [
-            "091162"
-          ],
-          "UGC": [
-            "LSZ162"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/LSZ162"
-        ],
-        "references": [],
-        "sent": "2026-09-13T03:18:00-04:00",
-        "effective": "2026-09-13T03:18:00-04:00",
-        "onset": "2026-09-15T05:00:00-04:00",
-        "expires": "2026-09-13T15:30:00-04:00",
-        "ends": "2026-09-15T17:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Possible",
-        "urgency": "Future",
-        "event": "Gale Watch",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Marquette MI",
-        "headline": "Gale Watch issued September 13 at 3:18AM EDT until September 15 at 5:00PM EDT by NWS Marquette MI",
-        "description": "* WHAT...Southwest to west winds 15 to 25 kt with gusts up to 40\nkt and waves 3 to 6 ft possible.\n\n* WHERE...Lake Superior west of a line from Saxon Harbor WI to\nGrand Portage MN beyond 5NM.\n\n* WHEN...From late Monday night through Tuesday afternoon.\n\n* IMPACTS...Strong winds can cause hazardous waves which could\ncapsize or damage vessels and reduce visibility.",
-        "instruction": "Mariners should consider altering plans to avoid possible\nhazardous conditions.  Remain in port, seek safe harbor, alter\ncourse, and/or secure the vessel for severe wind and waves.",
-        "response": "Prepare",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWMQT"
-          ],
-          "WMOidentifier": [
-            "WHUS73 KMQT 130718"
-          ],
-          "NWSheadline": [
-            "GALE WATCH IN EFFECT FROM LATE MONDAY NIGHT THROUGH TUESDAY AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.KMQT.GL.A.0024.260915T0900Z-260915T2100Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-15T17:00:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "GLA"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.008.2",
       "type": "Feature",
       "geometry": null,
@@ -643,6 +749,82 @@
           ],
           "eventEndingTime": [
             "2026-09-15T20:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "GLA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.009.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.009.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.f943c335209a5eaae6f5e7e865a2efa56f80b575.009.1",
+        "areaDesc": "Lake Superior west of a line from Saxon Harbor WI to Grand Portage MN beyond 5NM",
+        "geocode": {
+          "SAME": [
+            "091162"
+          ],
+          "UGC": [
+            "LSZ162"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/LSZ162"
+        ],
+        "references": [],
+        "sent": "2026-09-13T03:18:00-04:00",
+        "effective": "2026-09-13T03:18:00-04:00",
+        "onset": "2026-09-15T05:00:00-04:00",
+        "expires": "2026-09-13T15:30:00-04:00",
+        "ends": "2026-09-15T17:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Gale Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Marquette MI",
+        "headline": "Gale Watch issued September 13 at 3:18AM EDT until September 15 at 5:00PM EDT by NWS Marquette MI",
+        "description": "* WHAT...Southwest to west winds 15 to 25 kt with gusts up to 40\nkt and waves 3 to 6 ft possible.\n\n* WHERE...Lake Superior west of a line from Saxon Harbor WI to\nGrand Portage MN beyond 5NM.\n\n* WHEN...From late Monday night through Tuesday afternoon.\n\n* IMPACTS...Strong winds can cause hazardous waves which could\ncapsize or damage vessels and reduce visibility.",
+        "instruction": "Mariners should consider altering plans to avoid possible\nhazardous conditions.  Remain in port, seek safe harbor, alter\ncourse, and/or secure the vessel for severe wind and waves.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWMQT"
+          ],
+          "WMOidentifier": [
+            "WHUS73 KMQT 130718"
+          ],
+          "NWSheadline": [
+            "GALE WATCH IN EFFECT FROM LATE MONDAY NIGHT THROUGH TUESDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KMQT.GL.A.0024.260915T0900Z-260915T2100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-15T17:00:00-04:00"
           ]
         },
         "scope": "Public",
@@ -1562,73 +1744,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-56957",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-56957",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-56957",
-        "areaDesc": "Montgomery",
-        "geocode": {
-          "SAME": [
-            "024031"
-          ],
-          "UGC": [
-            "MDC031"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
-        ],
-        "references": [],
-        "sent": "2026-09-13T07:13:09+00:00",
-        "effective": "2026-09-13T07:13:09+00:00",
-        "onset": null,
-        "expires": "2026-09-13T07:23:09+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
-        "parameters": {
-          "AWIPSidentifier": [
-            "KEPWBC"
-          ],
-          "WMOidentifier": [
-            "NZUS91 KWBC 130713"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS",
-            "EAS",
-            "NWEM"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "TST"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e87a23afb510acad09eafbf4e7d16d604a3bb6f5.001.1",
       "type": "Feature",
       "geometry": null,
@@ -2390,136 +2505,6 @@
           ],
           "NationalWeatherService": [
             "FWA"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e0678772eabff022123abde7ced5e6be69f0fc0f.001.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -95.74,
-              36.26
-            ],
-            [
-              -95.75,
-              36.16
-            ],
-            [
-              -95.76,
-              36.16
-            ],
-            [
-              -95.76,
-              36.01
-            ],
-            [
-              -96.03,
-              36.06
-            ],
-            [
-              -96.03,
-              36.07
-            ],
-            [
-              -96.08,
-              36.07
-            ],
-            [
-              -96.07,
-              36.24
-            ],
-            [
-              -95.74,
-              36.26
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e0678772eabff022123abde7ced5e6be69f0fc0f.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.e0678772eabff022123abde7ced5e6be69f0fc0f.001.1",
-        "areaDesc": "Tulsa; Rogers; Southeast Osage",
-        "geocode": {
-          "SAME": [
-            "040143",
-            "040131",
-            "040113"
-          ],
-          "UGC": [
-            "OKZ060",
-            "OKZ061",
-            "OKZ354"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/OKZ060",
-          "https://api.weather.gov/zones/forecast/OKZ061",
-          "https://api.weather.gov/zones/forecast/OKZ354"
-        ],
-        "references": [],
-        "sent": "2026-09-13T02:05:00-05:00",
-        "effective": "2026-09-13T02:05:00-05:00",
-        "onset": "2026-09-13T02:05:00-05:00",
-        "expires": "2026-09-13T02:30:00-05:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Observed",
-        "urgency": "Expected",
-        "event": "Special Weather Statement",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Tulsa OK",
-        "headline": "Special Weather Statement issued September 13 at 2:05AM CDT by NWS Tulsa OK",
-        "description": "At 204 AM CDT, Doppler radar indicated a strong thunderstorm 3 miles\nwest of Tulsa, moving east at 20 mph.\n\nHAZARD...Wind gusts up to 40 mph.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down small tree limbs and blow\naround unsecured objects.\n\nLocations in or near the path include...\nTulsa...                          Broken Arrow...\nSand Springs...                   Catoosa...\nTulsa International Airport...    Turley...\n\nThis includes Interstate 44 between mile markers 216 and 236.",
-        "instruction": "If outdoors, consider seeking shelter inside a building.",
-        "response": "Execute",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SPSTSA"
-          ],
-          "WMOidentifier": [
-            "WWUS84 KTSA 130705"
-          ],
-          "NWSheadline": [
-            "A STRONG THUNDERSTORM WILL IMPACT SOUTHWESTERN ROGERS AND EAST CENTRAL TULSA COUNTIES THROUGH 230 AM CDT"
-          ],
-          "eventMotionDescription": [
-            "2026-09-13T07:04:00-00:00...storm...274DEG...19KT...36.15,-95.98"
-          ],
-          "maxWindGust": [
-            "40 MPH"
-          ],
-          "maxHailSize": [
-            "0.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SPS"
-          ],
-          "NationalWeatherService": [
-            "SPS"
           ]
         }
       }
@@ -9497,92 +9482,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.003.2",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.003.2",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.003.2",
-        "areaDesc": "Monterey Bay",
-        "geocode": {
-          "SAME": [
-            "057535"
-          ],
-          "UGC": [
-            "PZZ535"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PZZ535"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.92f1fbe70c2de8b1437a89d80c6f1a13d8f55e57.003.2",
-            "identifier": "urn:oid:2.49.0.1.840.0.92f1fbe70c2de8b1437a89d80c6f1a13d8f55e57.003.2",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-12T14:01:00-07:00"
-          }
-        ],
-        "sent": "2026-09-12T20:42:00-07:00",
-        "effective": "2026-09-12T20:42:00-07:00",
-        "onset": "2026-09-13T15:00:00-07:00",
-        "expires": "2026-09-13T04:45:00-07:00",
-        "ends": "2026-09-13T21:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Moderate",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Gale Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS San Francisco CA",
-        "headline": "Gale Warning issued September 12 at 8:42PM PDT until September 13 at 9:00PM PDT by NWS San Francisco CA",
-        "description": "* WHAT...For the Small Craft Advisory, northwest winds 15 to 25 kt\nwith occasional gusts up to 35 kt. For the Gale Warning,\nnorthwest winds 20 to 30 kt with gusts up to 40 kt expected.\n\n* WHERE...Monterey Bay.\n\n* WHEN...For the Small Craft Advisory, until 3 PM PDT Sunday.\nFor the Gale Warning, from 3 PM to 9 PM PDT Sunday.\n\n* IMPACTS...Strong winds will cause hazardous seas which could\ncapsize or damage vessels and reduce visibility.",
-        "instruction": "Mariners should alter plans to avoid these hazardous conditions.\nRemain in port, seek safe harbor, alter course, and/or secure the\nvessel for hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWMTR"
-          ],
-          "WMOidentifier": [
-            "WHUS76 KMTR 130342"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 3 PM PDT SUNDAY... ...GALE WARNING REMAINS IN EFFECT FROM 3 PM TO 9 PM PDT SUNDAY"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.CON.KMTR.GL.W.0029.260913T2200Z-260914T0400Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-13T21:00:00-07:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1b8c16aeb259dc142a72b0ec82d16657b71df1b1.003.2,2026-09-12T08:47:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "GLW"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.004.2",
       "type": "Feature",
       "geometry": null,
@@ -9664,6 +9563,92 @@
           ],
           "NationalWeatherService": [
             "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.003.2",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.003.2",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.a697ca9bb109c0aac4b74dfba387820539a96d9a.003.2",
+        "areaDesc": "Monterey Bay",
+        "geocode": {
+          "SAME": [
+            "057535"
+          ],
+          "UGC": [
+            "PZZ535"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PZZ535"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.92f1fbe70c2de8b1437a89d80c6f1a13d8f55e57.003.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.92f1fbe70c2de8b1437a89d80c6f1a13d8f55e57.003.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-12T14:01:00-07:00"
+          }
+        ],
+        "sent": "2026-09-12T20:42:00-07:00",
+        "effective": "2026-09-12T20:42:00-07:00",
+        "onset": "2026-09-13T15:00:00-07:00",
+        "expires": "2026-09-13T04:45:00-07:00",
+        "ends": "2026-09-13T21:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Gale Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Francisco CA",
+        "headline": "Gale Warning issued September 12 at 8:42PM PDT until September 13 at 9:00PM PDT by NWS San Francisco CA",
+        "description": "* WHAT...For the Small Craft Advisory, northwest winds 15 to 25 kt\nwith occasional gusts up to 35 kt. For the Gale Warning,\nnorthwest winds 20 to 30 kt with gusts up to 40 kt expected.\n\n* WHERE...Monterey Bay.\n\n* WHEN...For the Small Craft Advisory, until 3 PM PDT Sunday.\nFor the Gale Warning, from 3 PM to 9 PM PDT Sunday.\n\n* IMPACTS...Strong winds will cause hazardous seas which could\ncapsize or damage vessels and reduce visibility.",
+        "instruction": "Mariners should alter plans to avoid these hazardous conditions.\nRemain in port, seek safe harbor, alter course, and/or secure the\nvessel for hazardous conditions.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWWMTR"
+          ],
+          "WMOidentifier": [
+            "WHUS76 KMTR 130342"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 3 PM PDT SUNDAY... ...GALE WARNING REMAINS IN EFFECT FROM 3 PM TO 9 PM PDT SUNDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KMTR.GL.W.0029.260913T2200Z-260914T0400Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-13T21:00:00-07:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1b8c16aeb259dc142a72b0ec82d16657b71df1b1.003.2,2026-09-12T08:47:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "GLW"
           ]
         }
       }
@@ -10464,6 +10449,86 @@
       }
     },
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.002.1",
+        "areaDesc": "Spokane Area",
+        "geocode": {
+          "SAME": [
+            "053043",
+            "053063"
+          ],
+          "UGC": [
+            "WAZ036"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/WAZ036"
+        ],
+        "references": [],
+        "sent": "2026-09-12T19:41:00-07:00",
+        "effective": "2026-09-12T19:41:00-07:00",
+        "onset": "2026-09-13T02:00:00-07:00",
+        "expires": "2026-09-13T16:00:00-07:00",
+        "ends": "2026-09-13T16:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flash Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Spokane WA",
+        "headline": "Flash Flood Watch issued September 12 at 7:41PM PDT until September 13 at 4:00PM PDT by NWS Spokane WA",
+        "description": "* WHAT...Flash flooding and debris flows caused by excessive rainfall\nare possible over the burn scar.\n\n* WHERE...A portion of Northeast Washington, including the following\narea and county, Spokane Area.\n\n* WHEN...From 2 AM PDT Sunday through Sunday afternoon.\n\n* IMPACTS...Moderate to heavy rainfall over the burn scar is expected\nto develop Sunday morning.  Rainfall rates of 0.20 to 0.30 inches\nper hour will be possible Sunday morning then decreasing to 0.10\ninches per hour Sunday afternoon.  Rainfall amounts could exceed\n0.50 inch by midday Sunday.  Residents near the burn scar should\nprepare for potential debris flow moving through the Old Trails and\nAutumn Lane. Be sure to stay up to date with information from local\nauthorities. Heavy rainfall could trigger flash flooding of\nlow-lying areas, urbanized street flooding, and debris flows in and\nnear recent wildfire burn scars. Storm drains and ditches may\nbecome clogged with debris.\n\n* ADDITIONAL DETAILS...\n- National Weather Service Meteorologists are forecasting heavy\nrainfall over the burn scar, which may lead to flash flooding and\ndebris flows.\n- Some locations that may experience flash flooding include...\nSpokane and Nine Mile Falls.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+        "response": "Monitor",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAOTX"
+          ],
+          "WMOidentifier": [
+            "WGUS66 KOTX 130241"
+          ],
+          "NWSheadline": [
+            "FLASH FLOOD WATCH FOR THE OLD TRAILS AND AUTUMN LANE BURN SCARS IN EFFECT FROM 2 AM PDT SUNDAY THROUGH SUNDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KOTX.FF.A.0001.260913T0900Z-260913T2300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-13T16:00:00-07:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FFA"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.005.1",
       "type": "Feature",
       "geometry": null,
@@ -10554,86 +10619,6 @@
           ],
           "NationalWeatherService": [
             "FAA"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.10f3c49584be4c84004700a17f8fcc66ba56e964.002.1",
-        "areaDesc": "Spokane Area",
-        "geocode": {
-          "SAME": [
-            "053043",
-            "053063"
-          ],
-          "UGC": [
-            "WAZ036"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/WAZ036"
-        ],
-        "references": [],
-        "sent": "2026-09-12T19:41:00-07:00",
-        "effective": "2026-09-12T19:41:00-07:00",
-        "onset": "2026-09-13T02:00:00-07:00",
-        "expires": "2026-09-13T16:00:00-07:00",
-        "ends": "2026-09-13T16:00:00-07:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Possible",
-        "urgency": "Future",
-        "event": "Flash Flood Watch",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Spokane WA",
-        "headline": "Flash Flood Watch issued September 12 at 7:41PM PDT until September 13 at 4:00PM PDT by NWS Spokane WA",
-        "description": "* WHAT...Flash flooding and debris flows caused by excessive rainfall\nare possible over the burn scar.\n\n* WHERE...A portion of Northeast Washington, including the following\narea and county, Spokane Area.\n\n* WHEN...From 2 AM PDT Sunday through Sunday afternoon.\n\n* IMPACTS...Moderate to heavy rainfall over the burn scar is expected\nto develop Sunday morning.  Rainfall rates of 0.20 to 0.30 inches\nper hour will be possible Sunday morning then decreasing to 0.10\ninches per hour Sunday afternoon.  Rainfall amounts could exceed\n0.50 inch by midday Sunday.  Residents near the burn scar should\nprepare for potential debris flow moving through the Old Trails and\nAutumn Lane. Be sure to stay up to date with information from local\nauthorities. Heavy rainfall could trigger flash flooding of\nlow-lying areas, urbanized street flooding, and debris flows in and\nnear recent wildfire burn scars. Storm drains and ditches may\nbecome clogged with debris.\n\n* ADDITIONAL DETAILS...\n- National Weather Service Meteorologists are forecasting heavy\nrainfall over the burn scar, which may lead to flash flooding and\ndebris flows.\n- Some locations that may experience flash flooding include...\nSpokane and Nine Mile Falls.\n- http://www.weather.gov/safety/flood",
-        "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
-        "response": "Monitor",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FFAOTX"
-          ],
-          "WMOidentifier": [
-            "WGUS66 KOTX 130241"
-          ],
-          "NWSheadline": [
-            "FLASH FLOOD WATCH FOR THE OLD TRAILS AND AUTUMN LANE BURN SCARS IN EFFECT FROM 2 AM PDT SUNDAY THROUGH SUNDAY AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.NEW.KOTX.FF.A.0001.260913T0900Z-260913T2300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-13T16:00:00-07:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FFA"
-          ],
-          "NationalWeatherService": [
-            "FFA"
           ]
         }
       }
@@ -15437,82 +15422,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.005.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.005.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.005.1",
-        "areaDesc": "Flaxman Island to Demarcation Point out to 15 NM",
-        "geocode": {
-          "SAME": [
-            "058815"
-          ],
-          "UGC": [
-            "PKZ815"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/PKZ815"
-        ],
-        "references": [],
-        "sent": "2026-09-12T03:45:00-08:00",
-        "effective": "2026-09-12T03:45:00-08:00",
-        "onset": "2026-09-12T03:00:00-08:00",
-        "expires": "2026-09-12T18:00:00-08:00",
-        "ends": "2026-09-13T05:00:00-08:00",
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Fairbanks AK",
-        "headline": "Small Craft Advisory issued September 12 at 3:45AM AKDT until September 13 at 5:00AM AKDT by NWS Fairbanks AK",
-        "description": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...W winds 25 kt. Seas 4 ft.\n.TONIGHT...W winds 25 kt. Seas 5 ft. Rain showers.\n.SUN...W winds 30 kt. Seas 7 ft. Rain showers and snow showers.\n.SUN NIGHT...W winds 30 kt. Seas 7 ft.\n.MON...W winds 20 kt. Seas 5 ft.\n.MON NIGHT...NW winds 10 kt. Seas 4 ft.\n.TUE...E winds 15 kt. Seas 3 ft.\n.WED...W winds 20 kt. Seas 7 ft.",
-        "instruction": null,
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "CWFNSB"
-          ],
-          "WMOidentifier": [
-            "FZAK51 PAFG 121145"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY IN EFFECT THROUGH LATE TONIGHT"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.NEW.PAFG.SC.Y.8305.260912T1100Z-260913T1300Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-13T05:00:00-08:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.008.1",
       "type": "Feature",
       "geometry": null,
@@ -15569,6 +15478,82 @@
           ],
           "VTEC": [
             "/O.NEW.PAFG.SC.Y.8306.260912T1100Z-260913T1300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-13T05:00:00-08:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "SCY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.005.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.005.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.eeb76bb690530471d2555b2b45dd21a145d49644.005.1",
+        "areaDesc": "Flaxman Island to Demarcation Point out to 15 NM",
+        "geocode": {
+          "SAME": [
+            "058815"
+          ],
+          "UGC": [
+            "PKZ815"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/PKZ815"
+        ],
+        "references": [],
+        "sent": "2026-09-12T03:45:00-08:00",
+        "effective": "2026-09-12T03:45:00-08:00",
+        "onset": "2026-09-12T03:00:00-08:00",
+        "expires": "2026-09-12T18:00:00-08:00",
+        "ends": "2026-09-13T05:00:00-08:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Small Craft Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Fairbanks AK",
+        "headline": "Small Craft Advisory issued September 12 at 3:45AM AKDT until September 13 at 5:00AM AKDT by NWS Fairbanks AK",
+        "description": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...W winds 25 kt. Seas 4 ft.\n.TONIGHT...W winds 25 kt. Seas 5 ft. Rain showers.\n.SUN...W winds 30 kt. Seas 7 ft. Rain showers and snow showers.\n.SUN NIGHT...W winds 30 kt. Seas 7 ft.\n.MON...W winds 20 kt. Seas 5 ft.\n.MON NIGHT...NW winds 10 kt. Seas 4 ft.\n.TUE...E winds 15 kt. Seas 3 ft.\n.WED...W winds 20 kt. Seas 7 ft.",
+        "instruction": null,
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "CWFNSB"
+          ],
+          "WMOidentifier": [
+            "FZAK51 PAFG 121145"
+          ],
+          "NWSheadline": [
+            "SMALL CRAFT ADVISORY IN EFFECT THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.PAFG.SC.Y.8305.260912T1100Z-260913T1300Z/"
           ],
           "eventEndingTime": [
             "2026-09-13T05:00:00-08:00"
@@ -16207,5 +16192,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-13T07:20:17+00:00"
+  "updated": "2026-09-13T07:30:00+00:00"
 }
