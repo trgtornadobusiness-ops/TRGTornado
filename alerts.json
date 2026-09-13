@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-11766",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-12013",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-11766",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-12013",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-11766",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-12013",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-13T10:53:09+00:00",
-        "effective": "2026-09-13T10:53:09+00:00",
+        "sent": "2026-09-13T11:03:09+00:00",
+        "effective": "2026-09-13T11:03:09+00:00",
         "onset": null,
-        "expires": "2026-09-13T11:03:09+00:00",
+        "expires": "2026-09-13T11:13:09+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 131053"
+            "NZUS91 KWBC 131103"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,118 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.82ea7cc1275c2a360a6ddcb8879c7f8ea4ea9ae5.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.34,
+              39.89
+            ],
+            [
+              -73.74,
+              40.34
+            ],
+            [
+              -72.12,
+              40.31
+            ],
+            [
+              -72.15,
+              39.88
+            ],
+            [
+              -72.81,
+              39.67
+            ],
+            [
+              -73.34,
+              39.89
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.82ea7cc1275c2a360a6ddcb8879c7f8ea4ea9ae5.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.82ea7cc1275c2a360a6ddcb8879c7f8ea4ea9ae5.001.1",
+        "areaDesc": "Fire Island Inlet NY to Moriches Inlet NY out 20 NM; Sandy Hook NJ to Fire Island Inlet NY out 20 NM; Waters from Moriches Inlet NY to Montauk Point NY from 20 to 60 NM; Waters from Fire Island Inlet NY to Moriches Inlet NY from 20 to 60 NM; Waters from Sandy Hook NJ to Fire Island Inlet NY out 20 to 60 NM",
+        "geocode": {
+          "SAME": [
+            "073353",
+            "073355",
+            "073380",
+            "073383",
+            "073385"
+          ],
+          "UGC": [
+            "ANZ353",
+            "ANZ355",
+            "ANZ380",
+            "ANZ383",
+            "ANZ385"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/ANZ353",
+          "https://api.weather.gov/zones/forecast/ANZ355",
+          "https://api.weather.gov/zones/forecast/ANZ380",
+          "https://api.weather.gov/zones/forecast/ANZ383",
+          "https://api.weather.gov/zones/forecast/ANZ385"
+        ],
+        "references": [],
+        "sent": "2026-09-13T06:54:00-04:00",
+        "effective": "2026-09-13T06:54:00-04:00",
+        "onset": "2026-09-13T06:54:00-04:00",
+        "expires": "2026-09-13T08:00:00-04:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Marine Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Upton NY",
+        "headline": "Marine Weather Statement issued September 13 at 6:54AM EDT by NWS Upton NY",
+        "description": "The areas affected include...\n\nSandy Hook NJ to Moriches Inlet NY out 60 NM...\nThe Open Waters 20 to 60 NM south of Moriches Inlet to Montauk\nPoint NY...\n\nAt 654 AM EDT, Doppler radar indicated strong thunderstorms, capable\nof producing winds to around 30 knots. These thunderstorms were\nlocated along a line extending from 16 nm southeast of Shark River\nReef to 35 nm southeast of Buoy 44025, moving north at 25 knots.",
+        "instruction": "Mariners can expect gusty winds to around 30 knots, locally higher\nwaves, lightning strikes, and heavy downpours.",
+        "response": "Monitor",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "MWSOKX"
+          ],
+          "WMOidentifier": [
+            "FZUS71 KOKX 131054"
+          ],
+          "NWSheadline": [
+            "STRONG THUNDERSTORMS OVER THE WATERS"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "MWS"
           ]
         }
       }
@@ -19723,5 +19835,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-13T10:53:18+00:00"
+  "updated": "2026-09-13T11:03:18+00:00"
 }
