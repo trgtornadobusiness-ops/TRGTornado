@@ -10,6 +10,198 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dea554b708c49943b6e05614fbe3c974e02be9dd.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -117.56,
+              45.08
+            ],
+            [
+              -117.57,
+              45
+            ],
+            [
+              -117.61,
+              44.99
+            ],
+            [
+              -117.63,
+              45.01
+            ],
+            [
+              -117.65,
+              45.02
+            ],
+            [
+              -117.72,
+              45.11
+            ],
+            [
+              -117.39,
+              45.22
+            ],
+            [
+              -117.34,
+              45.08
+            ],
+            [
+              -117.56,
+              45.08
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dea554b708c49943b6e05614fbe3c974e02be9dd.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.dea554b708c49943b6e05614fbe3c974e02be9dd.001.1",
+        "areaDesc": "Wallowa County",
+        "geocode": {
+          "SAME": [
+            "041061",
+            "041063"
+          ],
+          "UGC": [
+            "ORZ050"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/ORZ050"
+        ],
+        "references": [],
+        "sent": "2026-09-17T06:56:00-07:00",
+        "effective": "2026-09-17T06:56:00-07:00",
+        "onset": "2026-09-17T06:56:00-07:00",
+        "expires": "2026-09-17T07:30:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Pendleton OR",
+        "headline": "Special Weather Statement issued September 17 at 6:56AM PDT by NWS Pendleton OR",
+        "description": "At 656 AM PDT, Doppler radar was tracking a strong thunderstorm 8\nmiles northeast of Pondosa, or 21 miles east of North Powder, moving\nnorth at 25 mph.\n\nHAZARD...Wind gusts up to 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor hail damage to vegetation is\npossible.\n\nThis storm will remain over mainly rural areas of southeastern Union\nCounty.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSPDT"
+          ],
+          "WMOidentifier": [
+            "WWUS86 KPDT 171356"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT SOUTHEASTERN UNION COUNTY THROUGH 730 AM PDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-17T13:56:00-00:00...storm...159DEG...20KT...45.05,-117.49"
+          ],
+          "maxWindGust": [
+            "40 MPH"
+          ],
+          "maxHailSize": [
+            "0.25"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-31828",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-31828",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-31828",
+        "areaDesc": "Montgomery",
+        "geocode": {
+          "SAME": [
+            "024031"
+          ],
+          "UGC": [
+            "MDC031"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MDC031"
+        ],
+        "references": [],
+        "sent": "2026-09-17T13:53:09+00:00",
+        "effective": "2026-09-17T13:53:09+00:00",
+        "onset": null,
+        "expires": "2026-09-17T14:03:09+00:00",
+        "ends": null,
+        "status": "Test",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Test Message",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "response": "None",
+        "note": "This is only a test for monitoring of vital dissemination systems.",
+        "parameters": {
+          "AWIPSidentifier": [
+            "KEPWBC"
+          ],
+          "WMOidentifier": [
+            "NZUS91 KWBC 171353"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "TST"
+          ]
+        }
+      }
+    },
+    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7366a3a42d6b2c27bba50e8130b3c716a428187b.001.1",
       "type": "Feature",
       "geometry": null,
@@ -421,73 +613,6 @@
           ],
           "NationalWeatherService": [
             "SPS"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-58037",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-58037",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-58037",
-        "areaDesc": "Montgomery",
-        "geocode": {
-          "SAME": [
-            "024031"
-          ],
-          "UGC": [
-            "MDC031"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/MDC031"
-        ],
-        "references": [],
-        "sent": "2026-09-17T13:43:09+00:00",
-        "effective": "2026-09-17T13:43:09+00:00",
-        "onset": null,
-        "expires": "2026-09-17T13:53:09+00:00",
-        "ends": null,
-        "status": "Test",
-        "messageType": "Alert",
-        "category": "Met",
-        "severity": "Unknown",
-        "certainty": "Unknown",
-        "urgency": "Unknown",
-        "event": "Test Message",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS",
-        "headline": null,
-        "description": "Monitoring message only. Please disregard.",
-        "instruction": "Monitoring message only. Please disregard.",
-        "response": "None",
-        "note": "This is only a test for monitoring of vital dissemination systems.",
-        "parameters": {
-          "AWIPSidentifier": [
-            "KEPWBC"
-          ],
-          "WMOidentifier": [
-            "NZUS91 KWBC 171343"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS",
-            "EAS",
-            "NWEM"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "TST"
           ]
         }
       }
@@ -13340,101 +13465,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.12b701928a15a528b0bfdc7e1fa428f5b45b5831.002.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.12b701928a15a528b0bfdc7e1fa428f5b45b5831.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.12b701928a15a528b0bfdc7e1fa428f5b45b5831.002.1",
-        "areaDesc": "Coastal waters from Fernandina Beach to St. Augustine FL out 20 NM; Coastal waters from St. Augustine to Flagler Beach FL out 20 NM; Waters from Fernandina Beach to St. Augustine FL from 20 to 60 NM; Waters from St. Augustine to Flagler Beach FL from 20 to 60 NM",
-        "geocode": {
-          "SAME": [
-            "075452",
-            "075454",
-            "075472",
-            "075474"
-          ],
-          "UGC": [
-            "AMZ452",
-            "AMZ454",
-            "AMZ472",
-            "AMZ474"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/AMZ452",
-          "https://api.weather.gov/zones/forecast/AMZ454",
-          "https://api.weather.gov/zones/forecast/AMZ472",
-          "https://api.weather.gov/zones/forecast/AMZ474"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.01cfecf489ae17ab104eb0b2ce99851e231f62ad.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.01cfecf489ae17ab104eb0b2ce99851e231f62ad.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-16T13:30:00-04:00"
-          }
-        ],
-        "sent": "2026-09-17T02:25:00-04:00",
-        "effective": "2026-09-17T02:25:00-04:00",
-        "onset": "2026-09-17T02:25:00-04:00",
-        "expires": "2026-09-17T11:00:00-04:00",
-        "ends": "2026-09-17T11:00:00-04:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Minor",
-        "certainty": "Likely",
-        "urgency": "Expected",
-        "event": "Small Craft Advisory",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Jacksonville FL",
-        "headline": "Small Craft Advisory issued September 17 at 2:25AM EDT until September 17 at 11:00AM EDT by NWS Jacksonville FL",
-        "description": "* WHAT...Seas 6 to 7 ft.\n\n* WHERE...All Northeast Florida coastal waters from Fernandina\nBeach FL to Flagler Beach FL out to 60 NM.\n\n* WHEN...Until 11 AM EDT this morning.\n\n* IMPACTS...Conditions will be hazardous to small craft.",
-        "instruction": "Inexperienced mariners, especially those operating smaller\nvessels, should avoid navigating in hazardous conditions.",
-        "response": "Avoid",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "MWWJAX"
-          ],
-          "WMOidentifier": [
-            "WHUS72 KJAX 170625"
-          ],
-          "NWSheadline": [
-            "SMALL CRAFT ADVISORY NOW IN EFFECT UNTIL 11 AM EDT THIS MORNING"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "VTEC": [
-            "/O.EXT.KJAX.SC.Y.0033.000000T0000Z-260917T1500Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-17T11:00:00-04:00"
-          ],
-          "expiredReferences": [
-            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.83873cdec263fcdea22406a0222ad15ee40876bb.001.1,2026-09-16T02:24:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c0c5bdae967f9c0117a236c51e074d50daf6cb08.003.1,2026-09-15T14:11:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c0c5bdae967f9c0117a236c51e074d50daf6cb08.002.1,2026-09-15T14:11:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9305c86f3c1c30590127da38b868d81518f50d32.002.1,2026-09-15T02:49:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9305c86f3c1c30590127da38b868d81518f50d32.001.1,2026-09-15T02:49:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b8f36325f7f1cf7d12415651ccda9dd516369759.003.1,2026-09-14T14:26:00-04:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b8f36325f7f1cf7d12415651ccda9dd516369759.002.1,2026-09-14T14:26:00-04:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "NWS"
-          ],
-          "NationalWeatherService": [
-            "SCY"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.19d5623d5b4df15f996fc2455cd1da2d145fa474.002.1",
       "type": "Feature",
       "geometry": null,
@@ -18616,5 +18646,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-17T13:51:46+00:00"
+  "updated": "2026-09-17T13:56:51+00:00"
 }
