@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-22725",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-45106",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-22725",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-45106",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-22725",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-45106",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-18T14:03:09+00:00",
-        "effective": "2026-09-18T14:03:09+00:00",
+        "sent": "2026-09-18T14:13:09+00:00",
+        "effective": "2026-09-18T14:13:09+00:00",
         "onset": null,
-        "expires": "2026-09-18T14:13:09+00:00",
+        "expires": "2026-09-18T14:23:09+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 181403"
+            "NZUS91 KWBC 181413"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,231 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3cfcab27021225d173a561bf280aef2ce222c1.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -110.51,
+              39.51
+            ],
+            [
+              -110.62,
+              39.65
+            ],
+            [
+              -110.23,
+              39.91
+            ],
+            [
+              -110.04,
+              39.67
+            ],
+            [
+              -110.51,
+              39.51
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7a3cfcab27021225d173a561bf280aef2ce222c1.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7a3cfcab27021225d173a561bf280aef2ce222c1.001.1",
+        "areaDesc": "Wasatch Plateau/Book Cliffs; Castle Country",
+        "geocode": {
+          "SAME": [
+            "049007",
+            "049013",
+            "049015",
+            "049039",
+            "049049",
+            "049051",
+            "049041"
+          ],
+          "UGC": [
+            "UTZ113",
+            "UTZ120"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/UTZ113",
+          "https://api.weather.gov/zones/forecast/UTZ120"
+        ],
+        "references": [],
+        "sent": "2026-09-18T08:10:00-06:00",
+        "effective": "2026-09-18T08:10:00-06:00",
+        "onset": "2026-09-18T08:10:00-06:00",
+        "expires": "2026-09-18T09:00:00-06:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Salt Lake City UT",
+        "headline": "Special Weather Statement issued September 18 at 8:10AM MDT by NWS Salt Lake City UT",
+        "description": "At 810 AM MDT, Doppler radar was tracking a strong thunderstorm near\nSunnyside, or 17 miles east of Price, moving northeast at 25 mph.\n\nHAZARD...Nickel size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Minor damage to outdoor objects is possible.\n\nLocations impacted include...\nSunnyside and East Carbon.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSSLC"
+          ],
+          "WMOidentifier": [
+            "WWUS85 KSLC 181410"
+          ],
+          "NWSheadline": [
+            "A strong thunderstorm will impact portions of eastern Carbon and south central Duchesne Counties through 900 AM MDT"
+          ],
+          "eventMotionDescription": [
+            "2026-09-18T14:10:00-00:00...storm...237DEG...22KT...39.62,-110.48"
+          ],
+          "maxWindGust": [
+            "Up to 40 MPH"
+          ],
+          "maxHailSize": [
+            "0.88"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d2f8aa827ab6b0860108005f6f8c9d990369ff42.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.11,
+              24.9
+            ],
+            [
+              -82.64,
+              24.86
+            ],
+            [
+              -82.82,
+              24.61
+            ],
+            [
+              -82.87,
+              24.61
+            ],
+            [
+              -82.99,
+              24.63
+            ],
+            [
+              -83.11,
+              24.9
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d2f8aa827ab6b0860108005f6f8c9d990369ff42.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.d2f8aa827ab6b0860108005f6f8c9d990369ff42.001.1",
+        "areaDesc": "Gulf of America including Dry Tortugas and Rebecca Shoal Channel",
+        "geocode": {
+          "SAME": [
+            "077034"
+          ],
+          "UGC": [
+            "GMZ034"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/GMZ034"
+        ],
+        "references": [],
+        "sent": "2026-09-18T10:08:00-04:00",
+        "effective": "2026-09-18T10:08:00-04:00",
+        "onset": "2026-09-18T10:08:00-04:00",
+        "expires": "2026-09-18T11:00:00-04:00",
+        "ends": "2026-09-18T11:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Special Marine Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Key West FL",
+        "headline": "Special Marine Warning issued September 18 at 10:08AM EDT until September 18 at 11:00AM EDT by NWS Key West FL",
+        "description": "SMWKEY\n\nThe National Weather Service in Key West has issued a\n\n* Special Marine Warning for...\nGulf of America including Dry Tortugas and Rebecca Shoal Channel...\n\n* Until 1100 AM EDT.\n\n* At 1008 AM EDT, a strong thunderstorm was located over Dry\nTortugas, moving north at 10 knots.\n\nHAZARD...Wind gusts 34 knots or greater.\n\nSOURCE...National Weather Service Meteorologist.\n\nIMPACT...Expect wind gusts in excess of 34 knots, suddenly higher\nwaves, frequent lightning, and heavy downpours.\n\n* Locations in the warning include...\nFort Jefferson, Dry Tortugas, Pulaski Shoal Light, Dry Tortugas\nLight, and Tortugas Ecological Reserve North.",
+        "instruction": "Prepare for wind gusts in excess of 34 knots, steep and fast-building\nseas, frequent lightning, and blinding downpours. Stay low or go\nbelow, and make sure all on board are wearing life jackets.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SMWKEY"
+          ],
+          "WMOidentifier": [
+            "WHUS52 KKEY 181408"
+          ],
+          "eventMotionDescription": [
+            "2026-09-18T14:08:00-00:00...storm...189DEG...10KT...24.69,-82.88"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KKEY.MA.W.0277.260918T1408Z-260918T1500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-18T11:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SMW"
+          ],
+          "NationalWeatherService": [
+            "MAW"
           ]
         }
       }
@@ -1636,133 +1861,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a4f4daadde9a5453375a41df14d3896e372cf5eb.002.1",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -110.74,
-              39.56
-            ],
-            [
-              -110.58,
-              39.71
-            ],
-            [
-              -110.37,
-              39.55
-            ],
-            [
-              -110.6,
-              39.46
-            ],
-            [
-              -110.74,
-              39.56
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a4f4daadde9a5453375a41df14d3896e372cf5eb.002.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.a4f4daadde9a5453375a41df14d3896e372cf5eb.002.1",
-        "areaDesc": "Carbon, UT",
-        "geocode": {
-          "SAME": [
-            "049007"
-          ],
-          "UGC": [
-            "UTC007"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/county/UTC007"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.fc94c5dd425af9c8fd09ef7b9975117cf5825b85.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.fc94c5dd425af9c8fd09ef7b9975117cf5825b85.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-18T07:35:00-06:00"
-          }
-        ],
-        "sent": "2026-09-18T07:52:00-06:00",
-        "effective": "2026-09-18T07:52:00-06:00",
-        "onset": "2026-09-18T07:52:00-06:00",
-        "expires": "2026-09-18T08:15:00-06:00",
-        "ends": "2026-09-18T08:15:00-06:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Severe Thunderstorm Warning",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Salt Lake City UT",
-        "headline": "Severe Thunderstorm Warning issued September 18 at 7:52AM MDT until September 18 at 8:15AM MDT by NWS Salt Lake City UT",
-        "description": "At 752 AM MDT, a severe thunderstorm was located near Wellington, or\n9 miles southeast of Price, moving northeast at 20 mph.\n\nHAZARD...60 mph wind gusts and quarter size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Hail damage to vehicles is expected. Expect wind damage to\nroofs, siding, and trees.\n\nLocations impacted include...\nWellington, Sunnyside, and East Carbon.\n\nThis includes US Route 6 between mile markers 248 and 259.",
-        "instruction": "For your protection move to an interior room on the lowest floor of a\nbuilding.",
-        "response": "Shelter",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "SVSSLC"
-          ],
-          "WMOidentifier": [
-            "WWUS55 KSLC 181352"
-          ],
-          "NWSheadline": [
-            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 815 AM MDT FOR SOUTH CENTRAL CARBON COUNTY"
-          ],
-          "eventMotionDescription": [
-            "2026-09-18T13:52:00-00:00...storm...230DEG...17KT...39.55,-110.65"
-          ],
-          "windThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxWindGust": [
-            "60 MPH"
-          ],
-          "hailThreat": [
-            "RADAR INDICATED"
-          ],
-          "maxHailSize": [
-            "1.00"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KSLC.SV.W.0132.000000T0000Z-260918T1415Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-18T08:15:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "SVS"
-          ],
-          "NationalWeatherService": [
-            "SVW"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.85b6ffe4760c16f075135c7ceb55f5c4e0a62090.001.1",
       "type": "Feature",
       "geometry": {
@@ -2502,89 +2600,6 @@
           ],
           "NationalWeatherService": [
             "SCY"
-          ]
-        }
-      }
-    },
-    {
-      "id": "https://api.weather.gov/alerts/0bbd074bc0454b80be1227ef5d4af688_200731",
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -92.7447007,
-              30.2901497
-            ],
-            [
-              -92.634861,
-              30.2881836
-            ],
-            [
-              -92.6370241,
-              30.198038
-            ],
-            [
-              -92.7468638,
-              30.2000059
-            ],
-            [
-              -92.7447007,
-              30.2901497
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/0bbd074bc0454b80be1227ef5d4af688_200731",
-        "@type": "wx:Alert",
-        "id": "0bbd074bc0454b80be1227ef5d4af688_200731",
-        "areaDesc": "022053",
-        "geocode": {
-          "SAME": [
-            "022053"
-          ]
-        },
-        "affectedZones": [],
-        "references": [],
-        "sent": "2026-09-18T13:20:20+00:00",
-        "effective": null,
-        "onset": null,
-        "expires": "2026-09-18T14:20:20+00:00",
-        "ends": null,
-        "status": "Actual",
-        "messageType": "Alert",
-        "category": "Fire",
-        "severity": "Severe",
-        "certainty": "Observed",
-        "urgency": "Immediate",
-        "event": "Gas pipeline",
-        "sender": "ocv_ipaws@200731",
-        "senderName": "OCV",
-        "headline": "Gas pipeline",
-        "description": "There has been a gas pipeline rupture on farm supply north of highway 90",
-        "instruction": "AVOID THE AREA OF HIGHWAY 90 BETWEEN MONGER ROAD AND 395. THERE HAS BEEN A PIPELINE RUPTURE EMERGENCY PERSONEL ARE WORKING TO EVACUATE AND CLEAR THE AREA. HIGHWAY 90 IS CLOSED BETWEEN MONGER ROAD AND 395",
-        "response": null,
-        "note": null,
-        "parameters": {
-          "EAS-ORG": [
-            "CIV"
-          ],
-          "timezone": [
-            "UTC"
-          ],
-          "BLOCKCHANNEL": [
-            "CMAS"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": null,
-        "eventCode": {
-          "SAME": [
-            "CEM"
           ]
         }
       }
@@ -26382,5 +26397,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-18T14:03:15+00:00"
+  "updated": "2026-09-18T14:20:20+00:00"
 }
