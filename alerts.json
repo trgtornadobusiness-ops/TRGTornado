@@ -10,13 +10,13 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-59816",
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-16377",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-59816",
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-16377",
         "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-59816",
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-16377",
         "areaDesc": "Montgomery",
         "geocode": {
           "SAME": [
@@ -30,10 +30,10 @@
           "https://api.weather.gov/zones/county/MDC031"
         ],
         "references": [],
-        "sent": "2026-09-18T16:53:09+00:00",
-        "effective": "2026-09-18T16:53:09+00:00",
+        "sent": "2026-09-18T17:03:09+00:00",
+        "effective": "2026-09-18T17:03:09+00:00",
         "onset": null,
-        "expires": "2026-09-18T17:03:09+00:00",
+        "expires": "2026-09-18T17:13:09+00:00",
         "ends": null,
         "status": "Test",
         "messageType": "Alert",
@@ -54,7 +54,7 @@
             "KEPWBC"
           ],
           "WMOidentifier": [
-            "NZUS91 KWBC 181653"
+            "NZUS91 KWBC 181703"
           ],
           "BLOCKCHANNEL": [
             "CMAS",
@@ -72,6 +72,359 @@
           ],
           "NationalWeatherService": [
             "TST"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.04fe6346e61ed82b7620d0426034052bb44dae3b.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -80.29,
+              26.28
+            ],
+            [
+              -80.16,
+              26.28
+            ],
+            [
+              -80.23,
+              26
+            ],
+            [
+              -80.34,
+              26.01
+            ],
+            [
+              -80.36,
+              26.06
+            ],
+            [
+              -80.35,
+              26.11
+            ],
+            [
+              -80.29,
+              26.28
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.04fe6346e61ed82b7620d0426034052bb44dae3b.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.04fe6346e61ed82b7620d0426034052bb44dae3b.001.1",
+        "areaDesc": "Broward, FL",
+        "geocode": {
+          "SAME": [
+            "012011"
+          ],
+          "UGC": [
+            "FLC011"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/FLC011"
+        ],
+        "references": [],
+        "sent": "2026-09-18T13:03:00-04:00",
+        "effective": "2026-09-18T13:03:00-04:00",
+        "onset": "2026-09-18T13:03:00-04:00",
+        "expires": "2026-09-18T16:00:00-04:00",
+        "ends": "2026-09-18T16:00:00-04:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Miami FL",
+        "headline": "Flood Advisory issued September 18 at 1:03PM EDT until September 18 at 4:00PM EDT by NWS Miami FL",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Broward County in southeastern Florida...\n\n* WHEN...Until 400 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 102 PM EDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 1 and 3 inches of rain have\nfallen.\n- Additional rainfall amounts of 1 to 2 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nPembroke Pines, Coral Springs, Davie, Plantation, Sunrise,\nTamarac, Margate, Lauderhill, Coconut Creek, North Lauderdale,\nLauderdale Lakes, Cooper City, Pine Island Ridge, Sawgrass Mills\nMall, Nova Southeastern University and St. George.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSMFL"
+          ],
+          "WMOidentifier": [
+            "WGUS82 KMFL 181703"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 4 PM EDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KMFL.FA.Y.0114.260918T1703Z-260918T2000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-18T16:00:00-04:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.334b5785451dd5aa9b8851b3cc29dd622860119d.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.334b5785451dd5aa9b8851b3cc29dd622860119d.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.334b5785451dd5aa9b8851b3cc29dd622860119d.001.1",
+        "areaDesc": "Custer",
+        "geocode": {
+          "SAME": [
+            "030017"
+          ],
+          "UGC": [
+            "MTZ032"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/MTZ032"
+        ],
+        "references": [],
+        "sent": "2026-09-18T11:03:00-06:00",
+        "effective": "2026-09-18T11:03:00-06:00",
+        "onset": "2026-09-18T18:00:00-06:00",
+        "expires": "2026-09-19T11:15:00-06:00",
+        "ends": "2026-09-20T18:00:00-06:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Billings MT",
+        "headline": "Flood Watch issued September 18 at 11:03AM MDT until September 20 at 6:00PM MDT by NWS Billings MT",
+        "description": "A strong and slow moving weather system will impact the region\ntonight through Sunday. Well above normal atmospheric moisture levels\ncombined with the dynamics from this storm system will provide the\npotential for heavy rainfall during this period. Thunderstorms\nembedded in the more general rainfall will have the potential to\nproduce flash flooding, particularly over recent burn scars.\n\n* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Custer county.\n\n* WHEN...From 6 PM MDT this evening through Sunday afternoon.\n\n* IMPACTS...Excessive runoff may result in flooding of creeks,\nstreams, and other low-lying and flood-prone locations. Flooding\nmay occur in poor drainage and urban areas.\n\n* ADDITIONAL DETAILS...\n- 1 to 2.5 inches of rainfall is forecast across the watch area\nFriday night through Sunday. Locally heavier accumulations up to\n4 inches are possible where thunderstorm activity develops.\n- Any recent burn scars from this summer will have elevated Flash\nFlood potential.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Please monitor forecasts and be alert for possible Flood Warnings.\nThose living in areas prone to flooding should be prepared to take\naction should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFABYZ"
+          ],
+          "WMOidentifier": [
+            "WGUS65 KBYZ 181703"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH IN EFFECT FROM 6 PM MDT THIS EVENING THROUGH SUNDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXA.KBYZ.FA.A.0004.260919T0000Z-260921T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-20T18:00:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.334b5785451dd5aa9b8851b3cc29dd622860119d.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.334b5785451dd5aa9b8851b3cc29dd622860119d.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.334b5785451dd5aa9b8851b3cc29dd622860119d.002.1",
+        "areaDesc": "Musselshell; Treasure; Northern Rosebud; Northern Stillwater; Powder River; Northern Park; Golden Valley; Red Lodge Foothills; Northern Big Horn; Southern Rosebud; Judith Gap; Paradise Valley; Livingston Area; Beartooth Foothills; Absaroka/Beartooth Mountains; Crazy Mountains; Southern Big Horn; Southeastern Carbon; Northern Sweet Grass; Bighorn Canyon; Northern Carbon; Pryor/Northern Bighorn Mountains; Melville Foothills; Northeastern Yellowstone; Southern Wheatland; Southwestern Yellowstone; Northeast Bighorn Mountains; Sheridan Foothills",
+        "geocode": {
+          "SAME": [
+            "030065",
+            "030103",
+            "030087",
+            "030095",
+            "030075",
+            "030067",
+            "030037",
+            "030009",
+            "030003",
+            "030107",
+            "030097",
+            "030111",
+            "056033"
+          ],
+          "UGC": [
+            "MTZ029",
+            "MTZ030",
+            "MTZ031",
+            "MTZ034",
+            "MTZ036",
+            "MTZ040",
+            "MTZ042",
+            "MTZ056",
+            "MTZ057",
+            "MTZ058",
+            "MTZ063",
+            "MTZ064",
+            "MTZ065",
+            "MTZ066",
+            "MTZ067",
+            "MTZ068",
+            "MTZ138",
+            "MTZ139",
+            "MTZ141",
+            "MTZ169",
+            "MTZ170",
+            "MTZ171",
+            "MTZ172",
+            "MTZ173",
+            "MTZ228",
+            "MTZ235",
+            "WYZ198",
+            "WYZ199"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/MTZ029",
+          "https://api.weather.gov/zones/forecast/MTZ030",
+          "https://api.weather.gov/zones/forecast/MTZ031",
+          "https://api.weather.gov/zones/forecast/MTZ034",
+          "https://api.weather.gov/zones/forecast/MTZ036",
+          "https://api.weather.gov/zones/forecast/MTZ040",
+          "https://api.weather.gov/zones/forecast/MTZ042",
+          "https://api.weather.gov/zones/forecast/MTZ056",
+          "https://api.weather.gov/zones/forecast/MTZ057",
+          "https://api.weather.gov/zones/forecast/MTZ058",
+          "https://api.weather.gov/zones/forecast/MTZ063",
+          "https://api.weather.gov/zones/forecast/MTZ064",
+          "https://api.weather.gov/zones/forecast/MTZ065",
+          "https://api.weather.gov/zones/forecast/MTZ066",
+          "https://api.weather.gov/zones/forecast/MTZ067",
+          "https://api.weather.gov/zones/forecast/MTZ068",
+          "https://api.weather.gov/zones/forecast/MTZ138",
+          "https://api.weather.gov/zones/forecast/MTZ139",
+          "https://api.weather.gov/zones/forecast/MTZ141",
+          "https://api.weather.gov/zones/forecast/MTZ169",
+          "https://api.weather.gov/zones/forecast/MTZ170",
+          "https://api.weather.gov/zones/forecast/MTZ171",
+          "https://api.weather.gov/zones/forecast/MTZ172",
+          "https://api.weather.gov/zones/forecast/MTZ173",
+          "https://api.weather.gov/zones/forecast/MTZ228",
+          "https://api.weather.gov/zones/forecast/MTZ235",
+          "https://api.weather.gov/zones/forecast/WYZ198",
+          "https://api.weather.gov/zones/forecast/WYZ199"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3e954a282c9b159907643d486829c9a0a3a31521.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.3e954a282c9b159907643d486829c9a0a3a31521.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-17T12:06:00-06:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3d731050f18766a72fe34f4de85bb9f8d0a6055d.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.3d731050f18766a72fe34f4de85bb9f8d0a6055d.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-17T19:33:00-06:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.309f9698f9ce5d972641ebb29cf0c74da0d35ff7.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.309f9698f9ce5d972641ebb29cf0c74da0d35ff7.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-18T02:50:00-06:00"
+          }
+        ],
+        "sent": "2026-09-18T11:03:00-06:00",
+        "effective": "2026-09-18T11:03:00-06:00",
+        "onset": "2026-09-18T18:00:00-06:00",
+        "expires": "2026-09-19T11:15:00-06:00",
+        "ends": "2026-09-20T18:00:00-06:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Billings MT",
+        "headline": "Flood Watch issued September 18 at 11:03AM MDT until September 20 at 6:00PM MDT by NWS Billings MT",
+        "description": "A strong and slow moving weather system will impact the region\ntonight through Sunday. Well above normal atmospheric moisture levels\ncombined with the dynamics from this storm system will provide the\npotential for heavy rainfall during this period. Thunderstorms\nembedded in the more general rainfall will have the potential to\nproduce flash flooding, particularly over recent burn scars.\n\n* WHAT...Flooding caused by excessive rainfall is possible, along\nwith Flash Flooding of recent burn scars.\n\n* WHERE...All of South Central Montana, Portions of Southeast\nMontana, and Sheridan County Wyoming.\n\n* WHEN...From 6 PM MDT this evening through Sunday afternoon.\n\n* IMPACTS...Excessive runoff may result in flooding of creeks and\nother low-lying and flood-prone locations. Flooding may occur in\npoor drainage and urban areas.\n\n* ADDITIONAL DETAILS...\n- 1 to 2.5 inches of rainfall is expected across the watch area\ntonight through Sunday. Locally heavier totals up to 4 inches are\npossible where thunderstorm activity is more persistent.\n- The Robertson Draw, East Side, Elk, and McGhee-Remington burn\nscars are particularly vulnerable to Flash Flooding and debris\nflows during the watch period. Any other burn scars from this\nsummer will have elevated Flash Flood potential as well.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Please monitor forecasts and be alert for possible Flood Warnings.\nThose living in areas prone to flooding should be prepared to take\naction should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFABYZ"
+          ],
+          "WMOidentifier": [
+            "WGUS65 KBYZ 181703"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH REMAINS IN EFFECT FROM 6 PM MDT THIS EVENING THROUGH SUNDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KBYZ.FA.A.0004.260919T0000Z-260921T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-09-20T18:00:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
           ]
         }
       }
@@ -18708,164 +19061,6 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.309f9698f9ce5d972641ebb29cf0c74da0d35ff7.001.1",
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.309f9698f9ce5d972641ebb29cf0c74da0d35ff7.001.1",
-        "@type": "wx:Alert",
-        "id": "urn:oid:2.49.0.1.840.0.309f9698f9ce5d972641ebb29cf0c74da0d35ff7.001.1",
-        "areaDesc": "Musselshell; Treasure; Northern Rosebud; Northern Stillwater; Powder River; Northern Park; Golden Valley; Red Lodge Foothills; Northern Big Horn; Southern Rosebud; Judith Gap; Paradise Valley; Livingston Area; Beartooth Foothills; Absaroka/Beartooth Mountains; Crazy Mountains; Southern Big Horn; Southeastern Carbon; Northern Sweet Grass; Bighorn Canyon; Northern Carbon; Pryor/Northern Bighorn Mountains; Melville Foothills; Northeastern Yellowstone; Southern Wheatland; Southwestern Yellowstone; Northeast Bighorn Mountains; Sheridan Foothills",
-        "geocode": {
-          "SAME": [
-            "030065",
-            "030103",
-            "030087",
-            "030095",
-            "030075",
-            "030067",
-            "030037",
-            "030009",
-            "030003",
-            "030107",
-            "030097",
-            "030111",
-            "056033"
-          ],
-          "UGC": [
-            "MTZ029",
-            "MTZ030",
-            "MTZ031",
-            "MTZ034",
-            "MTZ036",
-            "MTZ040",
-            "MTZ042",
-            "MTZ056",
-            "MTZ057",
-            "MTZ058",
-            "MTZ063",
-            "MTZ064",
-            "MTZ065",
-            "MTZ066",
-            "MTZ067",
-            "MTZ068",
-            "MTZ138",
-            "MTZ139",
-            "MTZ141",
-            "MTZ169",
-            "MTZ170",
-            "MTZ171",
-            "MTZ172",
-            "MTZ173",
-            "MTZ228",
-            "MTZ235",
-            "WYZ198",
-            "WYZ199"
-          ]
-        },
-        "affectedZones": [
-          "https://api.weather.gov/zones/forecast/MTZ029",
-          "https://api.weather.gov/zones/forecast/MTZ030",
-          "https://api.weather.gov/zones/forecast/MTZ031",
-          "https://api.weather.gov/zones/forecast/MTZ034",
-          "https://api.weather.gov/zones/forecast/MTZ036",
-          "https://api.weather.gov/zones/forecast/MTZ040",
-          "https://api.weather.gov/zones/forecast/MTZ042",
-          "https://api.weather.gov/zones/forecast/MTZ056",
-          "https://api.weather.gov/zones/forecast/MTZ057",
-          "https://api.weather.gov/zones/forecast/MTZ058",
-          "https://api.weather.gov/zones/forecast/MTZ063",
-          "https://api.weather.gov/zones/forecast/MTZ064",
-          "https://api.weather.gov/zones/forecast/MTZ065",
-          "https://api.weather.gov/zones/forecast/MTZ066",
-          "https://api.weather.gov/zones/forecast/MTZ067",
-          "https://api.weather.gov/zones/forecast/MTZ068",
-          "https://api.weather.gov/zones/forecast/MTZ138",
-          "https://api.weather.gov/zones/forecast/MTZ139",
-          "https://api.weather.gov/zones/forecast/MTZ141",
-          "https://api.weather.gov/zones/forecast/MTZ169",
-          "https://api.weather.gov/zones/forecast/MTZ170",
-          "https://api.weather.gov/zones/forecast/MTZ171",
-          "https://api.weather.gov/zones/forecast/MTZ172",
-          "https://api.weather.gov/zones/forecast/MTZ173",
-          "https://api.weather.gov/zones/forecast/MTZ228",
-          "https://api.weather.gov/zones/forecast/MTZ235",
-          "https://api.weather.gov/zones/forecast/WYZ198",
-          "https://api.weather.gov/zones/forecast/WYZ199"
-        ],
-        "references": [
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3e954a282c9b159907643d486829c9a0a3a31521.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.3e954a282c9b159907643d486829c9a0a3a31521.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-17T12:06:00-06:00"
-          },
-          {
-            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3d731050f18766a72fe34f4de85bb9f8d0a6055d.001.1",
-            "identifier": "urn:oid:2.49.0.1.840.0.3d731050f18766a72fe34f4de85bb9f8d0a6055d.001.1",
-            "sender": "w-nws.webmaster@noaa.gov",
-            "sent": "2026-09-17T19:33:00-06:00"
-          }
-        ],
-        "sent": "2026-09-18T02:50:00-06:00",
-        "effective": "2026-09-18T02:50:00-06:00",
-        "onset": "2026-09-18T18:00:00-06:00",
-        "expires": "2026-09-19T03:00:00-06:00",
-        "ends": "2026-09-20T18:00:00-06:00",
-        "status": "Actual",
-        "messageType": "Update",
-        "category": "Met",
-        "severity": "Severe",
-        "certainty": "Possible",
-        "urgency": "Future",
-        "event": "Flood Watch",
-        "sender": "w-nws.webmaster@noaa.gov",
-        "senderName": "NWS Billings MT",
-        "headline": "Flood Watch issued September 18 at 2:50AM MDT until September 20 at 6:00PM MDT by NWS Billings MT",
-        "description": "A strong and slow moving weather system will impact the region\ntonight through Sunday. Well above normal atmospheric moisture levels\ncombined with the dynamics from this storm system will provide the\npotential for heavy rainfall during this period. Thunderstorms\nembedded in the more general rainfall will have the potential to\nproduce flash flooding, particularly over recent burn scars.\n\n* WHAT...Flooding caused by excessive rainfall is possible, along\nwith Flash Flooding of recent burn scars.\n\n* WHERE...All of South Central Montana, Portions of Southeast\nMontana, and Sheridan County Wyoming.\n\n* WHEN...From this evening through Sunday afternoon.\n\n* IMPACTS...Excessive runoff may result in flooding of creeks and\nother low-lying and flood-prone locations. Flooding may occur in\npoor drainage and urban areas.\n\n* ADDITIONAL DETAILS...\n- 1 to 2.5 inches of rainfall is expected across the watch area\ntonight through Sunday. Locally heavier totals up to 4 inches are\npossible where thunderstorm activity is more persistent.\n- The Robertson Draw, East Side, Elk, and McGhee-Remington burn\nscars are particularly vulnerable to Flash Flooding and debris\nflows during the watch period. Any other burn scars from this\nsummer will have elevated Flash Flood potential as well.\n- http://www.weather.gov/safety/flood",
-        "instruction": "Please monitor forecasts and be alert for possible Flood Warnings.\nThose living in areas prone to flooding should be prepared to take\naction should flooding develop.",
-        "response": "Prepare",
-        "note": null,
-        "parameters": {
-          "AWIPSidentifier": [
-            "FFABYZ"
-          ],
-          "WMOidentifier": [
-            "WGUS65 KBYZ 180850"
-          ],
-          "NWSheadline": [
-            "FLOOD WATCH REMAINS IN EFFECT FROM THIS EVENING THROUGH SUNDAY AFTERNOON"
-          ],
-          "BLOCKCHANNEL": [
-            "EAS",
-            "NWEM",
-            "CMAS"
-          ],
-          "EAS-ORG": [
-            "WXR"
-          ],
-          "VTEC": [
-            "/O.CON.KBYZ.FA.A.0004.260919T0000Z-260921T0000Z/"
-          ],
-          "eventEndingTime": [
-            "2026-09-20T18:00:00-06:00"
-          ]
-        },
-        "scope": "Public",
-        "code": "IPAWSv1.0",
-        "language": "en-US",
-        "web": "http://www.weather.gov",
-        "eventCode": {
-          "SAME": [
-            "FFA"
-          ],
-          "NationalWeatherService": [
-            "FAA"
-          ]
-        }
-      }
-    },
-    {
       "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8820ced33bee8c9634237e526b5922b3c7ec84a2.001.1",
       "type": "Feature",
       "geometry": null,
@@ -27847,5 +28042,5 @@
     }
   ],
   "title": "Current watches, warnings, and advisories",
-  "updated": "2026-09-18T16:53:13+00:00"
+  "updated": "2026-09-18T17:04:00+00:00"
 }
